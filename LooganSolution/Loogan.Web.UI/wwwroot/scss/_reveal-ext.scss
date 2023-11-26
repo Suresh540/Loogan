@@ -1,0 +1,92 @@
+.reveal-modal {
+  outline: none;
+  max-height: 96vh;
+  overflow: auto;
+  @media #{$small-only} {
+    min-height: 20vh;
+    width: 94%;
+    left: 3%;
+    top: rem-calc(10);
+    .touch & {
+      h3 {
+        margin-bottom: rem-calc(10);
+      }
+      img {
+        height: rem-calc(110);
+      }
+    }
+    h3 {
+      font-size: initial;
+    }
+    .touch & {
+      footer {
+        margin-top: 0;
+      }
+    }
+  }
+  .modal-title {
+    margin-bottom: $global-vertical-spacing;
+    i {
+      font-size: 1.3em;
+      vertical-align: -.12em;
+      margin-right: .15em;
+      color: scale-color($secondary-color-dk, $lightness: -20%);
+      // optional class for larger and centered icon (for use with notification modals)
+      &.modal-icon {
+        display: block;
+        font-size: rem-calc(42);
+        margin-bottom: .3em;
+        margin-top: -.1em;
+      }
+    }
+  }
+  &.success .modal-title i {
+    color: $success-color;
+  }
+  &.warning .modal-title i {
+    color: $warning-color;
+  }
+  &.alert .modal-title i {
+    color: $alert-color;
+  }
+  &.info .modal-title i {
+    color: $info-color;
+  }
+  &.notification {
+    text-align: center;
+    @media #{$medium-up} {
+      width: rem-calc(500);
+      &.tiny {
+        width: rem-calc(320);
+      }
+    }
+  }
+  .modal-footer {
+    margin-top: $global-vertical-spacing;
+    padding-top: $global-vertical-spacing / 2;
+    text-align: #{$opposite-direction};
+    button, .button {
+      margin-bottom: 0;
+    }
+  }
+  .close-reveal-modal {
+    background-color: transparent;
+    font-family: $body-font-family;
+    padding: rem-calc(8 14);
+    text-decoration: none;
+    box-shadow: none;
+    &:hover {
+      color: scale-color($reveal-close-color, $lightness: -30%);
+    }
+  }
+}
+
+.reveal-modal-footer {
+  text-align: #{$opposite-direction};
+  button {
+    margin-bottom: 0;
+    + button {
+      margin-#{$default-float}: rem-calc(8);
+    }
+  }
+}

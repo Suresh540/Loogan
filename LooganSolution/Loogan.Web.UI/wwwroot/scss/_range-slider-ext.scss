@@ -1,0 +1,35 @@
+.range-slider {
+  margin: rem-calc(0 0 16);
+  .range-slider-handle {
+    box-shadow: 0 0 0 1px rgba(#000, .15);
+  }
+  &.round {
+    .range-slider-active-segment {
+      border-radius: rem-calc(100 0 0 100);
+      @if $text-direction == rtl {
+        border-radius: rem-calc(0 100 100 0);
+      }
+    }
+  }
+  // the following styles are needed to fix the round handle misalignment. Foundation expects a rectangular handle
+  &[data-slider="80"], &[data-slider="81"], &[data-slider="82"], &[data-slider="83"], &[data-slider="84"] {
+    .range-slider-handle {
+      margin-#{$default-float}: rem-calc(1);
+    }
+  }
+  &[data-slider="85"], &[data-slider="86"], &[data-slider="87"], &[data-slider="88"], &[data-slider="89"] {
+    .range-slider-handle {
+      margin-#{$default-float}: rem-calc(2);
+    }
+  }
+  &[data-slider="90"], &[data-slider="91"], &[data-slider="92"], &[data-slider="93"], &[data-slider="94"] {
+    .range-slider-handle {
+      margin-#{$default-float}: rem-calc(3);
+    }
+  }
+  &[data-slider="95"], &[data-slider="96"], &[data-slider="97"], &[data-slider="98"], &[data-slider="99"], &[data-slider="100"]  {
+    .range-slider-handle {
+      margin-#{$default-float}: rem-calc(4);
+    }
+  }
+}

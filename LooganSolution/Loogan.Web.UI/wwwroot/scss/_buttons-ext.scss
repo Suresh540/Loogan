@@ -1,0 +1,235 @@
+// this mixin overrides Foundation's button-style mixin
+@mixin button-style($bg: $background-dark, $radius: false, $disabled: false, $inverse: false, $outline: false) {
+  $bg-lightness: lightness($bg);
+  $color: $button-font-color;
+  $hover-color: $bg;
+
+  @if $bg-lightness > 40% {
+    $color: $button-font-color-alt;
+    $hover-color: $button-font-color-alt;
+  }
+
+  @if $inverse {
+    $hover-color: $bg;
+    @if $bg-lightness < 60% {
+      $hover-color: scale-color($bg, $lightness: 40%);;
+    }
+  }
+
+  color: $color;
+  background-color: $bg;
+  box-shadow: inset 0 0 0 2px $bg;
+  &:hover,
+  &:focus {
+    background-color: transparent;
+    color: $hover-color;
+  }
+  @include focus-outline;
+  &:active {
+    @include translate-2d($vertical: 2px);
+  }
+
+  @if $disabled {
+    &.disabled, &[disabled] {
+      background-color: $bg;
+      box-shadow: inset 0 0 0 2px $bg;
+      cursor: $cursor-default-value;
+      opacity: $button-disabled-opacity;
+      &:hover,
+      &:focus {
+        background-color: $bg;
+        color: $color;
+      }
+      &:active {
+        @include transform(none);
+      }
+    }
+  }
+
+  @if $outline {
+    @if $bg-lightness > 40% {
+      $color: scale-color($bg, $lightness: -40%);
+    } @else {
+      $color: $bg;
+    }
+    @if $inverse {
+      @if $bg-lightness < 60% {
+        $color: scale-color($bg, $lightness: 40%);
+      } @else {
+        $color: $bg;
+      }
+    }
+    &.outline {
+      background-color: transparent;
+      color: $color;
+      &:hover,
+      &:focus {
+        color: $button-font-color-alt;
+        background-color: $bg;
+      }
+      &:active {
+        box-shadow: none;
+        background-color: $primary-accent-color;
+      }
+      &.disabled, &[disabled] {
+        background-color: transparent;
+        &:hover,
+        &:focus {
+          background-color: transparent;
+          box-shadow: inset 0 0 0 2px $bg;
+          color: $color;
+        }
+      }
+    }
+  }
+
+  @if $radius == true { @include radius($button-radius); }
+  @else if $radius { @include radius($radius); }
+}
+
+button, .button {
+  @include button-base;
+  @include button-size;
+  @include button-style($bg: $background-dark, $radius: $button-radius, $disabled: true);
+  @include transition-transform(transform 100ms, background-color 250ms, color 250ms, box-shadow 250ms, opacity 250ms);
+  line-height: 1.4;
+
+  &.secondary { @include button-style($bg: $background-medium, $disabled: true); }
+  &.success { @include button-style($bg: $background-dark, $disabled: true); } // no longer used. match default style
+  &.warning { @include button-style($bg: $background-dark, $disabled: true); } // no longer used match default style
+  &.alert   { @include button-style($bg: $background-dark, $disabled: true); } // no longer used. match default style
+
+  // primary action buttons for use on dark background
+  &.inverse { @include button-style($bg: $background-light, $disabled: true, $inverse: true, $outline: true); }
+
+  // secondary action buttons for use on dark background
+  &.secondary-inverse { @include button-style($bg: scale-color($background-light, $lightness: -28%), $disabled: true, $inverse: true, $outline: true); }
+
+  // are these used anywhere?
+  &.inverse.secondary   {
+    @include button-style($bg:scale-color($background-dark, $lightness:33%));
+    &:hover,
+    &:focus {
+      box-shadow: inset 0 0 0 2px $border-color-inverse;
+    }
+  }
+
+  &.large  { @include button-size($padding:$button-lrg); }
+  &.small  { @include button-size($padding:$button-sml); }
+  &.tiny   { @include button-size($padding:$button-tny); }
+  &.expand { @include button-size($padding:null,$full-width:true); }
+
+  &.left-align  { text-align: left; text-indent: rem-calc(12); }
+  &.right-align { text-align: right; padding-right: rem-calc(12); }
+
+  @media #{$medium-up} {
+    @include button-base($style:false, $display:inline-block);
+    @include button-size($padding:false, $full-width:false);
+  }
+
+  &.icon {
+    padding-left: 0;
+    padding-right: 0;
+    // 1.45 is the line-height + .0x for px rounding
+    min-width: ($button-font-med * 1.45) + ($button-med * 2);
+    i {
+      text-align: center;
+    }
+    &.tiny {
+      min-width: ($button-font-tny * 1.45) + ($button-tny * 2);
+    }
+    &.small {
+      min-width: ($button-font-sml * 1.48) + ($button-sml * 2);
+    }
+    &.large {
+      min-width: ($button-font-lrg * 1.5) + ($button-lrg * 2);
+    }
+  }
+
+  // text should be phased out in favor of anchor
+  &.text, &.anchor {
+    background-color: transparent;
+    color: $anchor-font-color;
+    text-decoration: $anchor-text-decoration;
+    box-shadow: none;
+    &.unpadded{
+      padding: 0;
+      margin: 0;
+    }
+    &:hover {
+      color: $anchor-font-color-hover;
+      background-color: transparent;
+      text-decoration: $anchor-text-decoration-hover;
+    }
+    &.disabled, &:disabled {
+      opacity: $button-disabled-opacity;
+      &:hover {
+        color: $anchor-font-color;
+        text-decoration: $anchor-text-decoration;
+      }
+    }
+  }
+
+  &.clear {
+    background-color: transparent;
+    color: $text-color;
+    text-decoration: none;
+    box-shadow: none;
+    &:hover {
+      background-color: $secondary-color-lt;
+    }
+    &.disabled, &:disabled {
+      opacity: $button-disabled-opacity;
+      &:hover {
+        background-color: transparent;
+        color: $text-color;
+      }
+    }
+  }
+
+
+  // Hollow (ghost) button
+  &.hollow {
+    background: transparent;
+    color: $text-color-medium;
+    box-shadow: inset 0 0 0 2px $border-color-light;
+    &:hover,
+    &:focus {
+      background: $background-light;
+      color: $text-color;
+      box-shadow: inset 0 0 0 2px $border-color-medium;
+    }
+    &.disabled:hover{
+      color: $text-color-medium;
+      box-shadow: inset 0 0 0 2px $border-color-light;
+    }
+  }
+
+  // Dashed placeholder
+  &.placeholder {
+    padding: 0;
+    background-color: transparent;
+    box-shadow: none;
+    color: $text-color-medium;
+    > div {
+      padding: rem-calc(7 18 8);
+      border: 2px dashed $border-color-medium;
+      border-radius: rem-calc(3);
+    }
+    &:hover,
+    &:focus {
+      background-color: $background-light;
+      border-color: $border-color-medium;
+    }
+    &.disabled:hover{
+      color: $text-color-medium;
+    }
+  }
+  // Secondary text inside a button
+  .button-desc {
+    display: block;
+    font-size: $font-size-small;
+    margin-top: rem-calc(6);
+    color: $text-color-medium;
+  }
+}

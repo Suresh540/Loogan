@@ -1,0 +1,13 @@
+.side-nav {
+  .divider {
+    margin: rem-calc(16 0);
+  }
+}
+
+body {
+	&.hide-content {
+    @media #{$small-only} {
+      overflow: hidden;
+    }
+  }
+}

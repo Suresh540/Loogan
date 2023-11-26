@@ -1,0 +1,10 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/LooganSolution/Loogan.Web.API/bin/Debug/net8.0
+/LooganSolution/Loogan.Web.API/obj
+/LooganSolution/Loogan.Web.UI/bin/Debug/net8.0
+/LooganSolution/Loogan.Web.UI/obj
+/.vs
+/LooganSolution/.vs

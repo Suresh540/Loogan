@@ -1,0 +1,62 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <base href="~/" />
+    <component type="typeof(Microsoft.AspNetCore.Components.Web.HeadOutlet)" render-mode="Server" />
+    <title>Loogan Learn</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta id="request-method" name="request-method" content="GET">
+    <meta name="author" content="LooganBoard">
+    <meta name="copyright" content="© 2023-2024 Blackboard Inc. All Rights Reserved.">
+    <meta name="keywords" content="LooganBoard">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="-1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="SHORTCUT ICON" type="image/x-icon" href="/favicon.ico" />
+    <link rel="stylesheet" type="text/css" href="~/css/ultra.css" id="css_0" />
+    <link rel="stylesheet" type="text/css" href="~/css/prism.css" id="css_1" />
+    <link rel="stylesheet" type="text/css" href="~/css/video-integration.css" id="css_2" />
+    <link rel="stylesheet" type="text/css" href="~/css/ally-integration.css" id="css_3" />
+    <link rel="stylesheet" type="text/css" media="print" href="https://learn.content.blackboardcdn.com/3900.78.0-rel.20+a950d0d/ui/styles/print.css?v=3900.78.0-rel.20+a950d0d" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link href="~/ccss/_bb-icons.css" rel="stylesheet" />
+    <link href="~/ccss/_colors.min.css" rel="stylesheet" />
+    <link href="~/ccss/_flex.min.css" rel="stylesheet" />
+    <link href="~/ccss/_foundation-global.css" rel="stylesheet" />
+    <link href="~/ccss/_foundation-global.min.css" rel="stylesheet" />
+    <link href="~/ccss/_functions.css" rel="stylesheet" />
+    <link href="~/ccss/_functions.min.css" rel="stylesheet" />
+    <link href="~/css/site.css" rel="stylesheet" />
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+</head>
+<body id="learn-oe-body" class="bb-login hide-focus-outline">
+    
+    <script src="_framework/blazor.server.js"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+
+    <div id="loginLang" class="clearfix">
+    </div>
+    @RenderBody()
+    <div class="small-12 small-centered text-center columns" id="copyright">
+        <div class="clearfix">
+            <div class="newCopyright">
+                <div class="legal">
+                    © 1997-2023 Loogan Inc. All Rights Reserved.
+                </div>
+            </div>
+        </div>
+        <div id="loginOptions">
+        </div>
+    </div>
+    <div class="row" id="copyDummy" style="display:none">
+        <div class="bb-login col-2">
+            &nbsp;
+        </div>
+        <div class="col-10">
+            &nbsp;
+        </div>
+    </div>
+</body>
+</html>

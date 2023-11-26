@@ -1,0 +1,252 @@
+@import "../mixins/flex";
+
+@mixin focus-outline {
+  body:not(.hide-focus-outline) &:focus {
+    outline: $focus-outline;
+  }
+}
+
+@mixin focus-inset($extra-shadow: false) {
+  $box-shadow: $focus-inset;
+  @if $extra-shadow {
+    $box-shadow: $focus-inset, $extra-shadow;
+  }
+  body:not(.hide-focus-outline) &:focus {
+    outline: none !important;
+    box-shadow: $box-shadow !important;
+  }
+}
+
+@mixin focus-outline-shadow($extra-shadow: false) {
+  $box-shadow: $focus-outline-shadow;
+  @if $extra-shadow {
+    $box-shadow: $focus-outline-shadow, $extra-shadow;
+  }
+  body:not(.hide-focus-outline) &:focus {
+    outline: none !important;
+    box-shadow: $box-shadow !important;
+  }
+}
+
+@mixin input-focus-style {
+  background-color: $input-focus-bg-color;
+  border-color: $input-focus-border-color;
+  box-shadow: 0 0 0 4px rgba($input-focus-border-color, 0.1);
+}
+
+@mixin calc($property, $value) {
+  @if $experimental {
+    #{$property}: -webkit-calc(#{$value});
+  }
+  #{$property}: calc(#{$value});
+}
+
+@mixin linear-gradient($angle, $color-stops...) {
+  $_angle-with-vendor-prefix: "";
+  $_angle: "";
+  @if $angle == "to top" or $angle == "bottom" {
+    $_angle-with-vendor-prefix: bottom;
+    $_angle: to top;
+  } @else if $angle == "to right" or $angle == "left" {
+    $_angle-with-vendor-prefix: left;
+    $_angle: to right;
+  } @else if $angle == "to bottom" or $angle == "top" {
+    $_angle-with-vendor-prefix: top;
+    $_angle: to bottom;
+  } @else if $angle == "to left" or $angle == "right" {
+    $_angle-with-vendor-prefix: right;
+    $_angle: to left;
+  } @else if $angle == "to top right" or $angle == "bottom left" {
+    $_angle-with-vendor-prefix: bottom left;
+    $_angle: to top right;
+  } @else if $angle == "to bottom right" or $angle == "top left" {
+    $_angle-with-vendor-prefix: top left;
+    $_angle: to bottom right;
+  } @else if $angle == "to bottom left" or $angle == "top right" {
+    $_angle-with-vendor-prefix: top right;
+    $_angle: to bottom left;
+  } @else if $angle == "to top left" or $angle == "bottom right" {
+    $_angle-with-vendor-prefix: bottom right;
+    $_angle: to top left;
+  } @else {
+    $_angle-with-vendor-prefix: $angle % 360;
+    $_angle: (90 - $angle) % 360;
+  }
+
+  @if $experimental {
+    background: -webkit-linear-gradient($_angle-with-vendor-prefix, $color-stops);
+    background: -moz-linear-gradient($_angle-with-vendor-prefix, $color-stops);
+    background: -o-linear-gradient($_angle-with-vendor-prefix, $color-stops);
+  }
+  background: linear-gradient($_angle, $color-stops);
+}
+
+@mixin transition($transition...) {
+  @if $experimental {
+    -webkit-transition: $transition;
+       -moz-transition: $transition;
+         -o-transition: $transition;
+        -ms-transition: $transition;
+  }
+  transition: $transition;
+}
+
+@mixin transition-transform($transition...) {
+  @if $experimental {
+    -webkit-transition: -webkit-#{$transition};
+       -moz-transition:    -moz-#{$transition};
+        -ms-transition:     -ms-#{$transition};
+         -o-transition:      -o-#{$transition};
+  }
+  transition: $transition;
+}
+
+@mixin transform($transform...) {
+  @if $experimental {
+    -webkit-transform: $transform;
+       -moz-transform: $transform;
+        -ms-transform: $transform;
+         -o-transform: $transform;
+  }
+  transform: $transform;
+}
+
+@mixin translate-2d($horizontal:0, $vertical:0) {
+  @if $experimental {
+    -webkit-transform: translate($horizontal,$vertical);
+       -moz-transform: translate($horizontal,$vertical);
+        -ms-transform: translate($horizontal,$vertical);
+         -o-transform: translate($horizontal,$vertical);
+  }
+  transform: translate($horizontal,$vertical)
+}
+
+@mixin rotate($d) {
+  @if $experimental {
+    -webkit-transform: rotate($d);
+       -moz-transform: rotate($d);
+        -ms-transform: rotate($d);
+         -o-transform: rotate($d);
+  }
+  transform: rotate($d);
+}
+
+@mixin transform-origin($origin...) {
+  @if $experimental {
+    -webkit-transform-origin: $origin;
+       -moz-transform-origin: $origin;
+        -ms-transform-origin: $origin;
+         -o-transform-origin: $origin;
+  }
+  transform-origin: $origin;
+}
+
+@mixin box-sizing($value) {
+  @if $experimental {
+    -webkit-box-sizing: $value;
+       -moz-box-sizing: $value;
+  }
+  box-sizing: $value;
+}
+
+@mixin background-size($value) {
+  @if $experimental {
+    -webkit-background-size: $value;
+       -moz-background-size: $value;
+  }
+  background-size: $value;
+}
+
+@mixin animation($value) {
+  @if $experimental {
+    -webkit-animation: $value;
+       -moz-animation: $value;
+        -ms-animation: $value;
+         -o-animation: $value;
+  }
+  animation: $value;
+}
+
+@mixin keyframes($name) {
+  @if $experimental {
+    @-webkit-keyframes #{$name} {
+      @content;
+    }
+    @-moz-keyframes #{$name} {
+      @content;
+    }
+    @-ms-keyframes #{$name} {
+      @content;
+    }
+  }
+  @keyframes #{$name} {
+    @content;
+  }
+}
+
+@mixin opacity($value: 0.3) {
+  $ieVal: $value * 100;
+  opacity: $value;
+  -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity="$ieVal")";
+  filter: alpha(opacity=$ieVal);
+}
+
+@mixin list-reset {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+// icon mixins & placeholder
+@mixin font-icon($unicode: false) {
+	font-family: 'bb-icons' !important;
+	speak: none;
+	font-style: normal !important;
+	font-weight: normal !important;
+	font-variant: normal !important;
+	text-transform: none;
+	line-height: 1;
+
+	/* Better Font Rendering =========== */
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+
+  @if $unicode != false {
+    &:before {
+      content: $unicode; // write as "\f00c"
+    }
+  }
+
+}
+@mixin set-icon($unicode: "\f00c") {
+  &:before {
+    content: $unicode; // write as "\f00c"
+  }
+}
+%font-icon {
+	font-family: 'bb-icons' !important;
+	speak: none;
+	font-style: normal !important;
+	font-weight: normal !important;
+	font-variant: normal !important;
+	text-transform: none;
+	line-height: 1;
+
+	/* Better Font Rendering =========== */
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+// intrinsic ratio mixin
+@mixin intrinsic-ratio($x: 4, $y: 3, $el: 'div') {
+  position: relative;
+  height: 0;
+  overflow: hidden;
+  padding-bottom: percentage( $y / $x );
+  #{$el} {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+  }
+}

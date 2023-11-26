@@ -1,0 +1,29 @@
+.alert-box {
+  line-height: 1.4;
+  border-radius: $global-radius;
+  a {
+    text-decoration: underline;
+    &.close {
+      text-decoration: none;
+    }
+  }
+  > i {
+    margin-#{$opposite-direction}: rem-calc(5);
+  }
+  &.success,
+  &.alert,
+  &.warning {
+    a {
+      color: $text-color-inverse;
+    }
+  }
+  &.icon {
+    padding-#{$default-float}: rem-calc(50);
+    > i {
+      margin-#{$default-float}: rem-calc(-34);
+      margin-#{$opposite-direction}: rem-calc(10);
+      font-size: rem-calc(26);
+      vertical-align: -23%;
+    }
+  }
+}

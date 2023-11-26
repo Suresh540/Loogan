@@ -1,0 +1,28 @@
+// Toggles
+
+@mixin button-group-toggle {
+  .active {
+    background: $background-dark;
+    color: $text-color-inverse;
+    &:focus,
+    &:active,
+    &:hover,
+    &:visited {
+      pointer-events: none;
+      user-select: none;
+      background: $background-dark;
+      color: $text-color-inverse;
+      transform: none;
+    }
+  }
+}
+
+.button-group {
+  // Button groups used as toggles
+  &.toggle {
+    @include button-group-toggle;
+  }
+}
+
+
+

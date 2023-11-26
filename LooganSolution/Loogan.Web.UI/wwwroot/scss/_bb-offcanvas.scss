@@ -1,0 +1,213 @@
+$bb-offcanvas-panel-width:      rem-calc(420) !default;
+$bb-offcanvas-panel-full-width: 100% !default;
+$bb-offcanvas-panel-padding:    rem-calc(30) !default;
+$bb-offcanvas-panel-bg:         #fff !default;
+$bb-offcanvas-panel-shadow:     0 0 0 5px rgba(#000, 0.1), 0 0 0 1px rgba(#000, 0.1) !default;
+$bb-offcanvas-panel-easing:     $global-easing !default;
+$bb-offcanvas-panel-speed:      300ms !default;
+$bb-offcanvas-panel-animation:  $bb-offcanvas-panel-speed $bb-offcanvas-panel-easing !default;
+
+// the transform needs to be prefixed when it's included. see line 118
+$bb-offcanvas-panel-transition: transform $bb-offcanvas-panel-animation,
+                                max-width $bb-offcanvas-panel-animation,
+                                outline-color $bb-offcanvas-panel-speed,
+                                right $bb-offcanvas-panel-animation,
+                                left $bb-offcanvas-panel-animation;
+
+$bb-offcanvas-overlay-zindex-1: 1010 !default;
+$bb-offcanvas-overlay-zindex-2: 1110 !default;
+$bb-offcanvas-overlay-zindex-3: 1210 !default;
+$bb-offcanvas-overlay-zindex-4: 1310 !default;
+
+.bb-offcanvas {
+  &.contained {
+    overflow: hidden;
+  }
+  &.bb-offcanvas-open {
+    .bb-close-overlay {
+      bottom: 0;
+      opacity: 1;
+      @include transition(opacity $bb-offcanvas-panel-animation, bottom 0 0);
+    }
+  }
+}
+
+.bb-offcanvas-inner {
+  @include clearfix;
+  position: relative;
+  .push-#{$default-float} & {
+    // beware of fixed position children bug - fixed to transformed parent as opposed to window
+    @include translate-2d($bb-offcanvas-panel-width, 0);
+  }
+  .push-#{$opposite-direction} & {
+    // beware of fixed position children bug - fixed to transformed parent as opposed to window
+    @include translate-2d(-$bb-offcanvas-panel-width, 0);
+  }
+  .fit-right & {
+    @media #{$medium-up} {
+      padding-#{$opposite-direction}: $bb-offcanvas-panel-width;
+    }
+  }
+  .fit-left & {
+    @media #{$medium-up} {
+      padding-#{$default-float}: $bb-offcanvas-panel-width;
+    }
+  }
+  // not using the mixin due to the transform prefixes
+  @if $experimental {
+    -webkit-transition: -webkit-transform $bb-offcanvas-panel-animation, padding-right $bb-offcanvas-panel-animation, padding-left $bb-offcanvas-panel-animation;
+       -moz-transition:    -moz-transform $bb-offcanvas-panel-animation, padding-right $bb-offcanvas-panel-animation, padding-left $bb-offcanvas-panel-animation;
+        -ms-transition:     -ms-transform $bb-offcanvas-panel-animation, padding-right $bb-offcanvas-panel-animation, padding-left $bb-offcanvas-panel-animation;
+         -o-transition:      -o-transform $bb-offcanvas-panel-animation, padding-right $bb-offcanvas-panel-animation, padding-left $bb-offcanvas-panel-animation;
+  }
+  transition: transform $bb-offcanvas-panel-animation, padding-right $bb-offcanvas-panel-animation, padding-left $bb-offcanvas-panel-animation;
+}
+
+.bb-close-overlay {
+  background-color: rgba(#fff, 0.4);
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 100%;
+  opacity: 0;
+  z-index: 10;
+  @include transition(opacity $bb-offcanvas-panel-animation, bottom 0 $bb-offcanvas-panel-animation);
+}
+
+.bb-offcanvas-panel {
+  position: fixed;
+  display: none;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  outline: none;
+  @media #{$medium-up} {
+    max-width: $bb-offcanvas-panel-width;
+  }
+  &.bb-offcanvas-#{$default-float} {
+    left: 0;
+  }
+  &.bb-offcanvas-#{$opposite-direction} {
+    right: 0;
+  }
+  &.full {
+    @media #{$medium-up} {
+      max-width: $bb-offcanvas-panel-full-width;
+    }
+    & .bb-offcanvas-panel-wrap {
+      @media #{$medium-up} {
+        max-width: 100%;
+      }
+    }
+  }
+}
+
+.bb-offcanvas-panel-wrap {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: $bb-offcanvas-panel-bg;
+  box-shadow: $bb-offcanvas-panel-shadow;
+  outline: 10px solid rgba(#fff, 0);
+  @media #{$medium-up} {
+    max-width: $bb-offcanvas-panel-width;
+  }
+  @if $experimental {
+    -webkit-transition: -webkit-#{$bb-offcanvas-panel-transition};
+       -moz-transition:    -moz-#{$bb-offcanvas-panel-transition};
+        -ms-transition:     -ms-#{$bb-offcanvas-panel-transition};
+         -o-transition:      -o-#{$bb-offcanvas-panel-transition};
+  }
+  transition: $bb-offcanvas-panel-transition;
+  .contained & {
+    position: absolute;
+  }
+  .bb-offcanvas-#{$default-float} & {
+    left: -100%;
+  }
+  .bb-offcanvas-#{$opposite-direction} & {
+    right: -100%;
+  }
+  .side-panel-content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    overflow-y: auto;
+    padding: $bb-offcanvas-panel-padding;
+  }
+  .bb-close {
+    position: absolute;
+    z-index: 2;
+    #{$default-float}: rem-calc(40);
+    top: rem-calc(5);
+    color: scale-color($text-color, $lightness: 40%);
+    font-size: rem-calc(26);
+    font-weight: $weight-semi-bold;
+    line-height: 1;
+    padding: rem-calc(2 8);
+    text-decoration: none;
+    &:hover {
+      color: $text-color;
+    }
+  }
+  .bb-offcanvas-#{$default-float}.active > & {
+    left: 0;
+  }
+  .bb-offcanvas-#{$opposite-direction}.active > & {
+    right: 0;
+  }
+}
+
+.contained.bb-offcanvas-open.push-#{$default-float} {
+  .bb-offcanvas-panel-wrap {
+    outline-color: rgba(#eee, 0);
+    @include translate-2d(-100%, 0);
+  }
+}
+
+.contained.bb-offcanvas-open.push-#{$opposite-direction} {
+  .bb-offcanvas-panel-wrap {
+    outline-color: rgba(#eee, 0);
+    @include translate-2d(100%, 0);
+  }
+}
+
+.contained {
+  .bb-offcanvas-panel {
+    position: absolute;
+    z-index: 1;
+  }
+}
+
+.bb-offcanvas-panel {
+  z-index: $bb-offcanvas-overlay-zindex-1 + 5;
+  & ~ .bb-offcanvas-panel {
+    z-index: $bb-offcanvas-overlay-zindex-2 + 5;
+    & ~ .bb-offcanvas-panel {
+      z-index: $bb-offcanvas-overlay-zindex-3 + 5;
+    }
+  }
+}
+
+.bb-offcanvas-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(#000, 0.5);
+  z-index: $bb-offcanvas-overlay-zindex-1;
+  &:not(.hidden) ~ .bb-offcanvas-overlay:not(.hidden) {
+    z-index: $bb-offcanvas-overlay-zindex-2;
+    ~ .bb-offcanvas-overlay:not(.hidden) {
+      z-index: $bb-offcanvas-overlay-zindex-3;
+      ~ .bb-offcanvas-overlay:not(.hidden) {
+        z-index: $bb-offcanvas-overlay-zindex-4;
+      }
+    }
+  }
+}
