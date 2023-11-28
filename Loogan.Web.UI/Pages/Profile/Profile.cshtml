@@ -1,0 +1,100 @@
+﻿@page "/Profile/Profile"
+@using Loogan.Web.UI.Components
+@using Loogan.Web.UI.Pages.Shared
+@model Loogan.Web.UI.Pages.Profile.ProfileModel
+
+<component type="typeof(Upper_Component)" render-mode="Static" />
+<div>
+    <div id="site-wrap" class="off-canvas-wrap">
+        <div class="inner-wrap">
+            <div class="row">
+                <div class="col-2 bb-login pointscroll leftmenu">
+                    @{
+                        LeftSideBarModel leftSideBarModel = new LeftSideBarModel();
+                        await Html.RenderPartialAsync("leftsidebar", leftSideBarModel);
+                    }
+                </div>
+                <div class="col-10 base-profile pointscroll righcontent">
+                    <div class="background">&nbsp;</div>
+                    <div class="account-snapshot columns small-12 text-center">
+                        <div class="avatar-container can-edit">
+                            <div class="columns small-12 profile-content">
+                                <div class="element-image avatar no-select outline one-participant" aria-hidden="true">
+                                    <div class="avatar-inner">
+                                        <div class="first avatar-single image-avatar " style="text-align:center">
+                                            <img src="~/images/default_profile_avatar.svg" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="username-container">
+                            Suresh Kalaga
+                        </div>
+                    </div>
+                    <div class="columns small-12 profile-content">
+                        <div class="columns large-6 small-12 user-information">
+                            @if (Model != null && Model.LeftSectionValues != null)
+                                @foreach (var sec in Model.LeftSectionValues)
+                                {
+                                    <section>
+                                        <h2 bb-translate="">@sec.SectionName</h2>
+                                        <ul>
+                                            @if (sec != null && sec.SectionValueData != null)
+                                                @foreach (var inner in sec.SectionValueData)
+                                                {
+                                                    <li class="data-row can-edit">
+                                                        <div class="data-container">
+                                                            <span class="data-title" bb-translate="">@inner.Key</span>
+                                                            <a>
+                                                                <div class="makeStylesroot-0-2-55">
+                                                                    <div class="makeStylesuserPronunciation-0-2-60">
+                                                                        <span class="makeStylesbaseText-0-2-56">@Html.Raw(inner.Value)</span>&nbsp;
+                                                                        <img src="~/images/pencil.png" width="20" height="20" />
+                                                                    </div>
+                                                                </div>
+                                                            </a>
+                                                        </div>
+                                                    </li>
+                                                }
+                                        </ul>
+                                    </section>
+                                }
+                        </div>
+                        <div class="columns large-6 small-12 user-settings">
+                            @if (Model != null && Model.RightSectionValues != null)
+                                @foreach (var sec in Model.RightSectionValues)
+                                {
+                                    <section>
+                                        <h2 bb-translate="">@sec.SectionName</h2>
+                                        <ul>
+                                            @if (sec != null && sec.SectionValueData != null)
+                                                @foreach (var inner in sec.SectionValueData)
+                                                {
+                                                    <li class="data-row can-edit">
+                                                        <div class="data-container">
+                                                            <span class="data-title" bb-translate="">@inner.Key</span>
+                                                            <a>
+                                                                <div class="makeStylesroot-0-2-55">
+                                                                    <div class="makeStylesuserPronunciation-0-2-60">
+                                                                        <span class="makeStylesbaseText-0-2-56">@Html.Raw(inner.Value)</span>&nbsp;
+                                                                        <img src="~/images/pencil.png" width="20" height="20" />
+                                                                    </div>
+                                                                </div>
+                                                            </a>
+                                                        </div>
+                                                    </li>
+                                                }
+                                        </ul>
+                                    </section>
+                                }
+                        </div>
+                    </div>
+
+                    <component type="typeof(Lower_Component)" render-mode="Static" /><br />
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

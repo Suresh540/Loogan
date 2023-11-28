@@ -8,3 +8,7 @@
 /LooganSolution/Loogan.Web.UI/obj
 /.vs
 /LooganSolution/.vs
+/Loogan.Web.API/bin/Debug/net8.0
+/Loogan.Web.API/obj
+/Loogan.Web.UI/bin/Debug/net8.0
+/Loogan.Web.UI/obj

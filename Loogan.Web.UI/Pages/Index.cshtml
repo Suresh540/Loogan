@@ -1,0 +1,62 @@
+﻿@page
+@using Loogan.Web.UI.Components
+@model IndexModel
+@{
+    ViewData["Title"] = "Login";
+}
+
+<component type="typeof(Upper_Component)" render-mode="Static" />
+<div>
+    <div class="d-flex align-items-center justify-content-center">
+        <div class="col-md-3">
+            <div class="row">
+                <div id="login-block" class="small-11 small-centered medium-12 medium-centered text-center columns">
+                    <h2 class="login-logo new-logo" style="color:white">Loogan Learn ™</h2>
+                </div>
+            </div>
+            <div class="login-form">
+                <form method="post">
+                    <input type="hidden" name="DisplayMessage" id="DisplayMessage" />
+                    <div class="clearfix">
+                        <ul class="clearfix">
+                            <li class="clearfix">
+                                <label for="user_id">Username</label>
+                                <input type="text" name="UserName" id="user_id" size="25" maxlength="50" autocomplete="off" onfocus="onKeyClick('user_id')" onblur="normalState('user_id')">
+                            </li>
+                            <li class="clearfix">
+                                <label for="password">Password</label>
+                                <input size="25" name="Password" id="password" type="password" autocomplete="off" onfocus="onKeyClick('password')" onblur="normalState('password')">
+                            </li>
+                            <li class="clearfix">
+                                <input id="entry-login" type="button" value="Sign In" onclick="triggerSignIn()" name="login" class="button expand inverse outline">
+                            </li>
+                        </ul>
+                        <ul class="clearfix">
+                            <li class="text-right" style="padding-bottom:3px">
+                                <a href="#" style="color:white">Forgot Password?</a>
+                            </li>
+                        </ul>
+                        <ul>
+                            <li class="clearfix">
+                                <select class="form-select">
+                                    <option>Sign in with third-party account</option>
+                                    <option>ADFS Login</option>
+                                </select>
+                            </li>
+                        </ul>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <component type="typeof(LoginDisclaimer_Component)" render-mode="Static" />
+</div>
+<component type="typeof(Lower_Component)" render-mode="Static" />
+
+
+
+
+
+
+
+

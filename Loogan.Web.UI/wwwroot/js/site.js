@@ -24,15 +24,16 @@ window.triggerSignIn = function () {
 }
 
 window.onload = function () {
-    if (window.location.href.lastIndexOf('dashboard') != -1) {
+    var pathArray = window.location.pathname.split('/');
+    var index = pathArray.length;
+    if (index > 2) {
         document.getElementById('learn-oe-body').setAttribute('class', 'default ms-Fabric hide-focus-outline help-page-visible');
-        document.getElementById('copyright').style.display = 'none';
-        document.getElementById('copyDummy').style.display = 'block';
+        document.getElementById('learn-oe-body').style.overflowY = 'hidden';
     } else {
         document.getElementById('learn-oe-body').removeAttribute('class');
+        document.getElementById('learn-oe-body').removeAttribute('style');
         document.getElementById('learn-oe-body').setAttribute('class', 'bb-login hide-focus-outline');
-        document.getElementById('copyright').style.display = 'block';
-        document.getElementById('copyDummy').style.display = 'none';
+       
     }
 }
 

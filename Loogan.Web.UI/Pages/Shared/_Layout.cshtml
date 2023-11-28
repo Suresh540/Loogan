@@ -32,31 +32,8 @@
     <script src="~/js/site.js" asp-append-version="true"></script>
 </head>
 <body id="learn-oe-body" class="bb-login hide-focus-outline">
-    
+    @RenderBody()
     <script src="_framework/blazor.server.js"></script>
     @await RenderSectionAsync("Scripts", required: false)
-
-    <div id="loginLang" class="clearfix">
-    </div>
-    @RenderBody()
-    <div class="small-12 small-centered text-center columns" id="copyright">
-        <div class="clearfix">
-            <div class="newCopyright">
-                <div class="legal">
-                    © 1997-2023 Loogan Inc. All Rights Reserved.
-                </div>
-            </div>
-        </div>
-        <div id="loginOptions">
-        </div>
-    </div>
-    <div class="row" id="copyDummy" style="display:none">
-        <div class="bb-login col-2">
-            &nbsp;
-        </div>
-        <div class="col-10">
-            &nbsp;
-        </div>
-    </div>
 </body>
 </html>
