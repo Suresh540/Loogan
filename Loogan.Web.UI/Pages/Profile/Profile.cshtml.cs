@@ -1,5 +1,7 @@
+using Loogan.Web.UI.Pages.Shared;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.Extensions.Localization;
 
 namespace Loogan.Web.UI.Pages.Profile
 {
@@ -11,6 +13,14 @@ namespace Loogan.Web.UI.Pages.Profile
 
         [BindProperty]
         public List<SectionModel>? RightSectionValues { get; set; }
+
+        [BindProperty]
+        public IStringLocalizer<LeftSideBarModel> _localizer { get; set; }
+
+        public ProfileModel(IStringLocalizer<LeftSideBarModel> localizer)
+        {
+            _localizer = localizer;
+        }
 
         public void OnGet()
         {

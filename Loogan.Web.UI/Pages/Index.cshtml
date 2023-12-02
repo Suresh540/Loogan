@@ -52,7 +52,14 @@
     <component type="typeof(LoginDisclaimer_Component)" render-mode="Static" />
 </div>
 <component type="typeof(Lower_Component)" render-mode="Static" />
-
+<script>
+    function onload(){
+        if ('@Model.DisplayMessage' != '') {
+            alert('@Model.DisplayMessage')
+        }
+    }
+    onload();
+</script>
 
 
 

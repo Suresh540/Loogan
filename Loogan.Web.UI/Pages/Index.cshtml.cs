@@ -1,3 +1,5 @@
+using Loogan.API.Models.Models;
+using Loogan.Web.UI.Utilities;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
@@ -6,6 +8,7 @@ namespace Loogan.Web.UI.Pages
     public class IndexModel : PageModel
     {
         private readonly ILogger<IndexModel> _logger;
+        private readonly IUtilityHelper _utilityHelper;
 
         [BindProperty]
         public string? UserName { get; set; }
@@ -16,9 +19,10 @@ namespace Loogan.Web.UI.Pages
         [BindProperty]
         public string? DisplayMessage { get; set; }
 
-        public IndexModel(ILogger<IndexModel> logger)
+        public IndexModel(ILogger<IndexModel> logger, IUtilityHelper utilityHelper)
         {
             _logger = logger;
+            _utilityHelper = utilityHelper;
         }
 
         public void OnGet()
@@ -26,7 +30,7 @@ namespace Loogan.Web.UI.Pages
 
         }
 
-        public IActionResult OnPost()
+        public async Task<IActionResult> OnPostAsync()
         {
             DisplayMessage = "";
             if (string.IsNullOrEmpty(UserName))
@@ -39,8 +43,16 @@ namespace Loogan.Web.UI.Pages
                 DisplayMessage = "Password is empty";
                 return Page();
             }
-
-            return RedirectToPage("/Dashboard/dashboard");
+            UserQuery query = new UserQuery();
+            query.UserName = UserName;
+            query.Password = Password;
+            var model = await _utilityHelper.ExecuteAPICall<UserModel>(query, RestSharp.Method.Post, resource: "api/User");
+            if(model != null)
+            {
+                return RedirectToPage("/Dashboard/dashboard");
+            }
+            DisplayMessage = "User name/Password is wrong";
+            return Page();
         }
     }
 }

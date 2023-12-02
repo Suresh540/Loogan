@@ -1,15 +1,24 @@
+using Loogan.API.BusinessService.Interfaces;
+using Loogan.API.BusinessService.Mapper;
+using Loogan.API.BusinessService.Services;
+using Loogan.API.Database.Interfaces;
+using Loogan.API.Database.Models;
+
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
+builder.Services.AddAutoMapper(typeof(Program), typeof(InitializeMapper));
+builder.Services.AddSingleton<ILooganStoredProcedures>((opt) =>
+{
+    return new LooganStoredProcedures(builder?.Configuration["ConnectionStrings:looganConnectionString"]);
+});
 
+builder.Services.AddTransient<IUserService, UserService>();
 builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
@@ -17,9 +26,6 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-
 app.UseAuthorization();
-
 app.MapControllers();
-
 app.Run();

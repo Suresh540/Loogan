@@ -1,0 +1,47 @@
+﻿using RestSharp;
+using System.Net.Mime;
+
+namespace Loogan.Web.UI.Utilities;
+
+public class UtilityHelper : IUtilityHelper
+{
+    private readonly string? _baseUrl;
+
+    public UtilityHelper(string? baseUrl)
+    {
+        this._baseUrl = baseUrl;
+    }
+
+    public async Task<T?> ExecuteAPICall<T>(object? reqParams, Method method,
+        Dictionary<string, object>? header = null, string resource = "")
+    {
+        T? result = default(T);
+        using (RestClient client = new RestClient(_baseUrl))
+        {
+            RestRequest request = new RestRequest();
+            if (reqParams != null)
+            {
+                if (!string.IsNullOrEmpty(resource))
+                {
+                    request = new RestRequest(resource);
+                }
+                request.Method = method;
+                request.AddBody(reqParams);
+            }
+            if (header != null)
+            {
+                foreach (var item in header)
+                {
+                    request.AddHeader(item.Key, item.Value?.ToString());
+                }
+            }
+            var response = await client.ExecuteAsync<T>(request);
+            if (response != null && response.IsSuccessStatusCode)
+            {
+                result = response.Data;
+            }
+        }
+        return result;
+    }
+}
+

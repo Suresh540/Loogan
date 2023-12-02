@@ -1,7 +1,8 @@
 ﻿@page "leftsidebar"
+@using Loogan.Web.UI.Resources.Pages.LeftSideBar
+@using Microsoft.Extensions.Localization
 @model Loogan.Web.UI.Pages.Shared.LeftSideBarModel
-@{
-}
+@inject IStringLocalizer<LeftSideBar> Localizer
 
 <ul class="ulspace">
     <li class="text-white">
@@ -11,7 +12,7 @@
 <ul class="ulspace">
     <li class="liSpace">
         <img src="~/images/institution.png" alt="Institurion" width="30px" height="30px" />
-        <a style="color:white;font-size:16px;" href="#">Institution Page</a>
+        <a style="color:white;font-size:16px;" href="/dashboard/dashboard">@Localizer["InstitutionPageKey"]</a>
     </li>
     <li class="liSpace">
         <img src="~/images/profile.png" width="30px" height="30px" />
@@ -19,34 +20,34 @@
     </li>
     <li class="liSpace">
         <img src="~/images/activity.png" width="30px" height="30px" />
-        <a style="color:white;font-size:16px;" href="#">Activity Stream</a>
+        <a style="color:white;font-size:16px;" href="#">@Localizer["ActivityStreamKey"]</a>
     </li>
     <li class="liSpace">
         <img src="~/images/course.png" width="30px" height="30px" />
-        <a style="color:white;font-size:16px;" href="#">Courses</a>
+        <a style="color:white;font-size:16px;" href="#">@Localizer["CoursesKey"]</a>
     </li>
     <li class="liSpace">
         <img src="~/images/organization.png" width="30px" height="30px" />
-        <a style="color:white;font-size:16px;" href="#">Orgnizations</a>
+        <a style="color:white;font-size:16px;" href="#">@Localizer["OrgnizationsKey"]</a>
     </li>
     <li class="liSpace">
         <img src="~/images/calendar.png" width="30px" height="30px" />
-        <a style="color:white;font-size:16px;" href="#">Calendar</a>
+        <a style="color:white;font-size:16px;" href="#">@Localizer["CalendarKey"]</a>
     </li>
     <li class="liSpace">
         <img src="~/images/messages.png" width="30px" height="30px" />
-        <a style="color:white;font-size:16px;" href="#">Messages</a>
+        <a style="color:white;font-size:16px;" href="#">@Localizer["MessagesKey"]</a>
     </li>
     <li class="liSpace">
         <img src="~/images/grades.png" width="30px" height="30px" />
-        <a style="color:white;font-size:16px;" href="#">Grades</a>
+        <a style="color:white;font-size:16px;" href="#">@Localizer["GradesKey"]</a>
     </li>
     <li class="liSpace">
         <img src="~/images/tools.png" width="30px" height="30px" />
-        <a style="color:white;font-size:16px;" href="#">Tools</a>
+        <a style="color:white;font-size:16px;" href="#">@Localizer["ToolsKey"]</a>
     </li>
     <li class="liSpace">
         <img src="~/images/signout.png" width="30px" height="30px" />
-        <a style="color:white;font-size:16px;" href="#">Sign Out</a>
+        <a style="color:white;font-size:16px;" href="#">@Localizer["SignOutKey"]</a>
     </li>
 </ul>

@@ -1,7 +1,6 @@
 ﻿@page "/Dashboard/dashboard"
 @using Loogan.Web.UI.Components
-@using Loogan.Web.UI.Pages.Shared
-@model Loogan.Web.UI.Dashboard.DashboardModel
+@model DashboardModel
 
 <component type="typeof(Upper_Component)" render-mode="Static" />
 <div>
@@ -12,18 +11,18 @@
             <div class="row">
                 <div class="col-2 bb-login" style="overflow-y:auto;height:580px;overflow-x:hidden">
                     @{
-                        LeftSideBarModel leftSideBarModel = new LeftSideBarModel();
-                        await Html.RenderPartialAsync("leftsidebar", leftSideBarModel);
+                        LeftSideBarModel leftSideBar = new LeftSideBarModel();
+                        await Html.RenderPartialAsync("leftsidebar", leftSideBar);
                     }
                 </div>
                 <div class="col-10">
-                    &nbsp;
+                    <partial name="_LanguageSwitcher"></partial> &nbsp;
                 </div>
             </div>
         </div>
     </div>
 </div>
-<component type="typeof(Lower_Component)" render-mode="Static" />
+<component type="typeof(Lower_Component)" render-mode="Static" /> <br/>
 
 
 
