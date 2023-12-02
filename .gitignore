@@ -12,3 +12,9 @@
 /Loogan.Web.API/obj
 /Loogan.Web.UI/bin/Debug/net8.0
 /Loogan.Web.UI/obj
+/Loogan.API.BusinessService/bin/Debug/net8.0
+/Loogan.API.BusinessService/obj
+/Loogan.API.Database/bin/Debug/net8.0
+/Loogan.API.Database/obj
+/Loogan.API.Models/bin/Debug/net8.0
+/Loogan.API.Models/obj
