@@ -3,19 +3,27 @@ using Loogan.API.BusinessService.Mapper;
 using Loogan.API.BusinessService.Services;
 using Loogan.API.Database.Interfaces;
 using Loogan.API.Database.Models;
+using Loogan.Common.Utilities;
+using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddAutoMapper(typeof(Program), typeof(InitializeMapper));
 builder.Services.AddSingleton<ILooganStoredProcedures>((opt) =>
 {
-    return new LooganStoredProcedures(builder?.Configuration["ConnectionStrings:looganConnectionString"]);
+    var connectionString = builder.Configuration["ConnectionStrings:looganConnectionString"];
+    return new LooganStoredProcedures(connectionString);
 });
 
+builder.Services.AddExceptionHandler<GlobalExceptionHandler>();
+builder.Services.AddProblemDetails();
 builder.Services.AddTransient<IUserService, UserService>();
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Host.UseSerilog((context, configuration) =>
+    configuration.ReadFrom.Configuration(context.Configuration));
+
 
 var app = builder.Build();
 
@@ -25,7 +33,9 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+app.UseExceptionHandler();
 app.UseHttpsRedirection();
 app.UseAuthorization();
 app.MapControllers();
+app.UseSerilogRequestLogging();
 app.Run();

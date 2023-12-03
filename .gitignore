@@ -18,3 +18,7 @@
 /Loogan.API.Database/obj
 /Loogan.API.Models/bin/Debug/net8.0
 /Loogan.API.Models/obj
+/Loogan.Common.Utilities/bin/Debug/net8.0
+/Loogan.Common.Utilities/obj
+/Loogan.Web.UI/Logs
+/Loogan.Web.API/Logs
