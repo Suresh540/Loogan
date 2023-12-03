@@ -4,17 +4,12 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Loogan.API.Database.Models
 {
-    public class LooganStoredProcedures : ILooganStoredProcedures
+    public class LooganStoredProcedures(string? connectionString) : ILooganStoredProcedures
     {
-        private readonly string _connectionString;
-        public LooganStoredProcedures(string connectionString)
-        {
-            _connectionString = connectionString;
-        }
         public async Task<UserModel?> GetUser(string userName, string password)
         {
             UserModel? user = null;
-            using (var context = new LooganContext(_connectionString))
+            using (var context = new LooganContext(connectionString))
             {
                 var query = context.Database.SqlQuery<UserModel>($"Get_UserDetails {userName}, {password}").AsNoTracking().AsAsyncEnumerable();
                 await foreach (var item in query)

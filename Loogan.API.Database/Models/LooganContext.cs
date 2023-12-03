@@ -5,8 +5,8 @@ namespace Loogan.API.Database.Models;
 
 public partial class LooganContext : DbContext
 {
-    private readonly string _connectionString;
-    public LooganContext(string connectionString)
+    private readonly string? _connectionString;
+    public LooganContext(string? connectionString)
     {
         _connectionString = connectionString;
     }

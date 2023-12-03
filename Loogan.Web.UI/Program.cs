@@ -1,12 +1,7 @@
+using Loogan.Common.Utilities;
 using Loogan.Web.UI.Utilities;
-using Microsoft.AspNetCore.Authentication;
-using Microsoft.AspNetCore.Authentication.OpenIdConnect;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Localization;
-using Microsoft.AspNetCore.Mvc.Authorization;
-using Microsoft.Extensions.Options;
-using Microsoft.Identity.Web;
-using Microsoft.Identity.Web.UI;
+using Serilog;
 using System.Globalization;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -22,6 +17,8 @@ var builder = WebApplication.CreateBuilder(args);
 //});
 //.AddMicrosoftIdentityUI();
 
+builder.Services.AddExceptionHandler<GlobalExceptionHandler>();
+builder.Services.AddProblemDetails();
 builder.Services.AddLocalization(options => options.ResourcesPath = "");
 builder.Services.AddMvc().AddMvcLocalization(Microsoft.AspNetCore.Mvc.Razor.LanguageViewLocationExpanderFormat.Suffix)
                 .AddDataAnnotationsLocalization();
@@ -31,6 +28,9 @@ builder.Services.AddTransient<IUtilityHelper>(opt =>
 });
 builder.Services.AddServerSideBlazor();
 builder.Services.AddRazorPages();
+builder.Host.UseSerilog((context, configuration) =>
+    configuration.ReadFrom.Configuration(context.Configuration));
+
 builder.Services.Configure<RequestLocalizationOptions>(options => {
     const string defaultCulture = "en-us";
     var supportedCultures = new[]
@@ -50,8 +50,10 @@ if (!app.Environment.IsDevelopment())
     app.UseHsts();
 }
 
+app.UseExceptionHandler();
 app.UseHttpsRedirection();
 app.UseStaticFiles();
+app.UseSerilogRequestLogging();
 app.UseRouting();
 
 //app.UseAuthorization();
