@@ -14,6 +14,7 @@ namespace Loogan.Web.API.Controllers
         public UserController(IUserService userService)
         {
             _userService = userService;
+            //test
         }
         [HttpPost]
         [Produces("application/json")]
