@@ -28,6 +28,18 @@ builder.Services.AddTransient<IUtilityHelper>(opt =>
 });
 builder.Services.AddServerSideBlazor();
 builder.Services.AddRazorPages();
+
+builder.Services.AddDistributedMemoryCache();
+
+builder.Services.AddSession(options =>
+{
+    options.IdleTimeout = TimeSpan.FromMinutes(5);
+    options.Cookie.HttpOnly = true;
+    options.Cookie.IsEssential = true;
+});
+
+builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+
 builder.Host.UseSerilog((context, configuration) =>
     configuration.ReadFrom.Configuration(context.Configuration));
 
@@ -58,6 +70,7 @@ app.UseRouting();
 
 //app.UseAuthorization();
 app.MapRazorPages();
+app.UseSession();
 
 var supportedCultures = new[] { "en-US", "en-GB" };
 var localizationOptions = new RequestLocalizationOptions().SetDefaultCulture(supportedCultures[0])

@@ -1,4 +1,6 @@
+using Loogan.API.Models.Models;
 using Loogan.Web.UI.Pages.Shared;
+using Loogan.Web.UI.Utilities;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Localization;
@@ -7,6 +9,7 @@ namespace Loogan.Web.UI.Pages.Profile
 {
     public class ProfileModel : PageModel
     {
+        private readonly IUtilityHelper _utilityHelper;
 
         [BindProperty]
         public List<SectionModel>? LeftSectionValues { get; set; }
@@ -17,21 +20,34 @@ namespace Loogan.Web.UI.Pages.Profile
         [BindProperty]
         public IStringLocalizer<LeftSideBarModel> _localizer { get; set; }
 
-        public ProfileModel(IStringLocalizer<LeftSideBarModel> localizer)
+        [BindProperty]
+        public string? ProfileName { get; set; }
+
+
+        public ProfileModel(IStringLocalizer<LeftSideBarModel> localizer, IUtilityHelper utilityHelper)
         {
             _localizer = localizer;
+            _utilityHelper = utilityHelper;
         }
 
-        public void OnGet()
+        public async Task OnGetAsync()
         {
+            UserQuery query = new UserQuery();
+            query.UserName = HttpContext.Session.GetString("UserName");
+            query.Password = HttpContext.Session.GetString("UserPassword");
+
+            var userModel = await _utilityHelper.ExecuteAPICall<UserModel>(query, RestSharp.Method.Post, resource: "api/User");
+            ProfileName = userModel?.FirstName + " " + userModel?.LastName;
+
+
             LeftSectionValues = new List<SectionModel> {
                 new SectionModel()
                 {
                     SectionName = "Basic Information",
                     SectionValueData = new Dictionary<string, string>
                     {
-                        {"Full Name","Suresh Kalaga" },
-                        {"Email Address", "Suresh.Kalaga@outlook.com" }
+                        {"Full Name", ProfileName },
+                        {"Email Address", userModel?.EmailAddress }
 
                     }
                 },
@@ -40,10 +56,10 @@ namespace Loogan.Web.UI.Pages.Profile
                     SectionName = "Additional Information",
                     SectionValueData = new Dictionary<string, string>
                     {
-                        {"Gender","Male" },
-                        {"Additional Name", "Test" },
-                        {"Education Level", "Post Graduate School" },
-                        {"Website", "<a href='#'>Add Website</a>" },
+                        {"Gender",userModel?.Gender },
+                        {"Additional Name", userModel?.AdditionalName  },
+                        {"Education Level", userModel?.EducationLevel  },
+                        {"Website", "<a href='#'>" + (!string.IsNullOrEmpty(userModel.WebSite) ? userModel.WebSite : "Add Website") + "</a>" },
                     }
                 },
                 new SectionModel()
@@ -51,9 +67,9 @@ namespace Loogan.Web.UI.Pages.Profile
                     SectionName = "Contact Information",
                     SectionValueData = new Dictionary<string, string>
                     {
-                        {"Mailing Address","<a href='#'>Add mailing address</a>" },
-                        {"Phone Number", "<a href='#'>Add phone number</a>" },
-                        {"Business Fax Number", "<a href='#'>Add business fax number</a>" },
+                         {"Mailing Address", "<a href='#'>" + (!string.IsNullOrEmpty(userModel.EmailAddress) ? userModel.EmailAddress : "Add mailing address") + "</a>" },
+                         {"Phone Number", "<a href='#'>" + (!string.IsNullOrEmpty(userModel.PhoneNumber) ? userModel.PhoneNumber : "Add phone number") + "</a>" },
+                         {"Business Fax Number", "<a href='#'>" + (!string.IsNullOrEmpty(userModel.Fax) ? userModel.Fax : "Add business fax number") + "</a>" },
                     }
                 },
                 new SectionModel()
@@ -61,9 +77,9 @@ namespace Loogan.Web.UI.Pages.Profile
                     SectionName = "Job Information",
                     SectionValueData = new Dictionary<string, string>
                     {
-                        {"Company","<a href='#'>Add company</a>" },
-                        {"Job Title", "<a href='#'>Add job title</a>" },
-                        {"Department", "<a href='#'>Add department</a>" },
+                        {"Company", "<a href='#'>" + (!string.IsNullOrEmpty(userModel.Company) ? userModel.Company : "Add company") + "</a>" },
+                        {"Job Title", "<a href='#'>" + (!string.IsNullOrEmpty(userModel.JobTitle) ? userModel.JobTitle : "Add job title") + "</a>" },
+                        {"Department", "<a href='#'>" + (!string.IsNullOrEmpty(userModel.Department) ? userModel.Department : "Add department") + "</a>" },
                     }
                 }
 
@@ -81,8 +97,6 @@ namespace Loogan.Web.UI.Pages.Profile
                     }
                 },
             };
-
-
         }
     }
 

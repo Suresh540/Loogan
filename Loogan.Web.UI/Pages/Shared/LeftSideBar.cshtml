@@ -3,6 +3,11 @@
 @using Microsoft.Extensions.Localization
 @model Loogan.Web.UI.Pages.Shared.LeftSideBarModel
 @inject IStringLocalizer<LeftSideBar> Localizer
+@using Microsoft.AspNetCore.Http;
+@inject IHttpContextAccessor _httpContext
+@{
+    var userName = _httpContext.HttpContext.Session.GetString("UserName");
+}
 
 <ul class="ulspace">
     <li class="text-white">
@@ -16,7 +21,9 @@
     </li>
     <li class="liSpace">
         <img src="~/images/profile.png" width="30px" height="30px" />
-        <a style="color:white;font-size:16px;" href="/Profile/Profile">Suresh Kalaga</a>
+        <a style="color:white;font-size:16px;" href="/Profile/Profile">
+            @userName
+        </a>
     </li>
     <li class="liSpace">
         <img src="~/images/activity.png" width="30px" height="30px" />
