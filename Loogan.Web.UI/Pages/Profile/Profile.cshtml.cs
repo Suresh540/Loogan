@@ -33,8 +33,8 @@ namespace Loogan.Web.UI.Pages.Profile
         public async Task OnGetAsync()
         {
             UserQuery query = new UserQuery();
-            query.UserName = HttpContext.Session.GetString("UserName");
-            query.Password = HttpContext.Session.GetString("UserPassword");
+            query.UserName = HttpContext?.Session?.GetString("UserName");
+            query.Password = HttpContext?.Session?.GetString("UserPassword");
 
             var userModel = await _utilityHelper.ExecuteAPICall<UserModel>(query, RestSharp.Method.Post, resource: "api/User");
             ProfileName = userModel?.FirstName + " " + userModel?.LastName;

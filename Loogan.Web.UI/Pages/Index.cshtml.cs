@@ -46,17 +46,12 @@ namespace Loogan.Web.UI.Pages
             UserQuery query = new UserQuery();
             query.UserName = UserName;
             query.Password = Password;
-
-            HttpContext.Session.SetString("UserName", UserName);
-            HttpContext.Session.SetString("UserPassword",Password);
-
-            //HttpContext.Session.SetInt32(SessionKeyAge, 73);
-           
-            //var age = HttpContext.Session.GetInt32("UserPassword").ToString();
-
             var model = await _utilityHelper.ExecuteAPICall<UserModel>(query, RestSharp.Method.Post, resource: "api/User");
             if (model != null)
             {
+                HttpContext.Session.SetString("UserName", UserName);
+                HttpContext.Session.SetString("UserPassword", Password);
+
                 return RedirectToPage("/Dashboard/dashboard");
             }
             DisplayMessage = "User name/Password is wrong";

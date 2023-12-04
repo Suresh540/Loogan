@@ -6,7 +6,7 @@
 @using Microsoft.AspNetCore.Http;
 @inject IHttpContextAccessor _httpContext
 @{
-    var userName = _httpContext.HttpContext.Session.GetString("UserName");
+    var userName = _httpContext?.HttpContext?.Session?.GetString("UserName");
 }
 
 <ul class="ulspace">
