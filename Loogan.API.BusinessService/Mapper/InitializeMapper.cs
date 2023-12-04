@@ -42,6 +42,7 @@ public class InitializeMapper : Profile
             .ForMember(dest => dest.ProfilePicPath, opt => opt.MapFrom(src => src.ProfilePicPath))
             .ForMember(dest => dest.UserId, opt => opt.MapFrom(src => src.UserId))
             .ForMember(dest => dest.UserName, opt => opt.MapFrom(src => src.UserName))
+            .ForMember(dest => dest.UserLanguage, opt => opt.MapFrom(src => src.UserLanguage))
             .ForMember(dest => dest.UserTypeId, opt => opt.MapFrom(src => src.UserTypeId)).ReverseMap();
     }
 }

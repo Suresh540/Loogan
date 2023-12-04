@@ -67,5 +67,7 @@ public class UserModel
     public string? Description { get; set; }
 
     public bool? IsDeletedType { get; set; }
+
+    public string? UserLanguage { get; set; }
 }
 

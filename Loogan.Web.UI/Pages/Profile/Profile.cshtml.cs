@@ -91,7 +91,7 @@ namespace Loogan.Web.UI.Pages.Profile
                     SectionName = "System Settings",
                     SectionValueData = new Dictionary<string, string>
                     {
-                        {"Langauage","Engilsh (United states)" },
+                        {"Langauage",userModel?.UserLanguage },
                         {"Privacy Settigs", "<a href='#'>Only instructors can <br/> view my profile<br/> information</a>" },
                         {"Global Notification Settings", "<a href='#'>Stream notifications</a> <br/><a href='#'>Email notifications</a><br/><a href='#'>Push notifications</a>" },
                     }

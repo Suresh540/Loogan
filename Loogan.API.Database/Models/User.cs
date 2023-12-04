@@ -66,6 +66,8 @@ public partial class User
 
     public string? UserName { get; set; }
 
+    public string? UserLanguage { get; set; }
+
     public virtual UserType UserType { get; set; } = null!;
 
 }
