@@ -27,24 +27,26 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Loogan.API.BusinessService"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Business", "Business", "{BA0D46D9-0F11-48D3-B0E8-ADD6938F92A4}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DBScript", "DBScript", "{5F9A18DB-EA30-45CC-A231-E3DB3192081C}"
-	ProjectSection(SolutionItems) = preProject
-		DbScript.sql = DbScript.sql
-	EndProjectSection
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{D94B4BD4-4C09-45D7-91B4-2F9D684665DD}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Loogan.Common.Utilities", "Loogan.Common.Utilities\Loogan.Common.Utilities.csproj", "{18467295-06F8-4AE6-8DBF-95DD6D0335F9}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "StoreProcedure", "StoreProcedure", "{F0EA09E1-1D3D-4B02-94E4-C7C333BB4D7F}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{428549DE-D010-4D99-834F-53B0645A3DB9}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DBScripts", "DBScripts", "{E41D023D-A290-484E-9B01-64D9F9C69FA3}"
 	ProjectSection(SolutionItems) = preProject
-		..\..\..\OneDrive\Desktop\Loogan_Project\db\sp\Get_UserDetails.sql = ..\..\..\OneDrive\Desktop\Loogan_Project\db\sp\Get_UserDetails.sql
-		..\..\..\OneDrive\Desktop\Loogan_Project\db\sp\[dbo].[Get_UserLoginDetails].sql = ..\..\..\OneDrive\Desktop\Loogan_Project\db\sp\[dbo].[Get_UserLoginDetails].sql
+		DbScript.sql = DbScript.sql
 	EndProjectSection
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "TableTypes", "TableTypes", "{75996D06-9EA7-45A7-9A71-DC8AAD7EC973}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SP", "SP", "{260ACCE5-EE48-4B72-BB79-256948C729DF}"
 	ProjectSection(SolutionItems) = preProject
-		..\..\..\OneDrive\Desktop\Loogan_Project\db\Table_Types\UserTableType.sql = ..\..\..\OneDrive\Desktop\Loogan_Project\db\Table_Types\UserTableType.sql
+		sp\Get_UserDetails.sql = sp\Get_UserDetails.sql
+		sp\[dbo].[Get_UserLoginDetails].sql = sp\[dbo].[Get_UserLoginDetails].sql
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "TableType", "TableType", "{AD17049B-7842-4BB5-99CA-7DCB6BF16399}"
+	ProjectSection(SolutionItems) = preProject
+		Table_Types\UserTableType.sql = Table_Types\UserTableType.sql
 	EndProjectSection
 EndProject
 Global
@@ -92,8 +94,9 @@ Global
 		{9DD35746-89AC-44C8-85E4-242EA164E145} = {BA0D46D9-0F11-48D3-B0E8-ADD6938F92A4}
 		{BA0D46D9-0F11-48D3-B0E8-ADD6938F92A4} = {BB594D87-DE10-4F3C-B858-047C7A3EBE50}
 		{18467295-06F8-4AE6-8DBF-95DD6D0335F9} = {D94B4BD4-4C09-45D7-91B4-2F9D684665DD}
-		{F0EA09E1-1D3D-4B02-94E4-C7C333BB4D7F} = {5F9A18DB-EA30-45CC-A231-E3DB3192081C}
-		{75996D06-9EA7-45A7-9A71-DC8AAD7EC973} = {5F9A18DB-EA30-45CC-A231-E3DB3192081C}
+		{E41D023D-A290-484E-9B01-64D9F9C69FA3} = {428549DE-D010-4D99-834F-53B0645A3DB9}
+		{260ACCE5-EE48-4B72-BB79-256948C729DF} = {E41D023D-A290-484E-9B01-64D9F9C69FA3}
+		{AD17049B-7842-4BB5-99CA-7DCB6BF16399} = {E41D023D-A290-484E-9B01-64D9F9C69FA3}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {8F719715-5CAF-4959-BBC1-C5619E960FC5}
