@@ -19,9 +19,15 @@ public class UserService : IUserService
         _storedProcedures = storedProcedures;
         _mapper = mapper;
     }
-    public async Task<UserModel?> GetUserDetailsService(UserQuery query)
+
+    public async Task<UserLoginModel?> GetUserLoginDetailsService(UserQuery query)
     {
-        var userModel = await _storedProcedures.GetUser(query.UserName, query.Password);
+        var userLoginModel = await _storedProcedures.GetUserLoginDetails(query.UserName, query.Password);
+        return userLoginModel;
+    }
+    public async Task<UserModel?> GetUserDetailsService(int userId)
+    {
+        var userModel = await _storedProcedures.GetUser(userId);
         return userModel;
     }
 }

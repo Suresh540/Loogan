@@ -3,6 +3,7 @@ namespace Loogan.API.Database.Interfaces;
 
 public interface ILooganStoredProcedures
 {
-    public Task<UserModel?> GetUser(string userName, string password);
+    public Task<UserLoginModel?> GetUserLoginDetails(string userName, string password);
+    public Task<UserModel?> GetUser(int userId);
 }
 

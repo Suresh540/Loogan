@@ -9,6 +9,7 @@ namespace Loogan.API.BusinessService.Interfaces;
 
 public interface IUserService
 {
-    public Task<UserModel?> GetUserDetailsService(UserQuery query);
+    public Task<UserLoginModel?> GetUserLoginDetailsService(UserQuery query);
+    public Task<UserModel?> GetUserDetailsService(int userId);
 }
 

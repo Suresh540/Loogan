@@ -144,4 +144,8 @@
   <data name="ToolsKey" xml:space="preserve">
     <value>Tools</value>
   </data>
+  <!--admin-->
+	<data name="AddEditUserKey" xml:space="preserve">
+    <value>Add/Edit User</value>
+  </data>
 </root>

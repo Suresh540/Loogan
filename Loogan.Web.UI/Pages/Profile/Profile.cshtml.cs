@@ -33,14 +33,14 @@ namespace Loogan.Web.UI.Pages.Profile
         public async Task OnGetAsync()
         {
             UserQuery query = new UserQuery();
-            query.UserName = HttpContext?.Session?.GetString("UserName");
-            query.Password = HttpContext?.Session?.GetString("UserPassword");
-
+            query.UserId = HttpContext?.Session?.GetInt32("LoginUserId"); 
             var userModel = await _utilityHelper.ExecuteAPICall<UserModel>(query, RestSharp.Method.Post, resource: "api/User");
-            ProfileName = userModel?.FirstName + " " + userModel?.LastName;
+            if (userModel != null)
+            {
+                ProfileName = userModel?.FirstName + " " + userModel?.LastName;
 
 
-            LeftSectionValues = new List<SectionModel> {
+                LeftSectionValues = new List<SectionModel> {
                 new SectionModel()
                 {
                     SectionName = "Basic Information",
@@ -85,7 +85,7 @@ namespace Loogan.Web.UI.Pages.Profile
 
             };
 
-            RightSectionValues = new List<SectionModel> {
+                RightSectionValues = new List<SectionModel> {
                 new SectionModel()
                 {
                     SectionName = "System Settings",
@@ -97,6 +97,7 @@ namespace Loogan.Web.UI.Pages.Profile
                     }
                 },
             };
+            }
         }
     }
 

@@ -1,5 +1,6 @@
 using Loogan.API.Models.Models;
 using Loogan.Web.UI.Utilities;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
@@ -46,13 +47,17 @@ namespace Loogan.Web.UI.Pages
             UserQuery query = new UserQuery();
             query.UserName = UserName;
             query.Password = Password;
-            var model = await _utilityHelper.ExecuteAPICall<UserModel>(query, RestSharp.Method.Post, resource: "api/User");
+            var model = await _utilityHelper.ExecuteAPICall<UserLoginModel>(query, RestSharp.Method.Get, resource: "api/User");
             if (model != null)
             {
-                HttpContext.Session.SetString("UserName", UserName);
-                HttpContext.Session.SetString("UserPassword", Password);
+                HttpContext.Session.SetInt32("LoginUserId", model.UserId);
+                HttpContext.Session.SetString("LoginUserType", model?.UserTypeName);
+                HttpContext.Session.SetString("UserName", model?.UserName);
 
-                return RedirectToPage("/Dashboard/dashboard");
+                if (model.UserTypeName == "Student")
+                    return RedirectToPage("/Dashboard/dashboard");
+                else
+                    return RedirectToPage("/Dashboard/admindashboard");
             }
             DisplayMessage = "User name/Password is wrong";
             return Page();
