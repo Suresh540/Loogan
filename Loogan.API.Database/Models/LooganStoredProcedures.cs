@@ -57,12 +57,8 @@ namespace Loogan.API.Database.Models
             {
                 using (var context = new LooganContext(connectionString))
                 {
-                    var exisingUser = await context.Users.Where(x=>x.UserId == userObj.UserId).FirstOrDefaultAsync();
-                    if (exisingUser != null)
-                    {
-                        context.Users.Update(userObj);
-                        isUpdated = await context.SaveChangesAsync();
-                    }
+                    context.Users.Update(userObj);
+                    isUpdated = await context.SaveChangesAsync();
                 }
             }
 

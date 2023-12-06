@@ -62,7 +62,7 @@ public partial class LooganContext : DbContext
             entity.Property(e => e.FirstName)
                 .HasMaxLength(100)
                 .IsUnicode(false);
-            entity.Property(e => e.Gender)
+            entity.Property(e => e.GenderId)
                 .HasMaxLength(50)
                 .IsUnicode(false);
             entity.Property(e => e.JobTitle)

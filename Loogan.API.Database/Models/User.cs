@@ -26,7 +26,7 @@ public partial class User
 
     public string? EmailAddress { get; set; }
 
-    public string? Gender { get; set; }
+    public int? GenderId { get; set; }
 
     public string? Password { get; set; }
 
@@ -66,7 +66,7 @@ public partial class User
 
     public string? UserName { get; set; }
 
-    public string? UserLanguage { get; set; }
+    public int? languageId { get; set; }
 
     public virtual UserType UserType { get; set; } = null!;
 

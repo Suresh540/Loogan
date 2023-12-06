@@ -42,7 +42,7 @@ public class UserService : IUserService
     public async Task<int?> UpdateUser(UserModel userModelObj)
     {
         var userObj = _mapper.Map<User>(userModelObj);
-        var result = await _storedProcedures.CreateUser(userObj);
+        var result = await _storedProcedures.UpdateUser(userObj);
         return result;
     }
 }

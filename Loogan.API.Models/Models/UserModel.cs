@@ -24,6 +24,8 @@ public class UserModel
 
     public string? Gender { get; set; }
 
+    public string? GenderId { get; set; }
+
     public string? Password { get; set; }
 
     public string? EducationLevel { get; set; }
@@ -62,6 +64,7 @@ public class UserModel
 
     public string? UserName { get; set; }
 
-      public string? UserLanguage { get; set; }
+    public string? languageId { get; set; }
+    public string? UserLanguage { get; set; }
 }
 

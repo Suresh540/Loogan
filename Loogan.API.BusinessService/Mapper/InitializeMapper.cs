@@ -29,7 +29,7 @@ public class InitializeMapper : Profile
             .ForMember(dest => dest.EmailAddress, opt => opt.MapFrom(src => src.EmailAddress))
             .ForMember(dest => dest.Fax, opt => opt.MapFrom(src => src.Fax))
             .ForMember(dest => dest.FirstName, opt => opt.MapFrom(src => src.FirstName))
-            .ForMember(dest => dest.Gender, opt => opt.MapFrom(src => src.Gender))
+            .ForMember(dest => dest.GenderId, opt => opt.MapFrom(src => src.GenderId))
             .ForMember(dest => dest.IsDeleted, opt => opt.MapFrom(src => src.IsDeleted))
             .ForMember(dest => dest.JobTitle, opt => opt.MapFrom(src => src.JobTitle))
             .ForMember(dest => dest.LastName, opt => opt.MapFrom(src => src.LastName))
@@ -42,7 +42,7 @@ public class InitializeMapper : Profile
             .ForMember(dest => dest.ProfilePicPath, opt => opt.MapFrom(src => src.ProfilePicPath))
             .ForMember(dest => dest.UserId, opt => opt.MapFrom(src => src.UserId))
             .ForMember(dest => dest.UserName, opt => opt.MapFrom(src => src.UserName))
-            .ForMember(dest => dest.UserLanguage, opt => opt.MapFrom(src => src.UserLanguage))
+            .ForMember(dest => dest.languageId, opt => opt.MapFrom(src => src.languageId))
             .ForMember(dest => dest.UserTypeId, opt => opt.MapFrom(src => src.UserTypeId)).ReverseMap();
     }
 }
