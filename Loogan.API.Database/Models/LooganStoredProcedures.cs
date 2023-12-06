@@ -32,5 +32,41 @@ namespace Loogan.API.Database.Models
             }
             return user;
         }
+
+        public async Task<int?> CreateUser(User userObj)
+        {
+            var isCreated = 0;
+
+            if (userObj != null)
+            {
+                using (var context = new LooganContext(connectionString))
+                {
+                    context.Users.Add(userObj);
+                    isCreated = await context.SaveChangesAsync();
+                }
+            }
+
+            return isCreated;
+        }
+
+        public async Task<int?> UpdateUser(User userObj)
+        {
+            var isUpdated = 0;
+
+            if (userObj != null)
+            {
+                using (var context = new LooganContext(connectionString))
+                {
+                    var exisingUser = await context.Users.Where(x=>x.UserId == userObj.UserId).FirstOrDefaultAsync();
+                    if (exisingUser != null)
+                    {
+                        context.Users.Update(userObj);
+                        isUpdated = await context.SaveChangesAsync();
+                    }
+                }
+            }
+
+            return isUpdated;
+        }
     }
 }

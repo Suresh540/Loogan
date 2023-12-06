@@ -1,4 +1,5 @@
-﻿using Loogan.API.Models.Models;
+﻿using Loogan.API.Database.Models;
+using Loogan.API.Models.Models;
 using Microsoft.Identity.Client;
 using System;
 using System.Collections.Generic;
@@ -11,5 +12,10 @@ public interface IUserService
 {
     public Task<UserLoginModel?> GetUserLoginDetailsService(UserQuery query);
     public Task<UserModel?> GetUserDetailsService(int userId);
+    public Task<int?> CreateUser(UserModel userModelObj);
+    public Task<int?> UpdateUser(UserModel userModelObj);
+    
+
+
 }
 

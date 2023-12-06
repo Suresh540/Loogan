@@ -1,4 +1,5 @@
 ﻿using Loogan.API.BusinessService.Interfaces;
+using Loogan.API.Database.Models;
 using Loogan.API.Models.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -39,6 +40,32 @@ namespace Loogan.Web.API.Controllers
             var userId = query.UserId != null ? Convert.ToInt32(query.UserId) : 0;
             UserModel ? model = await _userService.GetUserDetailsService(userId);
             return Ok(model);
+        }
+
+        [HttpPost]
+        [Route("CreateUser")]
+        [Produces("application/json")]
+        [Consumes("application/json")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public async Task<IActionResult> CreateUser([FromBody] UserModel userObj)
+        {
+            var result = await _userService.CreateUser(userObj);
+            return Ok(result);
+        }
+
+        [HttpPost]
+        [Route("UpdateUser")]
+        [Produces("application/json")]
+        [Consumes("application/json")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public async Task<IActionResult> UpdateUser([FromBody] UserModel userObj)
+        {
+            var result = await _userService.UpdateUser(userObj);
+            return Ok(result);
         }
     }
 }

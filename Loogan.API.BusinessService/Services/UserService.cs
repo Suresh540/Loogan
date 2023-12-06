@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Loogan.API.BusinessService.Interfaces;
 using Loogan.API.Database.Interfaces;
+using Loogan.API.Database.Models;
 using Loogan.API.Models.Models;
 using System;
 using System.Collections.Generic;
@@ -29,6 +30,20 @@ public class UserService : IUserService
     {
         var userModel = await _storedProcedures.GetUser(userId);
         return userModel;
+    }
+
+    public async Task<int?> CreateUser(UserModel userModelObj)
+    {
+        var userObj = _mapper.Map<User>(userModelObj);
+        var result = await _storedProcedures.CreateUser(userObj);
+        return result;
+    }
+
+    public async Task<int?> UpdateUser(UserModel userModelObj)
+    {
+        var userObj = _mapper.Map<User>(userModelObj);
+        var result = await _storedProcedures.CreateUser(userObj);
+        return result;
     }
 }
 
