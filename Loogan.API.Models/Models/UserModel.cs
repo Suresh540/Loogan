@@ -22,9 +22,7 @@ public class UserModel
 
     public string? EmailAddress { get; set; }
 
-    public string? Gender { get; set; }
-
-    public string? GenderId { get; set; }
+    public int? GenderId { get; set; }
 
     public string? Password { get; set; }
 
@@ -64,7 +62,10 @@ public class UserModel
 
     public string? UserName { get; set; }
 
-    public string? languageId { get; set; }
+    public int? LanguageId { get; set; }
+
+    public string? Gender { get; set; }
+
     public string? UserLanguage { get; set; }
 }
 

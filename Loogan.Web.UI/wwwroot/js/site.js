@@ -33,9 +33,21 @@ window.onload = function () {
         document.getElementById('learn-oe-body').removeAttribute('class');
         document.getElementById('learn-oe-body').removeAttribute('style');
         document.getElementById('learn-oe-body').setAttribute('class', 'bb-login hide-focus-outline');
-       
     }
 }
+
+mouseOver = function (id) {
+    document.getElementById(id).style.display = 'block';
+}
+
+mouseOut = function (id) {
+    document.getElementById(id).style.display = 'none';
+}
+
+
+
+
+
 
 
 
