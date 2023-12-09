@@ -1,5 +1,4 @@
-﻿@page "rightsidepopup"
-@model Loogan.Web.UI.Pages.Shared.RightSidePopupModel
+﻿@model Loogan.API.Models.Models.UserModel
 
 <div class="modal modal-right fade" id="right_modal" tabindex="-1" role="dialog" aria-labelledby="right_modal">
     <div class="modal-dialog" role="document">
@@ -16,7 +15,7 @@
                 <p>
                     <div>
                         <b>First Name</b><br />
-                        @* @Model.UserProfileModel.FirstName; *@
+                        @Model?.FirstName
                     </div>
 
                     <div>
@@ -25,7 +24,7 @@
                     </div>
                     <div>
                         <b>Additional Name</b><br />
-                        <input type="text" />
+                        <input type="text" id="txtAddName" />
                     </div>
                     <div>
                         <b>Email Address</b><br />
@@ -44,7 +43,7 @@
                     </div>
                     <div>
                         <b>Prefix</b><br />
-                        <input type="text" />
+                        <input type="text" value="@Model.PreFix" />
                     </div>
                     <div>
                         <b>Middle Name</b><br />
@@ -100,8 +99,25 @@
             </div>
             <div class="modal-footer modal-footer-fixed">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
+                <input type="button" class="btn btn-primary" value="Save changes" onclick="UpdateUser()" />
             </div>
         </div>
     </div>
 </div>
+<script>
+    function UpdateUser() {
+        var model = @Html.Raw(Json.Serialize(Model));
+        model.additionalName = $('#txtAddName').val();
+        $.ajax({
+            method: 'Post',
+            url: "/User/UpdateUser",
+            data: { user: model },
+            success: function (e) {
+
+            },
+            error: function (e) {
+
+            }
+        })
+    }
+</script>

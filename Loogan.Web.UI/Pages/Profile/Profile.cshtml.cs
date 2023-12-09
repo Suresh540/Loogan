@@ -23,6 +23,7 @@ namespace Loogan.Web.UI.Pages.Profile
         [BindProperty]
         public string? ProfileName { get; set; }
 
+        [BindProperty]
         public UserModel UserProfileModel { get; set; }
 
 
@@ -44,7 +45,6 @@ namespace Loogan.Web.UI.Pages.Profile
             {
                 UserProfileModel = userModel;
                 ProfileName = userModel?.FirstName + " " + userModel?.LastName;
-
 
                 LeftSectionValues = new List<SectionModel> {
                 new SectionModel()

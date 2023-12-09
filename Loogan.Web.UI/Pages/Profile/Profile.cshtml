@@ -101,10 +101,10 @@
     </div>
 </div>
 @{
-    RightSidePopupModel rightSide = new RightSidePopupModel();
     if (Model != null && Model.UserProfileModel != null)
-        rightSide.UserProfileModel = Model.UserProfileModel;
-    await Html.RenderPartialAsync("rightsidepopup", rightSide);
+    {
+        await Html.RenderPartialAsync("rightsidepopup", Model.UserProfileModel);
+    }
 }
 
 
