@@ -1,0 +1,169 @@
+﻿@page "/User/user"
+@using Loogan.Web.UI.Components
+@model Loogan.Web.UI.Pages.User.CreateUpdateUserModel
+<component type="typeof(Upper_Component)" render-mode="Static" />
+<div id="site-wrap" class="off-canvas-wrap">
+    <div class="inner-wrap">
+        <div class="row">
+            <div class="col-2 bb-login pointscroll leftmenu">
+                @{
+                    LeftSideBarModel leftSideBar = new LeftSideBarModel();
+                    await Html.RenderPartialAsync("leftsidebar", leftSideBar);
+                }
+            </div>
+            <div class="col-10 base-profile pointscroll righcontent">
+                <div class="columns small-12 profile-content" style="margin-top:2px !important">
+                    <div style="text-align:right">
+                        <button type="button" style="background:yellow;color:black" class="btn btn-light border rounded-pill shadow-sm mb-1" data-toggle="modal" data-target="#bottom_modal">
+                            <b>Show Users</b>
+                        </button>
+                        <button type="button" class="btn btn-light border rounded-pill shadow-sm mb-1"
+                                style="background:red;color:white">
+                            <b>Clear</b>
+                        </button>
+                        <button type="button" class="btn btn-light border rounded-pill shadow-sm mb-1" 
+                        style="background:blue;color:white"><b>Save</b></button>
+                    </div>
+                    <div class="columns large-6 small-12 user-information">
+                        <h3>Basic Information</h3>
+                        <hr />
+                        <p>
+                            <div>
+                                <b>First Name</b><br />
+                                <input type="text" />
+                            </div>
+                            <div>
+                                <b>Last Name</b><br />
+                                <input type="text" />
+                            </div>
+                            <div>
+                                <b>Additional Name</b><br />
+                                <input type="text" />
+                            </div>
+                            <div>
+                                <b>Email Address</b><br />
+                                <input type="text" />
+                            </div>
+                        </p>
+                        <h3 style="margin:5px">Additional Information</h3>
+                        <hr />
+                        <p>
+                            <div>
+                                <b>Gender</b><br />
+                                <select>
+                                    <option>Male</option>
+                                    <option>Female</option>
+                                </select>
+                            </div>
+                            <div>
+                                <b>Prefix</b><br />
+                                <input type="text" />
+                            </div>
+                            <div>
+                                <b>Middle Name</b><br />
+                                <input type="text" />
+                            </div>
+                            <div>
+                                <b>Education Level</b><br />
+                                <input type="text" />
+                            </div>
+                            <div>
+                                <b>Website</b><br />
+                                <input type="text" />
+                            </div>
+                        </p>
+                    </div>
+                    <div class="columns large-6 small-12 user-settings">
+
+                        <h3 style="margin:5px">Contact Information</h3>
+                        <hr />
+                        <p>
+                            <div>
+                                <b>City</b><br />
+                                <input type="text" />
+                            </div>
+                            <div>
+                                <b>State/Province</b><br />
+                                <input type="text" />
+                            </div>
+                            <div>
+                                <b>Country</b><br />
+                                <input type="text" />
+                            </div>
+                            <div>
+                                <b>Fax Number</b><br />
+                                <input type="text" />
+                            </div>
+                        </p>
+                        <h3 style="margin:5px">Job Information</h3>
+                        <hr />
+                        <p>
+                            <div>
+                                <b>Company</b><br />
+                                <input type="text" />
+                            </div>
+                            <div>
+                                <b>Job Title</b><br />
+                                <input type="text" />
+                            </div>
+                            <div>
+                                <b>Department</b><br />
+                                <input type="text" />
+                            </div>
+                        </p>
+
+                    </div>
+                </div>
+                <component type="typeof(Lower_Component)" render-mode="Static" /><br />
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal modal-full fade" id="bottom_modal" tabindex="-1" role="dialog" aria-labelledby="fullscreen_modal">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">User(s) List</h2>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">First</th>
+                            <th scope="col">Last</th>
+                            <th scope="col">Handle</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @for (int i = 0; i < 1000; i++)
+                        {
+                            <tr>
+                                <th scope="row">1</th>
+                                <td>Mark</td>
+                                <td>Otto</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">2</th>
+                                <td>Jacob</td>
+                                <td>Thornton</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">3</th>
+                                <td>Larry</td>
+                                <td>the Bird</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+            <div class="modal-footer modal-footer-fixed d-none">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>

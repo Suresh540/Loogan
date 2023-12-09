@@ -10,5 +10,12 @@ namespace Loogan.Web.UI.Pages.Shared
         public void OnGet()
         {
         }
+
+        public IActionResult OnPost() 
+        {
+            HttpContext.Session.Clear();
+            return RedirectToPage("/");
+
+        }
     }
 }

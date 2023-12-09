@@ -44,6 +44,10 @@ mouseOut = function (id) {
     document.getElementById(id).style.visibility = 'hidden';
 }
 
+signOut = function () {
+    document.forms[0].submit();
+}
+
 
 
 
