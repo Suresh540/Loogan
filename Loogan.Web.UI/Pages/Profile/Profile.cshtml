@@ -15,7 +15,7 @@
                     }
                 </div>
                 <div class="col-10 base-profile pointscroll righcontent">
-                    
+
                     <div class="background">&nbsp;</div>
                     <div class="account-snapshot columns small-12 text-center">
                         <div class="avatar-container can-edit">
@@ -102,7 +102,9 @@
 </div>
 @{
     RightSidePopupModel rightSide = new RightSidePopupModel();
+    if (Model != null && Model.UserProfileModel != null)
+        rightSide.UserProfileModel = Model.UserProfileModel;
     await Html.RenderPartialAsync("rightsidepopup", rightSide);
 }
-    
+
 

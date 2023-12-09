@@ -23,6 +23,8 @@ namespace Loogan.Web.UI.Pages.Profile
         [BindProperty]
         public string? ProfileName { get; set; }
 
+        public UserModel UserProfileModel { get; set; }
+
 
         public ProfileModel(IStringLocalizer<LeftSideBarModel> localizer, IUtilityHelper utilityHelper)
         {
@@ -40,6 +42,7 @@ namespace Loogan.Web.UI.Pages.Profile
             var userModel = await _utilityHelper.ExecuteAPICall<UserModel>(query, RestSharp.Method.Post, resource: "api/User");
             if (userModel != null)
             {
+                UserProfileModel = userModel;
                 ProfileName = userModel?.FirstName + " " + userModel?.LastName;
 
 
