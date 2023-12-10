@@ -31,13 +31,23 @@
 
 function showUsers() {
     setTimeout(() => {
-
         $.ajax({
             method: 'Post',
             url: "/User/GetAllUser",
             data: {},
             success: function (data) {
-                console.log(data)
+                for (var item of data) {
+                    $('#tdBody').append(`<tr>
+                        <td>${item.firstName}</td>
+                        <td>${item.lastName}</td>
+                        <td>${item.userName}</td>
+                        <td>${item.phoneNumber}</td>
+                        <td>${item.emailAddress}</td>
+                        <td>${item.city == null ? "" : item.city}</td>
+                        <td>${item.state == null ? "" : item.state}</td>
+                        <td>${item.country == null ? "" : item.country}</td>
+                    </tr>`)
+                }
             },
             error: function (e) {
 
