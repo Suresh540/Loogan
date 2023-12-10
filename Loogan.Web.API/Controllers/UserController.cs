@@ -55,6 +55,20 @@ namespace Loogan.Web.API.Controllers
             return Ok(model);
         }
 
+        [HttpPost]
+        [Route("GetUserEmailByUserName")]
+        [Produces("application/json")]
+        [Consumes("application/json")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public async Task<IActionResult> GetUserEmailByUserName([FromBody] dynamic userNameModel)
+        {
+            var ForgotPswdModel = await _userService.GetUserEmailByUserName(userNameModel.userName);
+            return Ok(ForgotPswdModel);
+        }
+
+        
 
         [HttpPost]
         [Route("CreateUser")]

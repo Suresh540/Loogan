@@ -46,3 +46,18 @@ function showUsers() {
 
     }, 1000)
 }
+
+function getUserEmailByUserName() {
+    var loginUserName = $('#txtForgotPwd').val();
+    $.ajax({
+        method: 'Post',
+        url: "/User/GetUserEmailByUserName",
+        data: { userName: loginUserName },
+        success: function (e) {
+
+        },
+        error: function (e) {
+
+        }
+    })
+}

@@ -27,6 +27,14 @@ namespace Loogan.Web.UI.Controllers
             return Json(users);
         }
 
+        [Route("GetUserEmailByUserName")]
+        public async Task<JsonResult> GetUserEmailByUserName(string userName)
+        {
+            var request = new { userName = userName };
+            var forgotPswdModels = await _utilityHelper.ExecuteAPICall<List<ForgotPswdModel>>(request, RestSharp.Method.Post, resource: "api/User/GetUserEmailByUserName");
+            return Json(forgotPswdModels);
+        }
+
         [Route("CreateUser")]
         public async Task<JsonResult> CreateUser(UserModel user)
         {

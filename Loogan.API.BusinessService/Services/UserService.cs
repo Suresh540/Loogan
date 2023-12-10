@@ -32,6 +32,12 @@ public class UserService : IUserService
         var userModel = await _storedProcedures.GetAllUser();
         return userModel;
     }
+
+    public async Task<ForgotPswdModel> GetUserEmailByUserName(string userName)
+    {
+        var forgotPswdModel = await _storedProcedures.GetUserEmailByUserName(userName);
+        return forgotPswdModel;
+    }
     public async Task<UserModel?> GetUserDetailsService(int userId)
     {
         var userModel = await _storedProcedures.GetUser(userId);
