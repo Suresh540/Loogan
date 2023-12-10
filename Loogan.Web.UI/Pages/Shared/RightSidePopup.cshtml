@@ -20,15 +20,15 @@
 
                     <div>
                         <b>Last Name</b><br />
-                        Kalaga
+                        @Model?.LastName
                     </div>
                     <div>
                         <b>Additional Name</b><br />
-                        <input type="text" id="txtAddName" />
+                        <input type="text" id="txtAddName" value="@Model?.AdditionalName" />
                     </div>
                     <div>
                         <b>Email Address</b><br />
-                        Suresh.kalaga@gmail.com
+                        @Model?.EmailAddress
                     </div>
                 </p>
                 <h3 style="margin:5px">Additional Information</h3>
@@ -43,19 +43,26 @@
                     </div>
                     <div>
                         <b>Prefix</b><br />
-                        <input type="text" value="@Model.PreFix" />
+                        <input id="txtPrefix" type="text" value="@Model?.PreFix" />
                     </div>
                     <div>
                         <b>Middle Name</b><br />
-                        Suresh
+                        Need to Add
+                    </div>
+                    <div>
+                        <b>Suffix</b><br />
+                        <input id="txtSuffix" type="text" value="@Model?.Suffix" />
                     </div>
                     <div>
                         <b>Education Level</b><br />
-                        <input type="text" />
+                        <select>
+                            <option>Junior</option>
+                            <option>Senior</option>
+                        </select>
                     </div>
                     <div>
                         <b>Website</b><br />
-                        <input type="text" />
+                        <input id="txtWebSite" type="text" value="@Model?.WebSite" />
                     </div>
                 </p>
 
@@ -64,19 +71,23 @@
                 <p>
                     <div>
                         <b>City</b><br />
-                        <input type="text" />
+                        <input id="txtCity" type="text" value="@Model?.City" />
                     </div>
                     <div>
                         <b>State/Province</b><br />
-                        <input type="text" />
+                        <input id="txtState" type="text" value="@Model?.State" />
                     </div>
                     <div>
                         <b>Country</b><br />
-                        <input type="text" />
+                        <input id="txtCountry" type="text" value="@Model?.Country" />
+                    </div>
+                    <div>
+                        <b>Phone Number</b><br />
+                        <input id="txtPhone" type="text" value="@Model?.PhoneNumber" />
                     </div>
                     <div>
                         <b>Fax Number</b><br />
-                        <input type="text" />
+                        <input id="txtFax" type="text" value="@Model?.Fax" />
                     </div>
                 </p>
 
@@ -85,15 +96,15 @@
                 <p>
                     <div>
                         <b>Company</b><br />
-                        <input type="text" />
+                        <input id="txtCompany" type="text" value="@Model?.Company" />
                     </div>
                     <div>
                         <b>Job Title</b><br />
-                        <input type="text" />
+                        <input id="txtJobTitle" type="text" value="@Model?.JobTitle" />
                     </div>
                     <div>
                         <b>Department</b><br />
-                        <input type="text" />
+                        <input id="txtDepartment" type="text" value="@Model?.Department" />
                     </div>
                 </p>
             </div>
@@ -108,6 +119,21 @@
     function UpdateUser() {
         var model = @Html.Raw(Json.Serialize(Model));
         model.additionalName = $('#txtAddName').val();
+        model.genderId = 4;
+        model.preFix = $('#txtPrefix').val();
+        //middleName
+        model.suffix = $('#txtSuffix').val();
+        //eduction Level
+        model.webSite = $('#txtWebSite').val();
+        model.city = $('#txtCity').val();
+        model.State = $('#txtState').val();
+        model.country = $('#txtCountry').val();
+        model.phoneNumber = $('#txtPhone').val();
+        model.fax = $('#txtFax').val();
+        model.company = $('#txtCompany').val();
+        model.jobTitle = $('#txtJobTitle').val();
+        model.department = $('#txtDepartment').val();
+
         $.ajax({
             method: 'Post',
             url: "/User/UpdateUser",
