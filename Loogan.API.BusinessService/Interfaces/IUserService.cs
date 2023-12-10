@@ -11,6 +11,8 @@ namespace Loogan.API.BusinessService.Interfaces;
 public interface IUserService
 {
     public Task<UserLoginModel?> GetUserLoginDetailsService(UserQuery query);
+
+    public Task<List<UserModel>?> GetAllUserDetailsService();
     public Task<UserModel?> GetUserDetailsService(int userId);
     public Task<int?> CreateUser(UserModel userModelObj);
     public Task<int?> UpdateUser(UserModel userModelObj);

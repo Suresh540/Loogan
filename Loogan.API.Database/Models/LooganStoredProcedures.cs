@@ -19,6 +19,21 @@ namespace Loogan.API.Database.Models
             }
             return user;
         }
+
+        public async Task<List<UserModel>?> GetAllUser()
+        {
+            List<UserModel>? user = new List<UserModel>();
+            using (var context = new LooganContext(connectionString))
+            {
+                var query = context.Database.SqlQuery<UserModel>($"Get_AllUserDetails").AsNoTracking().AsAsyncEnumerable();
+                await foreach (var item in query)
+                {
+                    user.Add(item);
+                }
+            }
+            return user;
+        }
+
         public async Task<UserModel?> GetUser(int userId)
         {
             UserModel? user = null;

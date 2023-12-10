@@ -26,6 +26,12 @@ public class UserService : IUserService
         var userLoginModel = await _storedProcedures.GetUserLoginDetails(query.UserName, query.Password);
         return userLoginModel;
     }
+
+    public async Task<List<UserModel>?> GetAllUserDetailsService()
+    {
+        var userModel = await _storedProcedures.GetAllUser();
+        return userModel;
+    }
     public async Task<UserModel?> GetUserDetailsService(int userId)
     {
         var userModel = await _storedProcedures.GetUser(userId);
