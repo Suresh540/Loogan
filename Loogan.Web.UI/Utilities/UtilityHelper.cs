@@ -19,13 +19,10 @@ public class UtilityHelper : IUtilityHelper
         using (RestClient client = new RestClient(_baseUrl))
         {
             RestRequest request = new RestRequest();
+            request = new RestRequest(resource);
+            request.Method = method;
             if (reqParams != null)
             {
-                if (!string.IsNullOrEmpty(resource))
-                {
-                    request = new RestRequest(resource);
-                }
-                request.Method = method;
                 request.AddBody(reqParams);
             }
             if (header != null)

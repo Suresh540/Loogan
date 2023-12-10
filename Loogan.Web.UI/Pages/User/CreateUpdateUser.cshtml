@@ -14,7 +14,7 @@
             <div class="col-10 base-profile pointscroll righcontent">
                 <div class="columns small-12 profile-content" style="margin-top:2px !important">
                     <div style="text-align:right">
-                        <button type="button" style="background:yellow;color:black" class="btn btn-light border rounded-pill shadow-sm mb-1" data-toggle="modal" data-target="#bottom_modal">
+                        <button onclick="showUsers()" type="button" style="background:yellow;color:black" class="btn btn-light border rounded-pill shadow-sm mb-1" data-toggle="modal" data-target="#bottom_modal">
                             <b>Show Users</b>
                         </button>
                         <button type="button" class="btn btn-light border rounded-pill shadow-sm mb-1"
@@ -143,33 +143,9 @@
             </div>
             <div class="modal-body">
                 <table class="table">
-                    <thead>
-                        <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">First</th>
-                            <th scope="col">Last</th>
-                            <th scope="col">Handle</th>
-                        </tr>
+                    <thead id="tdHeader">
                     </thead>
-                    <tbody>
-                        @for (int i = 0; i < 1000; i++)
-                        {
-                            <tr>
-                                <th scope="row">1</th>
-                                <td>Mark</td>
-                                <td>Otto</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">2</th>
-                                <td>Jacob</td>
-                                <td>Thornton</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">3</th>
-                                <td>Larry</td>
-                                <td>the Bird</td>
-                            </tr>
-                        }
+                    <tbody id="tdBody">
                     </tbody>
                 </table>
             </div>

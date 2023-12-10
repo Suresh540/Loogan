@@ -28,3 +28,21 @@
         }
     })
 }
+
+function showUsers() {
+    setTimeout(() => {
+
+        $.ajax({
+            method: 'Post',
+            url: "/User/GetAllUser",
+            data: {},
+            success: function (data) {
+                console.log(data)
+            },
+            error: function (e) {
+
+            }
+        })
+
+    }, 1000)
+}
