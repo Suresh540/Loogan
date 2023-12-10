@@ -21,10 +21,10 @@ namespace Loogan.Web.UI.Controllers
         }
 
         [Route("GetAllUser")]
-        public async Task<JsonResult> GetAllUser(UserModel user)
+        public async Task<JsonResult> GetAllUser()
         {
-            var userModel = await _utilityHelper.ExecuteAPICall<bool>(user, RestSharp.Method.Post, resource: "api/User/AllUser");
-            return Json(new { value = "Success" });
+            var users = await _utilityHelper.ExecuteAPICall<List<UserModel>>(null, RestSharp.Method.Post, resource: "api/User/AllUser");
+            return Json(users);
         }
 
         [Route("CreateUser")]

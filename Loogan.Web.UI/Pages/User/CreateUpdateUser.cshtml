@@ -21,7 +21,7 @@
                                 style="background:red;color:white">
                             <b>Clear</b>
                         </button>
-                        <button type="button" class="btn btn-light border rounded-pill shadow-sm mb-1" onclick="CreateUser()"
+                        <button type="button" class="btn btn-light border rounded-pill shadow-sm mb-1" onclick="createUser()"
                                 style="background:blue;color:white">
                             <b>Save</b>
                         </button>
@@ -180,53 +180,3 @@
         </div>
     </div>
 </div>
-<script>
-    function CreateUser() {
-        var model = {
-            additionalName = $('#txtAddName').val(),
-            genderId = 4,
-            preFix = $('#txtPrefix').val(),
-            //middleName
-            suffix = $('#txtSuffix').val(),
-            //eduction Level
-            webSite = $('#txtWebSite').val(),
-            city = $('#txtCity').val(),
-            State = $('#txtState').val(),
-            country = $('#txtCountry').val(),
-            phoneNumber = $('#txtPhone').val(),
-            fax = $('#txtFax').val(),
-            company = $('#txtCompany').val(),
-            jobTitle = $('#txtJobTitle').val(),
-            department = $('#txtDepartment').val()
-        };
-
-        // var model = @Html.Raw(Json.Serialize(Model));
-        // model.additionalName = $('#txtAddName').val();
-        // model.genderId = 4;
-        // model.preFix = $('#txtPrefix').val();
-        // //middleName
-        // model.suffix = $('#txtSuffix').val();
-        // //eduction Level
-        // model.webSite = $('#txtWebSite').val();
-        // model.city = $('#txtCity').val();
-        // model.State = $('#txtState').val();
-        // model.country = $('#txtCountry').val();
-        // model.phoneNumber = $('#txtPhone').val();
-        // model.fax = $('#txtFax').val();
-        // model.company = $('#txtCompany').val();
-        // model.jobTitle = $('#txtJobTitle').val();
-        // model.department = $('#txtDepartment').val();
-
-        $.ajax({
-            method: 'Post',
-            url: "/User/CreateUser",
-            data: { user: model },
-            success: function (e) {
-
-            },
-            error: function (e) {
-
-            }
-        })
-    }
-</script>
