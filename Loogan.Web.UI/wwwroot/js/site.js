@@ -48,6 +48,14 @@ signOut = function () {
     document.forms[0].submit();
 }
 
+function fnForgot() {
+    setTimeout(() => {
+        $('#txtForgotPwd').focus();
+    }, 1000);
+}
+
+
+
 
 
 
