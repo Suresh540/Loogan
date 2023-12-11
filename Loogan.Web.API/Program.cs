@@ -3,6 +3,7 @@ using Loogan.API.BusinessService.Mapper;
 using Loogan.API.BusinessService.Services;
 using Loogan.API.Database.Interfaces;
 using Loogan.API.Database.Models;
+using Loogan.API.Database.Services;
 using Loogan.Common.Utilities;
 using Serilog;
 
@@ -15,9 +16,16 @@ builder.Services.AddSingleton<ILooganStoredProcedures>((opt) =>
     return new LooganStoredProcedures(connectionString);
 });
 
+builder.Services.AddSingleton<ILooganCommon>((opt) =>
+{
+    var connectionString = builder.Configuration["ConnectionStrings:looganConnectionString"];
+    return new LooganCommonService(connectionString);
+});
+
 builder.Services.AddExceptionHandler<GlobalExceptionHandler>();
 builder.Services.AddProblemDetails();
 builder.Services.AddTransient<IUserService, UserService>();
+builder.Services.AddTransient<ICommonService, CommonService>();
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
