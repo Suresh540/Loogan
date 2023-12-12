@@ -36,9 +36,7 @@
                 <p>
                     <div>
                         <b>Gender</b><br />
-                        <select>
-                            <option>Male</option>
-                            <option>Female</option>
+                        <select id="ddlGender">
                         </select>
                     </div>
                     <div>
@@ -55,9 +53,7 @@
                     </div>
                     <div>
                         <b>Education Level</b><br />
-                        <select>
-                            <option>Junior</option>
-                            <option>Senior</option>
+                        <select id="ddlEductionLevel">
                         </select>
                     </div>
                     <div>
@@ -116,14 +112,17 @@
     </div>
 </div>
 <script>
+    ddlMasterLookup('ddlGender', 'gender');
+    ddlMasterLookup('ddlEductionLevel', 'educationlevel');
+    
     function UpdateUser() {
         var model = @Html.Raw(Json.Serialize(Model));
         model.additionalName = $('#txtAddName').val();
-        model.genderId = 4;
+        model.genderId = $('#ddlGender').val();
         model.preFix = $('#txtPrefix').val();
         model.middleName = $('#txtMiddleName').val();
         model.suffix = $('#txtSuffix').val();
-        //eduction Level
+        model.educationLevel = $("#ddlEductionLevel option:selected").text();
         model.webSite = $('#txtWebSite').val();
         model.city = $('#txtCity').val();
         model.State = $('#txtState').val();

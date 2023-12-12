@@ -54,6 +54,27 @@ function fnForgot() {
     }, 1000);
 }
 
+function ddlMasterLookup(controlId, lookUpTypeValue) {
+    $.ajax({
+        method: 'Post',
+        url: "/Common/GetMasterLookupValues",
+        data: { lookUpType: lookUpTypeValue },
+        success: function (response) {
+            var dropDownListId = $('#' + controlId);
+            dropDownListId.empty().append('<option selected="selected" value="0">Please select</option>');
+            $.each(response, function () {
+                dropDownListId.append($("<option></option>").val(this['id']).html(this['name']));
+            });
+        },
+        failure: function (response) {
+            alert(response.responseText);
+        },
+        error: function (response) {
+            alert(response.responseText);
+        }
+    });
+}
+
 
 
 

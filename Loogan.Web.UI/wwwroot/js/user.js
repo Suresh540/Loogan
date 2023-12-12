@@ -8,10 +8,10 @@
     model.emailAddress = $('#txtEmailAddress').val();
     model.userName = $('#txtUserName').val();
     model.password = $('#txtPassword').val();
-    model.genderId = 4;
+    model.genderId = $('#ddlGender').val();
     model.preFix = $('#txtPrefix').val();
     model.suffix = $('#txtSuffix').val();
-    //eduction Level
+    model.educationLevel = $("#ddlEductionLevel option:selected").text();
     model.webSite = $('#txtWebSite').val();
     model.phoneNumber = $('#txtPhone').val();
     model.city = $('#txtCity').val();
