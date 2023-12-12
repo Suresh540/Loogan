@@ -68,6 +68,9 @@ public partial class User
 
     public int? languageId { get; set; }
 
+    public string? MiddleName { get; set; }
+
+
     public virtual UserType UserType { get; set; } = null!;
 
 }

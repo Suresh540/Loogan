@@ -46,8 +46,8 @@
                         <input id="txtPrefix" type="text" value="@Model?.PreFix" />
                     </div>
                     <div>
-                        <b>Middle Name</b><br />
-                        Need to Add
+                        <b>Middle Name</b><br /> 
+                        <input id="txtMiddleName" type="text" value="@Model?.MiddleName" />
                     </div>
                     <div>
                         <b>Suffix</b><br />
@@ -121,7 +121,7 @@
         model.additionalName = $('#txtAddName').val();
         model.genderId = 4;
         model.preFix = $('#txtPrefix').val();
-        //middleName
+        model.middleName = $('#txtMiddleName').val();
         model.suffix = $('#txtSuffix').val();
         //eduction Level
         model.webSite = $('#txtWebSite').val();
@@ -133,7 +133,7 @@
         model.company = $('#txtCompany').val();
         model.jobTitle = $('#txtJobTitle').val();
         model.department = $('#txtDepartment').val();
-
+        //language add
         $.ajax({
             method: 'Post',
             url: "/User/UpdateUser",

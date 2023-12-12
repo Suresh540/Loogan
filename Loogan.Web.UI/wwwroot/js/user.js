@@ -1,20 +1,29 @@
 ﻿function createUser() {
     var model = {}
-    model.additionalName = $('#txtAddName').val();
+    model.userTypeId = 3;  //student
+    model.firstName = $('#txtFirstName').val();
+    model.middleName = $('#txtMiddleName').val();
+    model.lastName = $('#txtLastName').val();
+    model.additionalName = $('#txtAdditionalName').val();
+    model.emailAddress = $('#txtEmailAddress').val();
+    model.userName = $('#txtUserName').val();
+    model.password = $('#txtPassword').val();
     model.genderId = 4;
     model.preFix = $('#txtPrefix').val();
-    //middleName
     model.suffix = $('#txtSuffix').val();
     //eduction Level
     model.webSite = $('#txtWebSite').val();
+    model.phoneNumber = $('#txtPhone').val();
     model.city = $('#txtCity').val();
     model.State = $('#txtState').val();
     model.country = $('#txtCountry').val();
-    model.phoneNumber = $('#txtPhone').val();
     model.fax = $('#txtFax').val();
     model.company = $('#txtCompany').val();
     model.jobTitle = $('#txtJobTitle').val();
     model.department = $('#txtDepartment').val();
+   
+   
+   
 
     $.ajax({
         method: 'Post',

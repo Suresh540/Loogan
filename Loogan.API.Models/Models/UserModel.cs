@@ -67,5 +67,7 @@ public class UserModel
     public string? Gender { get; set; }
 
     public string? UserLanguage { get; set; }
+
+    public string? MiddleName { get; set; }
 }
 
