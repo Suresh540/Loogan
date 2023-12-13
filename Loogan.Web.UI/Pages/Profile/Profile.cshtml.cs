@@ -65,7 +65,7 @@ namespace Loogan.Web.UI.Pages.Profile
                         {"Gender",userModel?.Gender },
                         {"Additional Name", userModel?.AdditionalName  },
                         {"Education Level", userModel?.EducationLevel  },
-                        {"Website", "<a href='#'>" + (!string.IsNullOrEmpty(userModel.WebSite) ? userModel.WebSite : "Add Website") + "</a>" },
+                        {"Website", "<a href='#' data-toggle=\"modal\" data-target=\"#right_modal\">" + (!string.IsNullOrEmpty(userModel.WebSite) ? userModel.WebSite : "Add Website") + "</a>" },
                     }
                 },
                 new SectionModel()
@@ -73,9 +73,9 @@ namespace Loogan.Web.UI.Pages.Profile
                     SectionName = "Contact Information",
                     SectionValueData = new Dictionary<string, string>
                     {
-                         {"Mailing Address", "<a href='#'>" + (!string.IsNullOrEmpty(userModel.EmailAddress) ? userModel.EmailAddress : "Add mailing address") + "</a>" },
-                         {"Phone Number", "<a href='#'>" + (!string.IsNullOrEmpty(userModel.PhoneNumber) ? userModel.PhoneNumber : "Add phone number") + "</a>" },
-                         {"Business Fax Number", "<a href='#'>" + (!string.IsNullOrEmpty(userModel.Fax) ? userModel.Fax : "Add business fax number") + "</a>" },
+                         {"Mailing Address", "<a href='#' data-toggle=\"modal\" data-target=\"#right_modal\">" + (!string.IsNullOrEmpty(userModel.EmailAddress) ? userModel.EmailAddress : "Add mailing address") + "</a>" },
+                         {"Phone Number", "<a href='#' data-toggle=\"modal\" data-target=\"#right_modal\">" + (!string.IsNullOrEmpty(userModel.PhoneNumber) ? userModel.PhoneNumber : "Add phone number") + "</a>" },
+                         {"Business Fax Number", "<a href='#' data-toggle=\"modal\" data-target=\"#right_modal\">" + (!string.IsNullOrEmpty(userModel.Fax) ? userModel.Fax : "Add business fax number") + "</a>" },
                     }
                 },
                 new SectionModel()
@@ -83,9 +83,9 @@ namespace Loogan.Web.UI.Pages.Profile
                     SectionName = "Job Information",
                     SectionValueData = new Dictionary<string, string>
                     {
-                        {"Company", "<a href='#'>" + (!string.IsNullOrEmpty(userModel.Company) ? userModel.Company : "Add company") + "</a>" },
-                        {"Job Title", "<a href='#'>" + (!string.IsNullOrEmpty(userModel.JobTitle) ? userModel.JobTitle : "Add job title") + "</a>" },
-                        {"Department", "<a href='#'>" + (!string.IsNullOrEmpty(userModel.Department) ? userModel.Department : "Add department") + "</a>" },
+                        {"Company", "<a href='#' data-toggle=\"modal\" data-target=\"#right_modal\">" + (!string.IsNullOrEmpty(userModel.Company) ? userModel.Company : "Add company") + "</a>" },
+                        {"Job Title", "<a href='#' data-toggle=\"modal\" data-target=\"#right_modal\">" + (!string.IsNullOrEmpty(userModel.JobTitle) ? userModel.JobTitle : "Add job title") + "</a>" },
+                        {"Department", "<a href='#' data-toggle=\"modal\" data-target=\"#right_modal\">" + (!string.IsNullOrEmpty(userModel.Department) ? userModel.Department : "Add department") + "</a>" },
                     }
                 }
 
@@ -98,8 +98,8 @@ namespace Loogan.Web.UI.Pages.Profile
                     SectionValueData = new Dictionary<string, string>
                     {
                         {"Langauage",userModel?.UserLanguage },
-                        {"Privacy Settigs", "<a href='#'>Only instructors can <br/> view my profile<br/> information</a>" },
-                        {"Global Notification Settings", "<a href='#'>Stream notifications</a> <br/><a href='#'>Email notifications</a><br/><a href='#'>Push notifications</a>" },
+                        {"Privacy Settigs", "<a href='#' data-toggle=\"modal\" data-target=\"#right_modal\">Only instructors can <br/> view my profile<br/> information</a>" },
+                        {"Global Notification Settings", "<a href='#' data-toggle=\"modal\" data-target=\"#right_modal\">Stream notifications</a> <br/><a href='#' data-toggle=\"modal\" data-target=\"#right_modal\">Email notifications</a><br/><a href='#' data-toggle=\"modal\" data-target=\"#right_modal\">Push notifications</a>" },
                     }
                 },
             };

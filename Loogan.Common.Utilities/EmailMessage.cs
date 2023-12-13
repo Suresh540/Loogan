@@ -21,6 +21,7 @@ namespace Loogan.Common.Utilities
             bool isSendEmail = false;
             using (SmtpClient client = new SmtpClient(details.Host,details.Port))
             {
+                client.Credentials = new NetworkCredential(details.UserName, details.Password);
                 MailAddress from = new MailAddress(details.FromAddress, details.FromAddressDisplayName, Encoding.UTF8);
                 MailAddress to = new MailAddress(details.ToAddress);
 
@@ -38,8 +39,7 @@ namespace Loogan.Common.Utilities
                         message.Attachments.Add(new Attachment(SerializeToStream(attach), nameof(attach)));
                     }
                 }
-                string userState = Guid.NewGuid().ToString();
-                client.SendAsync(message, userState);
+                client.Send(message);
                 isSendEmail = true;
             }
             return isSendEmail;
@@ -63,6 +63,8 @@ namespace Loogan.Common.Utilities
     public class SmtpDetails
     {
         public string Host { get; set; } = "";
+        public string UserName { get; set; } = "";
+        public string Password { get; set; } = "";
         public int Port { get; set; } = 0;
         public string Subject { get; set; } = "";
         public string Body { get; set; } = "";
@@ -71,5 +73,6 @@ namespace Loogan.Common.Utilities
         public string FromAddressDisplayName { get; set; } = "";
         public bool IsHtmlBody { get; set; } = false;
         public List<object> Attachements { get; set; } = new List<object>();
+
     }
 }

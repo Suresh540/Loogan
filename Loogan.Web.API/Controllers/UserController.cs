@@ -62,12 +62,9 @@ namespace Loogan.Web.API.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<IActionResult> GetUserEmailByUserName([FromBody] dynamic userNameModel)
+        public async Task<IActionResult> GetUserEmailByUserName([FromBody] ForgotPswdModel userNameModel)
         {
-            var json = Newtonsoft.Json.Linq.JObject.Parse((userNameModel as object).ToString());
-            string? userName = json.GetValue("userName")?.ToString();
-
-            var ForgotPswdModel = await _userService.GetUserEmailByUserName(userName);
+            var ForgotPswdModel = await _userService.GetUserEmailByUserName(userNameModel.UserName);
             return Ok(ForgotPswdModel);
         }
 

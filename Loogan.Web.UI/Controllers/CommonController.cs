@@ -18,12 +18,12 @@ namespace Loogan.Web.UI.Controllers
         public async Task<JsonResult> GetMasterLookupValues(string lookUpType)
         {
             var apiRequest = new ApiRequest() { RequestValue = lookUpType };
-            var masterLookUpValues = new List<DropDownListModel>();
+            //var masterLookUpValues = new List<DropDownListModel>();
 
-            //var masterLookUpValues = await _utilityHelper.ExecuteAPICall<List<DropDownListModel>>(apiRequest, RestSharp.Method.Post, resource: "api/Common/GetMasterLookupValues");
+            var masterLookUpValues = await _utilityHelper.ExecuteAPICall<List<DropDownListModel>>(apiRequest, RestSharp.Method.Post, resource: "api/Common/GetMasterLookupValues");
 
             //Temp starts
-            var genderList = new List<DropDownListModel>();
+           /* var genderList = new List<DropDownListModel>();
             genderList.Add(new DropDownListModel() { Id = 4, Name = "Male" });
             genderList.Add(new DropDownListModel() { Id = 5, Name = "Female" });
             genderList.Add(new DropDownListModel() { Id = 6, Name = "Transgender" });
@@ -43,10 +43,11 @@ namespace Loogan.Web.UI.Controllers
 
             if (lookUpType == "gender")
                 masterLookUpValues = genderList;
-            else if(lookUpType == "educationlevel")
+            else if (lookUpType == "educationlevel")
                 masterLookUpValues = educationlevel;
-            else if(lookUpType == "language")
+            else if (lookUpType == "language")
                 masterLookUpValues = languageList;
+            */
 
             //Temp ends
 

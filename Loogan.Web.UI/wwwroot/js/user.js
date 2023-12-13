@@ -1,4 +1,5 @@
 ﻿function createUser() {
+
     var model = {}
     model.userTypeId = 3;  //student
     model.firstName = $('#txtFirstName').val();
@@ -21,22 +22,82 @@
     model.company = $('#txtCompany').val();
     model.jobTitle = $('#txtJobTitle').val();
     model.department = $('#txtDepartment').val();
-   
-   
-   
+
+    if ($('#txtFirstName').val().trim() == '') {
+        alert('First Name is mandatory');
+        $('#txtFirstName').focus();
+        return;
+    }
+
+    if ($('#txtLastName').val().trim() == '') {
+        alert('Last Name is mandatory');
+        $('#txtLastName').focus();
+        return;
+    }
+
+    if ($('#txtUserName').val().trim() == '') {
+        alert('User name is mandatory');
+        $('#txtUserName').focus();
+        return;
+    }
+
+    if ($('#txtPassword').val().trim() == '') {
+        alert('Password is mandatory');
+        $('#txtPassword').focus();
+        return;
+    }
+
+    if ($('#txtPhone').val().trim() == '') {
+        alert('Phone is mandatory');
+        $('#txtPhone').focus();
+        return;
+    }
+
+    if ($('#txtEmailAddress').val().trim() == '') {
+        alert('Email Address is mandatory');
+        $('#txtEmailAddress').focus();
+        return;
+    }
+
+    if ($('#txtcnfrmpassword').val().trim() == '') {
+        alert('Confirm password is mandatory');
+        $('#txtcnfrmpassword').focus();
+        return;
+    }
+
+    if ($('#txtcnfrmpassword').val().trim() != $('#txtPassword').val().trim()) {
+        alert('Confirm password, password are different');
+        $('#txtcnfrmpassword').focus();
+        return;
+    }
+
+    if ($('#ddlGender').val().trim() == '0') {
+        alert('Gender is mandatory');
+        $('#ddlGender').focus();
+        return;
+    }
+
+    $('#btnSaveuser').prop('disabled', 'disabled');
 
     $.ajax({
         method: 'Post',
         url: "/User/CreateUser",
         data: { user: model },
         success: function (e) {
-
+            $('#btnSaveuser').removeAttr('disabled');
+            alert("User saved successfully");
+           
         },
         error: function (e) {
-
+            $('#btnSaveuser').removeAttr('disabled');
+            console.log(e);
+           
         }
     })
 }
+
+ddlMasterLookup('ddlGender', 'gender');
+ddlMasterLookup('ddlEductionLevel', 'educationlevel');
 
 function showUsers() {
     setTimeout(() => {
@@ -50,8 +111,8 @@ function showUsers() {
                         <td>${item.firstName}</td>
                         <td>${item.lastName}</td>
                         <td>${item.userName}</td>
-                        <td>${item.phoneNumber}</td>
-                        <td>${item.emailAddress}</td>
+                        <td>${item.phoneNumber == null ? "" : item.phoneNumber}</td>
+                        <td>${item.emailAddress == null ? "" : item.emailAddress}</td>
                         <td>${item.city == null ? "" : item.city}</td>
                         <td>${item.state == null ? "" : item.state}</td>
                         <td>${item.country == null ? "" : item.country}</td>
@@ -79,4 +140,8 @@ function getUserEmailByUserName() {
 
         }
     })
+}
+
+function sentMessage(msg) {
+    alert(msg);
 }

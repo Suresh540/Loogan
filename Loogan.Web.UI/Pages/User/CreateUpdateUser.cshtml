@@ -21,7 +21,7 @@
                                 style="background:red;color:white">
                             <b>Clear</b>
                         </button>
-                        <button type="button" class="btn btn-light border rounded-pill shadow-sm mb-1" onclick="createUser()"
+                        <button id="btnSaveuser" type="button" class="btn btn-light border rounded-pill shadow-sm mb-1" onclick="createUser('btnSaveuser')"
                                 style="background:blue;color:white">
                             <b>Save</b>
                         </button>
@@ -40,7 +40,7 @@
                             </div>
                             <div>
                                 <b>Last Name</b><br />
-                                <input id="txtLastName" type="text" />
+                                <input id="txtLastName" type="text" required />
                             </div>
                             <div>
                                 <b>Additional Name</b><br />
@@ -48,20 +48,20 @@
                             </div>
                             <div>
                                 <b>Email Address</b><br />
-                                <input id="txtEmailAddress" type="text" />
+                                <input id="txtEmailAddress" type="text" required />
                             </div>
                             <div>
                                 <b>User Name</b><br />
-                                <input id="txtUserName" type="text" />
+                                <input id="txtUserName" type="text" required />
                             </div>
                             <div>
                                 <b>Password</b><br />
-                                <input id="txtPassword" type="password" />
+                                <input id="txtPassword" type="password" required />
                             </div>
-                            @*  <div>
-                            <b>Confirm Password</b><br />
-                            <input id="txtcnfrmpassword" type="password" />
-                            </div> *@
+                            <div>
+                                <b>Confirm Password</b><br />
+                                <input id="txtcnfrmpassword" type="password" required />
+                            </div>
                         </p>
                         <h3 style="margin:5px">Additional Information</h3>
                         <hr />
@@ -99,19 +99,19 @@
                         <p>
                             <div>
                                 <b>Phone Number</b><br />
-                                <input id="txtPhone" type="text" />
+                                <input id="txtPhone" type="text" required />
                             </div>
                             <div>
                                 <b>City</b><br />
-                                <input id="txtCity" type="text" />
+                                <input id="txtCity" type="text" required />
                             </div>
                             <div>
                                 <b>State/Province</b><br />
-                                <input id="txtState" type="text" />
+                                <input id="txtState" type="text" required />
                             </div>
                             <div>
                                 <b>Country</b><br />
-                                <input id="txtCountry" type="text" />
+                                <input id="txtCountry" type="text" required />
                             </div>
                             <div>
                                 <b>Fax Number</b><br />
