@@ -10,13 +10,13 @@ window.normalState = function (id) {
 
 window.triggerSignIn = function () {
     if ($('#user_id').val().trim() == "") {
-        alert('Enter a username and password.');
+        Alert('Enter a username and password.','error');
         $('#user_id').focus();
         return;
     }
 
     if ($('#password').val().trim() == "") {
-        alert('Enter a username and password.');
+        Alert('Enter a username and password.', 'error');
         $('#password').focus();
         return;
     }
@@ -67,12 +67,21 @@ function ddlMasterLookup(controlId, lookUpTypeValue) {
             });
         },
         failure: function (response) {
-            alert(response.responseText);
+            Alert(response.responseText, 'error');
         },
         error: function (response) {
-            alert(response.responseText);
+            Alert(response.responseText, 'error');
         }
     });
+}
+
+function Alert(msg, type) {
+    $.toast({
+        heading: type,
+        text: msg,
+        icon: type,
+        hideAfter: 5000 
+    })
 }
 
 

@@ -24,55 +24,55 @@
     model.department = $('#txtDepartment').val();
 
     if ($('#txtFirstName').val().trim() == '') {
-        alert('First Name is mandatory');
+        Alert('First Name is mandatory', 'error');
         $('#txtFirstName').focus();
         return;
     }
 
     if ($('#txtLastName').val().trim() == '') {
-        alert('Last Name is mandatory');
+        Alert('Last Name is mandatory', 'error');
         $('#txtLastName').focus();
         return;
     }
 
     if ($('#txtUserName').val().trim() == '') {
-        alert('User name is mandatory');
+        Alert('User name is mandatory', 'error');
         $('#txtUserName').focus();
         return;
     }
 
     if ($('#txtPassword').val().trim() == '') {
-        alert('Password is mandatory');
+        Alert('Password is mandatory', 'error');
         $('#txtPassword').focus();
         return;
     }
 
     if ($('#txtPhone').val().trim() == '') {
-        alert('Phone is mandatory');
+        Alert('Phone is mandatory', 'error');
         $('#txtPhone').focus();
         return;
     }
 
     if ($('#txtEmailAddress').val().trim() == '') {
-        alert('Email Address is mandatory');
+        Alert('Email Address is mandatory', 'error');
         $('#txtEmailAddress').focus();
         return;
     }
 
     if ($('#txtcnfrmpassword').val().trim() == '') {
-        alert('Confirm password is mandatory');
+        Alert('Confirm password is mandatory', 'error');
         $('#txtcnfrmpassword').focus();
         return;
     }
 
     if ($('#txtcnfrmpassword').val().trim() != $('#txtPassword').val().trim()) {
-        alert('Confirm password, password are different');
+        Alert('Confirm password, password are different', 'error');
         $('#txtcnfrmpassword').focus();
         return;
     }
 
     if ($('#ddlGender').val().trim() == '0') {
-        alert('Gender is mandatory');
+        Alert('Gender is mandatory','error');
         $('#ddlGender').focus();
         return;
     }
@@ -85,12 +85,13 @@
         data: { user: model },
         success: function (e) {
             $('#btnSaveuser').removeAttr('disabled');
-            alert("User saved successfully");
+            Alert("User saved successfully", 'Success');
            
         },
         error: function (e) {
             $('#btnSaveuser').removeAttr('disabled');
             console.log(e);
+            Alert("Failed to create user", 'error');
            
         }
     })
@@ -143,5 +144,5 @@ function getUserEmailByUserName() {
 }
 
 function sentMessage(msg) {
-    alert(msg);
+    Alert(msg, 'Success');
 }
