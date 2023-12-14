@@ -5,7 +5,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h2 class="modal-title">Contact Information</h2>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <button type="button" id="btnClose" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
@@ -112,8 +112,8 @@
     </div>
 </div>
 <script>
-    ddlMasterLookup('ddlGender', 'gender');
-    ddlMasterLookup('ddlEductionLevel', 'educationlevel');
+    ddlMasterLookup('ddlGender', 'gender','@Model.GenderId');
+    ddlMasterLookup('ddlEductionLevel', 'educationlevel','@Model.EducationLevel');
     
     function UpdateUser() {
         var model = @Html.Raw(Json.Serialize(Model));
@@ -125,7 +125,7 @@
         model.educationLevel = $("#ddlEductionLevel option:selected").text();
         model.webSite = $('#txtWebSite').val();
         model.city = $('#txtCity').val();
-        model.State = $('#txtState').val();
+        model.state = $('#txtState').val();
         model.country = $('#txtCountry').val();
         model.phoneNumber = $('#txtPhone').val();
         model.fax = $('#txtFax').val();
@@ -138,10 +138,12 @@
             url: "/User/UpdateUser",
             data: { user: model },
             success: function (e) {
-
+                Alert('Data saved successfully', 'Success');
+                $('#btnClose').trigger('click');
             },
             error: function (e) {
-
+                Alert('Failed to save successfully', 'error');
+                $('#btnClose').trigger('click');
             }
         })
     }

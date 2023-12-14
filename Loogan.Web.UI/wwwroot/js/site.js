@@ -10,7 +10,7 @@ window.normalState = function (id) {
 
 window.triggerSignIn = function () {
     if ($('#user_id').val().trim() == "") {
-        Alert('Enter a username and password.','error');
+        Alert('Enter a username and password.', 'error');
         $('#user_id').focus();
         return;
     }
@@ -54,16 +54,21 @@ function fnForgot() {
     }, 1000);
 }
 
-function ddlMasterLookup(controlId, lookUpTypeValue) {
+function ddlMasterLookup(controlId, lookUpTypeValue, selectedValue) {
     $.ajax({
         method: 'Post',
         url: "/Common/GetMasterLookupValues",
         data: { lookUpType: lookUpTypeValue },
         success: function (response) {
             var dropDownListId = $('#' + controlId);
-            dropDownListId.empty().append('<option selected="selected" value="0">Please select</option>');
+            setInitialValue(selectedValue, dropDownListId);
+
             $.each(response, function () {
-                dropDownListId.append($("<option></option>").val(this['id']).html(this['name']));
+                if (this['id'] == selectedValue || this['name'] == selectedValue) {
+                    dropDownListId.append($("<option selected='selected'></option>").val(this['id']).html(this['name']));
+                } else {
+                    dropDownListId.append($("<option></option>").val(this['id']).html(this['name']));
+                }
             });
         },
         failure: function (response) {
@@ -75,12 +80,20 @@ function ddlMasterLookup(controlId, lookUpTypeValue) {
     });
 }
 
+function setInitialValue(selectedValue, dropDownListId) {
+    if (selectedValue == '')
+        dropDownListId.empty().append('<option selected="selected" value="0">Please select</option>');
+
+    else
+        dropDownListId.empty().append('<option value="0">Please select</option>');
+}
+
 function Alert(msg, type) {
     $.toast({
         heading: type,
         text: msg,
         icon: type,
-        hideAfter: 5000 
+        hideAfter: 5000
     })
 }
 

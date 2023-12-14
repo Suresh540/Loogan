@@ -16,7 +16,7 @@
     model.webSite = $('#txtWebSite').val();
     model.phoneNumber = $('#txtPhone').val();
     model.city = $('#txtCity').val();
-    model.State = $('#txtState').val();
+    model.state = $('#txtState').val();
     model.country = $('#txtCountry').val();
     model.fax = $('#txtFax').val();
     model.company = $('#txtCompany').val();
