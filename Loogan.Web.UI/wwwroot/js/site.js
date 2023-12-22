@@ -1,4 +1,20 @@
 ﻿/*Login script*/
+let localizationLib = (function () {
+    let langFunc = {};
+    let msgs = [];
+    langFunc.setLanguageData = function (messages) {
+        sessionStorage.setItem("messages", messages);
+    },
+    langFunc.getLocalizeData = function (key) {
+        msgs = JSON.parse(sessionStorage.getItem("messages"));
+        var data = msgs.filter(function (item) {
+            return item.name === key;
+        });
+        return data.length > 0 ? data[0].value : "";
+    }
+    return langFunc;
+})();
+
 window.onKeyClick = function (id) {
     $("label[for='" + id + "']").addClass('float-above');
 }
@@ -10,17 +26,17 @@ window.normalState = function (id) {
 
 window.triggerSignIn = function () {
     if ($('#user_id').val().trim() == "") {
-        Alert('Enter a username and password.', 'error');
+        Alert(localizationLib.getLocalizeData("ErrorMessageUserPasswordKey"), 'error');
         $('#user_id').focus();
         return;
     }
 
     if ($('#password').val().trim() == "") {
-        Alert('Enter a username and password.', 'error');
+        Alert(localizationLib.getLocalizeData("ErrorMessageUserPasswordKey"), 'error');
         $('#password').focus();
         return;
     }
-    document.forms[1].submit();
+    document.getElementById('loginForm').submit();
 }
 
 window.onload = function () {
@@ -82,10 +98,10 @@ function ddlMasterLookup(controlId, lookUpTypeValue, selectedValue) {
 
 function setInitialValue(selectedValue, dropDownListId) {
     if (selectedValue == '')
-        dropDownListId.empty().append('<option selected="selected" value="0">Please select</option>');
+        dropDownListId.empty().append(`<option selected="selected" value="0">${localizationLib.getLocalizeData("PleaseSelectKey")}</option>`);
 
     else
-        dropDownListId.empty().append('<option value="0">Please select</option>');
+        dropDownListId.empty().append(`<option value="0">${localizationLib.getLocalizeData("PleaseSelectKey")}</option>`);
 }
 
 function Alert(msg, type) {

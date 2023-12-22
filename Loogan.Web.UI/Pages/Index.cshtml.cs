@@ -1,8 +1,6 @@
 using Loogan.API.Models.Models;
 using Loogan.Web.UI.Resources.Pages;
 using Loogan.Web.UI.Utilities;
-using Microsoft.AspNetCore.Components;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Localization;
@@ -23,14 +21,10 @@ namespace Loogan.Web.UI.Pages
         [BindProperty]
         public string? DisplayMessage { get; set; }
 
-        private IStringLocalizer<ContentLabel> _localizer { get; set; }
-
-        public IndexModel(ILogger<IndexModel> logger, IUtilityHelper utilityHelper, 
-            IStringLocalizer<ContentLabel> localizer)
+        public IndexModel(ILogger<IndexModel> logger, IUtilityHelper utilityHelper)
         {
             _logger = logger;
             _utilityHelper = utilityHelper;
-            _localizer = localizer;
         }
 
         public async Task<IActionResult> OnPostAsync()
@@ -38,12 +32,12 @@ namespace Loogan.Web.UI.Pages
             DisplayMessage = "";
             if (string.IsNullOrEmpty(UserName))
             {
-                DisplayMessage = _localizer["UserNameEmptyKey"];
+                DisplayMessage = ""; //Localizer != null ? Localizer["UserNameEmptyKey"] : "";
                 return Page();
             }
             if (string.IsNullOrEmpty(Password))
             {
-                DisplayMessage = _localizer["PasswordEmptyKey"];
+                DisplayMessage = ""; //Localizer != null ? Localizer["PasswordEmptyKey"] : "";
                 return Page();
             }
             UserQuery query = new UserQuery();
@@ -61,7 +55,7 @@ namespace Loogan.Web.UI.Pages
                 else
                     return RedirectToPage("/Dashboard/admindashboard");
             }
-            DisplayMessage = _localizer["UserPwdWrongKey"];
+            DisplayMessage = ""; //Localizer != null ? Localizer["UserPwdWrongKey"] : "";
             return Page();
         }
     }

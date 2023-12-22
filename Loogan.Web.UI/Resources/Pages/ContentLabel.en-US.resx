@@ -333,4 +333,43 @@
   <data name="SystemSettingsKey" xml:space="preserve">
     <value>System Settings</value>
   </data>
+  <data name="ErrorMessageUserPasswordKey" xml:space="preserve">
+    <value>Enter a username and password.</value>
+  </data>
+  <data name="PleaseSelectKey" xml:space="preserve">
+    <value>Please select</value>
+  </data>
+  <data name="ConfirmPwdMandatoryKey" xml:space="preserve">
+    <value>Confirm password is mandatory</value>
+  </data>
+  <data name="ConfirmPwdPwdDifferentKey" xml:space="preserve">
+    <value>Confirm password, password are different</value>
+  </data>
+  <data name="EmailMandatoryKey" xml:space="preserve">
+    <value>Email Address is mandatory</value>
+  </data>
+  <data name="FailedToCreateUserKey" xml:space="preserve">
+    <value>Failed to create user</value>
+  </data>
+  <data name="FirstNameMandatoryKey" xml:space="preserve">
+    <value>First Name is mandatory</value>
+  </data>
+  <data name="GenderMandatoryKey" xml:space="preserve">
+    <value>Gender is mandatory</value>
+  </data>
+  <data name="LastNameMandatoryKey" xml:space="preserve">
+    <value>Last Name is mandatory</value>
+  </data>
+  <data name="PasswordMandatoryKey" xml:space="preserve">
+    <value>Password is mandatory</value>
+  </data>
+  <data name="PhoneMandatoryKey" xml:space="preserve">
+    <value>Phone is mandatory</value>
+  </data>
+  <data name="UserNameMandatoryKey" xml:space="preserve">
+    <value>User name is mandatory</value>
+  </data>
+  <data name="UserSavedSuccessKey" xml:space="preserve">
+    <value>User saved successfully</value>
+  </data>
 </root>

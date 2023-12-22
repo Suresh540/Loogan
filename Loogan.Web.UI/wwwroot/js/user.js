@@ -24,55 +24,55 @@
     model.department = $('#txtDepartment').val();
 
     if ($('#txtFirstName').val().trim() == '') {
-        Alert('First Name is mandatory', 'error');
+        Alert(localizationLib.getLocalizeData("FirstNameMandatoryKey"), 'error');
         $('#txtFirstName').focus();
         return;
     }
 
     if ($('#txtLastName').val().trim() == '') {
-        Alert('Last Name is mandatory', 'error');
+        Alert(localizationLib.getLocalizeData("LastNameMandatoryKey"), 'error');
         $('#txtLastName').focus();
         return;
     }
 
     if ($('#txtUserName').val().trim() == '') {
-        Alert('User name is mandatory', 'error');
+        Alert(localizationLib.getLocalizeData("UserNameMandatoryKey"), 'error');
         $('#txtUserName').focus();
         return;
     }
 
     if ($('#txtPassword').val().trim() == '') {
-        Alert('Password is mandatory', 'error');
+        Alert(localizationLib.getLocalizeData("PasswordMandatoryKey"), 'error');
         $('#txtPassword').focus();
         return;
     }
 
     if ($('#txtPhone').val().trim() == '') {
-        Alert('Phone is mandatory', 'error');
+        Alert(localizationLib.getLocalizeData("PhoneMandatoryKey"), 'error');
         $('#txtPhone').focus();
         return;
     }
 
     if ($('#txtEmailAddress').val().trim() == '') {
-        Alert('Email Address is mandatory', 'error');
+        Alert(localizationLib.getLocalizeData("EmailMandatoryKey"), 'error');
         $('#txtEmailAddress').focus();
         return;
     }
 
     if ($('#txtcnfrmpassword').val().trim() == '') {
-        Alert('Confirm password is mandatory', 'error');
+        Alert(localizationLib.getLocalizeData("ConfirmPwdMandatoryKey"), 'error');
         $('#txtcnfrmpassword').focus();
         return;
     }
 
     if ($('#txtcnfrmpassword').val().trim() != $('#txtPassword').val().trim()) {
-        Alert('Confirm password, password are different', 'error');
+        Alert(localizationLib.getLocalizeData("ConfirmPwdPwdDifferentKey"), 'error');
         $('#txtcnfrmpassword').focus();
         return;
     }
 
     if ($('#ddlGender').val().trim() == '0') {
-        Alert('Gender is mandatory','error');
+        Alert(localizationLib.getLocalizeData("GenderMandatoryKey"),'error');
         $('#ddlGender').focus();
         return;
     }
@@ -85,13 +85,13 @@
         data: { user: model },
         success: function (e) {
             $('#btnSaveuser').removeAttr('disabled');
-            Alert("User saved successfully", 'Success');
+            Alert(localizationLib.getLocalizeData("UserSavedSuccessKey"), 'Success');
            
         },
         error: function (e) {
             $('#btnSaveuser').removeAttr('disabled');
             console.log(e);
-            Alert("Failed to create user", 'error');
+            Alert(localizationLib.getLocalizeData("FailedToCreateUserKey"), 'error');
            
         }
     })

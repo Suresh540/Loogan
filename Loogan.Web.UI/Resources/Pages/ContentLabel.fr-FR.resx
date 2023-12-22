@@ -333,4 +333,43 @@
   <data name="SystemSettingsKey" xml:space="preserve">
     <value>Les paramètres du système</value>
   </data>
+  <data name="ConfirmPwdMandatoryKey" xml:space="preserve">
+    <value>La confirmation du mot de passe est obligatoire</value>
+  </data>
+  <data name="ConfirmPwdPwdDifferentKey" xml:space="preserve">
+    <value>Confirmez le mot de passe, le mot de passe est différent</value>
+  </data>
+  <data name="EmailMandatoryKey" xml:space="preserve">
+    <value>L'adresse e-mail est obligatoire</value>
+  </data>
+  <data name="ErrorMessageUserPasswordKey" xml:space="preserve">
+    <value>Entrez un nom d'utilisateur et un mot de passe.</value>
+  </data>
+  <data name="FailedToCreateUserKey" xml:space="preserve">
+    <value>Échec de la création de l'utilisateur</value>
+  </data>
+  <data name="FirstNameMandatoryKey" xml:space="preserve">
+    <value>Le prénom est obligatoire</value>
+  </data>
+  <data name="GenderMandatoryKey" xml:space="preserve">
+    <value>Le sexe est obligatoire</value>
+  </data>
+  <data name="LastNameMandatoryKey" xml:space="preserve">
+    <value>Le nom de famille est obligatoire</value>
+  </data>
+  <data name="PasswordMandatoryKey" xml:space="preserve">
+    <value>Le mot de passe est obligatoire</value>
+  </data>
+  <data name="PhoneMandatoryKey" xml:space="preserve">
+    <value>Le téléphone est obligatoire</value>
+  </data>
+  <data name="PleaseSelectKey" xml:space="preserve">
+    <value>Veuillez sélectionner</value>
+  </data>
+  <data name="UserNameMandatoryKey" xml:space="preserve">
+    <value>Le nom d'utilisateur est obligatoire</value>
+  </data>
+  <data name="UserSavedSuccessKey" xml:space="preserve">
+    <value>Utilisateur enregistré avec succès</value>
+  </data>
 </root>

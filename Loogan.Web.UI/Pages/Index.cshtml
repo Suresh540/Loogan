@@ -23,7 +23,7 @@
                 </div>
             </div>
             <div class="login-form">
-                <form method="post">
+                <form method="post" name="loginForm" id="loginForm">
                     <input type="hidden" name="DisplayMessage" id="DisplayMessage" />
                     <div class="clearfix">
                         <ul class="clearfix">
@@ -66,6 +66,10 @@
         if ('@Model.DisplayMessage' != '') {
             Alert('@Model.DisplayMessage', 'error');
         }
+        setTimeout(() => {
+            var message = '@Html.Raw(Json.Serialize(Localizer.GetAllStrings(true)))';
+            localizationLib.setLanguageData(message);
+        }, 1500)
     }
     onload();
 </script>
