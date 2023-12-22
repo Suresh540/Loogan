@@ -1,5 +1,8 @@
 ﻿@page
 @using Loogan.Web.UI.Components
+@using Loogan.Web.UI.Resources.Pages
+@using Microsoft.Extensions.Localization
+@inject IStringLocalizer<ContentLabel> Localizer
 @model IndexModel
 @{
     ViewData["Title"] = "Login";
@@ -8,11 +11,15 @@
 <component type="typeof(Upper_Component)" render-mode="Static" />
 <component type="typeof(ForgotPassword_Component)" render-mode="Server" />
 <div>
+    <div style="float:right">
+        @await Html.PartialAsync("_LanguageSwitcher", new Loogan.API.Models.Models.ApiRequest { RequestValue = Request.Path }) 
+        &nbsp;
+    </div>
     <div class="d-flex align-items-center justify-content-center">
         <div class="col-md-3">
             <div class="row">
                 <div id="login-block" class="small-11 small-centered medium-12 medium-centered text-center columns">
-                    <h2 class="login-logo new-logo" style="color:white">Loogan Learn ™</h2>
+                    <h2 class="login-logo new-logo" style="color:white">@Localizer["LooganLearnKey"] ™</h2>
                 </div>
             </div>
             <div class="login-form">
@@ -21,27 +28,27 @@
                     <div class="clearfix">
                         <ul class="clearfix">
                             <li class="clearfix">
-                                <label for="user_id">Username</label>
+                                <label for="user_id">@Localizer["UserNameKey"]</label>
                                 <input type="text" name="UserName" id="user_id" size="25" maxlength="50" autocomplete="off" onfocus="onKeyClick('user_id')" onblur="normalState('user_id')">
                             </li>
                             <li class="clearfix">
-                                <label for="password">Password</label>
+                                <label for="password">@Localizer["PasswordKey"]</label>
                                 <input size="25" name="Password" id="password" type="password" autocomplete="off" onfocus="onKeyClick('password')" onblur="normalState('password')">
                             </li>
                             <li class="clearfix">
-                                <input id="entry-login" type="button" value="Sign In" onclick="triggerSignIn()" name="login" class="button expand inverse outline">
+                                <input id="entry-login" type="button" value="@Localizer["SignInKey"]" onclick="triggerSignIn()" name="login" class="button expand inverse outline">
                             </li>
                         </ul>
                         <ul class="clearfix">
                             <li class="text-right" style="padding-bottom:3px">
-                                <button onclick="fnForgot()" id="openForogt" type="button" class="btn btn-light border rounded-pill shadow-sm mb-1" data-toggle="modal" data-target="#top_modal">Forgot Password<i class="fa fa-angle-up pl-2"></i></button>
+                                <button onclick="fnForgot()" id="openForogt" type="button" class="btn btn-light border rounded-pill shadow-sm mb-1" data-toggle="modal" data-target="#top_modal">@Localizer["ForgotPasswordKey"]<i class="fa fa-angle-up pl-2"></i></button>
                             </li>
                         </ul>
                         <ul>
                             <li class="clearfix">
                                 <select class="form-select">
-                                    <option>Sign in with third-party account</option>
-                                    <option>ADFS Login</option>
+                                    <option>@Localizer["SignThirdPartyKey"]</option>
+                                    <option>@Localizer["ADFSLoginKey"]</option>
                                 </select>
                             </li>
                         </ul>

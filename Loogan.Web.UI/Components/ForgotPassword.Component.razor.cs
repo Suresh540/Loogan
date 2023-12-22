@@ -1,7 +1,9 @@
 ﻿using Loogan.API.Models.Models;
 using Loogan.Common.Utilities;
+using Loogan.Web.UI.Resources.Pages;
 using Loogan.Web.UI.Utilities;
 using Microsoft.AspNetCore.Components;
+using Microsoft.Extensions.Localization;
 using Microsoft.JSInterop;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
@@ -23,6 +25,9 @@ namespace Loogan.Web.UI.Components
         public IUtilityHelper _utilityHelper { get; set; }
 
         public string UserName { get; set; }
+
+        [Inject]
+        public IStringLocalizer<ContentLabel> Localizer { get; set; }
 
         protected override void OnInitialized()
         {
@@ -46,7 +51,7 @@ namespace Loogan.Web.UI.Components
                 details.Subject = settings["Subject"];
                 details.Body = settings["Body"].Replace("{password}", userModel.Password);
                 mailMessage.SendEmail(details);
-                await JSRuntime.InvokeVoidAsync("sentMessage", "Mail sent successfully to email.");
+                await JSRuntime.InvokeVoidAsync("sentMessage", Localizer["MailSentKey"]);
             }
         }
 

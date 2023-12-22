@@ -1,8 +1,11 @@
 using Loogan.API.Models.Models;
+using Loogan.Web.UI.Resources.Pages;
 using Loogan.Web.UI.Utilities;
+using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.Extensions.Localization;
 
 namespace Loogan.Web.UI.Pages
 {
@@ -20,15 +23,14 @@ namespace Loogan.Web.UI.Pages
         [BindProperty]
         public string? DisplayMessage { get; set; }
 
-        public IndexModel(ILogger<IndexModel> logger, IUtilityHelper utilityHelper)
+        private IStringLocalizer<ContentLabel> _localizer { get; set; }
+
+        public IndexModel(ILogger<IndexModel> logger, IUtilityHelper utilityHelper, 
+            IStringLocalizer<ContentLabel> localizer)
         {
             _logger = logger;
             _utilityHelper = utilityHelper;
-        }
-
-        public void OnGet()
-        {
-
+            _localizer = localizer;
         }
 
         public async Task<IActionResult> OnPostAsync()
@@ -36,12 +38,12 @@ namespace Loogan.Web.UI.Pages
             DisplayMessage = "";
             if (string.IsNullOrEmpty(UserName))
             {
-                DisplayMessage = "User name is empty";
+                DisplayMessage = _localizer["UserNameEmptyKey"];
                 return Page();
             }
             if (string.IsNullOrEmpty(Password))
             {
-                DisplayMessage = "Password is empty";
+                DisplayMessage = _localizer["PasswordEmptyKey"];
                 return Page();
             }
             UserQuery query = new UserQuery();
@@ -59,7 +61,7 @@ namespace Loogan.Web.UI.Pages
                 else
                     return RedirectToPage("/Dashboard/admindashboard");
             }
-            DisplayMessage = "User name/Password is wrong";
+            DisplayMessage = _localizer["UserPwdWrongKey"];
             return Page();
         }
     }

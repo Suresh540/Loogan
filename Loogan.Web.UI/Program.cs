@@ -45,16 +45,18 @@ builder.Host.UseSerilog((context, configuration) =>
     configuration.ReadFrom.Configuration(context.Configuration));
 
 builder.Services.Configure<RequestLocalizationOptions>(options => {
-    const string defaultCulture = "en-us";
+    const string defaultCulture = "en-US";
     var supportedCultures = new[]
     {
         new CultureInfo(defaultCulture),
-        new CultureInfo("en-GB")
+        new CultureInfo("fr-FR")
     };
     options.DefaultRequestCulture = new RequestCulture(defaultCulture);
     options.SupportedCultures = supportedCultures;
     options.SupportedUICultures = supportedCultures;
 });
+
+
 
 var app = builder.Build();
 if (!app.Environment.IsDevelopment())
@@ -73,7 +75,7 @@ app.UseRouting();
 app.MapRazorPages();
 app.UseSession();
 
-var supportedCultures = new[] { "en-US", "en-GB" };
+var supportedCultures = new[] { "en-US", "fr-FR" };
 var localizationOptions = new RequestLocalizationOptions().SetDefaultCulture(supportedCultures[0])
     .AddSupportedCultures(supportedCultures)
     .AddSupportedUICultures(supportedCultures);

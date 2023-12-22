@@ -144,8 +144,193 @@
   <data name="ToolsKey" xml:space="preserve">
     <value>Tools</value>
   </data>
-  <!--admin-->
-	<data name="AddEditUserKey" xml:space="preserve">
+  <data name="AddEditUserKey" xml:space="preserve">
     <value>Add/Edit User</value>
+  </data>
+  <data name="AdditionalNameKey" xml:space="preserve">
+    <value>Additional Name</value>
+  </data>
+  <data name="BasicInformationKey" xml:space="preserve">
+    <value>Basic Information</value>
+  </data>
+  <data name="CityKey" xml:space="preserve">
+    <value>City</value>
+  </data>
+  <data name="ClearKey" xml:space="preserve">
+    <value>Clear</value>
+  </data>
+  <data name="CompanyKey" xml:space="preserve">
+    <value>Company</value>
+  </data>
+  <data name="ConfirmPasswordKey" xml:space="preserve">
+    <value>Confirm Password</value>
+  </data>
+  <data name="CountryKey" xml:space="preserve">
+    <value>Country</value>
+  </data>
+  <data name="DepartmentKey" xml:space="preserve">
+    <value>Department</value>
+  </data>
+  <data name="EducationLevelKey" xml:space="preserve">
+    <value>Education Level</value>
+  </data>
+  <data name="EmailAddressKey" xml:space="preserve">
+    <value>Email Address</value>
+  </data>
+  <data name="FaxNumberKey" xml:space="preserve">
+    <value>Fax Number</value>
+  </data>
+  <data name="FirstNameKey" xml:space="preserve">
+    <value>First Name</value>
+  </data>
+  <data name="GenderKey" xml:space="preserve">
+    <value>Gender</value>
+  </data>
+  <data name="JobTitleKey" xml:space="preserve">
+    <value>Job Title</value>
+  </data>
+  <data name="LastNameKey" xml:space="preserve">
+    <value>Last Name</value>
+  </data>
+  <data name="MiddleNameKey" xml:space="preserve">
+    <value>Middle Name</value>
+  </data>
+  <data name="PasswordKey" xml:space="preserve">
+    <value>Password</value>
+  </data>
+  <data name="PhoneNumberKey" xml:space="preserve">
+    <value>Phone Number</value>
+  </data>
+  <data name="PrefixKey" xml:space="preserve">
+    <value>Prefix</value>
+  </data>
+  <data name="SaveKey" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="ShowUsersKey" xml:space="preserve">
+    <value>Show Users</value>
+  </data>
+  <data name="State_ProvinceKey" xml:space="preserve">
+    <value>State/Province</value>
+  </data>
+  <data name="SuffixKey" xml:space="preserve">
+    <value>Suffix</value>
+  </data>
+  <data name="UserNameKey" xml:space="preserve">
+    <value>User Name</value>
+  </data>
+  <data name="WebsiteKey" xml:space="preserve">
+    <value>Website</value>
+  </data>
+  <data name="AdditionalInformationKey" xml:space="preserve">
+    <value>Additional Information</value>
+  </data>
+  <data name="ADFSLoginKey" xml:space="preserve">
+    <value>ADFS Login</value>
+  </data>
+  <data name="CloseKey" xml:space="preserve">
+    <value>Close</value>
+  </data>
+  <data name="ContactInformationKey" xml:space="preserve">
+    <value>Contact Information</value>
+  </data>
+  <data name="DataSavedKey" xml:space="preserve">
+    <value>Data saved successfully</value>
+  </data>
+  <data name="FailedSaveKey" xml:space="preserve">
+    <value>Failed to save</value>
+  </data>
+  <data name="ForgotPasswordKey" xml:space="preserve">
+    <value>Forgot Password</value>
+  </data>
+  <data name="JobInformationKey" xml:space="preserve">
+    <value>Job Information</value>
+  </data>
+  <data name="LooganLearnKey" xml:space="preserve">
+    <value>Loogan Learn</value>
+  </data>
+  <data name="PasswordEmptyKey" xml:space="preserve">
+    <value>Password is empty</value>
+  </data>
+  <data name="SaveChangesKey" xml:space="preserve">
+    <value>Save changes</value>
+  </data>
+  <data name="SignInKey" xml:space="preserve">
+    <value>Sign In</value>
+  </data>
+  <data name="SignThirdPartyKey" xml:space="preserve">
+    <value>Sign in with third-party account</value>
+  </data>
+  <data name="UserNameEmptyKey" xml:space="preserve">
+    <value>User name is empty</value>
+  </data>
+  <data name="UserPwdWrongKey" xml:space="preserve">
+    <value>User name/Password is wrong</value>
+  </data>
+  <data name="CancelKey" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="ChangeLanguageKey" xml:space="preserve">
+    <value>Change Language</value>
+  </data>
+  <data name="LooganReservedKey" xml:space="preserve">
+    <value>Loogan Inc. All Rights Reserved.</value>
+  </data>
+  <data name="MailSentKey" xml:space="preserve">
+    <value>Mail sent successfully to email</value>
+  </data>
+  <data name="SubmitKey" xml:space="preserve">
+    <value>Submit</value>
+  </data>
+  <data name="FullNameKey" xml:space="preserve">
+    <value>Full Name</value>
+  </data>
+  <data name="AddBusinessFaxNumberKey" xml:space="preserve">
+    <value>Add business fax number</value>
+  </data>
+  <data name="AddCompanyKey" xml:space="preserve">
+    <value>Add company</value>
+  </data>
+  <data name="AddDepartmentKey" xml:space="preserve">
+    <value>Add department</value>
+  </data>
+  <data name="AddJobTitleKey" xml:space="preserve">
+    <value>Add job title</value>
+  </data>
+  <data name="AddMailingAddressKey" xml:space="preserve">
+    <value>Add mailing address</value>
+  </data>
+  <data name="AddPhoneNumberKey" xml:space="preserve">
+    <value>Add phone number</value>
+  </data>
+  <data name="AddWebsiteKey" xml:space="preserve">
+    <value>Add Website</value>
+  </data>
+  <data name="EmailNotificationsKey" xml:space="preserve">
+    <value>Email notifications</value>
+  </data>
+  <data name="GlobalNotificationSettingsKey" xml:space="preserve">
+    <value>Global Notification Settings</value>
+  </data>
+  <data name="LanguageKey" xml:space="preserve">
+    <value>Language</value>
+  </data>
+  <data name="MailingAddressKey" xml:space="preserve">
+    <value>Mailing Address</value>
+  </data>
+  <data name="OnlyInstructorViewKey" xml:space="preserve">
+    <value>Only instructors can &lt;br/&gt; view my profile&lt;br/&gt; information</value>
+  </data>
+  <data name="PrivacySettigsKey" xml:space="preserve">
+    <value>Privacy Settigs</value>
+  </data>
+  <data name="PushNotificationsKey" xml:space="preserve">
+    <value>Push notifications</value>
+  </data>
+  <data name="StreamNotificationsKey" xml:space="preserve">
+    <value>Stream notifications</value>
+  </data>
+  <data name="SystemSettingsKey" xml:space="preserve">
+    <value>System Settings</value>
   </data>
 </root>

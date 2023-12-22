@@ -1,14 +1,4 @@
-﻿@page "leftsidebar"
-@using Loogan.Web.UI.Resources.Pages.LeftSideBar
-@using Microsoft.Extensions.Localization
-@model Loogan.Web.UI.Pages.Shared.LeftSideBarModel
-@inject IStringLocalizer<LeftSideBar> Localizer
-@using Microsoft.AspNetCore.Http;
-@inject IHttpContextAccessor _httpContext
-@{
-    var userName = _httpContext?.HttpContext?.Session?.GetString("UserName");
-    var userType = _httpContext?.HttpContext?.Session?.GetString("LoginUserType");
-}
+﻿@inherits Loogan.Web.UI.Components.LeftSideBarBase
 
 <ul class="ulspace">
     <li class="text-white">
@@ -16,21 +6,21 @@
     </li>
 </ul>
 <form method="post">
-    @if (userType == "Admin")
+    @if (UserType == "Admin")
     {
         <ul class="ulspace">
             <li class="liSpace">
-                <img src="~/images/profile.png" width="30px" height="30px" />
+                <img src="/images/profile.png" style="width:30px;height:30px"/>
                 <a style="color:white;font-size:16px;" href="/Profile/Profile">
-                    @userName
+                    @UserName
                 </a>
             </li>
             <li class="liSpace">
-                <img src="~/images/grades.png" width="30px" height="30px" />
+                <img src="/images/grades.png" style="width:30px;height:30px" />
                 <a style="color:white;font-size:16px;" href="/User/user">@Localizer["AddEditUserKey"]</a>
             </li>
             <li class="liSpace">
-                <img src="~/images/signout.png" width="30px" height="30px" />
+                <img src="/images/signout.png" style="width:30px;height:30px" />
                 <a style="color:white;font-size:16px;" href="#" onclick="signOut()">@Localizer["SignOutKey"]</a>
             </li>
         </ul>
@@ -39,45 +29,45 @@
     {
         <ul class="ulspace">
             <li class="liSpace">
-                <img src="~/images/institution.png" alt="Institurion" width="30px" height="30px" />
+                <img src="/images/institution.png" alt="Institurion" style="width:30px;height:30px" />
                 <a style="color:white;font-size:16px;" href="/dashboard/dashboard">@Localizer["InstitutionPageKey"]</a>
             </li>
             <li class="liSpace">
-                <img src="~/images/profile.png" width="30px" height="30px" />
+                <img src="/images/profile.png" style="width:30px;height:30px" />
                 <a style="color:white;font-size:16px;" href="/Profile/Profile">
-                    @userName
+                    @UserName
                 </a>
             </li>
             <li class="liSpace">
-                <img src="~/images/activity.png" width="30px" height="30px" />
+                <img src="/images/activity.png" style="width:30px;height:30px" />
                 <a style="color:white;font-size:16px;" href="#">@Localizer["ActivityStreamKey"]</a>
             </li>
             <li class="liSpace">
-                <img src="~/images/course.png" width="30px" height="30px" />
+                <img src="/images/course.png" style="width:30px;height:30px" />
                 <a style="color:white;font-size:16px;" href="#">@Localizer["CoursesKey"]</a>
             </li>
             <li class="liSpace">
-                <img src="~/images/organization.png" width="30px" height="30px" />
+                <img src="/images/organization.png" style="width:30px;height:30px" />
                 <a style="color:white;font-size:16px;" href="#">@Localizer["OrgnizationsKey"]</a>
             </li>
             <li class="liSpace">
-                <img src="~/images/calendar.png" width="30px" height="30px" />
+                <img src="/images/calendar.png" style="width:30px;height:30px" />
                 <a style="color:white;font-size:16px;" href="#">@Localizer["CalendarKey"]</a>
             </li>
             <li class="liSpace">
-                <img src="~/images/messages.png" width="30px" height="30px" />
+                <img src="/images/messages.png" style="width:30px;height:30px" />
                 <a style="color:white;font-size:16px;" href="#">@Localizer["MessagesKey"]</a>
             </li>
             <li class="liSpace">
-                <img src="~/images/grades.png" width="30px" height="30px" />
+                <img src="/images/grades.png" style="width:30px;height:30px" />
                 <a style="color:white;font-size:16px;" href="#">@Localizer["GradesKey"]</a>
             </li>
             <li class="liSpace">
-                <img src="~/images/tools.png" width="30px" height="30px" />
+                <img src="/images/tools.png" style="width:30px;height:30px" />
                 <a style="color:white;font-size:16px;" href="#">@Localizer["ToolsKey"]</a>
             </li>
             <li class="liSpace">
-                <img src="~/images/signout.png" width="30px" height="30px" />
+                <img src="/images/signout.png" style="width:30px;height:30px" />
                 <a style="color:white;font-size:16px;" href="#" onclick="signOut()">@Localizer["SignOutKey"]</a>
             </li>
         </ul>

@@ -1,5 +1,6 @@
 using Loogan.API.Models.Models;
 using Loogan.Web.UI.Pages.Shared;
+using Loogan.Web.UI.Resources.Pages;
 using Loogan.Web.UI.Utilities;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -18,7 +19,7 @@ namespace Loogan.Web.UI.Pages.Profile
         public List<SectionModel>? RightSectionValues { get; set; }
 
         [BindProperty]
-        public IStringLocalizer<LeftSideBarModel> _localizer { get; set; }
+        public IStringLocalizer<ContentLabel> _localizer { get; set; }
 
         [BindProperty]
         public string? ProfileName { get; set; }
@@ -27,7 +28,7 @@ namespace Loogan.Web.UI.Pages.Profile
         public UserModel UserProfileModel { get; set; }
 
 
-        public ProfileModel(IStringLocalizer<LeftSideBarModel> localizer, IUtilityHelper utilityHelper)
+        public ProfileModel(IStringLocalizer<ContentLabel> localizer, IUtilityHelper utilityHelper)
         {
             _localizer = localizer;
             _utilityHelper = utilityHelper;
@@ -49,43 +50,43 @@ namespace Loogan.Web.UI.Pages.Profile
                 LeftSectionValues = new List<SectionModel> {
                 new SectionModel()
                 {
-                    SectionName = "Basic Information",
+                    SectionName = _localizer["BasicInformationKey"],
                     SectionValueData = new Dictionary<string, string>
                     {
-                        {"Full Name", ProfileName },
-                        {"Email Address", userModel?.EmailAddress }
+                        {_localizer["FullNameKey"], ProfileName },
+                        {_localizer["EmailAddressKey"], userModel?.EmailAddress }
 
                     }
                 },
                 new SectionModel()
                 {
-                    SectionName = "Additional Information",
+                    SectionName = _localizer["AdditionalInformationKey"],
                     SectionValueData = new Dictionary<string, string>
                     {
-                        {"Gender",userModel?.Gender },
-                        {"Additional Name", userModel?.AdditionalName  },
-                        {"Education Level", userModel?.EducationLevel  },
-                        {"Website", "<a href='#' data-toggle=\"modal\" data-target=\"#right_modal\">" + (!string.IsNullOrEmpty(userModel.WebSite) ? userModel.WebSite : "Add Website") + "</a>" },
+                        {_localizer["GenderKey"],userModel?.Gender },
+                        {_localizer["AdditionalNameKey"], userModel?.AdditionalName  },
+                        {_localizer["EducationLevelKey"], userModel?.EducationLevel  },
+                        {_localizer["WebsiteKey"], "<a href='#' data-toggle=\"modal\" data-target=\"#right_modal\">" + (!string.IsNullOrEmpty(userModel.WebSite) ? userModel.WebSite : _localizer["AddWebsiteKey"]) + "</a>" },
                     }
                 },
                 new SectionModel()
                 {
-                    SectionName = "Contact Information",
+                    SectionName = _localizer["ContactInformationKey"],
                     SectionValueData = new Dictionary<string, string>
                     {
-                         {"Mailing Address", "<a href='#' data-toggle=\"modal\" data-target=\"#right_modal\">" + (!string.IsNullOrEmpty(userModel.EmailAddress) ? userModel.EmailAddress : "Add mailing address") + "</a>" },
-                         {"Phone Number", "<a href='#' data-toggle=\"modal\" data-target=\"#right_modal\">" + (!string.IsNullOrEmpty(userModel.PhoneNumber) ? userModel.PhoneNumber : "Add phone number") + "</a>" },
-                         {"Business Fax Number", "<a href='#' data-toggle=\"modal\" data-target=\"#right_modal\">" + (!string.IsNullOrEmpty(userModel.Fax) ? userModel.Fax : "Add business fax number") + "</a>" },
+                         {_localizer["MailingAddressKey"], "<a href='#' data-toggle=\"modal\" data-target=\"#right_modal\">" + (!string.IsNullOrEmpty(userModel.EmailAddress) ? userModel.EmailAddress : _localizer["AddMailingAddressKey"]) + "</a>" },
+                         {_localizer["PhoneNumberKey"], "<a href='#' data-toggle=\"modal\" data-target=\"#right_modal\">" + (!string.IsNullOrEmpty(userModel.PhoneNumber) ? userModel.PhoneNumber : _localizer["AddPhoneNumberKey"]) + "</a>" },
+                         {_localizer["FaxNumberKey"], "<a href='#' data-toggle=\"modal\" data-target=\"#right_modal\">" + (!string.IsNullOrEmpty(userModel.Fax) ? userModel.Fax : _localizer["AddBusinessFaxNumberKey"]) + "</a>" },
                     }
                 },
                 new SectionModel()
                 {
-                    SectionName = "Job Information",
+                    SectionName = _localizer["JobInformationKey"],
                     SectionValueData = new Dictionary<string, string>
                     {
-                        {"Company", "<a href='#' data-toggle=\"modal\" data-target=\"#right_modal\">" + (!string.IsNullOrEmpty(userModel.Company) ? userModel.Company : "Add company") + "</a>" },
-                        {"Job Title", "<a href='#' data-toggle=\"modal\" data-target=\"#right_modal\">" + (!string.IsNullOrEmpty(userModel.JobTitle) ? userModel.JobTitle : "Add job title") + "</a>" },
-                        {"Department", "<a href='#' data-toggle=\"modal\" data-target=\"#right_modal\">" + (!string.IsNullOrEmpty(userModel.Department) ? userModel.Department : "Add department") + "</a>" },
+                        {_localizer["CompanyKey"], "<a href='#' data-toggle=\"modal\" data-target=\"#right_modal\">" + (!string.IsNullOrEmpty(userModel.Company) ? userModel.Company : _localizer["AddCompanyKey"]) + "</a>" },
+                        {_localizer["JobTitleKey"], "<a href='#' data-toggle=\"modal\" data-target=\"#right_modal\">" + (!string.IsNullOrEmpty(userModel.JobTitle) ? userModel.JobTitle : _localizer["AddJobTitleKey"]) + "</a>" },
+                        {_localizer["DepartmentKey"], "<a href='#' data-toggle=\"modal\" data-target=\"#right_modal\">" + (!string.IsNullOrEmpty(userModel.Department) ? userModel.Department : _localizer["AddDepartmentKey"]) + "</a>" },
                     }
                 }
 
@@ -94,12 +95,12 @@ namespace Loogan.Web.UI.Pages.Profile
                 RightSectionValues = new List<SectionModel> {
                 new SectionModel()
                 {
-                    SectionName = "System Settings",
+                    SectionName = _localizer["SystemSettingsKey"],
                     SectionValueData = new Dictionary<string, string>
                     {
-                        {"Langauage",userModel?.UserLanguage },
-                        {"Privacy Settigs", "<a href='#' data-toggle=\"modal\" data-target=\"#right_modal\">Only instructors can <br/> view my profile<br/> information</a>" },
-                        {"Global Notification Settings", "<a href='#' data-toggle=\"modal\" data-target=\"#right_modal\">Stream notifications</a> <br/><a href='#' data-toggle=\"modal\" data-target=\"#right_modal\">Email notifications</a><br/><a href='#' data-toggle=\"modal\" data-target=\"#right_modal\">Push notifications</a>" },
+                        {_localizer["LanguageKey"],userModel?.UserLanguage },
+                        {_localizer["PrivacySettigsKey"], $"<a href='#' data-toggle=\"modal\" data-target=\"#right_modal\">{_localizer["OnlyInstructorViewKey"]}</a>" },
+                        {_localizer["GlobalNotificationSettingsKey"], $"<a href='#' data-toggle=\"modal\" data-target=\"#right_modal\">{_localizer["StreamNotificationsKey"]}</a> <br/><a href='#' data-toggle=\"modal\" data-target=\"#right_modal\">{_localizer["EmailNotificationsKey"]}</a><br/><a href='#' data-toggle=\"modal\" data-target=\"#right_modal\">{_localizer["PushNotificationsKey"]}</a>" },
                     }
                 },
             };

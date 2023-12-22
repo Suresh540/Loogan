@@ -16,6 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="BundlerMinifier.Core" Version="3.2.449" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="8.0.0" NoWarn="NU1605" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.OpenIdConnect" Version="8.0.0" NoWarn="NU1605" />
     <PackageReference Include="Microsoft.Identity.Web" Version="2.15.2" />
@@ -37,19 +38,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Update="Resources\Pages\LeftSideBar\LeftSideBar.Designer.cs">
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-      <DependentUpon>LeftSideBar.resx</DependentUpon>
-    </Compile>
-  </ItemGroup>
-
-  <ItemGroup>
-    <EmbeddedResource Update="Resources\Pages\LeftSideBar\LeftSideBar.resx">
+    <EmbeddedResource Update="Resources\Pages\ContentLabel.fr-FR.resx">
+      <SubType>Designer</SubType>
       <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>LeftSideBar.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Update="Resources\Pages\LeftSideBar\LeftSideBar.en-US.resx">
+    <EmbeddedResource Update="Resources\Pages\ContentLabel.en-US.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
     </EmbeddedResource>
   </ItemGroup>

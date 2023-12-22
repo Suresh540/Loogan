@@ -9,13 +9,9 @@
         <div class="inner-wrap">
             <div class="row">
                 <div class="col-2 bb-login pointscroll leftmenu">
-                    @{
-                        LeftSideBarModel leftSideBar = new LeftSideBarModel();
-                        await Html.RenderPartialAsync("leftsidebar", leftSideBar);
-                    }
+                    <component type="typeof(LeftSideBar_Component)" render-mode="Server" />
                 </div>
                 <div class="col-10 base-profile pointscroll righcontent">
-
                     <div class="background">&nbsp;</div>
                     <div class="account-snapshot columns small-12 text-center">
                         <div class="avatar-container can-edit">

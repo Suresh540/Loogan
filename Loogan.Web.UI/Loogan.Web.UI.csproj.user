@@ -7,9 +7,10 @@
     <Controller_SelectedScaffolderCategoryPath>root/Common/MVC/Controller</Controller_SelectedScaffolderCategoryPath>
     <View_SelectedScaffolderID>RazorViewEmptyScaffolder</View_SelectedScaffolderID>
     <View_SelectedScaffolderCategoryPath>root/Common/MVC/View</View_SelectedScaffolderCategoryPath>
+    <NameOfLastUsedPublishProfile>C:\Users\KSN Murthy\source\repos_l\Loogan.Web.UI\Properties\PublishProfiles\FolderProfile.pubxml</NameOfLastUsedPublishProfile>
   </PropertyGroup>
   <ItemGroup>
-    <EmbeddedResource Update="Resources\Pages\LeftSideBar\LeftSideBar.en-US.resx">
+    <EmbeddedResource Update="Resources\Pages\ContentLabel.en-US.resx">
       <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>

@@ -22,3 +22,6 @@
 /Loogan.Common.Utilities/obj
 /Loogan.Web.UI/Logs
 /Loogan.Web.API/Logs
+/Loogan.API.Models/bin/Release/net8.0
+/Loogan.Common.Utilities/bin/Release/net8.0
+/Loogan.Web.UI/bin/Release/net8.0

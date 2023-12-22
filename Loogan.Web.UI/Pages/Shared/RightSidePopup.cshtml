@@ -1,4 +1,7 @@
-﻿@model Loogan.API.Models.Models.UserModel
+﻿@using Loogan.Web.UI.Resources.Pages
+@using Microsoft.Extensions.Localization
+@model Loogan.API.Models.Models.UserModel
+@inject IStringLocalizer<ContentLabel> Localizer
 
 <div class="modal modal-right fade" id="right_modal" tabindex="-1" role="dialog" aria-labelledby="right_modal">
     <div class="modal-dialog" role="document">
@@ -10,103 +13,103 @@
                 </button>
             </div>
             <div class="modal-body">
-                <h3>Basic Information</h3>
+                <h3>@Localizer["BasicInformationKey"]</h3>
                 <hr />
                 <p>
                     <div>
-                        <b>First Name</b><br />
+                        <b>@Localizer["FirstNameKey"]</b><br />
                         @Model?.FirstName
                     </div>
 
                     <div>
-                        <b>Last Name</b><br />
+                        <b>@Localizer["LastNameKey"]</b><br />
                         @Model?.LastName
                     </div>
                     <div>
-                        <b>Additional Name</b><br />
+                        <b>@Localizer["AdditionalNameKey"]</b><br />
                         <input type="text" id="txtAddName" value="@Model?.AdditionalName" />
                     </div>
                     <div>
-                        <b>Email Address</b><br />
+                        <b>@Localizer["EmailAddressKey"]</b><br />
                         @Model?.EmailAddress
                     </div>
                 </p>
-                <h3 style="margin:5px">Additional Information</h3>
+                <h3 style="margin:5px">@Localizer["AdditionalInformationKey"]</h3>
                 <hr />
                 <p>
                     <div>
-                        <b>Gender</b><br />
+                        <b>@Localizer["GenderKey"]</b><br />
                         <select id="ddlGender">
                         </select>
                     </div>
                     <div>
-                        <b>Prefix</b><br />
+                        <b>@Localizer["PrefixKey"]</b><br />
                         <input id="txtPrefix" type="text" value="@Model?.PreFix" />
                     </div>
                     <div>
-                        <b>Middle Name</b><br /> 
+                        <b>@Localizer["MiddleNameKey"]</b><br />
                         <input id="txtMiddleName" type="text" value="@Model?.MiddleName" />
                     </div>
                     <div>
-                        <b>Suffix</b><br />
+                        <b>@Localizer["SuffixKey"]</b><br />
                         <input id="txtSuffix" type="text" value="@Model?.Suffix" />
                     </div>
                     <div>
-                        <b>Education Level</b><br />
+                        <b>@Localizer["EducationLevelKey"]</b><br />
                         <select id="ddlEductionLevel">
                         </select>
                     </div>
                     <div>
-                        <b>Website</b><br />
+                        <b>@Localizer["WebsiteKey"]</b><br />
                         <input id="txtWebSite" type="text" value="@Model?.WebSite" />
                     </div>
                 </p>
 
-                <h3 style="margin:5px">Contact Information</h3>
+                <h3 style="margin:5px">@Localizer["ContactInformationKey"]</h3>
                 <hr />
                 <p>
                     <div>
-                        <b>City</b><br />
+                        <b>@Localizer["CityKey"]</b><br />
                         <input id="txtCity" type="text" value="@Model?.City" />
                     </div>
                     <div>
-                        <b>State/Province</b><br />
+                        <b>@Localizer["State_ProvinceKey"]</b><br />
                         <input id="txtState" type="text" value="@Model?.State" />
                     </div>
                     <div>
-                        <b>Country</b><br />
+                        <b>@Localizer["CountryKey"]</b><br />
                         <input id="txtCountry" type="text" value="@Model?.Country" />
                     </div>
                     <div>
-                        <b>Phone Number</b><br />
+                        <b>@Localizer["PhoneNumberKey"]</b><br />
                         <input id="txtPhone" type="text" value="@Model?.PhoneNumber" />
                     </div>
                     <div>
-                        <b>Fax Number</b><br />
+                        <b>@Localizer["FaxNumberKey"]</b><br />
                         <input id="txtFax" type="text" value="@Model?.Fax" />
                     </div>
                 </p>
 
-                <h3 style="margin:5px">Job Information</h3>
+                <h3 style="margin:5px">@Localizer["JobInformationKey"]</h3>
                 <hr />
                 <p>
                     <div>
-                        <b>Company</b><br />
+                        <b>@Localizer["CompanyKey"]</b><br />
                         <input id="txtCompany" type="text" value="@Model?.Company" />
                     </div>
                     <div>
-                        <b>Job Title</b><br />
+                        <b>@Localizer["JobTitleKey"]</b><br />
                         <input id="txtJobTitle" type="text" value="@Model?.JobTitle" />
                     </div>
                     <div>
-                        <b>Department</b><br />
+                        <b>@Localizer["DepartmentKey"]</b><br />
                         <input id="txtDepartment" type="text" value="@Model?.Department" />
                     </div>
                 </p>
             </div>
             <div class="modal-footer modal-footer-fixed">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <input type="button" class="btn btn-primary" value="Save changes" onclick="UpdateUser()" />
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">@Localizer["CloseKey"]</button>
+                <input type="button" class="btn btn-primary" value="@Localizer["SaveChangesKey"]" onclick="UpdateUser()" />
             </div>
         </div>
     </div>
@@ -138,11 +141,11 @@
             url: "/User/UpdateUser",
             data: { user: model },
             success: function (e) {
-                Alert('Data saved successfully', 'Success');
+                Alert('@Localizer["DataSavedKey"]', 'Success');
                 $('#btnClose').trigger('click');
             },
             error: function (e) {
-                Alert('Failed to save successfully', 'error');
+                Alert('@Localizer["FailedSaveKey"]', 'error');
                 $('#btnClose').trigger('click');
             }
         })

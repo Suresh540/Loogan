@@ -20,7 +20,7 @@ window.triggerSignIn = function () {
         $('#password').focus();
         return;
     }
-    document.forms[0].submit();
+    document.forms[1].submit();
 }
 
 window.onload = function () {

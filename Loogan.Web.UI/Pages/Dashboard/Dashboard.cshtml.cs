@@ -1,4 +1,5 @@
 using Loogan.Web.UI.Pages.Shared;
+using Loogan.Web.UI.Resources.Pages;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -8,10 +9,6 @@ namespace Loogan.Web.UI.Pages.Dashboard
 {
     public class DashboardModel : PageModel
     {
-        public void OnGet()
-        {
-
-
-        }
+        
     }
 }

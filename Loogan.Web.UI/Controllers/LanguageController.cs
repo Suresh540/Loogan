@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace Loogan.Web.UI.Controllers
 {
@@ -23,7 +24,7 @@ namespace Loogan.Web.UI.Controllers
                 new CookieOptions { Expires = DateTimeOffset.UtcNow.AddYears(1) }
             );
             return LocalRedirect(returnUrl);
-        } 
+        }
 
     }
 }
