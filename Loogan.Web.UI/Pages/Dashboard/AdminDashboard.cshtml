@@ -1,6 +1,9 @@
 ﻿@page "/Dashboard/adminDashboardModel"
 @using Loogan.Web.UI.Components
 @model Loogan.Web.UI.Pages.Dashboard.AdminDashboardModel
+@using Loogan.Web.UI.Resources.Pages
+@using Microsoft.Extensions.Localization
+@inject IStringLocalizer<ContentLabel> Localizer
 
 <component type="typeof(Upper_Component)" render-mode="Static" />
 <div>
@@ -13,7 +16,7 @@
                     <component type="typeof(LeftSideBar_Component)" render-mode="ServerPrerendered" />
                 </div>
                 <div class="col-10">
-                    <partial name="_LanguageSwitcher"></partial> &nbsp;
+                    &nbsp;
                 </div>
             </div>
         </div>

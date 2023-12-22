@@ -1,6 +1,8 @@
 ﻿using Loogan.Web.UI.Resources.Pages;
 using Microsoft.AspNetCore.Components;
 using Microsoft.Extensions.Localization;
+using Microsoft.JSInterop;
+using Newtonsoft.Json;
 namespace Loogan.Web.UI.Components
 {
     public class LeftSideBarBase : ComponentBase
@@ -15,11 +17,11 @@ namespace Loogan.Web.UI.Components
 
         public string? UserType { get; set; }
 
-        protected override void OnInitialized()
+        protected override async Task OnInitializedAsync()
         {
             UserName = _httpContext?.HttpContext?.Session?.GetString("UserName");
             UserType = _httpContext?.HttpContext?.Session?.GetString("LoginUserType");
-            base.OnInitialized();
+            await base.OnInitializedAsync();
         }
     }
 }

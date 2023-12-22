@@ -1,6 +1,9 @@
 ﻿@page "/Dashboard/dashboard"
 @using Loogan.Web.UI.Components
+@using Loogan.Web.UI.Resources.Pages
+@using Microsoft.Extensions.Localization
 @model DashboardModel
+@inject IStringLocalizer<ContentLabel> Localizer
 
 <component type="typeof(Upper_Component)" render-mode="Static" />
 <div>
@@ -13,7 +16,7 @@
                     <component type="typeof(LeftSideBar_Component)" render-mode="Server" />
                 </div>
                 <div class="col-10 text-sm-end">
-                    @await Html.PartialAsync("_LanguageSwitcher", new Loogan.API.Models.Models.ApiRequest { RequestValue = Request.Path }) &nbsp;
+                    &nbsp;
                 </div>
             </div>
         </div>
@@ -21,6 +24,7 @@
 </div>
 <component type="typeof(Lower_Component)" render-mode="Static" />
 <br />
+
 
 
 
