@@ -31,9 +31,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{D94B4B
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Loogan.Common.Utilities", "Loogan.Common.Utilities\Loogan.Common.Utilities.csproj", "{18467295-06F8-4AE6-8DBF-95DD6D0335F9}"
 EndProject
-Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "Loogan.SqlServer.DatabaseScripts", "Loogan.Database\Loogan.SqlServer.DatabaseScripts.sqlproj", "{A5FBED7F-B34C-44FB-811D-0F23923DFDFB}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SqlProject", "SqlProject", "{CA526E88-F25B-4CC7-A5E0-899B21B91419}"
+EndProject
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "Loogan.SqlServer.DatabaseScripts", "Loogan.SqlServer.DatabaseScripts\Loogan.SqlServer.DatabaseScripts.sqlproj", "{A5FBED7F-B34C-44FB-811D-0F23923DFDFB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
