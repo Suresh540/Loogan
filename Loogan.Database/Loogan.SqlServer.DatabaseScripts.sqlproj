@@ -3,7 +3,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <Name>Loogan.Database</Name>
+    <Name>Loogan.SqlServer.DatabaseScripts</Name>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectVersion>4.1</ProjectVersion>
     <ProjectGuid>{a5fbed7f-b34c-44fb-811d-0f23923dfdfb}</ProjectGuid>
