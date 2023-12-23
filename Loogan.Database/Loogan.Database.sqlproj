@@ -58,6 +58,7 @@
     <Folder Include="Properties" />
     <Folder Include="Sp" />
     <Folder Include="TableType" />
+    <Folder Include="dmlscript" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="DbScript.sql" />
@@ -65,5 +66,6 @@
     <Build Include="Sp\[dbo].[Get_AllUserDetails].sql" />
     <Build Include="Sp\[dbo].[Get_UserLoginDetails].sql" />
     <Build Include="Sp\Get_MasterLookUpValues1.sql" />
+    <Build Include="dmlscript\12_Dec_2023_UserTable_Alter.sql" />
   </ItemGroup>
 </Project>
