@@ -40,8 +40,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DBScripts", "DBScripts", "{
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SP", "SP", "{260ACCE5-EE48-4B72-BB79-256948C729DF}"
 	ProjectSection(SolutionItems) = preProject
+		..\..\OneDrive\Desktop\Get_AllUserDetails.sql = ..\..\OneDrive\Desktop\Get_AllUserDetails.sql
 		sp\Get_UserDetails.sql = sp\Get_UserDetails.sql
-		..\..\..\OneDrive\Desktop\Loogan_Project\db\sp\[dbo].[Get_AllUserDetails].sql = ..\..\..\OneDrive\Desktop\Loogan_Project\db\sp\[dbo].[Get_AllUserDetails].sql
 		sp\[dbo].[Get_UserLoginDetails].sql = sp\[dbo].[Get_UserLoginDetails].sql
 	EndProjectSection
 EndProject
