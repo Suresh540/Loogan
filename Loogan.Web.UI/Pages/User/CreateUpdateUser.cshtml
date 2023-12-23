@@ -5,6 +5,10 @@
 @model Loogan.API.Models.Models.UserModel
 @inject IStringLocalizer<ContentLabel> Localizer
 
+@{
+    var showUsers = "showUsers";
+    var getTotalRecords = "getTotalRecords";
+}
 <component type="typeof(Upper_Component)" render-mode="Static" />
 <div id="site-wrap" class="off-canvas-wrap">
     <div class="inner-wrap">
@@ -18,8 +22,8 @@
                         <button onclick="showUsers()" type="button" style="background:gray;color:black" class="btn btn-light border rounded-pill shadow-sm mb-1" data-toggle="modal" data-target="#bottom_modal">
                             <b>@Localizer["ShowUsersKey"]</b>
                         </button>
-                        <button type="button" class="btn btn-light border rounded-pill shadow-sm mb-1"
-                                style="background:lightgreen;color:white">
+                        <button type="button" class="btn btn-light border rounded-pill shadow-sm mb-1" onclick="clearUserData()"
+                                style="background:lightgreen;color:black">
                             <b>@Localizer["ClearKey"]</b>
                         </button>
                         <button id="btnSaveuser" type="button" class="btn btn-light border rounded-pill shadow-sm mb-1" onclick="createUser('btnSaveuser')"
@@ -38,6 +42,8 @@
                                     @Localizer["FirstNameKey"]
                                 </b><br />
                                 <input id="txtFirstName" type="text" />
+                                <input type="hidden" id="hdnUserId" name="hdnUserId" value="0" />
+                                <input type="hidden" id="hdnUserTypeId" name="hdnUserTypeId" value="0" />
                             </div>
                             <div>
                                 <b>
@@ -228,6 +234,8 @@
                     <tbody id="tdBody">
                     </tbody>
                 </table>
+                <component type="typeof(Paging_Component)" render-mode="ServerPrerendered"
+                           param-TotalRecords="10" param-NavigateURL="showUsers" param-TotalRecordsURL="getTotalRecords" />
             </div>
             <div class="modal-footer modal-footer-fixed d-none">
                 <button id="btnCreateClose" type="button" class="btn btn-secondary" data-dismiss="modal">

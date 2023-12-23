@@ -1,7 +1,8 @@
-﻿function createUser() {
-
+﻿let totalRecords = 0;
+function createUser() {
     var model = {}
-    model.userTypeId = 3;  //student
+    model.userId = $('#hdnUserId').val();
+    model.userTypeId = $('#hdnUserTypeId').val() == 0 ? 3 : $('#hdnUserTypeId').val(); 
     model.firstName = $('#txtFirstName').val();
     model.middleName = $('#txtMiddleName').val();
     model.lastName = $('#txtLastName').val();
@@ -10,15 +11,15 @@
     model.userName = $('#txtUserName').val();
     model.password = $('#txtPassword').val();
     model.genderId = $('#ddlGender').val();
-    model.preFix = $('#txtPrefix').val();
+    model.preFix = $('#txtPreFix').val();
     model.suffix = $('#txtSuffix').val();
     model.educationLevel = $("#ddlEductionLevel option:selected").text();
-    model.webSite = $('#txtWebSite').val();
+    model.webSite = $('#txtWebsite').val();
     model.phoneNumber = $('#txtPhone').val();
     model.city = $('#txtCity').val();
     model.state = $('#txtState').val();
     model.country = $('#txtCountry').val();
-    model.fax = $('#txtFax').val();
+    model.fax = $('#txtFaxNumber').val();
     model.company = $('#txtCompany').val();
     model.jobTitle = $('#txtJobTitle').val();
     model.department = $('#txtDepartment').val();
@@ -81,18 +82,17 @@
 
     $.ajax({
         method: 'Post',
-        url: "/User/CreateUser",
+        url: model.userId == 0 ? "/User/CreateUser" : "/User/UpdateUser",
         data: { user: model },
         success: function (e) {
             $('#btnSaveuser').removeAttr('disabled');
             Alert(localizationLib.getLocalizeData("UserSavedSuccessKey"), 'Success');
-           
+            clearUserData();
         },
         error: function (e) {
             $('#btnSaveuser').removeAttr('disabled');
             console.log(e);
             Alert(localizationLib.getLocalizeData("FailedToCreateUserKey"), 'error');
-           
         }
     })
 }
@@ -100,16 +100,24 @@
 ddlMasterLookup('ddlGender', 'gender');
 ddlMasterLookup('ddlEductionLevel', 'educationlevel');
 
-function showUsers() {
+function showUsers(pageIndex, pageSize) {
     setTimeout(() => {
+        var model = {};
+        model.pagesize = pageSize == undefined ? 10 : pageSize;
+        model.pageIndex = pageIndex == undefined ? 1 : pageIndex;
+        model.totalRecords = getTotalRecords();
         $.ajax({
             method: 'Post',
             url: "/User/GetAllUser",
-            data: {},
+            data: { pageModel: model },
             success: function (data) {
-                let index = 1;
                 $('#tdBody').empty();
+
+                if (data != null && data != undefined && data.length > 0)
+                    setTotalRecords(data[0].totalRecords);
+
                 for (var item of data) {
+                    let index = item.userId
                     $('#tdBody').append(`<tr>
                         <td><a id="f${index}" href="#" onclick="return userEdit(${index})" style="cursor:pointer">${item.firstName}</a></td>
                         <td id="l${index}">${item.lastName}</td>
@@ -120,6 +128,7 @@ function showUsers() {
                         <td id="s${index}">${item.state == null ? "" : item.state}</td>
                         <td id="cou${index}">${item.country == null ? "" : item.country}</td>
 
+                        <td style="display:none" id="ut${index}">${item.userTypeId == null ? "" : item.userTypeId}</td>
                         <td style="display:none" id="pa${index}">${item.password == null ? "" : item.password}</td>
                         <td style="display:none" id="m${index}">${item.middleName == null ? "" : item.middleName}</td>
                         <td style="display:none" id="a${index}">${item.additionalName == null ? "" : item.additionalName}</td>
@@ -145,6 +154,14 @@ function showUsers() {
     }, 1000)
 }
 
+function setTotalRecords(records) {
+    totalRecords = records;
+}
+
+function getTotalRecords() {
+    return totalRecords;
+}
+
 function getUserEmailByUserName() {
     var loginUserName = $('#txtForgotPwd').val();
     $.ajax({
@@ -165,6 +182,9 @@ function sentMessage(msg) {
 }
 
 function userEdit(index) {
+    $('#hdnUserId').val(index);
+    $('#hdnUserTypeId').val($('#ut' + index).html());
+
     $('#txtFirstName').val($('#f' + index).html());
     $('#txtMiddleName').val($('#m' + index).html());
     $('#txtLastName').val($('#l' + index).html());
@@ -176,7 +196,11 @@ function userEdit(index) {
     $('#ddlGender').val($('#g' + index).html());
     $('#txtPreFix').val($('#pr' + index).html());
     $('#txtSuffix').val($('#su' + index).html());
-    $('#ddlEductionLevel').val($('#ed' + index).html());
+
+    var etext = $('#ed' + index).html();
+    var ed = $('#ddlEductionLevel option').filter(function () { return $(this).html() == etext; }).val();
+    $('#ddlEductionLevel').val(ed);
+    
     $('#txtWebsite').val($('#w' + index).html());
     $('#txtPhone').val($('#ph' + index).html());
     $('#txtCity').val($('#c' + index).html());
@@ -188,4 +212,31 @@ function userEdit(index) {
     $('#txtDepartment').val($('#de' + index).html());
     $('#btnCreateClose').trigger('click');
     return false;
+}
+
+function clearUserData() {
+    $('#hdnUserId').val(0);
+    $('#hdnUserTypeId').val(0);
+    $('#ddlGender').val(0);
+    $('#ddlEductionLevel').val('0');
+
+    $('#txtFirstName').val('');
+    $('#txtMiddleName').val('');
+    $('#txtLastName').val('');
+    $('#txtAdditionalName').val('');
+    $('#txtEmailAddress').val('');
+    $('#txtUserName').val('');
+    $('#txtPassword').val('');
+    $('#txtcnfrmpassword').val('');
+    $('#txtPreFix').val('');
+    $('#txtSuffix').val('');
+    $('#txtWebsite').val('');
+    $('#txtPhone').val('');
+    $('#txtCity').val('');
+    $('#txtState').val('');
+    $('#txtCountry').val('');
+    $('#txtFaxNumber').val('');
+    $('#txtCompany').val('');
+    $('#txtJobTitle').val('');
+    $('#txtDepartment').val('');
 }

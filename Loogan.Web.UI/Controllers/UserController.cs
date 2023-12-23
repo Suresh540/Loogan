@@ -21,10 +21,13 @@ namespace Loogan.Web.UI.Controllers
         }
 
         [Route("GetAllUser")]
-        public async Task<JsonResult> GetAllUser()
+        public async Task<JsonResult> GetAllUser(PagingModel pageModel)
         {
             var users = await _utilityHelper.ExecuteAPICall<List<UserModel>>(null, RestSharp.Method.Post, resource: "api/User/AllUser");
-            return Json(users);
+            var pageList = users.Skip(pageModel.Pagesize * (pageModel.PageIndex - 1))
+                        .Take(pageModel.Pagesize).ToList();
+
+            return Json(pageList);
         }
 
         [Route("GetUserEmailByUserName")]

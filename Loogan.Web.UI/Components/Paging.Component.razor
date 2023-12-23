@@ -1,0 +1,14 @@
+﻿@inherits PagingBase
+<div class="row">
+    <div class="col-4">
+        <img src="/images/previous.png" alt="previous" title="Previous" @onclick="onPrevious" style="width:25px;height:25px;cursor:pointer" />
+        <img src="/images/next.png" alt="next" title="Next" @onclick="onNext" style="width:25px;height:25px;cursor:pointer" />
+        <select id="ddlPagesize" style="width:60px" @onchange="@(async (e) => await selectChange(e.Value.ToString()))">
+            <option value="10">10</option>
+            <option value="25">25</option>
+            <option value="50">50</option>
+            <option value="100">100</option>
+        </select>
+    </div>
+
+</div>
