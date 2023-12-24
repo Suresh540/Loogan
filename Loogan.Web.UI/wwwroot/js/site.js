@@ -104,7 +104,7 @@ function Alert(msg, type) {
         text: msg,
         icon: type,
         hideAfter: 5000
-    })
+    });
 }
 
 function liTabClick(tabname) {
@@ -112,6 +112,18 @@ function liTabClick(tabname) {
         $('.ulspace').find('li').removeClass('btnactivetab');
         $('.ulspace').find('a[href="' + tabname + '"]').parent('li').addClass('btnactivetab');
     }, 600);
+}
+
+function showCourses() {
+    var top = document.getElementById('downArrow').offsetLeft - 180;
+    $('#ddlCourse').toggle();
+    $('#ddlCourse').css('left', top);
+}
+function courseout() {
+    $('#ddlCourse').css('display', 'none');
+}
+function courseover() {
+    $('#ddlCourse').css('display', 'block');
 }
 
 

@@ -852,3 +852,23 @@
     font-style: italic;
 }
 
+.child {
+    width: 15vw;
+    position: absolute;
+    text-align: center;
+    display: none;
+    z-index: 100;
+    cursor:pointer;
+}
+.ulcourse {
+    border: 1px solid gray;
+    background-color: white;
+    padding: 5px;
+}
+.ulcourse li:hover {
+    color: #fff;
+    background: #000;
+    font-style: normal;
+}
+
+

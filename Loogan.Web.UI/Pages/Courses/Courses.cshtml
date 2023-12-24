@@ -2,7 +2,7 @@
 @using Loogan.Web.UI.Components
 @using Loogan.Web.UI.Pages.Shared
 @model Loogan.Web.UI.Pages.Courses.CoursesModel
-    
+
 <component type="typeof(Upper_Component)" render-mode="Static" />
 <div>
     <div id="site-wrap" class="off-canvas-wrap">
@@ -11,7 +11,61 @@
                 <div class="col-2 bb-login pointscroll leftmenu">
                     <component type="typeof(LeftSideBar_Component)" render-mode="Server" />
                 </div>
-                <div class="col-10 base-profile pointscroll righcontent">
+                <div class="col-10 base-profile pointscroll righcontent scrollrightend">
+                    <div class="row">
+                        <div class="col-12">
+                            <h1 style="font-style:italic;padding:10px">Courses</h1>
+                            <hr />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-2" style="text-align:left;border-bottom:1px solid gray">
+                            <img src="/images/leftarrow.png" /> &nbsp; @DateTime.Now.Year &nbsp; Fall
+                        </div>
+                        <div class="col-7" style="text-align:center;border-bottom:1px solid gray">
+                            <h3 style="font-style:italic;">
+                                Current Courses
+                                <img src="/images/downarrow.png" onclick="showCourses()" id="downArrow" />
+                            </h3>
+                            <div id="ddlCourse" class="child" onmouseout="courseout()" onmouseover="courseover()">
+                                <ul style="list-style:none" class="ulcourse">
+                                    <li style="text-align:left">Upcoming Courses</li>
+                                    <li style="text-align:left">Current Courses</li>
+                                    <li style="text-align:left">@DateTime.Now.Year Fall</li>
+                                    <li style="text-align:left">@DateTime.Now.Year Summer</li>
+                                    <li style="text-align:left">@DateTime.Now.Year-1 Fall</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-3" style="text-align:right;border-bottom:1px solid gray">
+                            Upcoming Courses &nbsp; <img src="/images/rightarrow.png" />
+                        </div>
+                    </div>
+                    <div class="row" style="margin-top:25px">
+                        <div class="col-2">
+                            <img src="/images/list.png" style="cursor:pointer;padding:0px;" />
+                            <img src="/images/image.png" style="cursor:pointer;padding:0px;" />
+                        </div>
+                        <div class="col-3">
+                            <input type="text" placeholder="Search your courses" />
+                        </div>
+                        <div class="col-4">
+                            <b>Filter</b>
+                            <select style="width:13vw">
+                                <option value="0">All courses</option>
+                                <option value="1">Courses I am taking</option>
+                                <option value="2">Open courses</option>
+                                <option value="3">Completed courses</option>
+                            </select>
+                        </div>
+                        <div class="col-3">
+                            <select style="width:5vw">
+                                <option value="25">25</option>
+                                <option value="50">50</option>
+                                <option value="100">100</option>
+                            </select> &nbsp;items per page
+                        </div>
+                    </div>
                     <component type="typeof(Lower_Component)" render-mode="Static" /><br />
                 </div>
             </div>
