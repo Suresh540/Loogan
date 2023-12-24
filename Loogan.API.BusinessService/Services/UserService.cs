@@ -27,7 +27,7 @@ public class UserService : IUserService
         return userLoginModel;
     }
 
-    public async Task<List<UserModel>?> GetAllUserDetailsService()
+    public async Task<List<PagingUserModel>?> GetAllUserDetailsService()
     {
         var userModel = await _storedProcedures.GetAllUser();
         return userModel;

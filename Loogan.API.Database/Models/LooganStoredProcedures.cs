@@ -1,6 +1,8 @@
 ﻿using Loogan.API.Database.Interfaces;
 using Loogan.API.Models.Models;
 using Microsoft.EntityFrameworkCore;
+using System.Reflection.Emit;
+using System;
 
 namespace Loogan.API.Database.Models
 {
@@ -20,12 +22,12 @@ namespace Loogan.API.Database.Models
             return user;
         }
 
-        public async Task<List<UserModel>?> GetAllUser()
+        public async Task<List<PagingUserModel>?> GetAllUser()
         {
-            List<UserModel>? user = new List<UserModel>();
+            List<PagingUserModel>? user = new List<PagingUserModel>();
             using (var context = new LooganContext(connectionString))
             {
-                var query = context.Database.SqlQuery<UserModel>($"Get_AllUserDetails").AsNoTracking().AsAsyncEnumerable();
+                var query = context.Database.SqlQuery<PagingUserModel>($"Get_AllUserDetails").AsNoTracking().AsAsyncEnumerable();
                 await foreach (var item in query)
                 {
                     user.Add(item);
@@ -37,6 +39,7 @@ namespace Loogan.API.Database.Models
         public async Task<UserModel?> GetUser(int userId)
         {
             UserModel? user = null;
+           
             using (var context = new LooganContext(connectionString))
             {
                 var query = context.Database.SqlQuery<UserModel>($"Get_UserDetails {userId}").AsNoTracking().AsAsyncEnumerable();
@@ -54,7 +57,7 @@ namespace Loogan.API.Database.Models
             using (var context = new LooganContext(connectionString))
             {
                 var user = context.Users.Where(x => x.UserName == userName).FirstOrDefault();
-                if(user != null)
+                if (user != null)
                 {
                     model.EmailId = user?.EmailAddress;
                     model.Password = user?.Password;

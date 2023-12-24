@@ -69,7 +69,10 @@ public class UserModel
     public string? UserLanguage { get; set; }
 
     public string? MiddleName { get; set; }
+}
 
+public class PagingUserModel : UserModel
+{
     public int TotalRecords { get; set; }
 }
 

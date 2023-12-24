@@ -23,7 +23,7 @@ namespace Loogan.Web.UI.Controllers
         [Route("GetAllUser")]
         public async Task<JsonResult> GetAllUser(PagingModel pageModel)
         {
-            var users = await _utilityHelper.ExecuteAPICall<List<UserModel>>(null, RestSharp.Method.Post, resource: "api/User/AllUser");
+            var users = await _utilityHelper.ExecuteAPICall<List<PagingUserModel>>(null, RestSharp.Method.Post, resource: "api/User/AllUser");
             var pageList = users.Skip(pageModel.Pagesize * (pageModel.PageIndex - 1))
                         .Take(pageModel.Pagesize).ToList();
 
