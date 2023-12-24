@@ -17,6 +17,7 @@
     float: left;
     overflow: auto;
 }
+
 .leftmenu {
     overflow-y: auto;
     overflow-x: hidden;
@@ -767,9 +768,9 @@
     margin-bottom: 0
 }
 
-    .update-avatar .panel-content .current-avatar button:hover {
-        background-color: #fff
-    }
+.update-avatar .panel-content .current-avatar button:hover {
+    background-color: #fff
+}
 
 .update-avatar .panel-content bb-user-avatar.avatar-large {
     width: 18.75rem;
@@ -777,10 +778,10 @@
     margin: 1.875rem
 }
 
-    .update-avatar .panel-content bb-user-avatar.avatar-large .initials {
-        line-height: 18.75rem;
-        font-size: calc(300 * 0.45)
-    }
+.update-avatar .panel-content bb-user-avatar.avatar-large .initials {
+    line-height: 18.75rem;
+    font-size: calc(300 * 0.45)
+}
 
 .update-avatar .panel-content .avatar-large img {
     height: 100%;
@@ -792,16 +793,16 @@
     width: auto
 }
 
-    .update-avatar .panel-content .avatar-large .avatar .avatar-inner {
-        width: 18.75rem;
-        height: 18.75rem;
-        margin: 1.875rem
-    }
+.update-avatar .panel-content .avatar-large .avatar .avatar-inner {
+    width: 18.75rem;
+    height: 18.75rem;
+    margin: 1.875rem
+}
 
-    .update-avatar .panel-content .avatar-large .avatar .initials {
-        line-height: 18.75rem;
-        font-size: calc(300 * 0.45)
-    }
+.update-avatar .panel-content .avatar-large .avatar .initials {
+    line-height: 18.75rem;
+    font-size: calc(300 * 0.45)
+}
 
 .update-avatar .panel-content .drag {
     background: transparent
@@ -815,7 +816,20 @@
     word-wrap: normal !important
 }
 
-    .update-avatar .panel-content button span {
-        white-space: nowrap;
-        display: inline !important
-    }
+.update-avatar .panel-content button span {
+    white-space: nowrap;
+    display: inline !important
+}
+
+/*Courses */
+.color-selection-live-mode .base-navigation-button-content .base-navigation-button-badge {
+    border: solid 2px #262626 !important;
+}
+
+.color-selection-live-mode .base-navigation-button-content:hover .base-navigation-button-badge {
+    border: solid 2px #1b1b1b !important;
+}
+
+.color-selection-live-mode .active .base-navigation-button-content .base-navigation-button-badge {
+    border: solid 2px #000000 !important;
+}

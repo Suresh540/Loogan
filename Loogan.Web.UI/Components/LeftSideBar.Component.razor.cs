@@ -19,7 +19,7 @@ namespace Loogan.Web.UI.Components
 
         protected override async Task OnInitializedAsync()
         {
-            UserName = _httpContext?.HttpContext?.Session?.GetString("UserName");
+            UserName = _httpContext?.HttpContext?.Session?.GetString("FullName");
             UserType = _httpContext?.HttpContext?.Session?.GetString("LoginUserType");
             await base.OnInitializedAsync();
         }

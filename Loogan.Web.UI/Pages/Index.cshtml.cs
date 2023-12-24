@@ -49,9 +49,10 @@ namespace Loogan.Web.UI.Pages
                 HttpContext.Session.SetInt32("LoginUserId", model.UserId);
                 HttpContext.Session.SetString("LoginUserType", model?.UserTypeName);
                 HttpContext.Session.SetString("UserName", model?.UserName);
+                HttpContext.Session.SetString("FullName", model?.FullName);
 
                 if (model.UserTypeName == "Student")
-                    return RedirectToPage("/Dashboard/dashboard");
+                    return RedirectToPage("/Courses/courses");
                 else
                     return RedirectToPage("/Dashboard/admindashboard");
             }
