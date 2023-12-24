@@ -833,3 +833,22 @@
 .color-selection-live-mode .active .base-navigation-button-content .base-navigation-button-badge {
     border: solid 2px #000000 !important;
 }
+
+.btnactivetab {
+    color: #fff;
+    background-color: #000;
+    font-style:italic;
+}
+
+.ulspace li:hover {
+    color: #fff;
+    background: #b3b3b3;
+    font-style: normal;
+}
+
+.ulspace li:focus {
+    color: #fff;
+    background-color: #000;
+    font-style: italic;
+}
+

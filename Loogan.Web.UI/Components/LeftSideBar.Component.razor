@@ -10,7 +10,7 @@
     {
         <ul class="ulspace">
             <li class="liSpace">
-                <img src="/images/profile.png" style="width:30px;height:30px"/>
+                <img src="/images/profile.png" style="width:30px;height:30px" />
                 <a style="color:white;font-size:16px;" href="/Profile/Profile">
                     @UserName
                 </a>
@@ -21,7 +21,7 @@
             </li>
             <li class="liSpace">
                 <img src="/images/signout.png" style="width:30px;height:30px" />
-                <a style="color:white;font-size:16px;" onclick="signOut()">@Localizer["SignOutKey"]</a>
+                <a style="color:white;font-size:16px;" @onclick="SignOut">@Localizer["SignOutKey"]</a>
             </li>
         </ul>
     }
@@ -42,7 +42,7 @@
                 <img src="/images/activity.png" style="width:30px;height:30px" />
                 <a style="color:white;font-size:16px;">@Localizer["ActivityStreamKey"]</a>
             </li>
-            <li class="liSpace">
+            <li class="liSpace btnactivetab">
                 <img src="/images/course.png" style="width:30px;height:30px" />
                 <a style="color:white;font-size:16px;" href="/Courses/courses">@Localizer["CoursesKey"]</a>
             </li>
@@ -68,7 +68,7 @@
             </li>
             <li class="liSpace">
                 <img src="/images/signout.png" style="width:30px;height:30px" />
-                <a style="color:white;font-size:16px;" onclick="signOut()">@Localizer["SignOutKey"]</a>
+                <a style="color:white;font-size:16px;" @onclick="SignOut">@Localizer["SignOutKey"]</a>
             </li>
         </ul>
     }

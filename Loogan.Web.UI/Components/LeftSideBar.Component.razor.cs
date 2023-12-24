@@ -17,11 +17,20 @@ namespace Loogan.Web.UI.Components
 
         public string? UserType { get; set; }
 
+        [Inject]
+        NavigationManager? navigationManager { get; set; }
+
         protected override async Task OnInitializedAsync()
         {
             UserName = _httpContext?.HttpContext?.Session?.GetString("FullName");
             UserType = _httpContext?.HttpContext?.Session?.GetString("LoginUserType");
             await base.OnInitializedAsync();
+        }
+
+        public void SignOut()
+        {
+            _httpContext?.HttpContext?.Session.Clear();
+            navigationManager.NavigateTo("/", true);
         }
     }
 }

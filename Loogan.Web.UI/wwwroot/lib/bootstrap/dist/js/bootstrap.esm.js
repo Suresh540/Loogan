@@ -335,11 +335,11 @@ const eventRegistry = {}; // Events storage
 
 let uidEvent = 1;
 const customEvents = {
-  mouseenter: 'mouseover',
+  mouseenter: 'mousetabOver',
   mouseleave: 'mouseout'
 };
 const customEventsRegex = /^(mouseenter|mouseleave)/i;
-const nativeEvents = new Set(['click', 'dblclick', 'mouseup', 'mousedown', 'contextmenu', 'mousewheel', 'DOMMouseScroll', 'mouseover', 'mouseout', 'mousemove', 'selectstart', 'selectend', 'keydown', 'keypress', 'keyup', 'orientationchange', 'touchstart', 'touchmove', 'touchend', 'touchcancel', 'pointerdown', 'pointermove', 'pointerup', 'pointerleave', 'pointercancel', 'gesturestart', 'gesturechange', 'gestureend', 'focus', 'blur', 'change', 'reset', 'select', 'submit', 'focusin', 'focusout', 'load', 'unload', 'beforeunload', 'resize', 'move', 'DOMContentLoaded', 'readystatechange', 'error', 'abort', 'scroll']);
+const nativeEvents = new Set(['click', 'dblclick', 'mouseup', 'mousedown', 'contextmenu', 'mousewheel', 'DOMMouseScroll', 'mousetabOver', 'mouseout', 'mousemove', 'selectstart', 'selectend', 'keydown', 'keypress', 'keyup', 'orientationchange', 'touchstart', 'touchmove', 'touchend', 'touchcancel', 'pointerdown', 'pointermove', 'pointerup', 'pointerleave', 'pointercancel', 'gesturestart', 'gesturechange', 'gestureend', 'focus', 'blur', 'change', 'reset', 'select', 'submit', 'focusin', 'focusout', 'load', 'unload', 'beforeunload', 'resize', 'move', 'DOMContentLoaded', 'readystatechange', 'error', 'abort', 'scroll']);
 /**
  * ------------------------------------------------------------------------
  * Private methods
@@ -431,7 +431,7 @@ function addHandler(element, originalTypeEvent, handler, delegationFn, oneOff) {
     handler = delegationFn;
     delegationFn = null;
   } // in case of mouseenter or mouseleave wrap the handler within a function that checks for its DOM position
-  // this prevents the handler from being dispatched the same way as mouseover or mouseout does
+  // this prevents the handler from being dispatched the same way as mousetabOver or mouseout does
 
 
   if (customEventsRegex.test(originalTypeEvent)) {
@@ -2034,13 +2034,13 @@ class Dropdown extends BaseComponent {
     } else {
       this._createPopper(parent);
     } // If this is a touch-enabled device we add extra
-    // empty mouseover listeners to the body's immediate children;
+    // empty mousetabOver listeners to the body's immediate children;
     // only needed because of broken event delegation on iOS
     // https://www.quirksmode.org/blog/archives/2014/02/mouse_event_bub.html
 
 
     if ('ontouchstart' in document.documentElement && !parent.closest(SELECTOR_NAVBAR_NAV)) {
-      [].concat(...document.body.children).forEach(elem => EventHandler.on(elem, 'mouseover', noop));
+      [].concat(...document.body.children).forEach(elem => EventHandler.on(elem, 'mousetabOver', noop));
     }
 
     this._element.focus();
@@ -2089,11 +2089,11 @@ class Dropdown extends BaseComponent {
     if (hideEvent.defaultPrevented) {
       return;
     } // If this is a touch-enabled device we remove the extra
-    // empty mouseover listeners we added for iOS support
+    // empty mousetabOver listeners we added for iOS support
 
 
     if ('ontouchstart' in document.documentElement) {
-      [].concat(...document.body.children).forEach(elem => EventHandler.off(elem, 'mouseover', noop));
+      [].concat(...document.body.children).forEach(elem => EventHandler.off(elem, 'mousetabOver', noop));
     }
 
     if (this._popper) {
@@ -3740,14 +3740,14 @@ class Tooltip extends BaseComponent {
     if (customClass) {
       tip.classList.add(...customClass.split(' '));
     } // If this is a touch-enabled device we add extra
-    // empty mouseover listeners to the body's immediate children;
+    // empty mousetabOver listeners to the body's immediate children;
     // only needed because of broken event delegation on iOS
     // https://www.quirksmode.org/blog/archives/2014/02/mouse_event_bub.html
 
 
     if ('ontouchstart' in document.documentElement) {
       [].concat(...document.body.children).forEach(element => {
-        EventHandler.on(element, 'mouseover', noop);
+        EventHandler.on(element, 'mousetabOver', noop);
       });
     }
 
@@ -3802,10 +3802,10 @@ class Tooltip extends BaseComponent {
     }
 
     tip.classList.remove(CLASS_NAME_SHOW$2); // If this is a touch-enabled device we remove the extra
-    // empty mouseover listeners we added for iOS support
+    // empty mousetabOver listeners we added for iOS support
 
     if ('ontouchstart' in document.documentElement) {
-      [].concat(...document.body.children).forEach(element => EventHandler.off(element, 'mouseover', noop));
+      [].concat(...document.body.children).forEach(element => EventHandler.off(element, 'mousetabOver', noop));
     }
 
     this._activeTrigger[TRIGGER_CLICK] = false;
@@ -4758,7 +4758,7 @@ defineJQueryPlugin(Tab);
 const NAME = 'toast';
 const DATA_KEY = 'bs.toast';
 const EVENT_KEY = `.${DATA_KEY}`;
-const EVENT_MOUSEOVER = `mouseover${EVENT_KEY}`;
+const EVENT_mousetabOver = `mousetabOver${EVENT_KEY}`;
 const EVENT_MOUSEOUT = `mouseout${EVENT_KEY}`;
 const EVENT_FOCUSIN = `focusin${EVENT_KEY}`;
 const EVENT_FOCUSOUT = `focusout${EVENT_KEY}`;
@@ -4908,7 +4908,7 @@ class Toast extends BaseComponent {
 
   _onInteraction(event, isInteracting) {
     switch (event.type) {
-      case 'mouseover':
+      case 'mousetabOver':
       case 'mouseout':
         this._hasMouseInteraction = isInteracting;
         break;
@@ -4935,7 +4935,7 @@ class Toast extends BaseComponent {
   }
 
   _setListeners() {
-    EventHandler.on(this._element, EVENT_MOUSEOVER, event => this._onInteraction(event, true));
+    EventHandler.on(this._element, EVENT_mousetabOver, event => this._onInteraction(event, true));
     EventHandler.on(this._element, EVENT_MOUSEOUT, event => this._onInteraction(event, false));
     EventHandler.on(this._element, EVENT_FOCUSIN, event => this._onInteraction(event, true));
     EventHandler.on(this._element, EVENT_FOCUSOUT, event => this._onInteraction(event, false));

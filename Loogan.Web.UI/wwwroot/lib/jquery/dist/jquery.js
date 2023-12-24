@@ -5864,7 +5864,7 @@ jQuery.each( { focus: "focusin", blur: "focusout" }, function( type, delegateTyp
 	};
 } );
 
-// Create mouseenter/leave events using mouseover/out and event-time checks
+// Create mouseenter/leave events using mousetabOver/out and event-time checks
 // so that event delegation works in jQuery.
 // Do the same for pointerenter/pointerleave and pointerover/pointerout
 //
@@ -5873,7 +5873,7 @@ jQuery.each( { focus: "focusin", blur: "focusout" }, function( type, delegateTyp
 // https://bugs.chromium.org/p/chromium/issues/detail?id=470258
 // for the description of the bug (it existed in older Chrome versions as well).
 jQuery.each( {
-	mouseenter: "mouseover",
+	mouseenter: "mousetabOver",
 	mouseleave: "mouseout",
 	pointerenter: "pointerover",
 	pointerleave: "pointerout"
@@ -10735,7 +10735,7 @@ jQuery.fn.extend( {
 
 jQuery.each(
 	( "blur focus focusin focusout resize scroll click dblclick " +
-	"mousedown mouseup mousemove mouseover mouseout mouseenter mouseleave " +
+	"mousedown mouseup mousemove mousetabOver mouseout mouseenter mouseleave " +
 	"change select submit keydown keypress keyup contextmenu" ).split( " " ),
 	function( _i, name ) {
 

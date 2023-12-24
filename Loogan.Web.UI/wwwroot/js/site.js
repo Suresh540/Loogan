@@ -52,16 +52,12 @@ window.onload = function () {
     }
 }
 
-mouseOver = function (id) {
+mousetabOver = function (id) {
     document.getElementById(id).style.visibility = 'visible';
 }
 
 mouseOut = function (id) {
     document.getElementById(id).style.visibility = 'hidden';
-}
-
-signOut = function () {
-    document.forms[0].submit();
 }
 
 function fnForgot() {
@@ -110,6 +106,14 @@ function Alert(msg, type) {
         hideAfter: 5000
     })
 }
+
+function liTabClick(tabname) {
+    setTimeout(() => {
+        $('.ulspace').find('li').removeClass('btnactivetab');
+        $('.ulspace').find('a[href="' + tabname + '"]').parent('li').addClass('btnactivetab');
+    }, 600);
+}
+
 
 
 
