@@ -78,7 +78,6 @@ function ddlMasterLookup(controlId, lookUpTypeValue, selectedValue) {
         success: function (response) {
             var dropDownListId = $('#' + controlId);
             setInitialValue(selectedValue, dropDownListId);
-
             $.each(response, function () {
                 if (this['id'] == selectedValue || this['name'] == selectedValue) {
                     dropDownListId.append($("<option selected='selected'></option>").val(this['id']).html(this['name']));
@@ -99,7 +98,6 @@ function ddlMasterLookup(controlId, lookUpTypeValue, selectedValue) {
 function setInitialValue(selectedValue, dropDownListId) {
     if (selectedValue == '')
         dropDownListId.empty().append(`<option selected="selected" value="0">${localizationLib.getLocalizeData("PleaseSelectKey")}</option>`);
-
     else
         dropDownListId.empty().append(`<option value="0">${localizationLib.getLocalizeData("PleaseSelectKey")}</option>`);
 }

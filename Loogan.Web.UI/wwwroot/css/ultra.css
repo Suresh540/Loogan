@@ -7211,11 +7211,12 @@ blockquote {
     }
 }
 
+/*off canvas wrap*/
 .off-canvas-wrap {
     -webkit-backface-visibility: hidden;
     position: relative;
     width: 100%;
-    overflow: hidden
+    overflow: hidden;
 }
 
     .off-canvas-wrap.move-right, .off-canvas-wrap.move-left {
@@ -12327,3 +12328,8 @@ body.hide-focus-outline select:focus {
     border: 1px solid transparent
 }
 /*# sourceMappingURL=ultra.css.map */
+.scrollrightend {
+    overflow-x: hidden;
+    overflow-y: auto;
+    width:83vw;
+}
