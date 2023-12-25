@@ -5,13 +5,13 @@ let localizationLib = (function () {
     langFunc.setLanguageData = function (messages) {
         sessionStorage.setItem("messages", messages);
     },
-    langFunc.getLocalizeData = function (key) {
-        msgs = JSON.parse(sessionStorage.getItem("messages"));
-        var data = msgs.filter(function (item) {
-            return item.name === key;
-        });
-        return data.length > 0 ? data[0].value : "";
-    }
+        langFunc.getLocalizeData = function (key) {
+            msgs = JSON.parse(sessionStorage.getItem("messages"));
+            var data = msgs.filter(function (item) {
+                return item.name === key;
+            });
+            return data.length > 0 ? data[0].value : "";
+        }
     return langFunc;
 })();
 
@@ -130,11 +130,19 @@ function showListView(index, ctrl) {
     if (index == 1) {
         $('#imgPic').css('display', 'none');
         $('#imgList').css('display', 'block');
+        $('#divList').css('display', 'block');
+        showhidepic('none');
     } else {
         $('#imgPic').css('display', 'block');
         $('#imgList').css('display', 'none');
+        $('#divList').css('display', 'none');
+        showhidepic('block');
     }
 }
+function showhidepic(flag){
+  $('.pichide').css('display', flag);
+}
+
 function imageFocusIn(c) {
     $(c).parent('div').css("border", "3px solid blue");
 }

@@ -768,9 +768,9 @@
     margin-bottom: 0
 }
 
-.update-avatar .panel-content .current-avatar button:hover {
-    background-color: #fff
-}
+    .update-avatar .panel-content .current-avatar button:hover {
+        background-color: #fff
+    }
 
 .update-avatar .panel-content bb-user-avatar.avatar-large {
     width: 18.75rem;
@@ -778,10 +778,10 @@
     margin: 1.875rem
 }
 
-.update-avatar .panel-content bb-user-avatar.avatar-large .initials {
-    line-height: 18.75rem;
-    font-size: calc(300 * 0.45)
-}
+    .update-avatar .panel-content bb-user-avatar.avatar-large .initials {
+        line-height: 18.75rem;
+        font-size: calc(300 * 0.45)
+    }
 
 .update-avatar .panel-content .avatar-large img {
     height: 100%;
@@ -793,16 +793,16 @@
     width: auto
 }
 
-.update-avatar .panel-content .avatar-large .avatar .avatar-inner {
-    width: 18.75rem;
-    height: 18.75rem;
-    margin: 1.875rem
-}
+    .update-avatar .panel-content .avatar-large .avatar .avatar-inner {
+        width: 18.75rem;
+        height: 18.75rem;
+        margin: 1.875rem
+    }
 
-.update-avatar .panel-content .avatar-large .avatar .initials {
-    line-height: 18.75rem;
-    font-size: calc(300 * 0.45)
-}
+    .update-avatar .panel-content .avatar-large .avatar .initials {
+        line-height: 18.75rem;
+        font-size: calc(300 * 0.45)
+    }
 
 .update-avatar .panel-content .drag {
     background: transparent
@@ -816,10 +816,10 @@
     word-wrap: normal !important
 }
 
-.update-avatar .panel-content button span {
-    white-space: nowrap;
-    display: inline !important
-}
+    .update-avatar .panel-content button span {
+        white-space: nowrap;
+        display: inline !important
+    }
 
 /*Courses */
 .color-selection-live-mode .base-navigation-button-content .base-navigation-button-badge {
@@ -837,7 +837,7 @@
 .btnactivetab {
     color: #fff;
     background-color: #000;
-    font-style:italic;
+    font-style: italic;
 }
 
 .ulspace li:hover {
@@ -858,18 +858,105 @@
     text-align: center;
     display: none;
     z-index: 100;
-    cursor:pointer;
+    cursor: pointer;
 }
+
 .ulcourse {
     border: 1px solid gray;
     background-color: white;
     padding: 5px;
 }
-.ulcourse li:hover {
-    color: #fff;
-    background: #000;
-    font-style: normal;
+
+    .ulcourse li:hover {
+        color: #fff;
+        background: #000;
+        font-style: normal;
+    }
+
+.divpic {
+    margin-top: 25px
 }
 
+.pic {
+    width: 100%;
+    border: 1px solid gray;
+    border-left: 1px solid gray;
+    padding: 3px
+}
 
+.imgpic {
+    width: 70vw;
+    height: 20vh;
+    text-align: center;
+    cursor: pointer
+}
 
+.txtpaddingleft {
+    text-align: left;
+    padding: 5px
+}
+
+.divlist {
+    margin-top: 25px;
+    display: none;
+    text-align: center
+}
+
+.divlistmargin {
+    margin: 5px;
+    border: 1px solid gray;
+    text-align: center
+}
+
+.divlistleftborder {
+    text-align: left;
+    color: gray;
+    font-size: 13px;
+    border-left: 10px solid gray;
+    padding: 3px
+}
+
+.divlistlightgray {
+    font-size: 15px;
+    color: lightgray;
+    font-weight: bold;
+}
+.anchornounderline
+{
+    text-decoration:none;
+    cursor:pointer;
+}
+.coursetitle {
+    font-style: italic;
+    padding: 10px
+}
+.coursepicleftarrow 
+{
+    text-align: left;
+    border-bottom: 1px solid gray
+}
+.fontitalic {
+    font-style: italic;
+}
+.courseborderbottomright {
+    text-align: right;
+    border-bottom: 1px solid gray
+}
+.margintop25 {
+    margin-top: 25px
+}
+.margintop5 {
+    margin-top: 5px !important
+}
+.picimgalign {
+    cursor: pointer;
+    vertical-align: middle
+}
+.textlaignleft {
+    text-align: left
+}
+.pichide
+{
+    margin-top:5px;
+    
+}
