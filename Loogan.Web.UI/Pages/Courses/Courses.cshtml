@@ -42,11 +42,11 @@
                         </div>
                     </div>
                     <div class="row" style="margin-top:25px">
-                        <div class="col-2">
-                            <img src="/images/list.png" style="cursor:pointer;padding:0px;" />
-                            <img src="/images/image.png" style="cursor:pointer;padding:0px;" />
+                        <div class="col-1" style="margin-top:5px">
+                            <img id="imgPic" src="~/images/image.png" onclick="showListView(1)" style="cursor:pointer;vertical-align:middle" alt="imageview" title="Click here to view list" />
+                            <img id="imgList" src="~/images/list.png" onclick="showListView(2)" style="cursor:pointer;display:none;vertical-align:middle" alt="imageview" title="Click here to view image" />
                         </div>
-                        <div class="col-3">
+                        <div class="col-4">
                             <input type="text" placeholder="Search your courses" />
                         </div>
                         <div class="col-4">
@@ -66,6 +66,25 @@
                             </select> &nbsp;items per page
                         </div>
                     </div>
+                    <div class="row" style="margin-top:25px">
+                        @for(int i = 0; i < 4; i++)
+                        {
+                            Random rnd = new Random();
+                            int index = rnd.Next(1, 6);
+                            string src = $"/images/nature{index}.jpeg";
+
+                            <div class="col-4">
+                                <div style="width:100%;border:1px solid gray;padding:3px">
+                                    <img onmouseover="imageFocusIn(this)" onmouseout="imageBlur(this)" src="@src" style="width:70vw;height:20vh;text-align:center;cursor:pointer" />
+                                    <hr />
+                                    <span style="text-align:left;padding:5px">23FAH-4367</span><br/>
+                                    <b style="text-align:left;padding:5px">ACCT-509-T-6:00-8:50</b><br />
+                                    <span style="text-align:left;padding:5px">Open</span>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                    <br />
                     <component type="typeof(Lower_Component)" render-mode="Static" /><br />
                 </div>
             </div>

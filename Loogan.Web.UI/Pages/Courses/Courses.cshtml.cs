@@ -7,6 +7,9 @@ namespace Loogan.Web.UI.Pages.Courses
     {
         public void OnGet()
         {
+
+
+
         }
     }
 }

@@ -126,6 +126,21 @@ function courseover() {
     $('#ddlCourse').css('display', 'block');
 }
 
+function showListView(index, ctrl) {
+    if (index == 1) {
+        $('#imgPic').css('display', 'none');
+        $('#imgList').css('display', 'block');
+    } else {
+        $('#imgPic').css('display', 'block');
+        $('#imgList').css('display', 'none');
+    }
+}
+function imageFocusIn(c) {
+    $(c).parent('div').css("border", "3px solid blue");
+}
+function imageBlur(c) {
+    $(c).parent('div').css("border", "1px solid gray");
+}
 
 
 
