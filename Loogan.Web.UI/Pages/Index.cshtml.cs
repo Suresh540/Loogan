@@ -54,7 +54,7 @@ namespace Loogan.Web.UI.Pages
                 if (model.UserTypeName == "Student")
                     return RedirectToPage("/Courses/courses");
                 else
-                    return RedirectToPage("/Dashboard/admindashboard");
+                    return RedirectToPage("/Admin/AdminDashboard");
             }
             DisplayMessage = ""; //Localizer != null ? Localizer["UserPwdWrongKey"] : "";
             return Page();

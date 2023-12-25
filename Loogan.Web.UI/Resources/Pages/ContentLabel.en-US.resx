@@ -372,4 +372,7 @@
   <data name="UserSavedSuccessKey" xml:space="preserve">
     <value>User saved successfully</value>
   </data>
+  <data name="RoleMappingKey" xml:space="preserve">
+    <value>Role Mapping</value>
+  </data>
 </root>

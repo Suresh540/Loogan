@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Localization;
 
-namespace Loogan.Web.UI.Pages.Dashboard
+namespace Loogan.Web.UI.Pages.Admin
 {
     public class AdminDashboardModel : PageModel
     {
