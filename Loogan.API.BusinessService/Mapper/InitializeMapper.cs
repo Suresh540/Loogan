@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Loogan.API.Database.Models;
 using Loogan.API.Models.Models;
+using Loogan.API.Models.Models.Admin;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -44,6 +45,15 @@ public class InitializeMapper : Profile
             .ForMember(dest => dest.UserName, opt => opt.MapFrom(src => src.UserName))
             .ForMember(dest => dest.LanguageId, opt => opt.MapFrom(src => src.LanguageId))
             .ForMember(dest => dest.UserTypeId, opt => opt.MapFrom(src => src.UserTypeId)).ReverseMap();
+
+        var courseMap = CreateMap<Course, CourseModel>();
+        courseMap.ForAllMembers(opt => opt.Ignore());
+        courseMap.ForMember(dest => dest.CourseId, opt => opt.MapFrom(src => src.CourseId))
+            .ForMember(dest => dest.CourseName, opt => opt.MapFrom(src => src.CourseName))
+            .ForMember(dest => dest.CourseGroupId, opt => opt.MapFrom(src => src.CourseTypeSourceId))
+            .ForMember(dest => dest.CourseDesc, opt => opt.MapFrom(src => src.CourseDesc))
+            .ForMember(dest => dest.CreditHours, opt => opt.MapFrom(src => src.CreditHours))
+            .ForMember(dest => dest.Credits, opt => opt.MapFrom(src => src.Credits)).ReverseMap();
     }
 }
 
