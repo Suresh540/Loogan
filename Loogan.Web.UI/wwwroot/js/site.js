@@ -159,6 +159,8 @@ function coursechange() {
         var tot = $('#ddlCourse option').length;
         selectcoursevalues(index, tot);
     }
+    $('#courseType').val($('#ddlCourse option:selected').text());
+    document.forms['frmCourse'].submit();
 }
 function selectcoursevalues(index, tot) {
     if (index + 1 < tot) {

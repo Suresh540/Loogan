@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Loogan.Web.UI.Controllers
 {
+    [Route("StudentCourse")]
     public class StudentCourseController : Controller
     {
         private readonly IUtilityHelper _utilityHelper;
@@ -29,5 +30,12 @@ namespace Loogan.Web.UI.Controllers
             return Json(studentCourseList);
         }
 
+        [HttpPost]
+        [Route("CourseSelection")]
+        public IActionResult CourseSelection()
+        {
+            TempData["courseType"] = Request.Form["courseType"].ToString();
+            return RedirectToPage("/Courses/courses");
+        }
     }
 }
