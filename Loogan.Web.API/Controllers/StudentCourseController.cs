@@ -27,7 +27,7 @@ namespace Loogan.Web.API.Controllers
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<IActionResult> GetCourseCategory(ApiLookUpRequest apiRequest)
         {
-            var courseCategoryList = await _commonService.GetMaserLookUpValues(apiRequest.LookupType, apiRequest.LanguageId);
+            var courseCategoryList = await _commonService.GetCoursRelatedLookUp(apiRequest.LookupType, apiRequest.LanguageId);
             return Ok(courseCategoryList);
         }
 
