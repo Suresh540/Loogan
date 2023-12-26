@@ -13,12 +13,26 @@ namespace Loogan.API.Database.Services
 {
     public class LooganCommonService(string? connectionString) : ILooganCommon
     {
-        public async Task<List<DropDownListModel>?> GetMaserLookUpValues(string lookUpType)
+        public async Task<List<DropDownListModel>?> GetMaserLookUpValues(string lookUpType, int languageId)
         {
             var masterLookUpValues = new List<DropDownListModel>();
             using (var context = new LooganContext(connectionString))
             {
-                var query = context.Database.SqlQuery<DropDownListModel>($"Get_MasterLookUpValues {lookUpType}").AsNoTracking().AsAsyncEnumerable();
+                var query = context.Database.SqlQuery<DropDownListModel>($"Get_MasterLookUpValues {lookUpType},{languageId}").AsNoTracking().AsAsyncEnumerable();
+                await foreach (var item in query)
+                {
+                    masterLookUpValues.Add(item);
+                }
+            }
+            return masterLookUpValues;
+        }
+
+        public async Task<List<DropDownListModel>?> GetCoursRelatedLookUp(string lookUpType, int languageId)
+        {
+            var masterLookUpValues = new List<DropDownListModel>();
+            using (var context = new LooganContext(connectionString))
+            {
+                var query = context.Database.SqlQuery<DropDownListModel>($"Get_CourseRelatedLookUpValues {lookUpType},{languageId}").AsNoTracking().AsAsyncEnumerable();
                 await foreach (var item in query)
                 {
                     masterLookUpValues.Add(item);

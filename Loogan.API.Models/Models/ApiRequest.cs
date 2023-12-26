@@ -9,5 +9,13 @@ namespace Loogan.API.Models.Models
     public class ApiRequest
     {
         public string? RequestValue { get; set; }
+
+    }
+
+    public class ApiLookUpRequest
+    {
+        public string LookupType { get; set; }
+
+        public int LanguageId { get; set; }
     }
 }

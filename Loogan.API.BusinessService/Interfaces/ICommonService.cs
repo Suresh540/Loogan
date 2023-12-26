@@ -9,6 +9,8 @@ namespace Loogan.API.BusinessService.Interfaces
 {
     public interface ICommonService
     {
-        public Task<List<DropDownListModel>?> GetMaserLookUpValues(string lookUpType);
+        public Task<List<DropDownListModel>?> GetMaserLookUpValues(string lookUpType, int languageId);
+
+        public Task<List<DropDownListModel>?> GetCoursRelatedLookUp(string lookUpType, int languageId);
     }
 }

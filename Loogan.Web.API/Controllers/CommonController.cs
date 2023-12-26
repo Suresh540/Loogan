@@ -22,9 +22,9 @@ namespace Loogan.Web.API.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<IActionResult> GetMasterLookupValues([FromBody] ApiRequest apiRequest)
+        public async Task<IActionResult> GetMasterLookupValues([FromBody] ApiLookUpRequest apiRequest)
         {
-            var listUser = await _commonService.GetMaserLookUpValues(apiRequest?.RequestValue);
+            var listUser = await _commonService.GetMaserLookUpValues(apiRequest.LookupType, apiRequest.LanguageId);
             return Ok(listUser);
         }
     }

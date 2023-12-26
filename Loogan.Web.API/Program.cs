@@ -22,10 +22,17 @@ builder.Services.AddSingleton<ILooganCommon>((opt) =>
     return new LooganCommonService(connectionString);
 });
 
+builder.Services.AddSingleton<ILooganStudentCourse>((opt) =>
+{
+    var connectionString = builder.Configuration["ConnectionStrings:looganConnectionString"];
+    return new LooganStudentCourse(connectionString);
+});
+
 builder.Services.AddExceptionHandler<GlobalExceptionHandler>();
 builder.Services.AddProblemDetails();
 builder.Services.AddTransient<IUserService, UserService>();
 builder.Services.AddTransient<ICommonService, CommonService>();
+builder.Services.AddTransient<IStudentCourseService, StudentCourseService>();
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();

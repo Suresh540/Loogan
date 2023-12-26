@@ -18,7 +18,7 @@ namespace Loogan.Web.UI.Controllers
         [Route("GetMasterLookupValues")]
         public async Task<JsonResult> GetMasterLookupValues(string lookUpType)
         {
-            var apiRequest = new ApiRequest() { RequestValue = lookUpType };
+            var apiRequest = new ApiLookUpRequest() { LookupType = lookUpType, LanguageId = 1 };
             var masterLookUpValues = await _utilityHelper.ExecuteAPICall<List<DropDownListModel>>(apiRequest, RestSharp.Method.Post, resource: "api/Common/GetMasterLookupValues");
             return Json(masterLookUpValues);
         }

@@ -18,9 +18,15 @@ namespace Loogan.API.BusinessService.Services
         {
             _LooganCommon = LooganCommon;
         }
-        public async Task<List<DropDownListModel>?> GetMaserLookUpValues(string lookUpType)
+        public async Task<List<DropDownListModel>?> GetMaserLookUpValues(string lookUpType,int languageId)
         {
-            var masterLookUpValues = await _LooganCommon.GetMaserLookUpValues(lookUpType);
+            var masterLookUpValues = await _LooganCommon.GetMaserLookUpValues(lookUpType, languageId);
+            return masterLookUpValues;
+        }
+
+        public async Task<List<DropDownListModel>?> GetCoursRelatedLookUp(string lookUpType, int languageId)
+        {
+            var masterLookUpValues = await _LooganCommon.GetCoursRelatedLookUp(lookUpType, languageId);
             return masterLookUpValues;
         }
     }
