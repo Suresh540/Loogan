@@ -1,0 +1,1 @@
+Scaffold-DbContext "Server=SURESHKALAGA;Database=xxx;uid=xx;pwd=xxxx;connection timeout=60;TrustServerCertificate=True" Microsoft.EntityFrameworkCore.SqlServer -OutputDir Models -context "LooganContext" -Force

@@ -35,6 +35,11 @@ Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "Loogan.SqlServer.DatabaseSc
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Loogan.API.Database", "Loogan.API.Database\Loogan.API.Database.csproj", "{76758BBB-9949-49D3-B3F8-DD3CE9ECFD8E}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{F1DF0AD2-E3BE-4BE2-9002-5201B5B518E7}"
+	ProjectSection(SolutionItems) = preProject
+		scaffold_command.txt = scaffold_command.txt
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
