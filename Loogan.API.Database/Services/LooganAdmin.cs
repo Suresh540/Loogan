@@ -27,7 +27,7 @@ namespace Loogan.API.Database.Services
             return courses;
         }
 
-        public async Task<int?> CreateUser(Course courseObj)
+        public async Task<int?> CreateCourse(Course courseObj)
         {
             var isCreated = 0;
 
@@ -43,7 +43,7 @@ namespace Loogan.API.Database.Services
             return isCreated;
         }
 
-        public async Task<int?> UpdateUser(Course courseObj)
+        public async Task<int?> UpdateCourse(Course courseObj)
         {
             var isUpdated = 0;
 
