@@ -1,5 +1,4 @@
-﻿using Microsoft.Data.SqlClient;
-using System;
+﻿using System;
 using System.Collections.Generic;
 
 namespace Loogan.API.Database.Models;
@@ -66,11 +65,11 @@ public partial class User
 
     public string? UserName { get; set; }
 
-    public int? languageId { get; set; }
+    public int? LanguageId { get; set; }
 
     public string? MiddleName { get; set; }
 
+    public virtual MasterLookUp? Gender { get; set; }
 
-    public virtual UserType UserType { get; set; } = null!;
-
+    public virtual MasterLookUp? Language { get; set; }
 }
