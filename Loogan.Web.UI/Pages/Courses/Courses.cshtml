@@ -1,8 +1,20 @@
 ﻿@page "/Courses/courses"
+@using Loogan.API.Models.Models
 @using Loogan.Web.UI.Components
 @using Loogan.Web.UI.Pages.Shared
 @model Loogan.Web.UI.Pages.Courses.CoursesModel
 
+@{
+    int count = 0;
+    Tuple<string, string> GetRandom(int i)
+    {
+        Random rnd = new Random();
+        int index = rnd.Next(1, 6);
+        string src = $"/images/nature{index}.jpeg";
+        string id = $"divPic{i}";
+        return Tuple.Create<string, string>(id, src);
+    }
+}
 <component type="typeof(Upper_Component)" render-mode="Static" />
 <div>
     <div id="site-wrap" class="off-canvas-wrap">
@@ -21,25 +33,20 @@
                         </div>
                         <div class="row">
                             <div class="col-2 coursepicleftarrow">
-                                <img src="/images/leftarrow.png" /> &nbsp; @DateTime.Now.Year &nbsp; Fall
+                                <img class="picimgalign" src="/images/leftarrow.png" onclick="loadCourse()" />&nbsp; <span id="leftarrowtext"></span>
                             </div>
-                            <div class="col-7 coursepicleftarrow">
-                                <h3 class="fontitalic">
-                                    Current Courses
-                                    <img src="/images/downarrow.png" onclick="showCourses()" id="downArrow" />
-                                </h3>
-                                <div id="ddlCourse" class="child" onmouseout="courseout()" onmouseover="courseover()">
-                                    <ul style="list-style:none" class="ulcourse">
-                                        <li class="textlaignleft">Upcoming Courses</li>
-                                        <li class="textlaignleft">Current Courses</li>
-                                        <li class="textlaignleft">@DateTime.Now.Year Fall</li>
-                                        <li class="textlaignleft">@DateTime.Now.Year Summer</li>
-                                        <li class="textlaignleft">@DateTime.Now.Year-1 Fall</li>
-                                    </ul>
-                                </div>
+                            <div class="col-7 coursepicleftarrow" style="padding:5px">
+                                <select id="ddlCourse" onchange="coursechange()">
+                                    <option value="-1">Upcoming Courses</option>
+                                    <option value="0">Current Courses</option>
+                                    @foreach (DropDownListModel item in Model?.CourseDropdown ?? Enumerable.Empty<DropDownListModel>())
+                                    {
+                                        <option value="@item.Id">@item.Name</option>
+                                    }
+                                </select>
                             </div>
                             <div class="col-3 courseborderbottomright">
-                                Upcoming Courses &nbsp; <img src="/images/rightarrow.png" />
+                                Upcoming Courses &nbsp; <img src="/images/rightarrow.png" class="picimgalign" />
                             </div>
                         </div>
                         <div class="row margintop5">
@@ -68,39 +75,51 @@
                             </div>
                         </div>
                         <div class="row divpic">
-                            @for (int i = 0; i < 25; i++)
+                            @foreach (var item in Model?.CourseTypes ?? Enumerable.Empty<string>())
                             {
-                                Random rnd = new Random();
-                                int index = rnd.Next(1, 6);
-                                string src = $"/images/nature{index}.jpeg";
-                                string id = $"divPic{i}";
-                                <div class="col-4 pichide" id="@id">
-                                    <div class="pic">
-                                        <img onmouseover="imageFocusIn(this)" onmouseout="imageBlur(this)" src="@src" class="imgpic" />
-                                        <hr />
-                                        <span class="txtpaddingleft">23FAH-4367</span><br />
-                                        <b class="txtpaddingleft">ACCT-509-T-6:00-8:50</b><br />
-                                        <span class="txtpaddingleft">Open</span>
-                                    </div>
+                                count = count + 1;
+                                var picList = Model?.StudentCourseModels?.Where(x => x.CourseType == item).Select(x => x);
+                                var srcId = GetRandom(count);
+                                <div class="textlaignleft margintop5 pichide" style="margin-left:7px">
+                                    <b>@item</b>
                                 </div>
+                                foreach (var pic in picList ?? Enumerable.Empty<StudentCourseModel>())
+                                {
+                                    <div class="col-4 pichide" id="@srcId.Item1">
+                                        <div class="pic">
+                                            <img onmouseover="imageFocusIn(this)" onmouseout="imageBlur(this)" src="@srcId.Item2" class="imgpic" />
+                                            <hr />
+                                            <span class="txtpaddingleft">@pic.CourseCode</span><br />
+                                            <span class="txtpaddingleft">@pic.CourseName</span><br />
+                                            <span class="txtpaddingleft">@pic.StudentCourseStatus</span>
+                                        </div>
+                                    </div>
+                                }
                             }
                         </div>
                         <div class="row divlist" id="divList">
-                            @for (int i = 0; i < 25; i++)
+                            @foreach (var item in Model?.CourseTypes ?? Enumerable.Empty<string>())
                             {
-                                <div class="col-10 divlistmargin">
-                                    <div class="divlistleftborder">
-                                        23FAH-4367
-                                    </div>
-                                    <div class="divlistleftborder">
-                                        ACCT-509-T-6:00-8:50 &nbsp; <span class="divlistlightgray">Original Course View</span>
-                                    </div>
-                                    <div class="divlistleftborder">
-                                        <a href="#" class="anchornounderline">Open | </a>&nbsp;
-                                        <a href="#" class="anchornounderline">Cathryn Meegan | </a>&nbsp;
-                                        <a href="#" class="anchornounderline">More info</a>
-                                    </div>
+                                var picList = Model?.StudentCourseModels?.Where(x => x.CourseType == item).Select(x => x);
+                                <div class="textlaignleft margintop5" style="margin-left:7px">
+                                    <b>@item</b>
                                 </div>
+                                foreach (var pic in picList ?? Enumerable.Empty<StudentCourseModel>())
+                                {
+                                    <div class="col-10 divlistmargin">
+                                        <div class="divlistleftborder">
+                                            @pic.CourseCode
+                                        </div>
+                                        <div class="divlistleftborder">
+                                            @pic.CourseName &nbsp; <span class="divlistlightgray">Original Course View</span>
+                                        </div>
+                                        <div class="divlistleftborder">
+                                            <a href="#" class="anchornounderline">@pic.StudentCourseStatus | </a>&nbsp;
+                                            <a href="#" class="anchornounderline">@pic.StaffName | </a>&nbsp;
+                                            <a href="#" class="anchornounderline">More info</a>
+                                        </div>
+                                    </div>
+                                }
                             }
                         </div>
                         <br />

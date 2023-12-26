@@ -139,8 +139,8 @@ function showListView(index, ctrl) {
         showhidepic('block');
     }
 }
-function showhidepic(flag){
-  $('.pichide').css('display', flag);
+function showhidepic(flag) {
+    $('.pichide').css('display', flag);
 }
 
 function imageFocusIn(c) {
@@ -150,18 +150,20 @@ function imageBlur(c) {
     $(c).parent('div').css("border", "1px solid gray");
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+function coursechange() {
+    var val = $("#ddlCourse option:selected").val();
+    if (val == 0 || val == -1) {
+        $('#leftarrowtext').html($('#ddlCourse option').eq(2).text())
+    } else {
+        var index = $("#ddlCourse option:selected").index();
+        var tot = $('#ddlCourse option').length;
+        selectcoursevalues(index, tot);
+    }
+}
+function selectcoursevalues(index, tot) {
+    if (index + 1 < tot) {
+        $('#leftarrowtext').html($('#ddlCourse option').eq(index + 1).text());
+    } else {
+        $('#leftarrowtext').html($('#ddlCourse option').eq(2).text());
+    }
+}

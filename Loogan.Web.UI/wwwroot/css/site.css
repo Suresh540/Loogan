@@ -881,7 +881,7 @@
     width: 100%;
     border: 1px solid gray;
     border-left: 1px solid gray;
-    padding: 3px
+    padding: 0px;
 }
 
 .imgpic {
@@ -932,14 +932,14 @@
 }
 .coursepicleftarrow 
 {
-    text-align: left;
+    text-align: center;
     border-bottom: 1px solid gray
 }
 .fontitalic {
     font-style: italic;
 }
 .courseborderbottomright {
-    text-align: right;
+    text-align: center;
     border-bottom: 1px solid gray
 }
 .margintop25 {
@@ -958,5 +958,10 @@
 .pichide
 {
     margin-top:5px;
+}
+#ddlCourse {
+    width: 15vw;
+    font-style: italic;
+    border: 0px
 }
 
