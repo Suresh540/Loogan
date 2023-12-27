@@ -6,10 +6,6 @@ namespace Loogan.API.Database.Models;
 
 public partial class LooganContext : DbContext
 {
-    public LooganContext()
-    {
-    }
-
     private readonly string? _connectionString;
     public LooganContext(string? connectionString)
     {
@@ -82,9 +78,9 @@ public partial class LooganContext : DbContext
 
     public virtual DbSet<UserType> UserTypes { get; set; }
 
-    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see https://go.microsoft.com/fwlink/?LinkId=723263.
-        => optionsBuilder.UseSqlServer("Server=SURESHKALAGA;Database=Loogan;uid=sa;pwd=loogan123;connection timeout=60;TrustServerCertificate=True");
+    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) => 
+        optionsBuilder.UseSqlServer(_connectionString);
+
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
