@@ -1,4 +1,5 @@
 ﻿using Loogan.Web.UI.Resources.Pages;
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Components;
 using Microsoft.Extensions.Localization;
 using Microsoft.JSInterop;
@@ -27,10 +28,17 @@ namespace Loogan.Web.UI.Components
             await base.OnInitializedAsync();
         }
 
-        public void SignOut()
+        public async Task SignOut()
         {
-            _httpContext?.HttpContext?.Session.Clear();
-            navigationManager.NavigateTo("/", true);
+            if (_httpContext != null && _httpContext.HttpContext != null)
+            {
+                _httpContext?.HttpContext?.Session.Clear();
+                await _httpContext.HttpContext.SignOutAsync();
+            }
+            if (navigationManager != null)
+            {
+                navigationManager.NavigateTo("/", true);
+            }
         }
     }
 }

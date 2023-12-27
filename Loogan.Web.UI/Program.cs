@@ -1,11 +1,12 @@
 using Loogan.Common.Utilities;
 using Loogan.Web.UI.Utilities;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Localization;
 using Serilog;
 using System.Globalization;
 
 var builder = WebApplication.CreateBuilder(args);
-
 // Add services to the container.
 //builder.Services.AddAuthentication(OpenIdConnectDefaults.AuthenticationScheme)
 //    .AddMicrosoftIdentityWebApp(builder.Configuration.GetSection("AzureAd"));
@@ -27,9 +28,20 @@ builder.Services.AddTransient<IUtilityHelper>(opt =>
     return new UtilityHelper(builder.Configuration["LooganAPIUrl"]);
 });
 builder.Services.AddServerSideBlazor();
-builder.Services.AddRazorPages();
-
-builder.Services.AddDistributedMemoryCache();
+builder.Services.AddRazorPages(options =>
+{
+    options.Conventions.AuthorizeFolder("/Admin");
+    options.Conventions.AuthorizePage("/Admin/AdminDashboard");
+    
+});
+builder.Services.AddAuthorization();
+builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+                .AddCookie(options =>
+                {
+                    options.LoginPath = new PathString("/");
+                    options.LogoutPath = new PathString("/Logout");
+                });
+builder.Services.AddSingleton<IAuthorizationHandler, LooganAdminAuthorizationHandler>();
 
 builder.Services.AddSession(options =>
 {
@@ -37,14 +49,11 @@ builder.Services.AddSession(options =>
     options.Cookie.HttpOnly = true;
     options.Cookie.IsEssential = true;
 });
-
 builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 builder.Services.AddSingleton<IEmailMessage, EmailMessage>();
-
-builder.Host.UseSerilog((context, configuration) =>
-    configuration.ReadFrom.Configuration(context.Configuration));
-
-builder.Services.Configure<RequestLocalizationOptions>(options => {
+builder.Host.UseSerilog((context, configuration) => configuration.ReadFrom.Configuration(context.Configuration));
+builder.Services.Configure<RequestLocalizationOptions>(options =>
+{
     const string defaultCulture = "en-US";
     var supportedCultures = new[]
     {
@@ -56,31 +65,26 @@ builder.Services.Configure<RequestLocalizationOptions>(options => {
     options.SupportedUICultures = supportedCultures;
 });
 
-
-
 var app = builder.Build();
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Error");
     app.UseHsts();
 }
-
 app.UseExceptionHandler();
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 app.UseSerilogRequestLogging();
 app.UseRouting();
-
-//app.UseAuthorization();
+app.UseAuthentication();
+app.UseAuthorization();
 app.MapRazorPages();
 app.UseSession();
-
 var supportedCultures = new[] { "en-US", "fr-FR" };
 var localizationOptions = new RequestLocalizationOptions().SetDefaultCulture(supportedCultures[0])
     .AddSupportedCultures(supportedCultures)
     .AddSupportedUICultures(supportedCultures);
 app.UseRequestLocalization(localizationOptions);
-
 app.MapBlazorHub();
 app.MapControllers();
 app.Run();

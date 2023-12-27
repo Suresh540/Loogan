@@ -1,9 +1,12 @@
 using Loogan.API.Models.Models;
 using Loogan.Web.UI.Resources.Pages;
 using Loogan.Web.UI.Utilities;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Localization;
+using System.Security.Claims;
 
 namespace Loogan.Web.UI.Pages
 {
@@ -51,10 +54,24 @@ namespace Loogan.Web.UI.Pages
                 HttpContext.Session.SetString("UserName", model?.UserName);
                 HttpContext.Session.SetString("FullName", model?.FullName);
 
+                var claims = new List<Claim>
+                {
+                    new Claim(ClaimTypes.Name, model.UserName),
+                    new Claim(ClaimTypes.Authentication, model.FullName),
+                    new Claim(ClaimTypes.Role, model.UserTypeName)
+                };
+
+                var claimsIdentity = new ClaimsIdentity(
+                    claims, CookieAuthenticationDefaults.AuthenticationScheme);
+
+                await HttpContext.SignInAsync(
+                    CookieAuthenticationDefaults.AuthenticationScheme,
+                    new ClaimsPrincipal(claimsIdentity));
+
                 if (model.UserTypeName == "Student")
-                    return RedirectToPage("/Courses/courses");
+                    return LocalRedirect("/Courses/courses");
                 else
-                    return RedirectToPage("/Admin/AdminDashboard");
+                    return LocalRedirect("/Admin/AdminDashboard");
             }
             DisplayMessage = ""; //Localizer != null ? Localizer["UserPwdWrongKey"] : "";
             return Page();
