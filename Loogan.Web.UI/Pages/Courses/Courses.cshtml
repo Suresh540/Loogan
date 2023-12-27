@@ -15,6 +15,7 @@
         return Tuple.Create<string, string>(id, src);
     }
 }
+
 <component type="typeof(Upper_Component)" render-mode="Static" />
 <form name="frmCourse" method="post" action="/StudentCourse/CourseSelection">
     <input type="hidden" id="courseType" name="courseType" />
@@ -59,9 +60,8 @@
                             </div>
                         </div>
                         <div class="row margintop5">
-                            <div class="col-1 margintop5">
-                                <img id="imgPic" src="~/images/image.png" onclick="showListView(1)" class="picimgalign" alt="imageview" title="Click here to view list" />
-                                <img id="imgList" src="~/images/list.png" onclick="showListView(2)" class="picimgalign" style="display:none;" alt="imageview" title="Click here to view image" />
+                            <div class="col-1 paddingtop2">
+                                <input type="checkbox" name="piclist" checked>
                             </div>
                             <div class="col-4 ">
                                 <input type="text" placeholder="Search your courses" />
@@ -137,8 +137,24 @@
         </div>
     </div>
 </form>
-
+<link href="~/css/bootstrap-switch.min.css" rel="stylesheet" />
+<script src="~/js/bootstrap-switch.min.js"></script>
 
 <script>
     liTabClick('/Courses/courses');
+    $("[name='piclist']").bootstrapSwitch();
+    $('input[name="piclist"]').on('switchChange.bootstrapSwitch', function (event, state) {
+        if (state) {
+            showListView(1);
+        } else {
+            showListView(2);
+        }
+    });
+    function fnChangeText() {
+        setTimeout(() => {
+            $('.bootstrap-switch-primary').html('<img src="/images/image.png" alt="pic" title="Switch to view list" />');
+            $('.bootstrap-switch-default').html('<img src="/images/list.png" alt="list" title="Switch to view Pic" />');
+        }, 100);
+    }
+    fnChangeText();
 </script>

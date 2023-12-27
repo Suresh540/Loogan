@@ -169,3 +169,11 @@ function selectcoursevalues(index, tot) {
         $('#leftarrowtext').html($('#ddlCourse option').eq(2).text());
     }
 }
+
+function loadCourse() {
+    $('#courseType').val($('#leftarrowtext').html());
+    document.forms['frmCourse'].submit();
+}
+
+
+
