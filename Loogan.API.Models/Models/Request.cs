@@ -8,6 +8,20 @@ namespace Loogan.API.Models.Models
 {
     public class Request
     {
-        public int Id { get; set; }
+        public int LanguageId { get; set; }
+    }
+
+    public class RoleMenuRequest
+    {
+        public int RoleId { get; set; }
+        public int LanguageId { get; set; }
+    }
+
+    public class SaveRoleMenuRequest
+    {
+        public int? MenuRoleMappingId { get; set; }
+        public int RoleId { get; set; }
+
+        public int PrimaryMenuId { get; set; }
     }
 }

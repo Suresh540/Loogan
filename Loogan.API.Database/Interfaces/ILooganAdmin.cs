@@ -30,6 +30,8 @@ namespace Loogan.API.Database.Interfaces
 
         public Task<List<MenuModel>?> GetAllMenus(int languageId);
 
-        public Task<List<RoleMenuModel>> GetRoleMenus(int languageId);
+        public Task<List<RoleMenuModel>> GetRoleMenus(int roleId, int languageId);
+
+        public Task<int> SaveRoleMenus(List<SaveRoleMenuRequest> request);
     }
 }

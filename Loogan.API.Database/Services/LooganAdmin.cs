@@ -5,6 +5,7 @@ using Loogan.API.Models.Models.Admin;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -169,7 +170,7 @@ namespace Loogan.API.Database.Services
                     {
                         list.Add(new UserTypeModel() { UserTypeId = item.UserTypeId, UserType = item.UserType1, Description = item.Description });
                     }
-                    
+
                 }
             }
             return list;
@@ -189,18 +190,48 @@ namespace Loogan.API.Database.Services
             return list;
         }
 
-        public async Task<List<RoleMenuModel>> GetRoleMenus(int languageId)
+        public async Task<List<RoleMenuModel>> GetRoleMenus(int roleId, int languageId)
         {
             var list = new List<RoleMenuModel>();
             using (var context = new LooganContext(_connectionString))
             {
-                var query = context.Database.SqlQuery<RoleMenuModel>($"Get_RoleMenus {languageId}").AsNoTracking().AsAsyncEnumerable();
+                var query = context.Database.SqlQuery<RoleMenuModel>($"Get_RoleMenus {roleId},{languageId}").AsNoTracking().AsAsyncEnumerable();
                 await foreach (var item in query)
                 {
                     list.Add(item);
                 }
             }
             return list;
+        }
+
+        public async Task<int> SaveRoleMenus(List<SaveRoleMenuRequest> request)
+        {
+            var isSuccess = 0;
+
+            using (var context = new LooganContext(_connectionString))
+            {
+                var userType = context.UserTypes.ToList();
+                if (userType.Any())
+                {
+                    foreach (var item in request)
+                    {
+                        if(item.MenuRoleMappingId != null && item.MenuRoleMappingId > 0)
+                        {
+                            //Update
+                        }
+                        else
+                        {
+                            //Insert
+                        }
+                        //isSuccess = await context.SaveChangesAsync();
+                        isSuccess = 0;
+                    }
+
+                }
+            }
+
+            return isSuccess;
+
         }
     }
 }

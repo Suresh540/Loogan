@@ -153,7 +153,7 @@ namespace Loogan.Web.API.Controllers
         [Consumes("application/json")]
         public async Task<IActionResult> GetUserRoles([FromBody] Request request)
         {
-            var listMenus = await _adminService.GetUserRoles(request.Id);
+            var listMenus = await _adminService.GetUserRoles(request.LanguageId);
             return Ok(listMenus);
         }
 
@@ -163,7 +163,7 @@ namespace Loogan.Web.API.Controllers
         [Consumes("application/json")]
         public async Task<IActionResult> GetAllMenus([FromBody] Request request)
         {
-            var listMenus = await _adminService.GetAllMenus(request.Id);
+            var listMenus = await _adminService.GetAllMenus(request.LanguageId);
             return Ok(listMenus);
         }
 
@@ -171,13 +171,23 @@ namespace Loogan.Web.API.Controllers
         [Route("GetRoleMenus")]
         [Produces("application/json")]
         [Consumes("application/json")]
-        public async Task<IActionResult> GetRoleMenus([FromBody] Request request)
+        public async Task<IActionResult> GetRoleMenus([FromBody] RoleMenuRequest request)
         {
-            var listMenus = await _adminService.GetRoleMenus(request.Id);
+            var listMenus = await _adminService.GetRoleMenus(request.RoleId,request.LanguageId);
             return Ok(listMenus);
         }
 
-       
+        [HttpPost]
+        [Route("SaveRoleMenus")]
+        [Produces("application/json")]
+        [Consumes("application/json")]
+        public async Task<IActionResult> SaveRoleMenus([FromBody] List<SaveRoleMenuRequest> request)
+        {
+            var listMenus = await _adminService.SaveRoleMenus(request);
+            return Ok(listMenus);
+        }
+
+
 
         #endregion
     }

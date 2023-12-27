@@ -18,6 +18,10 @@ namespace Loogan.API.Models.Models
 
         public string? MenuCode { get; set; }
 
+        public string? MenuUrl { get; set; }
+
+        public string? MenuIcon { get; set; }
+
         public int SequenceOrder { get; set; }
     }
 }

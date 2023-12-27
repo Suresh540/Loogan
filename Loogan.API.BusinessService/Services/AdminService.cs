@@ -7,6 +7,7 @@ using Loogan.API.Models.Models.Admin;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -91,10 +92,16 @@ namespace Loogan.API.BusinessService.Services
             return allMenus;
         }
 
-        public async Task<List<RoleMenuModel>> GetRoleMenus(int languageId)
+        public async Task<List<RoleMenuModel>> GetRoleMenus(int roleId,int languageId)
         {
-            var roleMenus = await _looganAdmin.GetRoleMenus(languageId);
+            var roleMenus = await _looganAdmin.GetRoleMenus(roleId,languageId);
             return roleMenus;
+        }
+
+        public async Task<int> SaveRoleMenus(List<SaveRoleMenuRequest> request)
+        {
+            var listMenus = await _looganAdmin.SaveRoleMenus(request);
+            return listMenus;
         }
     }
 }
