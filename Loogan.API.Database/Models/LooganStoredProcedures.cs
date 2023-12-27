@@ -104,5 +104,28 @@ namespace Loogan.API.Database.Models
 
             return isUpdated;
         }
+
+        public async Task<int?> DeleteUser(int userId)
+        {
+            var isDeleted = 0;
+
+            if (userId != 0)
+            {
+                using (var context = new LooganContext(_connectionString))
+                {
+                    var user = context.Users.FirstOrDefault(x => x.UserId == userId);
+
+                    if (user != null)
+                    {
+                        user.IsDeleted = true;
+                        context.Users.Update(user);
+                        isDeleted = await context.SaveChangesAsync();
+                    }
+
+                }
+            }
+
+            return isDeleted;
+        }
     }
 }

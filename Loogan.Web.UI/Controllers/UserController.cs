@@ -51,5 +51,13 @@ namespace Loogan.Web.UI.Controllers
             var userModel = await _utilityHelper.ExecuteAPICall<bool>(user, RestSharp.Method.Post, resource: "api/User/UpdateUser");
             return Json(new { value = "Success" });
         }
+
+        [Route("DeleteUser")]
+        public async Task<JsonResult> DeleteUser(string userid)
+        {
+            var apiRequest = new ApiRequest() { RequestValue = userid };
+            var userModel = await _utilityHelper.ExecuteAPICall<bool>(apiRequest, RestSharp.Method.Post, resource: "api/User/DeleteUser");
+            return Json(new { value = "Success" });
+        }
     }
 }

@@ -17,7 +17,9 @@ public interface IUserService
     public Task<UserModel?> GetUserDetailsService(int userId);
     public Task<int?> CreateUser(UserModel userModelObj);
     public Task<int?> UpdateUser(UserModel userModelObj);
-    
+    public Task<int?> DeleteUser(int userId);
+
+
 
 
 }

@@ -57,5 +57,12 @@ public class UserService : IUserService
         var result = await _storedProcedures.UpdateUser(userObj);
         return result;
     }
+
+    public async Task<int?> DeleteUser(int userId)
+    {
+        var result = await _storedProcedures.DeleteUser(userId);
+        return result;
+    }
+    
 }
 

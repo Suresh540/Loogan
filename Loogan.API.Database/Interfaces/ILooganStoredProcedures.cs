@@ -10,5 +10,7 @@ public interface ILooganStoredProcedures
     public Task<ForgotPswdModel> GetUserEmailByUserName(string userName);
     public Task<int?> CreateUser(User userObj);
     public Task<int?> UpdateUser(User userObj);
+
+    public Task<int?> DeleteUser(int userId);
 }
 

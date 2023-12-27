@@ -95,5 +95,19 @@ namespace Loogan.Web.API.Controllers
             var result = await _userService.UpdateUser(userObj);
             return Ok(result);
         }
+
+        [HttpPost]
+        [Route("DeleteUser")]
+        [Produces("application/json")]
+        [Consumes("application/json")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public async Task<IActionResult> DeleteUser ([FromBody] ApiRequest request)
+        {
+            var userId = request.RequestValue != "" ? Convert.ToInt32(request.RequestValue) : 0;
+            var result = await _userService.DeleteUser(userId);
+            return Ok(result);
+        }
     }
 }
