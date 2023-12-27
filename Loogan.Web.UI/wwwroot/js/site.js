@@ -144,7 +144,7 @@ function showhidepic(flag) {
 }
 
 function imageFocusIn(c) {
-    $(c).parent('div').css("border", "3px solid blue");
+    $(c).parent('div').css("border", "3px solid gray");
 }
 function imageBlur(c) {
     $(c).parent('div').css("border", "1px solid gray");
@@ -172,6 +172,11 @@ function selectcoursevalues(index, tot) {
 
 function loadCourse() {
     $('#courseType').val($('#leftarrowtext').html());
+    document.forms['frmCourse'].submit();
+}
+function opencourses() {
+    var status = $('#ddlStatus option:selected').text();
+    $('#status').val(status);
     document.forms['frmCourse'].submit();
 }
 

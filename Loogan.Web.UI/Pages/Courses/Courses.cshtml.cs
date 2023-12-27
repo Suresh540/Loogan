@@ -1,4 +1,5 @@
 using Loogan.API.Models.Models;
+using Loogan.Web.UI.Models;
 using Loogan.Web.UI.Utilities;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -30,11 +31,11 @@ namespace Loogan.Web.UI.Pages.Courses
 
         public async Task OnGetAsync()
         {
-            var courseType = TempData?["courseType"]?.ToString();
-            await FetchCourseData(courseType);
+
+            await FetchCourseData();
         }
 
-        private async Task FetchCourseData(string? courseType)
+        private async Task FetchCourseData()
         {
             var apiRequest = new ApiLookUpRequest() { LookupType = "CourseCategory", LanguageId = 1 };
             CourseDropdown = await _utilityHelper.ExecuteAPICall<List<DropDownListModel>>(apiRequest, RestSharp.Method.Post, resource: "api/StudentCourse/GetCourseCategory");
@@ -42,6 +43,17 @@ namespace Loogan.Web.UI.Pages.Courses
             var request = new ApiRequest { RequestValue = "1" };
             StudentCourseModels = await _utilityHelper.ExecuteAPICall<List<StudentCourseModel>>(request, RestSharp.Method.Post, resource: "api/StudentCourse/GetStudentCourseDetails");
 
+            var courseType = TempData?["courseType"]?.ToString();
+            var status = TempData?["status"]?.ToString();
+
+            //Filter based on course type
+            FilterDatabasedOnCourseType(courseType);
+
+            //Filter based on status
+            FilterDatabasedOnStatus(status);
+        }
+        private void FilterDatabasedOnCourseType(string? courseType)
+        {
             if (string.IsNullOrEmpty(courseType))
             {
                 SelectedCourseType = CourseDropdown?[0].Name;
@@ -64,7 +76,7 @@ namespace Loogan.Web.UI.Pages.Courses
                     SelectedCourseType = CourseDropdown?[0].Name;
                 }
 
-                CourseTypes = StudentCourseModels?.Where(x=>x.CourseType == courseType).GroupBy(x => new { x.CourseType }).Select(x => new GroupCourseType
+                CourseTypes = StudentCourseModels?.Where(x => x.CourseType == courseType).GroupBy(x => new { x.CourseType }).Select(x => new GroupCourseType
                 {
                     CourseType = x.Key.CourseType,
                     StudentCourseModels = x.Where(y => y.CourseType == x.Key.CourseType).ToList()
@@ -73,12 +85,15 @@ namespace Loogan.Web.UI.Pages.Courses
                 CurrentCourseType = courseType;
             }
         }
-    }
 
-    public class GroupCourseType
-    {
-        public string? CourseType { get; set; }
+        private void FilterDatabasedOnStatus(string? status)
+        {
+            if (!string.IsNullOrWhiteSpace(status))
+            {
+                CourseTypes = CourseTypes?.Where(x => x.StudentCourseModels != null && x.StudentCourseModels.Any(y => y?.StudentCourseStatus?.ToUpper()?.Trim() == status.ToUpper().Trim()))
+                    .Select(x => x).ToList();
+            }
+        }
 
-        public List<StudentCourseModel>? StudentCourseModels { get; set; }
     }
 }

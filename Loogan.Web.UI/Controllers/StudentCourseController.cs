@@ -35,6 +35,7 @@ namespace Loogan.Web.UI.Controllers
         public IActionResult CourseSelection()
         {
             TempData["courseType"] = Request.Form["courseType"].ToString();
+            TempData["status"] = Request.Form["status"].ToString();
             return RedirectToPage("/Courses/courses");
         }
     }

@@ -1,8 +1,12 @@
 ﻿@page "/Courses/courses"
 @using Loogan.API.Models.Models
 @using Loogan.Web.UI.Components
+@using Loogan.Web.UI.Models
 @using Loogan.Web.UI.Pages.Shared
+@using Loogan.Web.UI.Resources.Pages
+@using Microsoft.Extensions.Localization
 @model Loogan.Web.UI.Pages.Courses.CoursesModel
+@inject IStringLocalizer<ContentLabel> _localizer
 
 @{
     int count = 0;
@@ -19,6 +23,8 @@
 <component type="typeof(Upper_Component)" render-mode="Static" />
 <form name="frmCourse" method="post" action="/StudentCourse/CourseSelection">
     <input type="hidden" id="courseType" name="courseType" />
+    <input type="hidden" id="status" name="status" />
+
     <div id="site-wrap" class="off-canvas-wrap">
         <div class="inner-wrap">
             <div class="row">
@@ -29,7 +35,7 @@
                     <div class="base-profile pointscroll righcontent scrollrightend">
                         <div class="row">
                             <div class="col-12">
-                                <h1 class="coursetitle">Courses</h1>
+                                <h1 class="coursetitle">@_localizer["CoursesKey"]</h1>
                                 <hr />
                             </div>
                         </div>
@@ -68,11 +74,11 @@
                             </div>
                             <div class="col-4">
                                 <b>Filter</b>
-                                <select style="width:13vw">
+                                <select id="ddlStatus" style="width:13vw" onchange="opencourses()">
                                     <option value="0">All courses</option>
                                     <option value="1">Courses I am taking</option>
-                                    <option value="2">Open courses</option>
-                                    <option value="3">Completed courses</option>
+                                    <option value="Open">Open courses</option>
+                                    <option value="">Completed courses</option>
                                 </select>
                             </div>
                             <div class="col-3">
@@ -99,7 +105,7 @@
                                             <hr />
                                             <span class="txtpaddingleft">@pic.CourseCode</span><br />
                                             <span class="txtpaddingleft">@pic.CourseName</span><br />
-                                            <span class="txtpaddingleft">@pic.StudentCourseStatus</span>
+                                            <a href="#" class="anchornounderline txtpaddingleft" data-toggle="modal" data-target="#courseright_modal">@pic.StudentCourseStatus</a>
                                         </div>
                                     </div>
                                 }
@@ -121,7 +127,7 @@
                                             @pic.CourseName &nbsp; <span class="divlistlightgray">Original Course View</span>
                                         </div>
                                         <div class="divlistleftborder">
-                                            <a href="#" class="anchornounderline">@pic.StudentCourseStatus | </a>&nbsp;
+                                            <a href="#" class="anchornounderline" data-toggle="modal" data-target="#courseright_modal">@pic.StudentCourseStatus | </a>&nbsp;
                                             <a href="#" class="anchornounderline">@pic.StaffName | </a>&nbsp;
                                             <a href="#" class="anchornounderline">More info</a>
                                         </div>
@@ -137,6 +143,25 @@
         </div>
     </div>
 </form>
+<div style="width:96vw">
+    <div class="modal modal-right fade" id="courseright_modal" tabindex="-1" role="dialog" aria-labelledby="courseright_modal">
+        <div class="modal-dialog" role="document" style="width:96vw !important">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <div class="bb-close-offset" style="top: 0px;">
+                        <img src="~/images/closebutton.png" style="curosr:pointer;width:50px;height:40px;padding:0px;position:absolute;z-index:2000;left:0px;top:0px" data-dismiss="modal" aria-label="Close" />
+                    </div>
+                </div>
+                <div class="modal-body">
+                </div>
+                <div class="modal-footer modal-footer-fixed">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">@_localizer["CloseKey"]</button>
+                    <input type="button" class="btn btn-primary" value="@_localizer["SaveChangesKey"]" />
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 <link href="~/css/bootstrap-switch.min.css" rel="stylesheet" />
 <script src="~/js/bootstrap-switch.min.js"></script>
 

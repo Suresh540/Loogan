@@ -921,50 +921,100 @@
     color: lightgray;
     font-weight: bold;
 }
-.anchornounderline
-{
-    text-decoration:none;
-    cursor:pointer;
+
+.anchornounderline {
+    text-decoration: none;
+    cursor: pointer;
 }
+
 .coursetitle {
     font-style: italic;
     padding: 10px
 }
-.coursepicleftarrow 
-{
+
+.coursepicleftarrow {
     text-align: center;
     border-bottom: 1px solid gray
 }
+
 .fontitalic {
     font-style: italic;
 }
+
 .courseborderbottomright {
     text-align: center;
     border-bottom: 1px solid gray
 }
+
 .margintop25 {
     margin-top: 25px
 }
+
 .margintop5 {
     margin-top: 5px !important
 }
+
 .paddingtop2 {
     padding-top: 2px !important
 }
+
 .picimgalign {
     cursor: pointer;
     vertical-align: middle
 }
+
 .textlaignleft {
     text-align: left
 }
-.pichide
-{
-    margin-top:5px;
+
+.pichide {
+    margin-top: 5px;
 }
+
 #ddlCourse {
     width: 15vw;
     font-style: italic;
     border: 0px
 }
 
+@supports ((-webkit-text-stroke-color: #a234b5) and (-webkit-text-fill-color: #fff)) or ((-moz-text-stroke-color: #a234b5) and (-moz-text-fill-color: #fff)) {
+    @media only screen and (min-width: 64em) {
+        .bb-close {
+            -moz-text-fill-color: #fff;
+            -moz-text-stroke-color: #a234b5;
+            -moz-text-stroke-width: 0.0625rem;
+        }
+    }
+}
+
+@media only screen and (min-width: 64em) {
+    .bb-close {
+        background-color: #c56fd5;
+        color: #fff !important;
+        right: auto;
+        left: 0rem;
+        top: 0.2rem;
+        z-index: 910;
+        height: 2.5rem;
+        font-weight: 400;
+        font-size: 2.25rem;
+        padding: 0;
+        padding-bottom: 0.1875rem;
+        margin: 0;
+        width: 2.5rem;
+        line-height: 1rem;
+        box-shadow: none;
+        border-radius: 0;
+        position: absolute;
+        text-decoration: none;
+    }
+}
+.bb-close:after {
+    position: absolute;
+    content: '';
+    top: 100%;
+    left: 0;
+    border-style: solid;
+    border-width: 0 24px 17px 0;
+    border-color: transparent #8d4a99 transparent transparent;
+}
