@@ -156,5 +156,51 @@ namespace Loogan.API.Database.Services
 
             return isUpdated;
         }
+
+        public async Task<List<UserTypeModel>?> GetUserRoles(int languageId)
+        {
+            var list = new List<UserTypeModel>();
+            using (var context = new LooganContext(_connectionString))
+            {
+                var userType = context.UserTypes.ToList();
+                if (userType.Any())
+                {
+                    foreach (var item in userType)
+                    {
+                        list.Add(new UserTypeModel() { UserTypeId = item.UserTypeId, UserType = item.UserType1, Description = item.Description });
+                    }
+                    
+                }
+            }
+            return list;
+        }
+
+        public async Task<List<MenuModel>?> GetAllMenus(int languageId)
+        {
+            var list = new List<MenuModel>();
+            using (var context = new LooganContext(_connectionString))
+            {
+                var query = context.Database.SqlQuery<MenuModel>($"Get_AllMenus {languageId}").AsNoTracking().AsAsyncEnumerable();
+                await foreach (var item in query)
+                {
+                    list.Add(item);
+                }
+            }
+            return list;
+        }
+
+        public async Task<List<RoleMenuModel>> GetRoleMenus(int languageId)
+        {
+            var list = new List<RoleMenuModel>();
+            using (var context = new LooganContext(_connectionString))
+            {
+                var query = context.Database.SqlQuery<RoleMenuModel>($"Get_RoleMenus {languageId}").AsNoTracking().AsAsyncEnumerable();
+                await foreach (var item in query)
+                {
+                    list.Add(item);
+                }
+            }
+            return list;
+        }
     }
 }

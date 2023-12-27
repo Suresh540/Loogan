@@ -3,11 +3,11 @@ using System.Collections.Generic;
 
 namespace Loogan.API.Models.Models;
 
-public class UserType
+public class UserTypeModel
 {
     public int UserTypeId { get; set; }
 
-    public string UserType1 { get; set; } = null!;
+    public string UserType { get; set; } = null!;
 
     public string? Description { get; set; }
 

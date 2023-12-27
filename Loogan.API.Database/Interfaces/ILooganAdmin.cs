@@ -1,4 +1,5 @@
 ﻿using Loogan.API.Database.Models;
+using Loogan.API.Models.Models;
 using Loogan.API.Models.Models.Admin;
 using System;
 using System.Collections.Generic;
@@ -24,5 +25,11 @@ namespace Loogan.API.Database.Interfaces
 
         public Task<int?> CreateStudent(Student studentModelObj);
         public Task<int?> UpdateStudent(Student studentModelObj);
+
+        public Task<List<UserTypeModel>?> GetUserRoles(int languageId);
+
+        public Task<List<MenuModel>?> GetAllMenus(int languageId);
+
+        public Task<List<RoleMenuModel>> GetRoleMenus(int languageId);
     }
 }

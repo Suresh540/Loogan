@@ -15,10 +15,6 @@ namespace Loogan.Web.UI.Controllers
             _utilityHelper = utilityHelper;
         }
 
-        public IActionResult Index()
-        {
-            return View();
-        }
 
         [Route("GetAllUser")]
         public async Task<JsonResult> GetAllUser(PagingModel pageModel)

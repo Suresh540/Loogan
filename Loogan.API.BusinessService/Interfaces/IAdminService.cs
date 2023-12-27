@@ -24,5 +24,11 @@ namespace Loogan.API.BusinessService.Interfaces
 
         public Task<int?> CreateStudent(StudentModel studentModelObj);
         public Task<int?> UpdateStudent(StudentModel studentModelObj);
+
+        public Task<List<UserTypeModel>?> GetUserRoles(int languageId);
+
+        public Task<List<MenuModel>?> GetAllMenus(int languageId);
+
+        public Task<List<RoleMenuModel>> GetRoleMenus(int languageId);
     }
 }

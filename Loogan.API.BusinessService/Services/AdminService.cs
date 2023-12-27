@@ -2,6 +2,7 @@
 using Loogan.API.BusinessService.Interfaces;
 using Loogan.API.Database.Interfaces;
 using Loogan.API.Database.Models;
+using Loogan.API.Models.Models;
 using Loogan.API.Models.Models.Admin;
 using System;
 using System.Collections.Generic;
@@ -76,6 +77,24 @@ namespace Loogan.API.BusinessService.Services
             var studentObj = _mapper.Map<Student>(studentModelObj);
             var result = await _looganAdmin.UpdateStudent(studentObj);
             return result;
+        }
+
+        public async Task<List<UserTypeModel>?> GetUserRoles(int languageId)
+        {
+            var userRolesList = await _looganAdmin.GetUserRoles(languageId);
+            return userRolesList;
+        }
+
+        public async Task<List<MenuModel>?> GetAllMenus(int languageId)
+        {
+            var allMenus = await _looganAdmin.GetAllMenus(languageId);
+            return allMenus;
+        }
+
+        public async Task<List<RoleMenuModel>> GetRoleMenus(int languageId)
+        {
+            var roleMenus = await _looganAdmin.GetRoleMenus(languageId);
+            return roleMenus;
         }
     }
 }

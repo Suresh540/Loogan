@@ -16,6 +16,8 @@ namespace Loogan.Web.API.Controllers
             _adminService = adminService;
         }
 
+        #region Course
+
         [HttpPost]
         [Route("GetAllCourses")]
         [Produces("application/json")]
@@ -54,6 +56,10 @@ namespace Loogan.Web.API.Controllers
             var result = await _adminService.UpdateCourse(courseObj);
             return Ok(result);
         }
+
+        #endregion
+
+        #region Staff
 
         [HttpPost]
         [Route("GetAllStaff")]
@@ -94,6 +100,10 @@ namespace Loogan.Web.API.Controllers
             return Ok(result);
         }
 
+        #endregion
+
+        #region Student
+
         [HttpPost]
         [Route("GetAllStudents")]
         [Produces("application/json")]
@@ -132,5 +142,43 @@ namespace Loogan.Web.API.Controllers
             var result = await _adminService.UpdateStudent(studentObj);
             return Ok(result);
         }
+
+        #endregion
+
+        #region RoleMapping
+
+        [HttpPost]
+        [Route("GetUserRoles")]
+        [Produces("application/json")]
+        [Consumes("application/json")]
+        public async Task<IActionResult> GetUserRoles([FromBody] Request request)
+        {
+            var listMenus = await _adminService.GetUserRoles(request.Id);
+            return Ok(listMenus);
+        }
+
+        [HttpPost]
+        [Route("GetMenus")]
+        [Produces("application/json")]
+        [Consumes("application/json")]
+        public async Task<IActionResult> GetAllMenus([FromBody] Request request)
+        {
+            var listMenus = await _adminService.GetAllMenus(request.Id);
+            return Ok(listMenus);
+        }
+
+        [HttpPost]
+        [Route("GetRoleMenus")]
+        [Produces("application/json")]
+        [Consumes("application/json")]
+        public async Task<IActionResult> GetRoleMenus([FromBody] Request request)
+        {
+            var listMenus = await _adminService.GetRoleMenus(request.Id);
+            return Ok(listMenus);
+        }
+
+       
+
+        #endregion
     }
 }
