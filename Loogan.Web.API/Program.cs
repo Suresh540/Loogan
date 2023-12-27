@@ -5,6 +5,7 @@ using Loogan.API.Database.Interfaces;
 using Loogan.API.Database.Models;
 using Loogan.API.Database.Services;
 using Loogan.Common.Utilities;
+using Microsoft.Extensions.DependencyInjection;
 using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -12,26 +13,22 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddAutoMapper(typeof(Program), typeof(InitializeMapper));
 builder.Services.AddSingleton<ILooganStoredProcedures>((opt) =>
 {
-    var connectionString = builder.Configuration["ConnectionStrings:looganConnectionString"];
-    return new LooganStoredProcedures(connectionString);
+    return new LooganStoredProcedures(builder.Configuration);
 });
 
 builder.Services.AddSingleton<ILooganCommon>((opt) =>
 {
-    var connectionString = builder.Configuration["ConnectionStrings:looganConnectionString"];
-    return new LooganCommonService(connectionString);
+    return new LooganCommonService(builder.Configuration);
 });
 
 builder.Services.AddSingleton<ILooganStudentCourse>((opt) =>
 {
-    var connectionString = builder.Configuration["ConnectionStrings:looganConnectionString"];
-    return new LooganStudentCourse(connectionString);
+    return new LooganStudentCourse(builder.Configuration);
 });
 
 builder.Services.AddSingleton<ILooganAdmin>((opt) =>
 {
-    var connectionString = builder.Configuration["ConnectionStrings:looganConnectionString"];
-    return new LooganAdmin(connectionString);
+    return new LooganAdmin(builder.Configuration);
 });
 
 builder.Services.AddExceptionHandler<GlobalExceptionHandler>();
