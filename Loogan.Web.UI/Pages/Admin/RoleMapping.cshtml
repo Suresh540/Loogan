@@ -1,8 +1,10 @@
 ﻿@page "/Admin/RoleMapping"
 @using Loogan.Web.UI.Components
 @using Loogan.Web.UI.Resources.Pages
+@using Loogan.Web.UI.Utilities
 @using Microsoft.Extensions.Localization
 @model Loogan.Web.UI.Pages.Admin.RoleMappingModel
+@attribute [LooganAdminAuthorize("Admin")]
 @inject IStringLocalizer<ContentLabel> _localizer
 
 <component type="typeof(Upper_Component)" render-mode="Static" />

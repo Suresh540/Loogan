@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Loogan.Web.UI.Controllers
 {
     [Route("User")]
+    [LooganStudentAuthorize("Admin")]
     public class AdminController : Controller
     {
         private readonly IUtilityHelper _utilityHelper;
@@ -38,6 +39,7 @@ namespace Loogan.Web.UI.Controllers
         }
 
         [Route("SaveRoleMenus")]
+
         public async Task<JsonResult> SaveRoleMenus(List<SaveRoleMenuRequest> request)
         {
             var userRoles = await _utilityHelper.ExecuteAPICall<List<MenuModel>>(request, RestSharp.Method.Post, resource: "api/Admin/SaveRoleMenus");

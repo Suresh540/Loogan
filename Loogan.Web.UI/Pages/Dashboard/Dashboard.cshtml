@@ -4,6 +4,7 @@
 @using Microsoft.Extensions.Localization
 @model DashboardModel
 @inject IStringLocalizer<ContentLabel> Localizer
+@attribute [Loogan.Web.UI.Utilities.LooganStudentAuthorize("Student")]
 
 <component type="typeof(Upper_Component)" render-mode="Static" />
 <div>

@@ -1,8 +1,10 @@
 ﻿@page "/User/user"
 @using Loogan.Web.UI.Components
 @using Loogan.Web.UI.Resources.Pages
+@using Loogan.Web.UI.Utilities
 @using Microsoft.Extensions.Localization
 @model Loogan.API.Models.Models.UserModel
+@attribute [LooganAdminAuthorize("Admin")]
 @inject IStringLocalizer<ContentLabel> Localizer
 
 @{

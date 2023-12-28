@@ -7,7 +7,7 @@
 @using Microsoft.Extensions.Localization
 @model Loogan.Web.UI.Pages.Courses.CoursesModel
 @inject IStringLocalizer<ContentLabel> _localizer
-
+@attribute [Loogan.Web.UI.Utilities.LooganStudentAuthorize("Student")]
 @{
     int count = 0;
     Tuple<string, string> GetRandom(int i)

@@ -40,8 +40,11 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
                 {
                     options.LoginPath = new PathString("/");
                     options.LogoutPath = new PathString("/Logout");
+                    options.AccessDeniedPath = new PathString("/Access");
                 });
 builder.Services.AddSingleton<IAuthorizationHandler, LooganAdminAuthorizationHandler>();
+builder.Services.AddSingleton<IAuthorizationHandler, LooganStudentAuthorizationHandler>();
+builder.Services.AddSingleton<IAuthorizationHandler, LooganTeacherAuthorizationHandler>();
 
 builder.Services.AddSession(options =>
 {

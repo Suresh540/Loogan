@@ -1,7 +1,9 @@
 ﻿@page "/Admin/AdminDashboard"
 @using Loogan.Web.UI.Components
 @using Loogan.Web.UI.Resources.Pages
+@using Loogan.Web.UI.Utilities
 @using Microsoft.Extensions.Localization
+@attribute [LooganAdminAuthorize("Admin")]
 @inject IStringLocalizer<ContentLabel> Localizer
 
 <component type="typeof(Upper_Component)" render-mode="Static" />

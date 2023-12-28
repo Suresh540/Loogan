@@ -1,0 +1,28 @@
+﻿@page "/Access"
+@using Loogan.API.Models.Models
+@using Loogan.Web.UI.Components
+@using Loogan.Web.UI.Models
+@using Loogan.Web.UI.Pages.Shared
+@using Loogan.Web.UI.Resources.Pages
+@model Loogan.Web.UI.Pages.Shared.AccessModel
+
+<component type="typeof(Upper_Component)" render-mode="Static" />
+
+<div id="site-wrap" class="off-canvas-wrap" data-offcanvas="" style="height:580px">
+    <div class="row" style="height: 0">
+    </div>
+    <div class="inner-wrap" ui-view="" style="height:100%;">
+        <div class="row">
+            <div class="col-2 bb-login" style="overflow-y:auto;height:100vh;overflow-x:hidden">
+                <component type="typeof(LeftSideBar_Component)" render-mode="ServerPrerendered" />
+            </div>
+            <div class="col-10" style="background-color:white;overflow:hidden">
+                <div class="margintop25" style="margin-bottom:70vh;text-align:center">
+                    <h3 class="text-danger">User does not have access to this page.</h3>
+                </div>
+                <component type="typeof(Lower_Component)" render-mode="Static" />
+            </div>
+        </div>
+    </div>
+</div>
+

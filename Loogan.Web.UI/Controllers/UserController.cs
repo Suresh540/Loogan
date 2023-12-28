@@ -7,6 +7,7 @@ using Microsoft.Extensions.Localization;
 namespace Loogan.Web.UI.Controllers
 {
     [Route("User")]
+    
     public class UserController : Controller
     {
         private readonly IUtilityHelper _utilityHelper;
@@ -17,6 +18,7 @@ namespace Loogan.Web.UI.Controllers
 
 
         [Route("GetAllUser")]
+        [LooganAdminAuthorize("Admin")]
         public async Task<JsonResult> GetAllUser(PagingModel pageModel)
         {
             var users = await _utilityHelper.ExecuteAPICall<List<PagingUserModel>>(null, RestSharp.Method.Post, resource: "api/User/AllUser");
@@ -35,6 +37,7 @@ namespace Loogan.Web.UI.Controllers
         }
 
         [Route("CreateUser")]
+        [LooganAdminAuthorize("Admin")]
         public async Task<JsonResult> CreateUser(UserModel user)
         {
             var userModel = await _utilityHelper.ExecuteAPICall<bool>(user, RestSharp.Method.Post, resource: "api/User/CreateUser");
@@ -42,6 +45,7 @@ namespace Loogan.Web.UI.Controllers
         }
 
         [Route("UpdateUser")]
+        [LooganAdminAuthorize("Admin")]
         public async Task<JsonResult> UpdateUser(UserModel user)
         {
             var userModel = await _utilityHelper.ExecuteAPICall<bool>(user, RestSharp.Method.Post, resource: "api/User/UpdateUser");
@@ -49,6 +53,7 @@ namespace Loogan.Web.UI.Controllers
         }
 
         [Route("DeleteUser")]
+        [LooganAdminAuthorize("Admin")]
         public async Task<JsonResult> DeleteUser(string userid)
         {
             var apiRequest = new ApiRequest() { RequestValue = userid };

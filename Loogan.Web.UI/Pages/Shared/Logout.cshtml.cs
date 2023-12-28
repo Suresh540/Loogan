@@ -10,6 +10,7 @@ namespace Loogan.Web.UI.Pages.Shared
         {
             HttpContext.Session.Clear();
             await HttpContext.SignOutAsync();
+            Response.Redirect("/", true);
         }
     }
 }

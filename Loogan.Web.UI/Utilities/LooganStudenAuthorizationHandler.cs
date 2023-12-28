@@ -2,9 +2,9 @@
 using System.Security.Claims;
 namespace Loogan.Web.UI.Utilities;
 
-public class LooganAdminAuthorizeAttribute : AuthorizeAttribute, IAuthorizationRequirement, IAuthorizationRequirementData
+public class LooganStudentAuthorizeAttribute : AuthorizeAttribute, IAuthorizationRequirement, IAuthorizationRequirementData
 {
-    public LooganAdminAuthorizeAttribute(string role) => Role = role;
+    public LooganStudentAuthorizeAttribute(string role) => Role = role;
     public string Role { get; }
     public IEnumerable<IAuthorizationRequirement> GetRequirements()
     {
@@ -12,23 +12,30 @@ public class LooganAdminAuthorizeAttribute : AuthorizeAttribute, IAuthorizationR
     }
 }
 
-public class LooganAdminAuthorizationHandler : AuthorizationHandler<LooganAdminAuthorizeAttribute>
+public class LooganStudentAuthorizationHandler : AuthorizationHandler<LooganStudentAuthorizeAttribute>
 {
-    private const string admin = "ADMIN";
-    private readonly ILogger<LooganAdminAuthorizationHandler> _logger;
+    private const string student = "STUDENT";
+    private const string admin = "admin";
+    private readonly ILogger<LooganStudentAuthorizationHandler> _logger;
 
-    public LooganAdminAuthorizationHandler(ILogger<LooganAdminAuthorizationHandler> logger)
+    public LooganStudentAuthorizationHandler(ILogger<LooganStudentAuthorizationHandler> logger)
     {
         _logger = logger;
     }
 
-    protected override Task HandleRequirementAsync(AuthorizationHandlerContext context, LooganAdminAuthorizeAttribute requirement)
+    protected override Task HandleRequirementAsync(AuthorizationHandlerContext context, LooganStudentAuthorizeAttribute requirement)
     {
         _logger.LogWarning("Evaluating authorization requirement for role = {role}", requirement.Role);
         var role = context.User.FindFirst(c => c.Type == ClaimTypes.Role);
         if (role != null)
         {
-            if (role.Value == requirement.Role && role.Value.ToUpper() == admin)
+            if(role.Value.ToLower() == admin)
+            {
+                context.Succeed(requirement);
+                return Task.CompletedTask;
+            }
+
+            if (role.Value == requirement.Role && role.Value.ToUpper() == student)
             {
                 _logger.LogInformation("Authorization requirement {Role} satisfied", requirement.Role);
                 context.Succeed(requirement);
