@@ -12,4 +12,6 @@ public partial class UserType
     public string? Description { get; set; }
 
     public bool? IsDeleted { get; set; }
+
+    public virtual ICollection<MenuRoleMapping> MenuRoleMappings { get; set; } = new List<MenuRoleMapping>();
 }

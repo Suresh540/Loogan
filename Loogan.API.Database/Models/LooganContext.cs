@@ -44,6 +44,12 @@ public partial class LooganContext : DbContext
 
     public virtual DbSet<MasterLookUp> MasterLookUps { get; set; }
 
+    public virtual DbSet<MenuPrimary> MenuPrimaries { get; set; }
+
+    public virtual DbSet<MenuRoleMapping> MenuRoleMappings { get; set; }
+
+    public virtual DbSet<MenuSecondary> MenuSecondaries { get; set; }
+
     public virtual DbSet<Organization> Organizations { get; set; }
 
     public virtual DbSet<PreviousEducation> PreviousEducations { get; set; }
@@ -78,9 +84,8 @@ public partial class LooganContext : DbContext
 
     public virtual DbSet<UserType> UserTypes { get; set; }
 
-    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) => 
-        optionsBuilder.UseSqlServer(_connectionString);
-
+    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        => optionsBuilder.UseSqlServer(_connectionString);
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -464,6 +469,58 @@ public partial class LooganContext : DbContext
             entity.Property(e => e.LookUpValue)
                 .HasMaxLength(100)
                 .IsUnicode(false);
+        });
+
+        modelBuilder.Entity<MenuPrimary>(entity =>
+        {
+            entity.HasKey(e => e.PrimaryMenuId).HasName("PK_PrimaryMenu");
+
+            entity.ToTable("Menu_Primary");
+
+            entity.Property(e => e.MenuCode)
+                .HasMaxLength(100)
+                .IsUnicode(false)
+                .HasDefaultValueSql("((0))");
+            entity.Property(e => e.MenuIcon)
+                .HasMaxLength(200)
+                .IsUnicode(false);
+            entity.Property(e => e.MenuUrl)
+                .HasMaxLength(500)
+                .IsUnicode(false);
+        });
+
+        modelBuilder.Entity<MenuRoleMapping>(entity =>
+        {
+            entity.ToTable("Menu_Role_Mapping");
+
+            entity.HasOne(d => d.PrimaryMenu).WithMany(p => p.MenuRoleMappings)
+                .HasForeignKey(d => d.PrimaryMenuId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_Menu_Role_Mapping_Primary_PrimaryMenuId");
+
+            entity.HasOne(d => d.Role).WithMany(p => p.MenuRoleMappings)
+                .HasForeignKey(d => d.RoleId)
+                .OnDelete(DeleteBehavior.ClientSetNull);
+        });
+
+        modelBuilder.Entity<MenuSecondary>(entity =>
+        {
+            entity.HasKey(e => e.SecondaryMenuId).HasName("PK_SecondaryMenu");
+
+            entity.ToTable("Menu_Secondary");
+
+            entity.Property(e => e.MenuName)
+                .HasMaxLength(200)
+                .IsUnicode(false);
+
+            entity.HasOne(d => d.Language).WithMany(p => p.MenuSecondaries)
+                .HasForeignKey(d => d.LanguageId)
+                .OnDelete(DeleteBehavior.ClientSetNull);
+
+            entity.HasOne(d => d.PrimaryMenu).WithMany(p => p.MenuSecondaries)
+                .HasForeignKey(d => d.PrimaryMenuId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_Menu_Secondary_Menu_PrimaryMenuId");
         });
 
         modelBuilder.Entity<Organization>(entity =>
