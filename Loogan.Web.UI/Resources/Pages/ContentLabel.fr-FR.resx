@@ -375,4 +375,10 @@
   <data name="RoleMappingKey" xml:space="preserve">
     <value>Cartographie des rôles</value>
   </data>
+  <data name="UserDeleteMsgKey" xml:space="preserve">
+    <value>L’utilisateur a été supprimé avec succès.</value>
+  </data>
+  <data name="UserFailedDeleteKey" xml:space="preserve">
+    <value>Echec de la suppression de l’utilisateur.</value>
+  </data>
 </root>

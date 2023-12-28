@@ -119,6 +119,7 @@ function showUsers(pageIndex, pageSize) {
                 for (var item of data) {
                     let index = item.userId
                     $('#tdBody').append(`<tr>
+                        <td class="text-danger anchornounderline" title="Delete user" onclick="deleteUser('${index}')">X</td>
                         <td><a id="f${index}" href="#" onclick="return userEdit(${index})" style="cursor:pointer">${item.firstName}</a></td>
                         <td id="l${index}">${item.lastName}</td>
                         <td id="u${index}">${item.userName}</td>
@@ -153,7 +154,22 @@ function showUsers(pageIndex, pageSize) {
 
     }, 1000)
 }
-
+function deleteUser(id) {
+    if (confirm('Are you sure, you want delete user')) {
+        $.ajax({
+            method: 'Post',
+            url: "/User/DeleteUser",
+            data: { userid: id },
+            success: function (e) {
+                Alert(localizationLib.getLocalizeData("UserDeleteMsgKey"), 'Success');
+                showUsers();
+            },
+            error: function (e) {
+                Alert(localizationLib.getLocalizeData("UserFailedDeleteKey"), 'error');
+            }
+        })
+    }
+}
 function setTotalRecords(records) {
     totalRecords = records;
 }
@@ -169,7 +185,7 @@ function getUserEmailByUserName() {
         url: "/User/GetUserEmailByUserName",
         data: { userName: loginUserName },
         success: function (e) {
-            console.log('success');
+            console.log(e);
         },
         error: function (e) {
             console.log(e);

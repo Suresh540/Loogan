@@ -375,4 +375,10 @@
   <data name="RoleMappingKey" xml:space="preserve">
     <value>Role Mapping</value>
   </data>
+  <data name="UserDeleteMsgKey" xml:space="preserve">
+    <value>User deleted successfully.</value>
+  </data>
+  <data name="UserFailedDeleteKey" xml:space="preserve">
+    <value>Failed to delete user.</value>
+  </data>
 </root>
