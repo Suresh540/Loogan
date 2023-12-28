@@ -2,7 +2,7 @@
 function createUser() {
     var model = {}
     model.userId = $('#hdnUserId').val();
-    model.userTypeId = $('#hdnUserTypeId').val() == 0 ? 3 : $('#hdnUserTypeId').val(); 
+    model.userTypeId = $('#hdnUserTypeId').val() == 0 ? 3 : $('#hdnUserTypeId').val();
     model.firstName = $('#txtFirstName').val();
     model.middleName = $('#txtMiddleName').val();
     model.lastName = $('#txtLastName').val();
@@ -73,7 +73,7 @@ function createUser() {
     }
 
     if ($('#ddlGender').val().trim() == '0') {
-        Alert(localizationLib.getLocalizeData("GenderMandatoryKey"),'error');
+        Alert(localizationLib.getLocalizeData("GenderMandatoryKey"), 'error');
         $('#ddlGender').focus();
         return;
     }
@@ -216,7 +216,7 @@ function userEdit(index) {
     var etext = $('#ed' + index).html();
     var ed = $('#ddlEductionLevel option').filter(function () { return $(this).html() == etext; }).val();
     $('#ddlEductionLevel').val(ed);
-    
+
     $('#txtWebsite').val($('#w' + index).html());
     $('#txtPhone').val($('#ph' + index).html());
     $('#txtCity').val($('#c' + index).html());
@@ -255,4 +255,50 @@ function clearUserData() {
     $('#txtCompany').val('');
     $('#txtJobTitle').val('');
     $('#txtDepartment').val('');
+}
+
+function moveItemstoleft() {
+    $.each($("#selectedMenu option:selected"), function () {
+        var item = this;
+        $(this).remove();
+        $('#actualMenu').append($("<option></option>")
+            .attr("value", $(item).val())
+            .text($(item).html()));
+    });
+}
+function moveItemstoright() {
+    $.each($("#actualMenu option:selected"), function () {
+        var item = this;
+        $(this).remove();
+        $('#selectedMenu').append($("<option></option>")
+            .attr("value", $(item).val())
+            .text($(item).html()));
+    });
+}
+function clearRoleData() {
+    window.location.href = window.location.href;
+}
+function createrolemenu() {
+    var request = [];
+    $.each($("#selectedMenu option"), function () {
+        var saveRoleMenuRequest = {};
+        saveRoleMenuRequest.roleId = $('#ddlRoles option:selected').val();
+        saveRoleMenuRequest.primaryMenuId = $(this).val();
+        request.push(saveRoleMenuRequest);
+    });
+    if (request.length == 0) {
+        Alert(localizationLib.getLocalizeData("SelectChangesKey"), 'error');
+        return;
+    }
+    $.ajax({
+        method: 'Post',
+        url: "/user/SaveRoleMenus",
+        data: { request: request },
+        success: function (e) {
+            Alert(localizationLib.getLocalizeData("DataSavedKey"), 'Success');
+        },
+        error: function (e) {
+            Alert(localizationLib.getLocalizeData("FailedSaveKey"), 'error');
+        }
+    })
 }

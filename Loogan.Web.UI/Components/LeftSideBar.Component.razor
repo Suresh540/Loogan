@@ -1,4 +1,5 @@
-﻿@inherits Loogan.Web.UI.Components.LeftSideBarBase
+﻿@using Loogan.API.Models.Models
+@inherits Loogan.Web.UI.Components.LeftSideBarBase
 
 <ul class="ulspace">
     <li class="text-white">
@@ -32,48 +33,13 @@
     else
     {
         <ul class="ulspace">
-            <li class="liSpace">
-                <img src="/images/institution.png" alt="Institurion" style="width:30px;height:30px" />
-                <a style="color:white;font-size:16px;" href="/dashboard/dashboard">@Localizer["InstitutionPageKey"]</a>
-            </li>
-            <li class="liSpace">
-                <img src="/images/profile.png" style="width:30px;height:30px" />
-                <a style="color:white;font-size:16px;" href="/Profile/Profile">
-                    @UserName
-                </a>
-            </li>
-            <li class="liSpace">
-                <img src="/images/activity.png" style="width:30px;height:30px" />
-                <a style="color:white;font-size:16px;">@Localizer["ActivityStreamKey"]</a>
-            </li>
-            <li class="liSpace btnactivetab">
-                <img src="/images/course.png" style="width:30px;height:30px" />
-                <a style="color:white;font-size:16px;" href="/Courses/courses">@Localizer["CoursesKey"]</a>
-            </li>
-            <li class="liSpace">
-                <img src="/images/organization.png" style="width:30px;height:30px" />
-                <a style="color:white;font-size:16px;">@Localizer["OrgnizationsKey"]</a>
-            </li>
-            <li class="liSpace">
-                <img src="/images/calendar.png" style="width:30px;height:30px" />
-                <a style="color:white;font-size:16px;">@Localizer["CalendarKey"]</a>
-            </li>
-            <li class="liSpace">
-                <img src="/images/messages.png" style="width:30px;height:30px" />
-                <a style="color:white;font-size:16px;">@Localizer["MessagesKey"]</a>
-            </li>
-            <li class="liSpace">
-                <img src="/images/grades.png" style="width:30px;height:30px" />
-                <a style="color:white;font-size:16px;">@Localizer["GradesKey"]</a>
-            </li>
-            <li class="liSpace">
-                <img src="/images/tools.png" style="width:30px;height:30px" />
-                <a style="color:white;font-size:16px;">@Localizer["ToolsKey"]</a>
-            </li>
-            <li class="liSpace">
-                <img src="/images/signout.png" style="width:30px;height:30px" />
-                <a style="color:white;font-size:16px;" href="/Logout">@Localizer["SignOutKey"]</a>
-            </li>
+            @foreach (var item in RoleMenus ?? Enumerable.Empty<MenuModel>())
+            {
+                <li class="liSpace">
+                    <img src="@item.MenuIcon" style="width:30px;height:30px" alt="@item.MenuName" />
+                    <a style="color:white;font-size:16px;" href="@item.MenuUrl">@item.MenuName</a>
+                </li>
+            }
         </ul>
     }
 </form>

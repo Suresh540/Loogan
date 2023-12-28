@@ -381,4 +381,7 @@
   <data name="UserFailedDeleteKey" xml:space="preserve">
     <value>Echec de la suppression de l’utilisateur.</value>
   </data>
+  <data name="SelectChangesKey" xml:space="preserve">
+    <value>Sélectionnez les éléments à enregistrer</value>
+  </data>
 </root>

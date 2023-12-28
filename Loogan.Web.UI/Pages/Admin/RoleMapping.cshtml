@@ -1,4 +1,5 @@
 ﻿@page "/Admin/RoleMapping"
+@using Loogan.API.Models.Models
 @using Loogan.Web.UI.Components
 @using Loogan.Web.UI.Resources.Pages
 @using Loogan.Web.UI.Utilities
@@ -24,31 +25,40 @@
                             </div>
                         </div>
                         <div class="row">
+                            <div class="col-12 margintop5" style="text-align:right">
+                                <button type="button" class="btn btn-light border rounded-pill shadow-sm mb-1" onclick="clearRoleData()"
+                                        style="background:lightgreen;color:black">
+                                    <b>@_localizer["ClearKey"]</b>
+                                </button>
+                                <button id="btnSaveuser" type="button" class="btn btn-light border rounded-pill shadow-sm mb-1" onclick="createrolemenu()"
+                                        style="background:blue;color:white">
+                                    <b>@_localizer["SaveKey"]</b>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="row">
                             <div class="col-12 text-center margintop5">
-                                <select style="width:20vw">
-                                    <option value="1">Admin</option>
-                                    <option value="2">Teacher</option>
+                                <select id="ddlRoles" style="width:20vw">
                                     <option value="3">Student</option>
+                                    <option value="2">Teacher</option>
                                 </select>
                             </div>
                             <div class="col-12 text-center">
                                 <div class="row margintop5">
                                     <div class="col-5">
-                                        <select name="Cars" size="16">
-                                            <option value="Merceders"> Merceders </option>
-                                            <option value="BMW"> BMW </option>
-                                            <option value="Jaguar"> Jaguar </option>
-                                            <option value="Lamborghini"> Lamborghini </option>
-                                            <option value="Ferrari"> Ferrari </option>
-                                            <option value="Ford"> Ford </option>
+                                        <select id="actualMenu" name="actualMenu" size="16" multiple>
+                                            @foreach (var item in Model.MenuItems ?? Enumerable.Empty<MenuModel>())
+                                            {
+                                                <option value="@item.PrimaryMenuId">@item.MenuName</option>
+                                            }
                                         </select>
                                     </div>
                                     <div class="col-1">
-                                        <div class="margintop25"><<</div>
-                                        <div>>></div>
+                                        <div class="margintop25"><span style="cursor:pointer" onclick="moveItemstoright()">>></span></div>
+                                        <div><span style="cursor:pointer" onclick="moveItemstoleft()"><<</span></div>
                                     </div>
                                     <div class="col-5">
-                                        <select name="Cars" size="16">
+                                        <select id="selectedMenu" name="selectedMenu" size="16" multiple>
                                         </select>
                                     </div>
                                 </div>

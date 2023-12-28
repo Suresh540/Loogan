@@ -381,4 +381,7 @@
   <data name="UserFailedDeleteKey" xml:space="preserve">
     <value>Failed to delete user.</value>
   </data>
+  <data name="SelectChangesKey" xml:space="preserve">
+    <value>Select items to save</value>
+  </data>
 </root>

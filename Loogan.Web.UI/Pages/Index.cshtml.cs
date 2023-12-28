@@ -50,6 +50,7 @@ namespace Loogan.Web.UI.Pages
             if (model != null)
             {
                 HttpContext.Session.SetInt32("LoginUserId", model.UserId);
+                HttpContext.Session.SetInt32("LoginUserTypeId", model.UserTypeId);
                 HttpContext.Session.SetString("LoginUserType", model?.UserTypeName);
                 HttpContext.Session.SetString("UserName", model?.UserName);
                 HttpContext.Session.SetString("FullName", model?.FullName);
