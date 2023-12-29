@@ -208,25 +208,34 @@ namespace Loogan.API.Database.Services
         {
             var isSuccess = 0;
 
-            using (var context = new LooganContext(_connectionString))
+            if(request.Count > 0)
             {
-                var userType = context.UserTypes.ToList();
-                if (userType.Any())
+                using (var context = new LooganContext(_connectionString))
                 {
-                    foreach (var item in request)
+
+                    foreach(var item in request)
                     {
-                        if(item.MenuRoleMappingId != null && item.MenuRoleMappingId > 0)
+                        if(item.MenuRoleMappingId > 0)
                         {
-                            //Update
+                            var existingMenus = context.MenuRoleMappings.Where(x=>x.MenuRoleMappingId == item.MenuRoleMappingId).SingleOrDefault();
+                            if (existingMenus != null)
+                            {
+                                existingMenus.PrimaryMenuId = item.PrimaryMenuId;
+                                existingMenus.RoleId = item.RoleId;
+                                context.MenuRoleMappings.Update(existingMenus);
+                            }
                         }
                         else
                         {
-                            //Insert
+                            var menuRoleMapping = new MenuRoleMapping()
+                            {
+                                PrimaryMenuId = item.PrimaryMenuId,
+                                RoleId = item.RoleId
+                            };
+                            context.MenuRoleMappings.Add(menuRoleMapping);
                         }
-                        //isSuccess = await context.SaveChangesAsync();
-                        isSuccess = 0;
                     }
-
+                    isSuccess = await context.SaveChangesAsync();
                 }
             }
 
