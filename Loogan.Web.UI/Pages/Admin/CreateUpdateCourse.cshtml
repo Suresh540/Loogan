@@ -1,0 +1,196 @@
+﻿@page "/Admin/Course"
+@using Loogan.Web.UI.Components
+@using Loogan.Web.UI.Resources.Pages
+@using Loogan.Web.UI.Utilities
+@using Microsoft.Extensions.Localization
+@model Loogan.API.Models.Models.Admin.CourseModel
+@attribute [LooganAdminAuthorize("Admin")]
+@inject IStringLocalizer<ContentLabel> Localizer
+@{
+    var showCourse = "showCourse";
+    var getTotalRecords = "getTotalRecords";
+}
+}
+<component type="typeof(Upper_Component)" render-mode="Static" />
+<div id="site-wrap" class="off-canvas-wrap">
+    <div class="inner-wrap">
+        <div class="row">
+            <div class="col-2 bb-login pointscroll leftmenu">
+                <component type="typeof(LeftSideBar_Component)" render-mode="Server" />
+            </div>
+            <div class="col-10 base-profile pointscroll righcontent">
+                <div class="columns small-12 profile-content" style="margin-top:2px !important">
+                    <div style="text-align:right">
+                        <button onclick="showUsers()" type="button" style="background:gray;color:black" class="btn btn-light border rounded-pill shadow-sm mb-1" data-toggle="modal" data-target="#bottom_modal">
+                            <b>@Localizer["ShowCourseKey"]</b>
+                        </button>
+                        <button type="button" class="btn btn-light border rounded-pill shadow-sm mb-1" onclick="clearUserData()"
+                                style="background:lightgreen;color:black">
+                            <b>@Localizer["ClearKey"]</b>
+                        </button>
+                        <button id="btnSaveuser" type="button" class="btn btn-light border rounded-pill shadow-sm mb-1" onclick="createUser('btnSaveuser')"
+                                style="background:blue;color:white">
+                            <b>@Localizer["SaveKey"]</b>
+                        </button>
+                    </div>
+                    @* <div class="columns large-6 small-12 user-information">
+                    <h3>
+                    @Localizer["BasicInformationKey"]
+                    </h3>
+                    <hr />
+                    <p>
+                    <div>
+                    <b>
+                    @Localizer["FirstNameKey"]
+                    </b><br />
+                    <input id="txtFirstName" type="text" />
+                    <input type="hidden" id="hdnUserId" name="hdnUserId" value="0" />
+                    <input type="hidden" id="hdnUserTypeId" name="hdnUserTypeId" value="0" />
+                    </div>
+                    <div>
+                    <b>
+                    @Localizer["MiddleNameKey"]
+                    </b><br />
+                    <input id="txtMiddleName" type="text" />
+                    </div>
+                    <div>
+                    <b>
+                    @Localizer["LastNameKey"]
+                    </b><br />
+                    <input id="txtLastName" type="text" required />
+                    </div>
+                    <div>
+                    <b>
+                    @Localizer["AdditionalNameKey"]
+                    </b><br />
+                    <input id="txtAdditionalName" type="text" />
+                    </div>
+                    <div>
+                    <b>
+                    @Localizer["EmailAddressKey"]
+                    </b><br />
+                    <input id="txtEmailAddress" type="email" required />
+                    </div>
+                    <div>
+                    <b>
+                    @Localizer["UserNameKey"]
+                    </b><br />
+                    <input id="txtUserName" type="text" required />
+                    </div>
+                    <div>
+                    <b>
+                    @Localizer["PasswordKey"]
+                    </b><br />
+                    <input id="txtPassword" type="password" required />
+                    </div>
+                    <div>
+                    <b>
+                    @Localizer["ConfirmPasswordKey"]
+                    </b><br />
+                    <input id="txtcnfrmpassword" type="password" required />
+                    </div>
+                    </p>
+                    <h3 style="margin:5px">@Localizer["AdditionalInformationKey"]</h3>
+                    <hr />
+                    <p>
+                    <div>
+                    <b>
+                    @Localizer["GenderKey"]
+                    </b><br />
+                    <select id="ddlGender">
+                    </select>
+                    </div>
+                    <div>
+                    <b>
+                    @Localizer["PrefixKey"]
+                    </b><br />
+                    <input id="txtPreFix" type="text" />
+                    </div>
+                    <div>
+                    <b>
+                    @Localizer["SuffixKey"]
+                    </b><br />
+                    <input id="txtSuffix" type="text" />
+                    </div>
+                    <div>
+                    <b>
+                    @Localizer["EducationLevelKey"]
+                    </b><br />
+                    <select id="ddlEductionLevel">
+                    <option>Junior</option>
+                    <option>Senior</option>
+                    </select>
+                    </div>
+                    <div>
+                    <b>
+                    @Localizer["WebsiteKey"]
+                    </b><br />
+                    <input id="txtWebsite" type="text" />
+                    </div>
+                    </p>
+                    </div>
+                    <div class="columns large-6 small-12 user-settings">
+                    <h3 style="margin:5px">@Localizer["ContactInformationKey"]</h3>
+                    <hr />
+                    <p>
+                    <div>
+                    <b>
+                    @Localizer["PhoneNumberKey"]
+                    </b><br />
+                    <input id="txtPhone" type="text" required />
+                    </div>
+                    <div>
+                    <b>
+                    @Localizer["CityKey"]
+                    </b><br />
+                    <input id="txtCity" type="text" required />
+                    </div>
+                    <div>
+                    <b>
+                    @Localizer["State_ProvinceKey"]
+                    </b><br />
+                    <input id="txtState" type="text" required />
+                    </div>
+                    <div>
+                    <b>
+                    @Localizer["CountryKey"]
+                    </b><br />
+                    <input id="txtCountry" type="text" required />
+                    </div>
+                    <div>
+                    <b>
+                    @Localizer["FaxNumberKey"]
+                    </b><br />
+                    <input id="txtFaxNumber" type="text" />
+                    </div>
+                    </p>
+                    <h3 style="margin:5px">@Localizer["JobInformationKey"]</h3>
+                    <hr />
+                    <p>
+                    <div>
+                    <b>
+                    @Localizer["CompanyKey"]
+                    </b><br />
+                    <input id="txtCompany" type="text" />
+                    </div>
+                    <div>
+                    <b>
+                    @Localizer["JobTitleKey"]
+                    </b><br />
+                    <input id="txtJobTitle" type="text" />
+                    </div>
+                    <div>
+                    <b>
+                    @Localizer["DepartmentKey"]
+                    </b><br />
+                    <input id="txtDepartment" type="text" />
+                    </div>
+                    </p>
+
+                    </div> *@
+                </div>
+                <component type="typeof(Lower_Component)" render-mode="Static" /><br />
+            </div>
+        </div>
+    </div>
+</div>
