@@ -74,4 +74,6 @@ public partial class User
     public virtual MasterLookUp? Language { get; set; }
 
     public virtual ICollection<Staff> Staff { get; set; } = new List<Staff>();
+
+    public virtual ICollection<Student> Students { get; set; } = new List<Student>();
 }

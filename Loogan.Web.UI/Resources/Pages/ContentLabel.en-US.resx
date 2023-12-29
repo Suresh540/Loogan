@@ -420,4 +420,10 @@
 	<data name="FailedToCreateStaffKey" xml:space="preserve">
     <value>Failed to create staff</value>
   </data>
+	<data name="UserTypeKey" xml:space="preserve">
+    <value>User Type</value>
+  </data>
+	<data name="UserTypeMandatoryKey" xml:space="preserve">
+    <value>UserType is mandatory</value>
+  </data>
 </root>

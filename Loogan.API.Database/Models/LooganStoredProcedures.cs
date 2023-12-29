@@ -4,6 +4,8 @@ using Microsoft.EntityFrameworkCore;
 using System.Reflection.Emit;
 using System;
 using Microsoft.Extensions.Configuration;
+using Loogan.Web.UI.Utilities;
+
 
 namespace Loogan.API.Database.Models
 {
@@ -83,10 +85,68 @@ namespace Loogan.API.Database.Models
                 {
                     context.Users.Add(userObj);
                     isCreated = await context.SaveChangesAsync();
+
+                    if(Convert.ToInt32(UserTypeEnum.teacher) == userObj.UserTypeId)
+                    {
+                        int? PerviousStaffId = context.Staff.Max(u => (int?)u.StaffId);
+                        var code = CodeGenertion("staff", PerviousStaffId);
+                        var staffobj = new Staff()
+                        {
+                            FirstName = userObj.FirstName,
+                            LastName = userObj.LastName,
+                            StaffName = userObj.AdditionalName,
+                            Code = code,
+                            UserId = userObj.UserId
+                        };
+                        context.Staff.Add(staffobj);
+                        isCreated = await context.SaveChangesAsync();
+                    }
+                    else if (Convert.ToInt32(UserTypeEnum.student) == userObj.UserTypeId)
+                    {
+                        int? PerviousStudentId = context.Students.Max(u => (int?)u.StudentId);
+                        var Number = CodeGenertion("staff", PerviousStudentId);
+                        var studentobj = new Student()
+                        {
+                            FirstName = userObj.FirstName,
+                            MiddleName = userObj.MiddleName,
+                            LastName = userObj.LastName,
+                            Suffix = userObj.Suffix,
+                            Title = userObj.JobTitle,
+                            PostalCode = userObj.PostalCode,
+                            UserId = userObj.UserId,
+                            StudentNumber = Number
+                        };
+                        context.Students.Add(studentobj);
+                        isCreated = await context.SaveChangesAsync();
+
+
+                    }
+
                 }
             }
 
             return isCreated;
+        }
+
+        private string CodeGenertion(string type,int? previousId)
+        {
+            var code = "";
+            if (type == "staff")
+            {
+                if (previousId > 0)
+                    code = "Staff_" + (previousId + 1);
+                else
+                    code = "Staff_1";
+            }
+            else if(type == "student")
+            {
+                if (previousId > 0)
+                    code = "S_" + (previousId + 1);
+                else
+                    code = "Student_1";
+            }
+
+            return code;
         }
 
         public async Task<int?> UpdateUser(User userObj)

@@ -12,6 +12,7 @@ public partial class LooganContext : DbContext
         _connectionString = connectionString;
     }
 
+
     public virtual DbSet<AreaOfStudy> AreaOfStudies { get; set; }
 
     public virtual DbSet<AreaOfStudyCourseMapping> AreaOfStudyCourseMappings { get; set; }
@@ -85,8 +86,7 @@ public partial class LooganContext : DbContext
     public virtual DbSet<UserType> UserTypes { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        => optionsBuilder.UseSqlServer(_connectionString);
-
+           => optionsBuilder.UseSqlServer(_connectionString);
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -882,6 +882,10 @@ public partial class LooganContext : DbContext
                 .HasForeignKey<Student>(d => d.StudentId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK_Student_State_StateId");
+
+            entity.HasOne(d => d.User).WithMany(p => p.Students)
+                .HasForeignKey(d => d.UserId)
+                .HasConstraintName("FK__Student__UserId__297722B6");
         });
 
         modelBuilder.Entity<StudentCourseMapping>(entity =>

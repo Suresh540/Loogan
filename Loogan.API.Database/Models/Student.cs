@@ -83,6 +83,8 @@ public partial class Student
 
     public DateTime? ModifyDate { get; set; }
 
+    public int? UserId { get; set; }
+
     public virtual ICollection<Attendance> Attendances { get; set; } = new List<Attendance>();
 
     public virtual Campus? Campus { get; set; }
@@ -116,4 +118,6 @@ public partial class Student
     public virtual MasterLookUp StudentNavigation { get; set; } = null!;
 
     public virtual ICollection<TestScore> TestScores { get; set; } = new List<TestScore>();
+
+    public virtual User? User { get; set; }
 }

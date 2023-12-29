@@ -78,6 +78,12 @@ function createUser() {
         return;
     }
 
+    if ($('#ddlUserType').val().trim() == '0') {
+        Alert(localizationLib.getLocalizeData("UserTypeMandatoryKey"), 'error');
+        $('#ddlUserType').focus();
+        return;
+    }
+
     $('#btnSaveuser').prop('disabled', 'disabled');
 
     $.ajax({
@@ -99,6 +105,7 @@ function createUser() {
 
 ddlMasterLookup('ddlGender', 'gender');
 ddlMasterLookup('ddlEductionLevel', 'educationlevel');
+ddlUsertype();
 
 function showUsers(pageIndex, pageSize) {
     setTimeout(() => {
@@ -301,4 +308,25 @@ function createrolemenu() {
             Alert(localizationLib.getLocalizeData("FailedSaveKey"), 'error');
         }
     })
+}
+
+
+function ddlUsertype() {
+    $.ajax({
+        method: 'Post',
+        url: "/Admin/GetUserRoles",
+        data: { },
+        success: function (response) {
+            var dropDownListId = $('#ddlUserType');
+            $.each(response, function () {
+                    dropDownListId.append($("<option></option>").val(this['userTypeId']).html(this['userType']));
+            });
+        },
+        failure: function (response) {
+            Alert(response.responseText, 'error');
+        },
+        error: function (response) {
+            Alert(response.responseText, 'error');
+        }
+    });
 }

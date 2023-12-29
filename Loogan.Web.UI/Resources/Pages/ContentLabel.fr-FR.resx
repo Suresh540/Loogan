@@ -417,4 +417,10 @@
 	<data name="FailedToCreateStaffKey" xml:space="preserve">
     <value>Échec de la création du personnel</value>
   </data>
+	<data name="UserTypeKey" xml:space="preserve">
+    <value>Type d'utilisateur</value>
+  </data>
+	<data name="UserTypeMandatoryKey" xml:space="preserve">
+    <value>Le type d'utilisateur est obligatoire</value>
+  </data>
 </root>
