@@ -87,6 +87,7 @@ public partial class LooganContext : DbContext
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         => optionsBuilder.UseSqlServer(_connectionString);
 
+
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.Entity<AreaOfStudy>(entity =>
@@ -493,6 +494,8 @@ public partial class LooganContext : DbContext
         {
             entity.ToTable("Menu_Role_Mapping");
 
+            entity.HasIndex(e => new { e.PrimaryMenuId, e.RoleId }, "unique_menurole").IsUnique();
+
             entity.HasOne(d => d.PrimaryMenu).WithMany(p => p.MenuRoleMappings)
                 .HasForeignKey(d => d.PrimaryMenuId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
@@ -748,6 +751,10 @@ public partial class LooganContext : DbContext
             entity.Property(e => e.StaffName)
                 .HasMaxLength(200)
                 .IsUnicode(false);
+
+            entity.HasOne(d => d.User).WithMany(p => p.Staff)
+                .HasForeignKey(d => d.UserId)
+                .HasConstraintName("FK_Staff_User_UserId");
         });
 
         modelBuilder.Entity<State>(entity =>

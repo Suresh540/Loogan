@@ -148,10 +148,10 @@
     <value>Add/Edit User</value>
   </data>
 	<data name="AddEditStaffKey" xml:space="preserve">
-    <value>Add/Edit Staff</value>
+    <value>Edit Staff</value>
   </data>
 	<data name="AddEditStudentKey" xml:space="preserve">
-    <value>Add/Edit Student</value>
+    <value>Edit Student</value>
   </data>
 	<data name="AddEditCourseKey" xml:space="preserve">
     <value>Add/Edit Course</value>
@@ -401,5 +401,23 @@
   </data>
 	<data name="SelectChangesKey" xml:space="preserve">
     <value>Select items to save</value>
+  </data>
+	<data name="StaffInformationKey" xml:space="preserve">
+    <value>Staff Information</value>
+  </data>
+	<data name="StaffNameKey" xml:space="preserve">
+    <value>Staff Name</value>
+  </data>
+	<data name="StaffNameMandatoryKey" xml:space="preserve">
+    <value>Staff Name is mandatory</value>
+  </data>
+	<data name="StaffSavedSuccessKey" xml:space="preserve">
+    <value>Staff saved successfully</value>
+  </data>
+	<data name="StaffUpdateSuccessKey" xml:space="preserve">
+    <value>Staff saved successfully</value>
+  </data>
+	<data name="FailedToCreateStaffKey" xml:space="preserve">
+    <value>Failed to create staff</value>
   </data>
 </root>

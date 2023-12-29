@@ -27,7 +27,11 @@ public partial class Staff
 
     public DateTime? ModifyDate { get; set; }
 
+    public int? UserId { get; set; }
+
     public virtual ICollection<ClassPeriodSchedule> ClassPeriodSchedules { get; set; } = new List<ClassPeriodSchedule>();
 
     public virtual ICollection<ClassSection> ClassSections { get; set; } = new List<ClassSection>();
+
+    public virtual User? User { get; set; }
 }

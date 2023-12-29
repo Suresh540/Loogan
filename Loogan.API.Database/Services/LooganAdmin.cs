@@ -88,6 +88,14 @@ namespace Loogan.API.Database.Services
             {
                 using (var context = new LooganContext(_connectionString))
                 {
+                    int? PerviousStaffId = context.Staff.Max(u => (int?)u.StaffId);
+                    if (PerviousStaffId > 0)
+                        staffObj.Code = "Staff_" + (PerviousStaffId + 1);
+                    else
+                        staffObj.Code = "Staff_1";
+
+                    if (staffObj.UserId == 0)
+                        staffObj.UserId = null;
                     context.Staff.Add(staffObj);
                     isCreated = await context.SaveChangesAsync();
                 }
@@ -208,16 +216,16 @@ namespace Loogan.API.Database.Services
         {
             var isSuccess = 0;
 
-            if(request.Count > 0)
+            if (request.Count > 0)
             {
                 using (var context = new LooganContext(_connectionString))
                 {
 
-                    foreach(var item in request)
+                    foreach (var item in request)
                     {
-                        if(item.MenuRoleMappingId > 0)
+                        if (item.MenuRoleMappingId > 0)
                         {
-                            var existingMenus = context.MenuRoleMappings.Where(x=>x.MenuRoleMappingId == item.MenuRoleMappingId).SingleOrDefault();
+                            var existingMenus = context.MenuRoleMappings.Where(x => x.MenuRoleMappingId == item.MenuRoleMappingId).SingleOrDefault();
                             if (existingMenus != null)
                             {
                                 existingMenus.PrimaryMenuId = item.PrimaryMenuId;

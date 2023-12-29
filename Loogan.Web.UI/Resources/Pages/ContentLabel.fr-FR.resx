@@ -148,10 +148,10 @@
     <value>Ajouter/Modifier un utilisateur</value>
   </data>
 	<data name="AddEditStaffKey" xml:space="preserve">
-    <value>Ajouter/Modifier du personnel</value>
+    <value>Modifier le personnel</value>
   </data>
 	<data name="AddEditStudentKey" xml:space="preserve">
-    <value>Ajouter/Modifier un étudiant</value>
+    <value>Modifier l'élève</value>
   </data>
 	<data name="AddEditCourseKey" xml:space="preserve">
     <value>Ajouter/Modifier un cours</value>
@@ -401,5 +401,20 @@
   </data>
 	<data name="SelectChangesKey" xml:space="preserve">
     <value>Sélectionnez les éléments à enregistrer</value>
+  </data>
+	<data name="StaffInformationKey" xml:space="preserve">
+    <value>Informations sur le personnel</value>
+  </data>
+	<data name="StaffNameKey" xml:space="preserve">
+    <value>Nom du personnel</value>
+  </data>
+	<data name="StaffNameMandatoryKey" xml:space="preserve">
+    <value>Le nom du personnel est obligatoire</value>
+  </data>
+	<data name="StaffUpdateSuccessKey" xml:space="preserve">
+    <value>Personnel enregistré avec succès</value>
+  </data>
+	<data name="FailedToCreateStaffKey" xml:space="preserve">
+    <value>Échec de la création du personnel</value>
   </data>
 </root>

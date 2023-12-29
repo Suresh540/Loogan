@@ -10,6 +10,7 @@ namespace Loogan.API.Models.Models.Admin
     {
         public int StaffId { get; set; }
 
+        public int? UserId { get; set; }
         public string? Code { get; set; }
 
         public string? StaffName { get; set; }

@@ -1,10 +1,11 @@
 ﻿using Loogan.API.Models.Models;
+using Loogan.API.Models.Models.Admin;
 using Loogan.Web.UI.Utilities;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Loogan.Web.UI.Controllers
 {
-    [Route("User")]
+    [Route("Admin")]
     [LooganStudentAuthorize("Admin")]
     public class AdminController : Controller
     {
@@ -13,6 +14,45 @@ namespace Loogan.Web.UI.Controllers
         {
             _utilityHelper = utilityHelper;
         }
+
+        #region Staff
+
+        [Route("GetAllStaff")]
+        [LooganAdminAuthorize("Admin")]
+        public async Task<JsonResult> GetAllStaff(PagingModel pageModel)
+        {
+            var staffs = await _utilityHelper.ExecuteAPICall<List<StaffModel>>(null, RestSharp.Method.Post, resource: "api/Admin/GetAllStaff");
+            var pageList = staffs.Skip(pageModel.Pagesize * (pageModel.PageIndex - 1))
+                        .Take(pageModel.Pagesize).ToList();
+
+            return Json(pageList);
+        }
+
+        [Route("CreateStaff")]
+        [LooganAdminAuthorize("Admin")]
+        public async Task<JsonResult> CreateStaff(StaffModel staff)
+        {
+            var staffModel = await _utilityHelper.ExecuteAPICall<bool>(staff, RestSharp.Method.Post, resource: "api/Admin/CreateStaff");
+            return Json(new { value = "Success" });
+        }
+
+        [Route("UpdateStaff")]
+        [LooganAdminAuthorize("Admin")]
+        public async Task<JsonResult> UpdateStaff(StaffModel staff)
+        {
+            var staffModel = await _utilityHelper.ExecuteAPICall<bool>(staff, RestSharp.Method.Post, resource: "api/Admin/UpdateStaff");
+            return Json(new { value = "Success" });
+        }
+
+        [Route("DeleteStaff")]
+        [LooganAdminAuthorize("Admin")]
+        public async Task<JsonResult> DeleteUser(string userid)
+        {
+            var apiRequest = new ApiRequest() { RequestValue = userid };
+            var IsDeleted = await _utilityHelper.ExecuteAPICall<bool>(apiRequest, RestSharp.Method.Post, resource: "api/Admin/DeleteStaff");
+            return Json(new { value = "Success" });
+        }
+        #endregion
 
         [Route("GetUserRoles")]
         public async Task<JsonResult> GetUserRoles(int languageId)
