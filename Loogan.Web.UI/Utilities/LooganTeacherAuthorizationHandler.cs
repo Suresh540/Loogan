@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using System.Security.Claims;
+using static Loogan.Web.UI.Utilities.MicrosoftAuthentication;
 namespace Loogan.Web.UI.Utilities;
 
 public class LooganTeacherAuthorizeAttribute : AuthorizeAttribute, IAuthorizationRequirement, IAuthorizationRequirementData
@@ -26,6 +27,10 @@ public class LooganTeacherAuthorizationHandler : AuthorizationHandler<LooganTeac
     protected override Task HandleRequirementAsync(AuthorizationHandlerContext context, LooganTeacherAuthorizeAttribute requirement)
     {
         _logger.LogWarning("Evaluating authorization requirement for role = {role}", requirement.Role);
+        if (DoesUserBelongsToAzureAD(context, requirement))
+        {
+            return Task.CompletedTask;
+        }
         var role = context.User.FindFirst(c => c.Type == ClaimTypes.Role);
         if (role != null)
         {
@@ -49,7 +54,6 @@ public class LooganTeacherAuthorizationHandler : AuthorizationHandler<LooganTeac
         {
             _logger.LogInformation("No admin claim present");
         }
-
         return Task.CompletedTask;
     }
 }

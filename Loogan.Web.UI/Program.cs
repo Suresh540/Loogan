@@ -1,51 +1,44 @@
 using Loogan.Common.Utilities;
 using Loogan.Web.UI.Utilities;
-using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authentication.OpenIdConnect;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Localization;
+using Microsoft.Identity.Web;
+using Microsoft.Identity.Web.UI;
+using Microsoft.AspNetCore.Mvc.Razor;
 using Serilog;
 using System.Globalization;
 
 var builder = WebApplication.CreateBuilder(args);
-// Add services to the container.
-//builder.Services.AddAuthentication(OpenIdConnectDefaults.AuthenticationScheme)
-//    .AddMicrosoftIdentityWebApp(builder.Configuration.GetSection("AzureAd"));
-
-//builder.Services.AddAuthorization(options =>
-//{
-//    // By default, all incoming requests will be authorized according to the default policy.
-//    options.FallbackPolicy = options.DefaultPolicy;
-//});
-//.AddMicrosoftIdentityUI();
 
 builder.Services.AddExceptionHandler<GlobalExceptionHandler>();
 builder.Services.AddProblemDetails();
 builder.Services.AddLocalization(options => options.ResourcesPath = "");
-builder.Services.AddMvc().AddMvcLocalization(Microsoft.AspNetCore.Mvc.Razor.LanguageViewLocationExpanderFormat.Suffix)
+builder.Services.AddMvc().AddMvcLocalization(LanguageViewLocationExpanderFormat.Suffix)
                 .AddDataAnnotationsLocalization();
 builder.Services.AddTransient<IUtilityHelper>(opt =>
 {
     return new UtilityHelper(builder.Configuration["LooganAPIUrl"]);
 });
+
+// Add services to the container.
+builder.Services.AddAuthentication(OpenIdConnectDefaults.AuthenticationScheme)
+    .AddMicrosoftIdentityWebApp(builder.Configuration.GetSection("AzureAd"));
+builder.Services.AddAuthorization(options =>
+{
+    options.FallbackPolicy = options.DefaultPolicy;
+});
+
 builder.Services.AddServerSideBlazor();
 builder.Services.AddRazorPages(options =>
 {
     options.Conventions.AuthorizeFolder("/Admin");
     options.Conventions.AuthorizePage("/Admin/AdminDashboard");
-    
-});
-builder.Services.AddAuthorization();
-builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
-                .AddCookie(options =>
-                {
-                    options.LoginPath = new PathString("/");
-                    options.LogoutPath = new PathString("/Logout");
-                    options.AccessDeniedPath = new PathString("/Access");
-                });
+}).AddMicrosoftIdentityUI();
+
 builder.Services.AddSingleton<IAuthorizationHandler, LooganAdminAuthorizationHandler>();
 builder.Services.AddSingleton<IAuthorizationHandler, LooganStudentAuthorizationHandler>();
 builder.Services.AddSingleton<IAuthorizationHandler, LooganTeacherAuthorizationHandler>();
-
 builder.Services.AddSession(options =>
 {
     options.IdleTimeout = TimeSpan.FromMinutes(5);

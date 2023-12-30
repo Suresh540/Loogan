@@ -896,6 +896,11 @@
     padding: 5px
 }
 
+.txtpaddingright {
+    text-align: right;
+    padding: 3px
+}
+
 .divlist {
     margin-top: 25px;
     display: none;
@@ -975,6 +980,10 @@
     width: 15vw;
     font-style: italic;
     border: 0px
+}
+.picfont{
+    font-size:13px;
+    font-family:Arial;
 }
 
 @supports ((-webkit-text-stroke-color: #a234b5) and (-webkit-text-fill-color: #fff)) or ((-moz-text-stroke-color: #a234b5) and (-moz-text-fill-color: #fff)) {

@@ -1,11 +1,16 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using System.Security.Claims;
+using static Loogan.Web.UI.Utilities.MicrosoftAuthentication;
 namespace Loogan.Web.UI.Utilities;
 
 public class LooganStudentAuthorizeAttribute : AuthorizeAttribute, IAuthorizationRequirement, IAuthorizationRequirementData
 {
     public LooganStudentAuthorizeAttribute(string role) => Role = role;
-    public string Role { get; }
+
+    public string Role { get; set; }
+
+    public string IsAzureAD { get; set; }
+
     public IEnumerable<IAuthorizationRequirement> GetRequirements()
     {
         yield return this;
@@ -26,10 +31,14 @@ public class LooganStudentAuthorizationHandler : AuthorizationHandler<LooganStud
     protected override Task HandleRequirementAsync(AuthorizationHandlerContext context, LooganStudentAuthorizeAttribute requirement)
     {
         _logger.LogWarning("Evaluating authorization requirement for role = {role}", requirement.Role);
+        if (DoesUserBelongsToAzureAD(context, requirement))
+        {
+            return Task.CompletedTask;
+        }
         var role = context.User.FindFirst(c => c.Type == ClaimTypes.Role);
         if (role != null)
         {
-            if(role.Value.ToLower() == admin)
+            if (role.Value.ToLower() == admin)
             {
                 context.Succeed(requirement);
                 return Task.CompletedTask;
@@ -54,3 +63,22 @@ public class LooganStudentAuthorizationHandler : AuthorizationHandler<LooganStud
     }
 }
 
+public static class MicrosoftAuthentication
+{
+    public static bool DoesUserBelongsToAzureAD<T>(AuthorizationHandlerContext context, T requirement)
+        where T : IAuthorizationRequirement
+    {
+        if (context?.User != null && context?.User?.Identity != null && context.User.Identity.IsAuthenticated)
+        {
+            foreach (var claim in context.User.Claims)
+            {
+                if (claim.Issuer.ToLower().Contains("https://login.microsoftonline.com"))
+                {
+                    context.Succeed(requirement);
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+}

@@ -67,6 +67,10 @@ function fnForgot() {
 }
 
 function ddlMasterLookup(controlId, lookUpTypeValue, selectedValue) {
+    if (document.getElementById(controlId) == undefined) {
+        return;
+    }
+
     $.ajax({
         method: 'Post',
         url: "/Common/GetMasterLookupValues",

@@ -312,6 +312,9 @@ function createrolemenu() {
 
 
 function ddlUsertype() {
+    if (document.getElementById('ddlUserType') == undefined) {
+        return;
+    }
     $.ajax({
         method: 'Post',
         url: "/Admin/GetUserRoles",

@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using System.Security.Claims;
+using static Loogan.Web.UI.Utilities.MicrosoftAuthentication;
 namespace Loogan.Web.UI.Utilities;
 
 public class LooganAdminAuthorizeAttribute : AuthorizeAttribute, IAuthorizationRequirement, IAuthorizationRequirementData
@@ -25,6 +26,11 @@ public class LooganAdminAuthorizationHandler : AuthorizationHandler<LooganAdminA
     protected override Task HandleRequirementAsync(AuthorizationHandlerContext context, LooganAdminAuthorizeAttribute requirement)
     {
         _logger.LogWarning("Evaluating authorization requirement for role = {role}", requirement.Role);
+        if (DoesUserBelongsToAzureAD(context, requirement))
+        {
+            return Task.CompletedTask;
+        }
+
         var role = context.User.FindFirst(c => c.Type == ClaimTypes.Role);
         if (role != null)
         {
