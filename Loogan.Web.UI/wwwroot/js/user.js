@@ -299,7 +299,7 @@ function createrolemenu() {
     }
     $.ajax({
         method: 'Post',
-        url: "/user/SaveRoleMenus",
+        url: "/Admin/SaveRoleMenus",
         data: { request: request },
         success: function (e) {
             Alert(localizationLib.getLocalizeData("DataSavedKey"), 'Success');
