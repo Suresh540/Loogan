@@ -63,6 +63,17 @@ public class UserService : IUserService
         var result = await _storedProcedures.DeleteUser(userId);
         return result;
     }
-    
+
+    /// <summary>
+    /// Written by Suresh Kalaga
+    /// </summary>
+    /// <param name="email"></param>
+    /// <returns></returns>
+    public async Task<UserModel> GetUserDetailsUsingEmailAddress(string email)
+    {
+        var user = await _storedProcedures.GetUserDetailsUsingEmailAddress(email);
+        UserModel userModel = _mapper.Map<UserModel>(user);
+        return userModel;
+    }
 }
 

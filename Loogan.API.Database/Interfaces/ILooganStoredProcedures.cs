@@ -8,8 +8,12 @@ public interface ILooganStoredProcedures
     public Task<List<PagingUserModel>?> GetAllUser();
     public Task<UserModel?> GetUser(int userId);
     public Task<ForgotPswdModel> GetUserEmailByUserName(string userName);
+
     public Task<int?> CreateUser(User userObj);
+
     public Task<int?> UpdateUser(User userObj);
+
+    public Task<User> GetUserDetailsUsingEmailAddress(string email);
 
     public Task<int?> DeleteUser(int userId);
 }

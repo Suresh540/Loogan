@@ -3,10 +3,7 @@ using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
 //Register services..
-
-builder.Services.AddAzureAuthorizeService(builder.Configuration);
-//builder.Services.AddSqlAuthorizeService(builder.Configuration);
-
+builder.Services.AddMultiAuthorizeService(builder.Configuration);
 builder.Host.UseSerilog((context, configuration) => configuration.ReadFrom.Configuration(context.Configuration));
 
 var app = builder.Build();

@@ -19,7 +19,7 @@ public interface IUserService
     public Task<int?> UpdateUser(UserModel userModelObj);
     public Task<int?> DeleteUser(int userId);
 
-
+    public Task<UserModel> GetUserDetailsUsingEmailAddress(string email);
 
 
 }

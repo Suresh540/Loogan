@@ -1,13 +1,14 @@
 ﻿using Loogan.API.Models.Models;
 using Loogan.Web.UI.Pages.Shared;
 using Loogan.Web.UI.Utilities;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Localization;
 
 namespace Loogan.Web.UI.Controllers
 {
     [Route("User")]
-    
+
     public class UserController : Controller
     {
         private readonly IUtilityHelper _utilityHelper;
@@ -59,6 +60,17 @@ namespace Loogan.Web.UI.Controllers
             var apiRequest = new ApiRequest() { RequestValue = userid };
             var userModel = await _utilityHelper.ExecuteAPICall<bool>(apiRequest, RestSharp.Method.Post, resource: "api/User/DeleteUser");
             return Json(new { value = "Success" });
+        }
+
+        [Route("UserByEmailAddress")]
+        [Authorize]
+        public async Task<JsonResult> GetUserDetailsUsingEmailAddress(string email)
+        {
+            ForgotPswdModel request = new ForgotPswdModel();
+            request.EmailId = email;
+
+            var userModel = await _utilityHelper.ExecuteAPICall<UserModel>(request, RestSharp.Method.Post, resource: "api/User/UserByEmailAddress");
+            return Json(userModel);
         }
     }
 }

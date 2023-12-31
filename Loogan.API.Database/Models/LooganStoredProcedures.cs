@@ -64,7 +64,7 @@ namespace Loogan.API.Database.Models
             ForgotPswdModel? model = new ForgotPswdModel();
             using (var context = new LooganContext(_connectionString))
             {
-                var user = context.Users.Where(x => x.UserName == userName).FirstOrDefault();
+                var user = await context.Users.Where(x => x.UserName == userName).FirstOrDefaultAsync();
                 if (user != null)
                 {
                     model.EmailId = user?.EmailAddress;
@@ -72,6 +72,16 @@ namespace Loogan.API.Database.Models
                 }
             }
 
+            return model;
+        }
+
+        public async Task<User> GetUserDetailsUsingEmailAddress(string email)
+        {
+            User? model = new User();
+            using (var context = new LooganContext(_connectionString))
+            {
+                var user = await context.Users.Where(x => x.EmailAddress.ToUpper().Trim() == email.ToUpper().Trim()).FirstOrDefaultAsync();
+            }
             return model;
         }
 

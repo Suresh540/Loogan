@@ -109,5 +109,18 @@ namespace Loogan.Web.API.Controllers
             var result = await _userService.DeleteUser(userId);
             return Ok(result);
         }
+
+        [HttpPost]
+        [Route("UserByEmailAddress")]
+        [Produces("application/json")]
+        [Consumes("application/json")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public async Task<IActionResult> GetUserDetailsUsingEmailAddress([FromBody] ForgotPswdModel request)
+        {
+            var result = await _userService.GetUserDetailsUsingEmailAddress(request?.EmailId);
+            return Ok(result);
+        }
     }
 }
