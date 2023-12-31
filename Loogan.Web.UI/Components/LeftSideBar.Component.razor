@@ -1,4 +1,5 @@
 ﻿@using Loogan.API.Models.Models
+
 @inherits Loogan.Web.UI.Components.LeftSideBarBase
 
 <ul class="ulspace">
@@ -48,9 +49,14 @@
         <ul class="ulspace">
             @foreach (var item in RoleMenus ?? Enumerable.Empty<MenuModel>())
             {
+                string? menu = item?.MenuName;
+                if (item?.MenuName?.ToLower() == "profile")
+                {
+                    menu = UserName;
+                }
                 <li class="liSpace">
-                    <img src="@item.MenuIcon" style="width:30px;height:30px" alt="@item.MenuName" />
-                    <a style="color:white;font-size:16px;" href="@item.MenuUrl">@item.MenuName</a>
+                    <img src="@item?.MenuIcon" style="width:30px;height:30px" alt="@menu" />
+                    <a style="color:white;font-size:16px;" href="@item?.MenuUrl">@menu</a>
                 </li>
             }
         </ul>

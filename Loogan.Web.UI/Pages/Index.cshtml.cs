@@ -32,6 +32,11 @@ namespace Loogan.Web.UI.Pages
             _utilityHelper = utilityHelper;
         }
 
+        public void OnGet([FromRoute] string route = "")
+        {
+
+        }
+
         public async Task<IActionResult> OnPostAsync()
         {
             DisplayMessage = "";

@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Components;
 using Microsoft.Extensions.Localization;
 using Microsoft.JSInterop;
 using Newtonsoft.Json;
+using NUglify.JavaScript.Syntax;
 namespace Loogan.Web.UI.Components
 {
     [AllowAnonymous]
@@ -27,6 +28,9 @@ namespace Loogan.Web.UI.Components
         [Inject]
         IUtilityHelper? _utilityHelper { get; set; }
 
+        [Inject]
+        IJSRuntime jsRuntime { get; set; }
+
         protected override async Task OnInitializedAsync()
         {
             UserName = _httpContext?.HttpContext?.Session?.GetString("FullName");
@@ -41,7 +45,13 @@ namespace Loogan.Web.UI.Components
             {
                 RoleMenus = await _utilityHelper.ExecuteAPICall<List<MenuModel>>(request, RestSharp.Method.Post, resource: "api/Admin/GetRoleMenus");
             }
+            await CallJavascript();
             await base.OnInitializedAsync();
+        }
+
+        public async Task CallJavascript()
+        {
+            await jsRuntime.InvokeVoidAsync("liTabClick");
         }
     }
 }

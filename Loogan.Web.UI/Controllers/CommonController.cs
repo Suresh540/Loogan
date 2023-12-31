@@ -2,6 +2,7 @@
 using Loogan.Web.UI.Utilities;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore.Storage.ValueConversion.Internal;
 
 namespace Loogan.Web.UI.Controllers
 {
@@ -21,6 +22,12 @@ namespace Loogan.Web.UI.Controllers
             var apiRequest = new ApiLookUpRequest() { LookupType = lookUpType, LanguageId = 1 };
             var masterLookUpValues = await _utilityHelper.ExecuteAPICall<List<DropDownListModel>>(apiRequest, RestSharp.Method.Post, resource: "api/Common/GetMasterLookupValues");
             return Json(masterLookUpValues);
+        }
+
+        [Route("Index/{route}")]
+        public IActionResult Index([FromRoute] string route = "")
+        {
+            return RedirectToPage($"Index/{route}");
         }
     }
 }

@@ -111,11 +111,22 @@ function Alert(msg, type) {
     });
 }
 
-function liTabClick(tabname) {
-    setTimeout(() => {
-        $('.ulspace').find('li').removeClass('btnactivetab');
-        $('.ulspace').find('a[href="' + tabname + '"]').parent('li').addClass('btnactivetab');
-    }, 600);
+function liTabClick() {
+    let interval = setTimeout(() => {
+       let tabname = window.location.pathname.toLocaleLowerCase();
+       $.each($('.ulspace').find('li'), function () {
+           $(this).removeClass('btnactivetab');
+           var val = $(this).find('a').attr('href');
+           if (val == undefined) {
+               return;
+           }
+           if (val.toLocaleLowerCase().indexOf(tabname) != -1) {
+               $(this).addClass('btnactivetab');
+               clearTimeout(interval);
+               return;
+           }
+       });
+    }, 500);
 }
 
 function showCourses() {

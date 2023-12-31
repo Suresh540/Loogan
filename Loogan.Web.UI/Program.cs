@@ -1,65 +1,13 @@
-using Loogan.Common.Utilities;
 using Loogan.Web.UI.Utilities;
-using Microsoft.AspNetCore.Authentication.OpenIdConnect;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Localization;
-using Microsoft.Identity.Web;
-using Microsoft.Identity.Web.UI;
-using Microsoft.AspNetCore.Mvc.Razor;
 using Serilog;
-using System.Globalization;
 
 var builder = WebApplication.CreateBuilder(args);
+//Register services..
 
-builder.Services.AddExceptionHandler<GlobalExceptionHandler>();
-builder.Services.AddProblemDetails();
-builder.Services.AddLocalization(options => options.ResourcesPath = "");
-builder.Services.AddMvc().AddMvcLocalization(LanguageViewLocationExpanderFormat.Suffix)
-                .AddDataAnnotationsLocalization();
-builder.Services.AddTransient<IUtilityHelper>(opt =>
-{
-    return new UtilityHelper(builder.Configuration["LooganAPIUrl"]);
-});
+builder.Services.AddAzureAuthorizeService(builder.Configuration);
+//builder.Services.AddSqlAuthorizeService(builder.Configuration);
 
-// Add services to the container.
-builder.Services.AddAuthentication(OpenIdConnectDefaults.AuthenticationScheme)
-    .AddMicrosoftIdentityWebApp(builder.Configuration.GetSection("AzureAd"));
-builder.Services.AddAuthorization(options =>
-{
-    options.FallbackPolicy = options.DefaultPolicy;
-});
-
-builder.Services.AddServerSideBlazor();
-builder.Services.AddRazorPages(options =>
-{
-    options.Conventions.AuthorizeFolder("/Admin");
-    options.Conventions.AuthorizePage("/Admin/AdminDashboard");
-}).AddMicrosoftIdentityUI();
-
-builder.Services.AddSingleton<IAuthorizationHandler, LooganAdminAuthorizationHandler>();
-builder.Services.AddSingleton<IAuthorizationHandler, LooganStudentAuthorizationHandler>();
-builder.Services.AddSingleton<IAuthorizationHandler, LooganTeacherAuthorizationHandler>();
-builder.Services.AddSession(options =>
-{
-    options.IdleTimeout = TimeSpan.FromMinutes(5);
-    options.Cookie.HttpOnly = true;
-    options.Cookie.IsEssential = true;
-});
-builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
-builder.Services.AddSingleton<IEmailMessage, EmailMessage>();
 builder.Host.UseSerilog((context, configuration) => configuration.ReadFrom.Configuration(context.Configuration));
-builder.Services.Configure<RequestLocalizationOptions>(options =>
-{
-    const string defaultCulture = "en-US";
-    var supportedCultures = new[]
-    {
-        new CultureInfo(defaultCulture),
-        new CultureInfo("fr-FR")
-    };
-    options.DefaultRequestCulture = new RequestCulture(defaultCulture);
-    options.SupportedCultures = supportedCultures;
-    options.SupportedUICultures = supportedCultures;
-});
 
 var app = builder.Build();
 if (!app.Environment.IsDevelopment())
@@ -72,8 +20,6 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 app.UseSerilogRequestLogging();
 app.UseRouting();
-app.UseAuthentication();
-app.UseAuthorization();
 app.MapRazorPages();
 app.UseSession();
 var supportedCultures = new[] { "en-US", "fr-FR" };
@@ -81,6 +27,10 @@ var localizationOptions = new RequestLocalizationOptions().SetDefaultCulture(sup
     .AddSupportedCultures(supportedCultures)
     .AddSupportedUICultures(supportedCultures);
 app.UseRequestLocalization(localizationOptions);
+
+app.UseAuthentication();
+app.UseAuthorization();
+
 app.MapBlazorHub();
 app.MapControllers();
 app.Run();

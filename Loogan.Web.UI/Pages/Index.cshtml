@@ -46,9 +46,9 @@
                         </ul>
                         <ul>
                             <li class="clearfix">
-                                <select class="form-select">
-                                    <option>@Localizer["SignThirdPartyKey"]</option>
-                                    <option>@Localizer["ADFSLoginKey"]</option>
+                                <select id="ddlAuth" class="form-select" onchange="indexChane()">
+                                    <option value="0">@Localizer["SignThirdPartyKey"]</option>
+                                    <option value="1">@Localizer["ADFSLoginKey"]</option>
                                 </select>
                             </li>
                         </ul>
@@ -72,6 +72,14 @@
         }, 1500)
     }
     onload();
+    function indexChane() {
+        var val = $('#ddlAuth').val();
+        if (val == 0) {
+            window.location.href = "/Common/Index";
+        }else{
+            window.location.href = "/Common/Index/azure"
+        }
+    }
 </script>
 
 
