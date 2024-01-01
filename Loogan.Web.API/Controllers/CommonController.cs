@@ -41,5 +41,18 @@ namespace Loogan.Web.API.Controllers
             var listUser = await _commonService.GetCountryList(languageId);
             return Ok(listUser);
         }
+
+        [HttpPost]
+        [Route("GetStatesByCountryId")]
+        [Produces("application/json")]
+        [Consumes("application/json")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public async Task<IActionResult> GetStatesByCountryId([FromBody] RequestStateModel apiRequest)
+        {
+            var listUser = await _commonService.GetStatesByCountryId(apiRequest.LanguageId, apiRequest.LanguageId);
+            return Ok(listUser);
+        }
     }
 }
