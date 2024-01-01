@@ -17,7 +17,7 @@ public partial class Test
 
     public string? Type { get; set; }
 
-    public bool? IsDeleted { get; set; }
+    public bool IsDeleted { get; set; }
 
     public int? CreatedBy { get; set; }
 

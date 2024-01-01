@@ -12,7 +12,6 @@ public partial class LooganContext : DbContext
         _connectionString = connectionString;
     }
 
-
     public virtual DbSet<AreaOfStudy> AreaOfStudies { get; set; }
 
     public virtual DbSet<AreaOfStudyCourseMapping> AreaOfStudyCourseMappings { get; set; }
@@ -86,7 +85,7 @@ public partial class LooganContext : DbContext
     public virtual DbSet<UserType> UserTypes { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-           => optionsBuilder.UseSqlServer(_connectionString);
+         => optionsBuilder.UseSqlServer(_connectionString);
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -103,7 +102,6 @@ public partial class LooganContext : DbContext
                 .HasMaxLength(100)
                 .IsUnicode(false);
             entity.Property(e => e.CreatedDate).HasColumnType("datetime");
-            entity.Property(e => e.IsDeleted).HasDefaultValue(false);
             entity.Property(e => e.MinimumCumulativeGpa).HasColumnName("MinimumCumulativeGPA");
             entity.Property(e => e.ModifyDate).HasColumnType("datetime");
             entity.Property(e => e.Name)
@@ -137,7 +135,6 @@ public partial class LooganContext : DbContext
                 .HasMaxLength(100)
                 .IsUnicode(false);
             entity.Property(e => e.CreatedDate).HasColumnType("datetime");
-            entity.Property(e => e.IsDeleted).HasDefaultValue(false);
             entity.Property(e => e.ModifyDate).HasColumnType("datetime");
 
             entity.HasOne(d => d.AreaOfStudy).WithMany(p => p.AreaOfStudyCourseMappings)
@@ -169,7 +166,6 @@ public partial class LooganContext : DbContext
 
             entity.Property(e => e.AttendanceDate).HasColumnType("datetime");
             entity.Property(e => e.CreatedDate).HasColumnType("datetime");
-            entity.Property(e => e.IsDeleted).HasDefaultValue(false);
             entity.Property(e => e.ModifyDate).HasColumnType("datetime");
 
             entity.HasOne(d => d.ClassPeriodSchedule).WithMany(p => p.Attendances)
@@ -208,7 +204,6 @@ public partial class LooganContext : DbContext
             entity.Property(e => e.FaxNumber)
                 .HasMaxLength(100)
                 .IsUnicode(false);
-            entity.Property(e => e.IsDeleted).HasDefaultValue(false);
             entity.Property(e => e.ModifyDate).HasColumnType("datetime");
             entity.Property(e => e.Name)
                 .HasMaxLength(100)
@@ -244,7 +239,6 @@ public partial class LooganContext : DbContext
                 .HasMaxLength(100)
                 .IsUnicode(false);
             entity.Property(e => e.CreatedDate).HasColumnType("datetime");
-            entity.Property(e => e.IsDeleted).HasDefaultValue(false);
             entity.Property(e => e.ModifyDate).HasColumnType("datetime");
         });
 
@@ -254,7 +248,6 @@ public partial class LooganContext : DbContext
 
             entity.Property(e => e.CampusGroupMappingId).ValueGeneratedNever();
             entity.Property(e => e.CreatedDate).HasColumnType("datetime");
-            entity.Property(e => e.IsDeleted).HasDefaultValue(false);
             entity.Property(e => e.ModifyDate).HasColumnType("datetime");
 
             entity.HasOne(d => d.CampusGroup).WithMany(p => p.CampusGroupMappings)
@@ -274,7 +267,6 @@ public partial class LooganContext : DbContext
 
             entity.Property(e => e.CreatedDate).HasColumnType("datetime");
             entity.Property(e => e.EndTime).HasColumnType("datetime");
-            entity.Property(e => e.IsDeleted).HasDefaultValue(false);
             entity.Property(e => e.ModifyDate).HasColumnType("datetime");
             entity.Property(e => e.Name)
                 .HasMaxLength(100)
@@ -309,7 +301,6 @@ public partial class LooganContext : DbContext
                 .HasMaxLength(100)
                 .IsUnicode(false);
             entity.Property(e => e.EndDate).HasColumnType("datetime");
-            entity.Property(e => e.IsDeleted).HasDefaultValue(false);
             entity.Property(e => e.ModifyDate).HasColumnType("datetime");
             entity.Property(e => e.Name)
                 .HasMaxLength(100)
@@ -352,7 +343,11 @@ public partial class LooganContext : DbContext
             entity.Property(e => e.CountryName)
                 .HasMaxLength(100)
                 .IsUnicode(false);
-            entity.Property(e => e.IsDeleted).HasDefaultValue(false);
+            entity.Property(e => e.LanguageId).HasColumnName("languageId");
+
+            entity.HasOne(d => d.Language).WithMany(p => p.Countries)
+                .HasForeignKey(d => d.LanguageId)
+                .HasConstraintName("FK_Conuntry_LanguageId");
         });
 
         modelBuilder.Entity<Course>(entity =>
@@ -399,7 +394,6 @@ public partial class LooganContext : DbContext
             entity.Property(e => e.Description)
                 .HasMaxLength(500)
                 .IsUnicode(false);
-            entity.Property(e => e.IsDeleted).HasDefaultValue(false);
         });
 
         modelBuilder.Entity<Enrollment>(entity =>
@@ -423,7 +417,6 @@ public partial class LooganContext : DbContext
             entity.Property(e => e.ExceptedGraduationDate).HasColumnType("datetime");
             entity.Property(e => e.ExceptedStartDate).HasColumnType("datetime");
             entity.Property(e => e.GraducationDate).HasColumnType("datetime");
-            entity.Property(e => e.IsDeleted).HasDefaultValue(false);
             entity.Property(e => e.ModifyDate).HasColumnType("datetime");
         });
 
@@ -432,7 +425,6 @@ public partial class LooganContext : DbContext
             entity.ToTable("Enrollment_AreasOfStudy_Mapping");
 
             entity.Property(e => e.CreatedDate).HasColumnType("datetime");
-            entity.Property(e => e.IsDeleted).HasDefaultValue(false);
             entity.Property(e => e.ModifyDate).HasColumnType("datetime");
 
             entity.HasOne(d => d.AreaOfStudy).WithMany(p => p.EnrollmentAreasOfStudyMappings)
@@ -448,7 +440,6 @@ public partial class LooganContext : DbContext
         {
             entity.ToTable("Language");
 
-            entity.Property(e => e.IsDeleted).HasDefaultValue(false);
             entity.Property(e => e.LanguageName)
                 .HasMaxLength(100)
                 .IsUnicode(false);
@@ -463,7 +454,6 @@ public partial class LooganContext : DbContext
             entity.Property(e => e.Description)
                 .HasMaxLength(500)
                 .IsUnicode(false);
-            entity.Property(e => e.IsDeleted).HasDefaultValue(false);
             entity.Property(e => e.LookUpType)
                 .HasMaxLength(100)
                 .IsUnicode(false);
@@ -546,7 +536,6 @@ public partial class LooganContext : DbContext
             entity.Property(e => e.FaxNumber)
                 .HasMaxLength(100)
                 .IsUnicode(false);
-            entity.Property(e => e.IsDeleted).HasDefaultValue(false);
             entity.Property(e => e.ModifyDate).HasColumnType("datetime");
             entity.Property(e => e.Name)
                 .HasMaxLength(1000)
@@ -574,7 +563,6 @@ public partial class LooganContext : DbContext
             entity.Property(e => e.EnrollmentDate).HasColumnType("datetime");
             entity.Property(e => e.Gpa).HasColumnName("GPA");
             entity.Property(e => e.GraduationDate).HasColumnType("datetime");
-            entity.Property(e => e.IsDeleted).HasDefaultValue(false);
             entity.Property(e => e.LastAttendedDate).HasColumnType("datetime");
             entity.Property(e => e.Major)
                 .HasMaxLength(100)
@@ -607,7 +595,6 @@ public partial class LooganContext : DbContext
                 .HasMaxLength(100)
                 .IsUnicode(false);
             entity.Property(e => e.CreatedDate).HasColumnType("datetime");
-            entity.Property(e => e.IsDeleted).HasDefaultValue(false);
             entity.Property(e => e.ModifyDate).HasColumnType("datetime");
             entity.Property(e => e.Name)
                 .HasMaxLength(200)
@@ -638,7 +625,6 @@ public partial class LooganContext : DbContext
             entity.ToTable("Program_AreaOfStudy_Mapping");
 
             entity.Property(e => e.CreatedDate).HasColumnType("datetime");
-            entity.Property(e => e.IsDeleted).HasDefaultValue(false);
             entity.Property(e => e.ModifyDate).HasColumnType("datetime");
 
             entity.HasOne(d => d.AreaOfStudy).WithMany(p => p.ProgramAreaOfStudyMappings)
@@ -662,7 +648,6 @@ public partial class LooganContext : DbContext
                 .HasMaxLength(100)
                 .IsUnicode(false);
             entity.Property(e => e.CreatedDate).HasColumnType("datetime");
-            entity.Property(e => e.IsDeleted).HasDefaultValue(false);
             entity.Property(e => e.ModifyDate).HasColumnType("datetime");
 
             entity.HasOne(d => d.CourseCatalog).WithMany(p => p.ProgramCourseMappingCourseCatalogs)
@@ -701,7 +686,6 @@ public partial class LooganContext : DbContext
             entity.Property(e => e.Description)
                 .HasMaxLength(500)
                 .IsUnicode(false);
-            entity.Property(e => e.IsDeleted).HasDefaultValue(false);
             entity.Property(e => e.ModifyDate).HasColumnType("datetime");
 
             entity.HasOne(d => d.SchoolNavigation).WithOne(p => p.School)
@@ -726,7 +710,6 @@ public partial class LooganContext : DbContext
             entity.Property(e => e.Description)
                 .HasMaxLength(500)
                 .IsUnicode(false);
-            entity.Property(e => e.IsDeleted).HasDefaultValue(false);
             entity.Property(e => e.ModifyDate).HasColumnType("datetime");
 
             entity.HasOne(d => d.CampusGroup).WithMany(p => p.Shifts)
@@ -743,7 +726,6 @@ public partial class LooganContext : DbContext
             entity.Property(e => e.FirstName)
                 .HasMaxLength(100)
                 .IsUnicode(false);
-            entity.Property(e => e.IsDeleted).HasDefaultValue(false);
             entity.Property(e => e.LastName)
                 .HasMaxLength(100)
                 .IsUnicode(false);
@@ -762,10 +744,14 @@ public partial class LooganContext : DbContext
             entity.ToTable("State");
 
             entity.Property(e => e.StateId).ValueGeneratedOnAdd();
-            entity.Property(e => e.IsDeleted).HasDefaultValue(false);
+            entity.Property(e => e.LanguageId).HasColumnName("languageId");
             entity.Property(e => e.StateName)
                 .HasMaxLength(100)
                 .IsUnicode(false);
+
+            entity.HasOne(d => d.Language).WithMany(p => p.States)
+                .HasForeignKey(d => d.LanguageId)
+                .HasConstraintName("FK_State_LanguageId");
 
             entity.HasOne(d => d.StateNavigation).WithOne(p => p.State)
                 .HasForeignKey<State>(d => d.StateId)
@@ -782,7 +768,6 @@ public partial class LooganContext : DbContext
             entity.Property(e => e.Description)
                 .HasMaxLength(500)
                 .IsUnicode(false);
-            entity.Property(e => e.IsDeleted).HasDefaultValue(false);
             entity.Property(e => e.StatusLookUpType)
                 .HasMaxLength(100)
                 .IsUnicode(false);
@@ -803,7 +788,6 @@ public partial class LooganContext : DbContext
             entity.Property(e => e.FullName)
                 .HasMaxLength(200)
                 .IsUnicode(false);
-            entity.Property(e => e.IsDeleted).HasDefaultValue(false);
             entity.Property(e => e.LastActivityDate).HasColumnType("datetime");
             entity.Property(e => e.LastName)
                 .HasMaxLength(100)
@@ -906,7 +890,6 @@ public partial class LooganContext : DbContext
                 .HasMaxLength(100)
                 .IsUnicode(false);
             entity.Property(e => e.GradePostedDate).HasColumnType("datetime");
-            entity.Property(e => e.IsDeleted).HasDefaultValue(false);
             entity.Property(e => e.ModifyDate).HasColumnType("datetime");
 
             entity.HasOne(d => d.Campus).WithMany(p => p.StudentCourseMappings).HasForeignKey(d => d.CampusId);
@@ -948,7 +931,6 @@ public partial class LooganContext : DbContext
                 .IsUnicode(false);
             entity.Property(e => e.CreatedDate).HasColumnType("datetime");
             entity.Property(e => e.EndDate).HasColumnType("datetime");
-            entity.Property(e => e.IsDeleted).HasDefaultValue(false);
             entity.Property(e => e.ModifyDate).HasColumnType("datetime");
             entity.Property(e => e.Name)
                 .HasMaxLength(200)
@@ -973,7 +955,6 @@ public partial class LooganContext : DbContext
             entity.Property(e => e.Description)
                 .HasMaxLength(500)
                 .IsUnicode(false);
-            entity.Property(e => e.IsDeleted).HasDefaultValue(false);
             entity.Property(e => e.ModifyDate).HasColumnType("datetime");
             entity.Property(e => e.Type)
                 .HasMaxLength(100)
@@ -1103,7 +1084,6 @@ public partial class LooganContext : DbContext
             entity.Property(e => e.Description)
                 .HasMaxLength(500)
                 .IsUnicode(false);
-            entity.Property(e => e.IsDeleted).HasDefaultValue(false);
             entity.Property(e => e.UserType1)
                 .HasMaxLength(100)
                 .IsUnicode(false)

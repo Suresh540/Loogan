@@ -9,9 +9,13 @@ public partial class Country
 
     public string CountryName { get; set; } = null!;
 
-    public bool? IsDeleted { get; set; }
+    public bool IsDeleted { get; set; }
+
+    public int? LanguageId { get; set; }
 
     public virtual ICollection<Campus> Campuses { get; set; } = new List<Campus>();
+
+    public virtual Language? Language { get; set; }
 
     public virtual ICollection<Organization> Organizations { get; set; } = new List<Organization>();
 

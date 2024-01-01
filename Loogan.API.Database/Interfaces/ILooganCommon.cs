@@ -12,5 +12,9 @@ namespace Loogan.API.Database.Interfaces
         public Task<List<DropDownListModel>?> GetMaserLookUpValues(string lookUpType, int languageId);
 
         public Task<List<DropDownListModel>?> GetCoursRelatedLookUp(string lookUpType, int languageId);
+
+        public Task<List<DropDownListModel>?> GetCountryList(int languageId);
+
+        public Task<List<DropDownListModel>?> GetStatesByCountryId(int languageId, int countryId);
     }
 }

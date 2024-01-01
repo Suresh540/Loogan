@@ -23,7 +23,7 @@ public partial class AreaOfStudy
 
     public double? AreaOfStudyCreditsRequired { get; set; }
 
-    public bool? IsDeleted { get; set; }
+    public bool IsDeleted { get; set; }
 
     public int? CreatedBy { get; set; }
 

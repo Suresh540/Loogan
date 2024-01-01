@@ -15,7 +15,7 @@ public partial class MasterLookUp
 
     public string? Description { get; set; }
 
-    public bool? IsDeleted { get; set; }
+    public bool IsDeleted { get; set; }
 
     public virtual Student? Student { get; set; }
 

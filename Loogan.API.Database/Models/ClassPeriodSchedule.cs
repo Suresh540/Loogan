@@ -23,7 +23,7 @@ public partial class ClassPeriodSchedule
 
     public int? StaffId { get; set; }
 
-    public bool? IsDeleted { get; set; }
+    public bool IsDeleted { get; set; }
 
     public int? CreatedBy { get; set; }
 

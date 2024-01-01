@@ -11,7 +11,7 @@ public partial class CampusGroupMapping
 
     public int? CampusId { get; set; }
 
-    public bool? IsDeleted { get; set; }
+    public bool IsDeleted { get; set; }
 
     public int? CreatedBy { get; set; }
 

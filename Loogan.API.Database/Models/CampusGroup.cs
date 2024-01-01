@@ -11,7 +11,7 @@ public partial class CampusGroup
 
     public string? CampusDescription { get; set; }
 
-    public bool? IsDeleted { get; set; }
+    public bool IsDeleted { get; set; }
 
     public int? CreatedBy { get; set; }
 

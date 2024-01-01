@@ -73,7 +73,7 @@ public partial class Student
 
     public int? VeteranInd { get; set; }
 
-    public bool? IsDeleted { get; set; }
+    public bool IsDeleted { get; set; }
 
     public int? CreatedBy { get; set; }
 

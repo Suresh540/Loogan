@@ -29,7 +29,7 @@ public partial class Organization
 
     public string? AcademicYearEnd { get; set; }
 
-    public bool? IsDeleted { get; set; }
+    public bool IsDeleted { get; set; }
 
     public int? CreatedBy { get; set; }
 

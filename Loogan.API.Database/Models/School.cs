@@ -19,7 +19,7 @@ public partial class School
 
     public int? StatusHierarchy { get; set; }
 
-    public bool? IsDeleted { get; set; }
+    public bool IsDeleted { get; set; }
 
     public int? CreatedBy { get; set; }
 

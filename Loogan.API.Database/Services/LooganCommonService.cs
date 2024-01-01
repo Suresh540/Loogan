@@ -47,5 +47,59 @@ namespace Loogan.API.Database.Services
             }
             return masterLookUpValues;
         }
+
+        public async Task<List<UserTypeModel>?> GetUserRoles(int languageId)
+        {
+            var list = new List<UserTypeModel>();
+            using (var context = new LooganContext(_connectionString))
+            {
+                var userType = context.UserTypes.ToList();
+                if (userType.Any())
+                {
+                    foreach (var item in userType)
+                    {
+                        list.Add(new UserTypeModel() { UserTypeId = item.UserTypeId, UserType = item.UserType1, Description = item.Description });
+                    }
+
+                }
+            }
+            return list;
+        }
+
+        public async Task<List<DropDownListModel>?> GetCountryList(int languageId)
+        {
+            var list = new List<DropDownListModel>();
+            using (var context = new LooganContext(_connectionString))
+            {
+                var country = context.Countries.Where(x => x.IsDeleted == false && x.LanguageId == languageId ).ToList();
+                if (country.Any())
+                {
+                    foreach (var item in country)
+                    {
+                        list.Add(new DropDownListModel() { Id = item.CountryId, Name = item.CountryName });
+                    }
+
+                }
+            }
+            return list;
+        }
+
+        public async Task<List<DropDownListModel>?> GetStatesByCountryId(int languageId, int countryId)
+        {
+            var list = new List<DropDownListModel>();
+            using (var context = new LooganContext(_connectionString))
+            {
+                var states = context.States.Where(x => x.IsDeleted == false && x.LanguageId == languageId && x.CountryId == countryId).ToList();
+                if (states.Any())
+                {
+                    foreach (var item in states)
+                    {
+                        list.Add(new DropDownListModel() { Id = item.StateId, Name = item.StateName });
+                    }
+
+                }
+            }
+            return list;
+        }
     }
 }

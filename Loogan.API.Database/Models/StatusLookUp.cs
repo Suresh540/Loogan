@@ -15,7 +15,7 @@ public partial class StatusLookUp
 
     public string? Description { get; set; }
 
-    public bool? IsDeleted { get; set; }
+    public bool IsDeleted { get; set; }
 
     public virtual ICollection<ClassPeriodSchedule> ClassPeriodSchedules { get; set; } = new List<ClassPeriodSchedule>();
 

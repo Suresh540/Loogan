@@ -15,7 +15,7 @@ public partial class MenuPrimary
 
     public int? SequenceOrder { get; set; }
 
-    public bool? IsDeleted { get; set; }
+    public bool IsDeleted { get; set; }
 
     public virtual ICollection<MenuRoleMapping> MenuRoleMappings { get; set; } = new List<MenuRoleMapping>();
 

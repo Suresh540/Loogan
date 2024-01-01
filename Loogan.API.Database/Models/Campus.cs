@@ -27,7 +27,7 @@ public partial class Campus
 
     public string? Url { get; set; }
 
-    public bool? IsDeleted { get; set; }
+    public bool IsDeleted { get; set; }
 
     public int? CreatedBy { get; set; }
 
