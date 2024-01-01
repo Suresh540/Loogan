@@ -29,5 +29,17 @@ namespace Loogan.API.BusinessService.Services
             var masterLookUpValues = await _LooganCommon.GetCoursRelatedLookUp(lookUpType, languageId);
             return masterLookUpValues;
         }
+
+        public async Task<List<DropDownListModel>?> GetCountryList(int languageId)
+        {
+            var countryList = await _LooganCommon.GetCountryList(languageId);
+            return countryList;
+        }
+
+        public async Task<List<DropDownListModel>?> GetStatesByCountryId(int languageId, int countryId)
+        {
+            var stateList = await _LooganCommon.GetStatesByCountryId(languageId,countryId);
+            return stateList;
+        }
     }
 }

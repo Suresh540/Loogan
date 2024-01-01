@@ -41,7 +41,7 @@ public partial class ClassSection
 
     public int? ShiftId { get; set; }
 
-    public bool? IsDeleted { get; set; }
+    public bool IsDeleted { get; set; }
 
     public int? CreatedBy { get; set; }
 

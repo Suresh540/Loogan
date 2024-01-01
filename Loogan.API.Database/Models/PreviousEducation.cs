@@ -31,7 +31,7 @@ public partial class PreviousEducation
 
     public bool? GraduationCompletedInd { get; set; }
 
-    public bool? IsDeleted { get; set; }
+    public bool IsDeleted { get; set; }
 
     public int? CreatedBy { get; set; }
 

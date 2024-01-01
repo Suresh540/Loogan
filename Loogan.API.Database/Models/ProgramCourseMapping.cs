@@ -19,7 +19,7 @@ public partial class ProgramCourseMapping
 
     public string? CoursePoolType { get; set; }
 
-    public bool? IsDeleted { get; set; }
+    public bool IsDeleted { get; set; }
 
     public int? CreatedBy { get; set; }
 

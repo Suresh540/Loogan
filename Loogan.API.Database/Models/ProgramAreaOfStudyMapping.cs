@@ -15,7 +15,7 @@ public partial class ProgramAreaOfStudyMapping
 
     public int? CatalogId { get; set; }
 
-    public bool? IsDeleted { get; set; }
+    public bool IsDeleted { get; set; }
 
     public int? CreatedBy { get; set; }
 

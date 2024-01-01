@@ -57,7 +57,7 @@ public partial class Enrollment
 
     public bool? DefaultEnrollmentInd { get; set; }
 
-    public bool? IsDeleted { get; set; }
+    public bool IsDeleted { get; set; }
 
     public int? CreatedBy { get; set; }
 

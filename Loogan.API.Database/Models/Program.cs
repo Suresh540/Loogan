@@ -25,7 +25,7 @@ public partial class Program
 
     public bool? DegreeProgramInd { get; set; }
 
-    public bool? IsDeleted { get; set; }
+    public bool IsDeleted { get; set; }
 
     public int? CreatedBy { get; set; }
 

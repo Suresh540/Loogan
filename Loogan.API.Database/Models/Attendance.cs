@@ -35,7 +35,7 @@ public partial class Attendance
 
     public bool? OnlineInd { get; set; }
 
-    public bool? IsDeleted { get; set; }
+    public bool IsDeleted { get; set; }
 
     public int? CreatedBy { get; set; }
 

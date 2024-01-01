@@ -17,7 +17,7 @@ public partial class Staff
 
     public string? LastName { get; set; }
 
-    public bool? IsDeleted { get; set; }
+    public bool IsDeleted { get; set; }
 
     public int? CreatedBy { get; set; }
 

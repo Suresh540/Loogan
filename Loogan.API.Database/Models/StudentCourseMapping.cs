@@ -73,7 +73,7 @@ public partial class StudentCourseMapping
 
     public bool? CourseRetakeInd { get; set; }
 
-    public bool? IsDeleted { get; set; }
+    public bool IsDeleted { get; set; }
 
     public int? CreatedBy { get; set; }
 

@@ -15,7 +15,7 @@ public partial class CourseRelatedLookUp
 
     public string? Description { get; set; }
 
-    public bool? IsDeleted { get; set; }
+    public bool IsDeleted { get; set; }
 
     public virtual ICollection<AreaOfStudy> AreaOfStudyAreaStudyTypes { get; set; } = new List<AreaOfStudy>();
 

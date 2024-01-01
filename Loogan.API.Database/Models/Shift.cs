@@ -13,7 +13,7 @@ public partial class Shift
 
     public string? Description { get; set; }
 
-    public bool? IsDeleted { get; set; }
+    public bool IsDeleted { get; set; }
 
     public int? CreatedBy { get; set; }
 

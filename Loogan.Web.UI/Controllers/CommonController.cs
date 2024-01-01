@@ -32,7 +32,7 @@ namespace Loogan.Web.UI.Controllers
         [Route("Index/{route}")]
         public async Task<IActionResult> Index([FromRoute] string route = "")
         {
-            if (HttpContext != null && HttpContext?.User != null && HttpContext.User.Identity.IsAuthenticated)
+            if (HttpContext != null && HttpContext?.User != null && HttpContext.User.Identity != null && HttpContext.User.Identity.IsAuthenticated)
             {
                 var email = HttpContext.User.Identity.Name;
                 ForgotPswdModel request = new ForgotPswdModel()
@@ -48,7 +48,7 @@ namespace Loogan.Web.UI.Controllers
                 var userTypeName = Enum.TryParse(typeof(UserTypeEnum), model.UserTypeId.ToString(), out object usertypeName);
                 HttpContext.Session.SetString("LoginUserType", userTypeName.ToString());
                 HttpContext.Session.SetString("UserName", model?.UserName);
-                HttpContext.Session.SetString("FullName", model?.FirstName+' '+model.LastName);
+                HttpContext.Session.SetString("FullName", model?.FirstName + ' ' + model.LastName);
 
                 var claims = new List<Claim>
                 {

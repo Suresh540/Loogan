@@ -11,7 +11,7 @@ public partial class EnrollmentAreasOfStudyMapping
 
     public int? AreaOfStudyId { get; set; }
 
-    public bool? IsDeleted { get; set; }
+    public bool IsDeleted { get; set; }
 
     public int? CreatedBy { get; set; }
 

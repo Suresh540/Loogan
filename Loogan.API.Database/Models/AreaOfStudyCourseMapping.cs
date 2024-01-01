@@ -19,7 +19,7 @@ public partial class AreaOfStudyCourseMapping
 
     public int? CoursePoolId { get; set; }
 
-    public bool? IsDeleted { get; set; }
+    public bool IsDeleted { get; set; }
 
     public int? CreatedBy { get; set; }
 

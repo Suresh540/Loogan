@@ -25,7 +25,7 @@ public partial class Term
 
     public bool? MajorTermInd { get; set; }
 
-    public bool? IsDeleted { get; set; }
+    public bool IsDeleted { get; set; }
 
     public int? CreatedBy { get; set; }
 
