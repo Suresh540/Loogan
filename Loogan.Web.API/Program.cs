@@ -9,8 +9,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
-
-builder.Services.AddAutoMapper(typeof(Program), typeof(InitializeMapper));
+builder.Services.AddAutoMapper(typeof(Program).Assembly, typeof(InitializeMapper).Assembly);
 builder.Services.AddSingleton<ILooganStoredProcedures>((opt) =>
 {
     return new LooganStoredProcedures(builder.Configuration);

@@ -1,10 +1,8 @@
 ﻿using Loogan.API.Database.Interfaces;
+using Loogan.API.Models.Enums;
 using Loogan.API.Models.Models;
 using Microsoft.EntityFrameworkCore;
-using System.Reflection.Emit;
-using System;
 using Microsoft.Extensions.Configuration;
-using Loogan.Web.UI.Utilities;
 
 
 namespace Loogan.API.Database.Models
@@ -80,7 +78,7 @@ namespace Loogan.API.Database.Models
             User? model = new User();
             using (var context = new LooganContext(_connectionString))
             {
-                var user = await context.Users.Where(x => x.EmailAddress.ToUpper().Trim() == email.ToUpper().Trim()).FirstOrDefaultAsync();
+                model = await context.Users.Where(x => x.EmailAddress.ToUpper().Trim() == email.ToUpper().Trim()).FirstOrDefaultAsync();
             }
             return model;
         }

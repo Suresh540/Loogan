@@ -1,13 +1,8 @@
-﻿using Azure.Core;
+﻿using Loogan.API.Models.Enums;
 using Loogan.API.Models.Models;
 using Loogan.Web.UI.Utilities;
-using Microsoft.AspNetCore.Authentication.Cookies;
-using Microsoft.AspNetCore.Authentication;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.EntityFrameworkCore.Storage.ValueConversion.Internal;
-using System.Security.Claims;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 
 namespace Loogan.Web.UI.Controllers
 {
@@ -32,45 +27,55 @@ namespace Loogan.Web.UI.Controllers
         [Route("Index/{route}")]
         public async Task<IActionResult> Index([FromRoute] string route = "")
         {
-            if (HttpContext != null && HttpContext?.User != null && HttpContext.User.Identity.IsAuthenticated)
+            if (IsValidContext())
             {
-                var email = HttpContext.User.Identity.Name;
+                var email = HttpContext?.User?.Identity?.Name;
                 ForgotPswdModel request = new ForgotPswdModel()
                 {
                     EmailId = email,
                     Password = "",
                     UserName = "",
                 };
-
                 var model = await _utilityHelper.ExecuteAPICall<UserModel>(request, RestSharp.Method.Post, resource: "api/User/UserByEmailAddress");
-                HttpContext.Session.SetInt32("LoginUserId", model.UserId);
-                HttpContext.Session.SetInt32("LoginUserTypeId", model.UserTypeId);
-                var userTypeName = Enum.TryParse(typeof(UserTypeEnum), model.UserTypeId.ToString(), out object usertypeName);
-                HttpContext.Session.SetString("LoginUserType", userTypeName.ToString());
-                HttpContext.Session.SetString("UserName", model?.UserName);
-                HttpContext.Session.SetString("FullName", model?.FirstName+' '+model.LastName);
-
-                var claims = new List<Claim>
+                if (model != null && HttpContext != null)
                 {
-                    new Claim(ClaimTypes.Name, model.UserName),
-                    new Claim(ClaimTypes.Authentication, model?.FirstName+' '+model.LastName),
-                    new Claim(ClaimTypes.Role, userTypeName.ToString())
-                };
-
-                var claimsIdentity = new ClaimsIdentity(
-                    claims, CookieAuthenticationDefaults.AuthenticationScheme);
-
-                await HttpContext.SignInAsync(
-                    CookieAuthenticationDefaults.AuthenticationScheme,
-                    new ClaimsPrincipal(claimsIdentity));
-
-                if (userTypeName.ToString() == "Student")
-                    return LocalRedirect("/Courses/courses");
-                else
-                    return LocalRedirect("/Admin/AdminDashboard");
-
+                    HttpContext.Session.SetInt32("LoginUserId", model.UserId);
+                    HttpContext.Session.SetInt32("LoginUserTypeId", model.UserTypeId);
+                    Enum.TryParse(typeof(UserTypeEnum), model.UserTypeId.ToString(), out object? usertypeName);
+                    AssignToUserTypeSession(usertypeName);
+                    HttpContext.Session.SetString("UserName", model?.UserName ?? "");
+                    HttpContext.Session.SetString("FullName", model?.FirstName + ' ' + model?.LastName);
+                    return RedirectToUserPages(usertypeName);
+                }
             }
             return RedirectToPage($"");
+        }
+
+        private void AssignToUserTypeSession(object? usertypeName)
+        {
+            if (usertypeName != null)
+            {
+                var utype = Convert.ToString(usertypeName);
+                HttpContext.Session.SetString("LoginUserType", utype ?? "");
+            }
+        }
+
+        private IActionResult RedirectToUserPages(object? usertypeName)
+        {
+            var utype = Convert.ToString(usertypeName);
+            if (usertypeName != null && (utype ?? "").Equals(UserTypeEnum.student.ToString(), StringComparison.InvariantCultureIgnoreCase))
+            {
+                return LocalRedirect("/Courses/courses");
+            }
+            else
+            {
+                return LocalRedirect("/Admin/AdminDashboard");
+            }
+        }
+
+        private bool IsValidContext()
+        {
+            return HttpContext != null && HttpContext?.User != null && HttpContext.User.Identity != null && HttpContext.User.Identity.IsAuthenticated;
         }
     }
 }

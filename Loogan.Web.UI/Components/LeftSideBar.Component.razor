@@ -1,14 +1,16 @@
 ﻿@using Loogan.API.Models.Models
-
 @inherits Loogan.Web.UI.Components.LeftSideBarBase
 
+@{
+    const string admin = "admin";
+}
 <ul class="ulspace">
     <li class="text-white">
         <span class="logostyle"><b>Loogan Learn</b></span>&copy;
     </li>
 </ul>
 <form method="post">
-    @if (UserType == "Admin")
+    @if (UserType != null && UserType.ToLower() == admin)
     {
         <ul class="ulspace">
             <li class="liSpace">

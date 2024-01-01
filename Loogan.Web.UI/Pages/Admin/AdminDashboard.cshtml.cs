@@ -7,6 +7,7 @@ using Microsoft.Extensions.Localization;
 
 namespace Loogan.Web.UI.Pages.Admin
 {
+    [LooganAdminAuthorize("Admin")]
     public class AdminDashboardModel : PageModel
     {
         public void OnGet()

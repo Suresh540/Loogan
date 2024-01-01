@@ -46,8 +46,9 @@ public class InitializeMapper : Profile
             .ForMember(dest => dest.LanguageId, opt => opt.MapFrom(src => src.LanguageId))
             .ForMember(dest => dest.UserTypeId, opt => opt.MapFrom(src => src.UserTypeId)).ReverseMap();
 
-        var mapuser = CreateMap<UserModel, User>();
-        map.ForMember(dest => dest.AdditionalName, opt => opt.MapFrom(src => src.AdditionalName))
+        var mapUserModel = CreateMap<UserModel, User>();
+        mapUserModel.ForAllMembers(opt => opt.Ignore());
+        mapUserModel.ForMember(dest => dest.AdditionalName, opt => opt.MapFrom(src => src.AdditionalName))
             .ForMember(dest => dest.Address1, opt => opt.MapFrom(src => src.Address1))
             .ForMember(dest => dest.Address2, opt => opt.MapFrom(src => src.Address2))
             .ForMember(dest => dest.City, opt => opt.MapFrom(src => src.City))

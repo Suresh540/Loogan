@@ -45,8 +45,12 @@ namespace Loogan.Web.UI.Components
             {
                 RoleMenus = await _utilityHelper.ExecuteAPICall<List<MenuModel>>(request, RestSharp.Method.Post, resource: "api/Admin/GetRoleMenus");
             }
-            await CallJavascript();
             await base.OnInitializedAsync();
+        }
+
+        protected override async Task OnAfterRenderAsync(bool firstRender)
+        {
+            await CallJavascript();
         }
 
         public async Task CallJavascript()
