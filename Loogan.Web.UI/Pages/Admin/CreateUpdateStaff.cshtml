@@ -17,12 +17,50 @@
             <div class="col-2 bb-login pointscroll leftmenu">
                 <component type="typeof(LeftSideBar_Component)" render-mode="Server" />
             </div>
-            <div class="col-10 base-profile pointscroll righcontent">
+            <div class="col-10 ">
+                <div class="base-profile pointscroll righcontent scrollrightend">
+                    <table class="table">
+                        <thead id="tdHeader">
+                            <tr>
+                                <td>
+                                    &nbsp;
+                                </td>
+                                <td>
+                                    @Localizer["FirstNameKey"]
+                                </td>
+                                <td>
+                                    @Localizer["LastNameKey"]
+                                </td>
+                                <td>
+                                    @Localizer["StaffNameKey"]
+                                </td>
+                            </tr>
+                        </thead>
+                        <tbody id="tdBody">
+                        </tbody>
+                    </table>
+                    <component type="typeof(Paging_Component)" render-mode="ServerPrerendered"
+                               param-TotalRecords="10" param-NavigateURL="showStaffs" param-TotalRecordsURL="getTotalRecords" />
+                </div>
+                
+                <component type="typeof(Lower_Component)" render-mode="Static" /><br />
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal modal-top fade" id="top_modal" tabindex="-1" role="dialog" aria-labelledby="fullscreen_modal">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">Staff(s) List</h2>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" id="btntopclose">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
                 <div class="columns small-12 profile-content" style="margin-top:2px !important">
                     <div style="text-align:right">
-                        <button onclick="showStaffs()" type="button" style="background:gray;color:black" class="btn btn-light border rounded-pill shadow-sm mb-1" data-toggle="modal" data-target="#bottom_modal">
-                            <b>@Localizer["ShowStaffKey"]</b>
-                        </button>
+                        
                         <button type="button" class="btn btn-light border rounded-pill shadow-sm mb-1" onclick="clearStaffData()"
                                 style="background:lightgreen;color:black">
                             <b>@Localizer["ClearKey"]</b>
@@ -60,46 +98,9 @@
                                 <input id="txtStaffName" type="text" required />
                             </div>
                         </p>
-                       
+
                     </div>
                 </div>
-                <component type="typeof(Lower_Component)" render-mode="Static" /><br />
-            </div>
-        </div>
-    </div>
-</div>
-<div class="modal modal-full fade" id="bottom_modal" tabindex="-1" role="dialog" aria-labelledby="fullscreen_modal">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2 class="modal-title">Staff(s) List</h2>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <table class="table">
-                    <thead id="tdHeader">
-                        <tr>
-                            <td>
-                                &nbsp;
-                            </td>
-                            <td>
-                                @Localizer["FirstNameKey"]
-                            </td>
-                            <td>
-                                @Localizer["LastNameKey"]
-                            </td>
-                            <td>
-                                @Localizer["StaffNameKey"]
-                            </td>
-                        </tr>
-                    </thead>
-                    <tbody id="tdBody">
-                    </tbody>
-                </table>
-                <component type="typeof(Paging_Component)" render-mode="ServerPrerendered"
-                           param-TotalRecords="10" param-NavigateURL="showStaffs" param-TotalRecordsURL="getTotalRecords" />
             </div>
             <div class="modal-footer modal-footer-fixed d-none">
                 <button id="btnCreateClose" type="button" class="btn btn-secondary" data-dismiss="modal">
@@ -110,3 +111,6 @@
         </div>
     </div>
 </div>
+<script>
+    setTimeout(showStaffs(), 700);
+</script>

@@ -36,6 +36,7 @@
             $('#btnSavestaff').removeAttr('disabled');
             Alert(localizationLib.getLocalizeData("StaffUpdateSuccessKey"), 'Success');
             clearUserData();
+            $('#btntopclose').trigger('click');
         },
         error: function (e) {
             $('#btnSavestaff').removeAttr('disabled');
@@ -65,7 +66,7 @@ function showStaffs(pageIndex, pageSize) {
                     let index = item.staffId
                     $('#tdBody').append(`<tr>
                         <td class="text-danger anchornounderline" title="Delete user" onclick="deleteStaff('${index}')">X</td>
-                        <td><a id="f${index}" href="#" onclick="return staffEdit(${index})" style="cursor:pointer">${item.firstName}</a></td>
+                        <td><a id="f${index}" href="#" data-toggle="modal" data-target="#top_modal" onclick="return staffEdit(${index})" style="cursor:pointer">${item.firstName}</a></td>
                         <td id="l${index}">${item.lastName}</td>
                         <td id="sn${index}">${item.staffName}</td>
                         <td style="display:none" id="stc${index}">${item.code}</td>
@@ -92,6 +93,7 @@ function staffEdit(index) {
     $('#txtStaffName').val($('#sn' + index).html());
 
     $('#btnCreateClose').trigger('click');
+
     return false;
 }
 

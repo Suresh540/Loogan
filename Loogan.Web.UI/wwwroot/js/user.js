@@ -103,9 +103,7 @@ function createUser() {
     })
 }
 
-ddlMasterLookup('ddlGender', 'gender');
-ddlMasterLookup('ddlEductionLevel', 'educationlevel');
-ddlUsertype();
+
 
 function showUsers(pageIndex, pageSize) {
     setTimeout(() => {
