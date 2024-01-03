@@ -453,4 +453,61 @@
 	<data name="PostalKey" xml:space="preserve">
     <value>Postal</value>
   </data>
+	<data name="StudentInformationKey" xml:space="preserve">
+    <value>Student Information</value>
+  </data>
+	<data name="MaidenNameKey" xml:space="preserve">
+    <value>Maiden Name</value>
+  </data>
+	<data name="NickNameKey" xml:space="preserve">
+    <value>Nick Name</value>
+  </data>
+	<data name="MiddleInitialKey" xml:space="preserve">
+    <value>Middle Initial</value>
+  </data>
+	<data name="MartialStatusKey" xml:space="preserve">
+    <value>Martial Status</value>
+  </data>
+	<data name="CitizenShipStatusKey" xml:space="preserve">
+    <value>Citizen Ship Status</value>
+  </data>
+	<data name="EducationalLevelKey" xml:space="preserve">
+    <value>Educational Level</value>
+  </data>
+	<data name="EthnicGroupKey" xml:space="preserve">
+    <value>Ethnic Group</value>
+  </data>
+	<data name="NationalityKey" xml:space="preserve">
+    <value>Nationality</value>
+  </data>
+	<data name="OriginalExceptedStartDateKey" xml:space="preserve">
+    <value>Original Excepted Start Date</value>
+  </data>
+	<data name="OriginalStartDateKey" xml:space="preserve">
+    <value>Original Start Date</value>
+  </data>
+	<data name="StartDateKey" xml:space="preserve">
+    <value>Start Date</value>
+  </data>
+	<data name="HispanicKey" xml:space="preserve">
+    <value>Hispanic</value>
+  </data>
+	<data name="VeteranKey" xml:space="preserve">
+    <value>Veteran</value>
+  </data>
+	<data name="TitleMandatoryKey" xml:space="preserve">
+    <value>Title is mandatory</value>
+  </data>
+	<data name="StaffDeleteMsgKey" xml:space="preserve">
+    <value>Staff deleted successfully.</value>
+  </data>
+	<data name="StaffFailedDeleteKey" xml:space="preserve">
+    <value>Failed to delete Staff.</value>
+  </data>
+	<data name="StudentDeleteMsgKey" xml:space="preserve">
+    <value>Student deleted successfully.</value>
+  </data>
+	<data name="StudentFailedDeleteKey" xml:space="preserve">
+    <value>Failed to delete Student.</value>
+  </data>
 </root>

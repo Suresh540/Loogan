@@ -22,7 +22,7 @@
                 <div class="columns small-12 profile-content" style="margin-top:2px !important">
                     <div class="row">
                         <div class="col-12 left-align">
-                                <h2 class="coursetitle">@Localizer["StudentInformationKey"]</h2>
+                                <h2 class="coursetitle">@Localizer["StudentListMappingKey"]</h2>
                             <hr />
                         </div>
                     </div>
@@ -82,11 +82,11 @@
             <div class="modal-body">
                 <div class="columns small-12 profile-content" style="margin-top:2px !important">
                     <div style="text-align:right">
-                        <button type="button" class="btn btn-light border rounded-pill shadow-sm mb-1" onclick="clearStaffData()"
+                        @* <button type="button" class="btn btn-light border rounded-pill shadow-sm mb-1" onclick="clearStaffData()"
                                 style="background:lightgreen;color:black">
                             <b>@Localizer["ClearKey"]</b>
-                        </button>
-                        <button id="btnSavestaff" type="button" class="btn btn-light border rounded-pill shadow-sm mb-1" onclick="createStaff('btnSavestaff')"
+                        </button> *@
+                        <button id="btnSavestudent" type="button" class="btn btn-light border rounded-pill shadow-sm mb-1" onclick="updateStudent('btnSavestudent')"
                                 style="background:blue;color:white">
                             <b>@Localizer["SaveKey"]</b>
                         </button>
@@ -166,7 +166,7 @@
                             </div>
                             <div>
                                 <b>
-                                    @Localizer["MartialStatus"]
+                                    @Localizer["MartialStatusKey"]
                                 </b><br />
                                 <input id="txtMaritalStatus" type="text" />
                             </div>

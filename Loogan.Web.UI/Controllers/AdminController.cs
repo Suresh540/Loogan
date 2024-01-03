@@ -46,9 +46,9 @@ namespace Loogan.Web.UI.Controllers
 
         [Route("DeleteStaff")]
         [LooganAdminAuthorize("Admin")]
-        public async Task<JsonResult> DeleteUser(string userid)
+        public async Task<JsonResult> DeleteStaff(string staffId)
         {
-            var apiRequest = new ApiRequest() { RequestValue = userid };
+            var apiRequest = new ApiRequest() { RequestValue = staffId };
             var IsDeleted = await _utilityHelper.ExecuteAPICall<bool>(apiRequest, RestSharp.Method.Post, resource: "api/Admin/DeleteStaff");
             return Json(new { value = "Success" });
         }
@@ -64,6 +64,23 @@ namespace Loogan.Web.UI.Controllers
                         .Take(pageModel.Pagesize).ToList();
 
             return Json(pageList);
+        }
+
+        [Route("UpdateStudent")]
+        [LooganAdminAuthorize("Admin")]
+        public async Task<IActionResult> UpdateStudent(StudentModel studentObj)
+        {
+            var studentModel = await _utilityHelper.ExecuteAPICall<bool>(studentObj, RestSharp.Method.Post, resource: "api/Admin/UpdateStudent");
+            return Json(new { value = "Success" });
+        }
+
+        [Route("DeleteStudent")]
+        [LooganAdminAuthorize("Admin")]
+        public async Task<JsonResult> DeleteStudent(string studentId)
+        {
+            var apiRequest = new ApiRequest() { RequestValue = studentId };
+            var IsDeleted = await _utilityHelper.ExecuteAPICall<bool>(apiRequest, RestSharp.Method.Post, resource: "api/Admin/DeleteStudent");
+            return Json(new { value = "Success" });
         }
         #endregion
 

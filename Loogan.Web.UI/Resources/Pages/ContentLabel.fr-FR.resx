@@ -450,4 +450,49 @@
 	<data name="PostalKey" xml:space="preserve">
     <value>Postale</value>
   </data>
+	<data name="StudentInformationKey" xml:space="preserve">
+    <value>Liste des étudiants</value>
+  </data>
+	<data name="MaidenNameKey" xml:space="preserve">
+    <value>Nom de jeune fille</value>
+  </data>
+	<data name="NickNameKey" xml:space="preserve">
+    <value>Surnom</value>
+  </data>
+	<data name="MiddleInitialKey" xml:space="preserve">
+    <value>Initiale du milieu</value>
+  </data>
+	<data name="MartialStatusKey" xml:space="preserve">
+    <value>État civil</value>
+  </data>
+	<data name="CitizenShipStatusKey" xml:space="preserve">
+    <value>Statut de citoyenneté</value>
+  </data>
+	<data name="EducationalLevelKey" xml:space="preserve">
+    <value>Niveau d'éducation</value>
+  </data>
+	<data name="EthnicGroupKey" xml:space="preserve">
+    <value>Groupe ethnique</value>
+  </data>
+	<data name="NationalityKey" xml:space="preserve">
+    <value>Nationalité</value>
+  </data>
+	<data name="OriginalExceptedStartDateKey" xml:space="preserve">
+    <value>Date de début originale exceptée</value>
+  </data>
+	<data name="OriginalStartDateKey" xml:space="preserve">
+    <value>Date de début initiale</value>
+  </data>
+	<data name="StartDateKey" xml:space="preserve">
+    <value>Date de début</value>
+  </data>
+	<data name="HispanicKey" xml:space="preserve">
+    <value>hispanique</value>
+  </data>
+	<data name="VeteranKey" xml:space="preserve">
+    <value>Vétéran</value>
+  </data>
+	<data name="TitleMandatoryKey" xml:space="preserve">
+    <value>Le titre est obligatoire</value>
+  </data>
 </root>

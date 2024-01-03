@@ -36,6 +36,7 @@
             $('#btnSavestaff').removeAttr('disabled');
             Alert(localizationLib.getLocalizeData("StaffUpdateSuccessKey"), 'Success');
             clearUserData();
+            showStaffs();
             $('#btntopclose').trigger('click');
         },
         error: function (e) {
@@ -65,7 +66,7 @@ function showStaffs(pageIndex, pageSize) {
                     for (var item of data) {
                         let index = item.staffId
                         $('#tdBody').append(`<tr>
-                        <td class="text-danger anchornounderline" title="Delete user" onclick="deleteStaff('${index}')">X</td>
+                        <td class="text-danger anchornounderline" title="Delete Staff" onclick="deleteStaff('${index}')">X</td>
                         <td><a id="f${index}" href="#" data-toggle="modal" data-target="#top_modal" onclick="return staffEdit(${index})" style="cursor:pointer">${item.firstName}</a></td>
                         <td id="l${index}">${item.lastName}</td>
                         <td id="sn${index}">${item.staffName}</td>
@@ -102,14 +103,14 @@ function deleteStaff(id) {
     if (confirm('Are you sure, you want delete Staff')) {
         $.ajax({
             method: 'Post',
-            url: "/User/DeleteUser",
-            data: { userid: id },
+            url: "/Admin/DeleteStaff",
+            data: { staffId: id },
             success: function (e) {
-                Alert(localizationLib.getLocalizeData("UserDeleteMsgKey"), 'Success');
-                showUsers();
+                Alert(localizationLib.getLocalizeData("StaffDeleteMsgKey"), 'Success');
+                showStaffs();
             },
             error: function (e) {
-                Alert(localizationLib.getLocalizeData("UserFailedDeleteKey"), 'error');
+                Alert(localizationLib.getLocalizeData("StaffFailedDeleteKey"), 'error');
             }
         })
     }

@@ -120,6 +120,29 @@ namespace Loogan.API.Database.Services
             return isUpdated;
         }
 
+        public async Task<int?> DeleteStaff(int staffId)
+        {
+            var isDeleted = 0;
+
+            if (staffId != 0)
+            {
+                using (var context = new LooganContext(_connectionString))
+                {
+                    var staff = context.Staff.FirstOrDefault(x => x.StaffId == staffId);
+
+                    if (staff != null)
+                    {
+                        staff.IsDeleted = true;
+                        context.Staff.Update(staff);
+                        isDeleted = await context.SaveChangesAsync();
+                    }
+
+                }
+            }
+
+            return isDeleted;
+        }
+
         public async Task<List<StudentModel>?> GetAllStudents()
         {
             List<StudentModel>? studentList = new List<StudentModel>();
@@ -166,6 +189,28 @@ namespace Loogan.API.Database.Services
             return isUpdated;
         }
 
+        public async Task<int?> DeleteStudent(int studentId)
+        {
+            var isDeleted = 0;
+
+            if (studentId != 0)
+            {
+                using (var context = new LooganContext(_connectionString))
+                {
+                    var student = context.Students.FirstOrDefault(x => x.StudentId == studentId);
+
+                    if (student != null)
+                    {
+                        student.IsDeleted = true;
+                        context.Students.Update(student);
+                        isDeleted = await context.SaveChangesAsync();
+                    }
+
+                }
+            }
+
+            return isDeleted;
+        }
         public async Task<List<UserTypeModel>?> GetUserRoles(int languageId)
         {
             var list = new List<UserTypeModel>();

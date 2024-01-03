@@ -100,6 +100,20 @@ namespace Loogan.Web.API.Controllers
             return Ok(result);
         }
 
+        [HttpPost]
+        [Route("DeleteStaff")]
+        [Produces("application/json")]
+        [Consumes("application/json")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public async Task<IActionResult> DeleteStaff([FromBody] ApiRequest request)
+        {
+            var staffId = request.RequestValue != "" ? Convert.ToInt32(request.RequestValue) : 0;
+            var result = await _adminService.DeleteStaff(staffId);
+            return Ok(result);
+        }
+
         #endregion
 
         #region Student
@@ -140,6 +154,20 @@ namespace Loogan.Web.API.Controllers
         public async Task<IActionResult> UpdateStudent([FromBody] StudentModel studentObj)
         {
             var result = await _adminService.UpdateStudent(studentObj);
+            return Ok(result);
+        }
+
+        [HttpPost]
+        [Route("DeleteStudent")]
+        [Produces("application/json")]
+        [Consumes("application/json")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public async Task<IActionResult> DeleteStudent([FromBody] ApiRequest request)
+        {
+            var studentId = request.RequestValue != "" ? Convert.ToInt32(request.RequestValue) : 0;
+            var result = await _adminService.DeleteStudent(studentId);
             return Ok(result);
         }
 

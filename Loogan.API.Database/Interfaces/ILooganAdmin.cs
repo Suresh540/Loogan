@@ -21,10 +21,14 @@ namespace Loogan.API.Database.Interfaces
         public Task<int?> CreateStaff(Staff staffModelObj);
         public Task<int?> UpdateStaff(Staff staffModelObj);
 
+        public Task<int?> DeleteStaff(int staffId);
+
         public Task<List<StudentModel>?> GetAllStudents();
 
         public Task<int?> CreateStudent(Student studentModelObj);
         public Task<int?> UpdateStudent(Student studentModelObj);
+
+        public Task<int?> DeleteStudent(int studentId);
 
         public Task<List<UserTypeModel>?> GetUserRoles(int languageId);
 

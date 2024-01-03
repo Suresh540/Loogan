@@ -20,10 +20,14 @@ namespace Loogan.API.BusinessService.Interfaces
         public Task<int?> CreateStaff(StaffModel staffModelObj);
         public Task<int?> UpdateStaff(StaffModel staffModelObj);
 
+        public Task<int?> DeleteStaff(int staffId);
+
         public Task<List<StudentModel>?> GetAllStudents();
 
         public Task<int?> CreateStudent(StudentModel studentModelObj);
         public Task<int?> UpdateStudent(StudentModel studentModelObj);
+
+        public Task<int?> DeleteStudent(int studentId);
 
         public Task<List<UserTypeModel>?> GetUserRoles(int languageId);
 

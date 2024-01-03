@@ -61,6 +61,12 @@ namespace Loogan.API.BusinessService.Services
             return result;
         }
 
+        public async Task<int?> DeleteStaff(int staffId)
+        {
+            var result = await _looganAdmin.DeleteStaff(staffId);
+            return result;
+        }
+
         public async Task<List<StudentModel>?> GetAllStudents()
         {
             var studentList = await _looganAdmin.GetAllStudents();
@@ -77,6 +83,12 @@ namespace Loogan.API.BusinessService.Services
         {
             var studentObj = _mapper.Map<Student>(studentModelObj);
             var result = await _looganAdmin.UpdateStudent(studentObj);
+            return result;
+        }
+
+        public async Task<int?> DeleteStudent(int studentId)
+        {
+            var result = await _looganAdmin.DeleteStudent(studentId);
             return result;
         }
 
