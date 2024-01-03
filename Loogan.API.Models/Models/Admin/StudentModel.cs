@@ -14,6 +14,7 @@ namespace Loogan.API.Models.Models.Admin
         public string? MiddleName { get; set; }
         public string? LastName { get; set; }
         public string? FullName { get; set; }
+        public int? AdminssionRepresentativeId { get; set; }
         public string? AdminssionReprestative { get; set; }
         public string? Title { get; set; }
 
@@ -35,14 +36,6 @@ namespace Loogan.API.Models.Models.Admin
 
         public string? StateName { get; set; }
 
-        public int? AdminssionRepresentativeId { get; set; }
-
-        public int? CampusId { get; set; }
-
-        public int? ProgramId { get; set; }
-
-        public int? SchoolId { get; set; }
-
         public string? PostalCode { get; set; }
 
         public int? EducationalLevelId { get; set; }
@@ -53,6 +46,7 @@ namespace Loogan.API.Models.Models.Admin
 
         public string? Gender { get; set; }
 
+        public bool? IsMaritalStatus { get; set; }
         public string? MaritalStatus { get; set; }
 
         public int? NationalityId { get; set; }
@@ -78,6 +72,24 @@ namespace Loogan.API.Models.Models.Admin
         public int? VeteranInd { get; set; }
 
         public int TotalRecords { get; set; }
+
+        public int? CampusId { get; set; }
+
+        public int? ProgramId { get; set; }
+
+        public int? SchoolId { get; set; }
+
+      
+
+        
+
+       
+
+        
+
+        
+
+        
 
     }
 }

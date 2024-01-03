@@ -54,6 +54,19 @@ namespace Loogan.Web.UI.Controllers
         }
         #endregion
 
+        #region Student
+        [Route("GetAllStudents")]
+        [LooganAdminAuthorize("Admin")]
+        public async Task<JsonResult> GetAllStudents(PagingModel pageModel)
+        {
+            var students = await _utilityHelper.ExecuteAPICall<List<StudentModel>>(null, RestSharp.Method.Post, resource: "api/Admin/GetAllStudents");
+            var pageList = students?.Skip(pageModel.Pagesize * (pageModel.PageIndex - 1))
+                        .Take(pageModel.Pagesize).ToList();
+
+            return Json(pageList);
+        }
+        #endregion
+
         [Route("GetUserRoles")]
         public async Task<JsonResult> GetUserRoles(int languageId)
         {

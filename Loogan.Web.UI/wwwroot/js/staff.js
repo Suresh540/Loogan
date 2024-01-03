@@ -59,12 +59,12 @@ function showStaffs(pageIndex, pageSize) {
             success: function (data) {
                 $('#tdBody').empty();
 
-                if (data != null && data != undefined && data.length > 0)
+                if (data != null && data != undefined && data.length > 0) {
                     setTotalRecords(data[0].totalRecords);
 
-                for (var item of data) {
-                    let index = item.staffId
-                    $('#tdBody').append(`<tr>
+                    for (var item of data) {
+                        let index = item.staffId
+                        $('#tdBody').append(`<tr>
                         <td class="text-danger anchornounderline" title="Delete user" onclick="deleteStaff('${index}')">X</td>
                         <td><a id="f${index}" href="#" data-toggle="modal" data-target="#top_modal" onclick="return staffEdit(${index})" style="cursor:pointer">${item.firstName}</a></td>
                         <td id="l${index}">${item.lastName}</td>
@@ -72,7 +72,8 @@ function showStaffs(pageIndex, pageSize) {
                         <td style="display:none" id="stc${index}">${item.code}</td>
                          <td style="display:none" id="uid${index}">${item.userId}</td>
                     </tr>`)
-                    index++;
+                        index++;
+                    }
                 }
             },
             error: function (e) {
