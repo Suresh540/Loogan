@@ -17,11 +17,12 @@
             <div class="col-2 bb-login pointscroll leftmenu">
                 <component type="typeof(LeftSideBar_Component)" render-mode="Server" />
             </div>
-            <div class="col-10 base-profile pointscroll righcontent">
+            <div class="col-10">
+                <div class="base-profile pointscroll righcontent scrollrightend">
                 <div class="columns small-12 profile-content" style="margin-top:2px !important">
                     <div class="row">
                         <div class="col-12 left-align">
-                            <h2 class="coursetitle">@Localizer["StudentListMappingKey"]</h2>
+                                <h2 class="coursetitle">@Localizer["StudentInformationKey"]</h2>
                             <hr />
                         </div>
                     </div>
@@ -64,6 +65,213 @@
                                param-TotalRecords="10" param-NavigateURL="showStudents" param-TotalRecordsURL="getTotalRecords" />
                 </div>
                 <component type="typeof(Lower_Component)" render-mode="Static" /><br />
+            </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal modal-top fade" id="top_modal" tabindex="-1" role="dialog" aria-labelledby="fullscreen_modal">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">@Localizer["StudentListMappingKey"]</h2>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" id="btntopclose">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="columns small-12 profile-content" style="margin-top:2px !important">
+                    <div style="text-align:right">
+                        <button type="button" class="btn btn-light border rounded-pill shadow-sm mb-1" onclick="clearStaffData()"
+                                style="background:lightgreen;color:black">
+                            <b>@Localizer["ClearKey"]</b>
+                        </button>
+                        <button id="btnSavestaff" type="button" class="btn btn-light border rounded-pill shadow-sm mb-1" onclick="createStaff('btnSavestaff')"
+                                style="background:blue;color:white">
+                            <b>@Localizer["SaveKey"]</b>
+                        </button>
+                    </div>
+                    <div class="columns large-6 small-12 student-information">
+                        <h3>
+                            @Localizer["BasicInformationKey"]
+                        </h3>
+                        <hr />
+                        <p>
+                            <div>
+                                <b>
+                                    @Localizer["Title"]
+                                </b><br />
+                                <input id="txtStTitle" type="text" required />
+                            </div>
+                            <div>
+                                <b>
+                                    @Localizer["Suffix"]
+                                </b><br />
+                                <input id="txtStSuffix" type="text" />
+                            </div>
+                            <div>
+                                <b>
+                                    @Localizer["MaidenNameKey"]
+                                </b><br />
+                                <input id="txtStMaidenName" type="text" />
+                            </div>
+                            <div>
+                                <b>
+                                    @Localizer["FirstNameKey"]
+                                </b><br />
+                                <input id="txtStFirstName" type="text" required />
+                                <input type="hidden" id="hdnStudentId" name="hdnStudentId" value="0" />
+                                <input type="hidden" id="hdnUserId" name="hdnUserId" value="0" />
+                                <input type="hidden" id="hdnStudentNumber" name="hdnStudentNumber" value="0" />
+                                <input type="hidden" id="hdnCampusId" name="hdnCampusId" value="0" />
+                                <input type="hidden" id="hdnprogramId" name="hdnprogramId" value="0" />
+                                <input type="hidden" id="hdnSchoolId" name="hdnSchoolId" value="0" />
+                            </div>
+                            <div>
+                                <b>
+                                    @Localizer["MiddleNameKey"]
+                                </b><br />
+                                <input id="txtStMiddleName" type="text" />
+                            </div>
+                            <div>
+                                <b>
+                                    @Localizer["LastNameKey"]
+                                </b><br />
+                                <input id="txtStLastName" type="text" required />
+                            </div>
+                            <div>
+                                <b>
+                                    @Localizer["FullNameKey"]
+                                </b><br />
+                                <input id="txtStFullName" type="text" />
+                            </div>
+                            <div>
+                                <b>
+                                    @Localizer["AdmissionReprestativeKey"]
+                                </b><br />
+                                <select id="ddlStAdmissionReprestative">
+                                </select>
+                            </div>
+                            <div>
+                                <b>
+                                    @Localizer["NickNameKey"]
+                                </b><br />
+                                <input id="txtStNickName" type="text" />
+                            </div>
+                            <div>
+                                <b>
+                                    @Localizer["MiddleInitialKey"]
+                                </b><br />
+                                <input id="txtStMiddleInitial" type="text" />
+                            </div>
+                            <div>
+                                <b>
+                                    @Localizer["MartialStatus"]
+                                </b><br />
+                                <input id="txtMaritalStatus" type="text" />
+                            </div>
+                            <div>
+                                <b>
+                                    @Localizer["Gender"]
+                                </b><br />
+                                <select id="ddlGender">
+                                </select>
+                            </div>
+                            <div>
+                                <b>
+                                    @Localizer["Country"]
+                                </b><br />
+                                <select id="ddlCountry">
+                                </select>
+                            </div>
+                            <div>
+                                <b>
+                                    @Localizer["State"]
+                                </b><br />
+                                <select id="ddlState">
+                                </select>
+                            </div>
+                            <div>
+                                <b>
+                                    @Localizer["PostalCode"]
+                                </b><br />
+                                <input id="txtStPostalCode" type="text" />
+                            </div>
+                        </p>
+
+                    </div>
+                    <div class="columns large-6 small-12 user-information">
+                        <h3 style="margin:5px"></h3>
+                        <br />
+                        <hr />
+                        <p>
+                            <div>
+                                <b>
+                                    @Localizer["CitizenShipStatusKey"]
+                                </b><br />
+                                <select id="ddlStCitizenShipStatus">
+                                </select>
+                            </div>
+                            <div>
+                                <b>
+                                    @Localizer["EducationalLevelKey"]
+                                </b><br />
+                                <select id="ddlEducationalLevel">
+                                </select>
+                            </div>
+                            <div>
+                                <b>
+                                    @Localizer["EthnicGroupKey"]
+                                </b><br />
+                                <select id="ddlEthnicGroup">
+                                </select>
+                            </div>
+                            <div>
+                                <b>
+                                    @Localizer["NationalityKey"]
+                                </b><br />
+                                <select id="ddlNationality">
+                                </select>
+                            </div>
+                            <div>
+                                <b>
+                                    @Localizer["OriginalExceptedStartDateKey"]
+                                </b><br />
+                                <input id="txtOriginalExceptedStartDate" type="text" />
+                            </div>
+                            <div>
+                                <b>
+                                    @Localizer["OriginalStartDateKey"]
+                                </b><br />
+                                <input id="txtOriginalStartDate" type="text" />
+                            </div>
+                            <div>
+                                <b>
+                                    @Localizer["StartDateKey"]
+                                </b><br />
+                                <input id="txtStartDate" type="text" />
+                            </div>
+                            <div>
+                                <b>
+                                    @Localizer["HispanicKey"]
+                                </b><br />
+                                <input id="chkHispanic" type="checkbox" />
+                            </div>
+                            <div>
+                                <b>
+                                    @Localizer["VeteranKey"]
+                                </b><br />
+                                <input id="chkVeteran" type="checkbox" />
+                            </div>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer modal-footer-fixed d-none">
+                <button id="btnStudentCreateClose" type="button" class="btn btn-secondary" data-dismiss="modal">
+                    @Localizer["CloseKey"]
+                </button>
+                <button type="button" class="btn btn-primary">@Localizer["SaveChangesKey"]</button>
             </div>
         </div>
     </div>
