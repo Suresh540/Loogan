@@ -1,6 +1,7 @@
 ﻿using Loogan.API.Models.Models;
 using Loogan.API.Models.Models.Admin;
 using Loogan.Web.UI.Utilities;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Loogan.Web.UI.Controllers
@@ -112,6 +113,25 @@ namespace Loogan.Web.UI.Controllers
         {
             var userRoles = await _utilityHelper.ExecuteAPICall<List<MenuModel>>(request, RestSharp.Method.Post, resource: "api/Admin/SaveRoleMenus");
             return Json(userRoles);
+        }
+
+        [Route("RoleChange")]
+        [AllowAnonymous]
+        public async Task<IActionResult> OnGetRoleChange([FromQuery] string selectedVal)
+        {
+            var languageId = HttpContext?.Session.GetInt32("LanguageId") ?? 1;
+            var apiRequest = new Request() { LanguageId = languageId };
+            var menuItems = await _utilityHelper.ExecuteAPICall<List<MenuModel>>(apiRequest, RestSharp.Method.Post, resource: "api/Admin/GetMenus");
+
+            RoleMenuRequest roleMenu = new RoleMenuRequest();
+            roleMenu.RoleId = Convert.ToInt32(selectedVal);
+            roleMenu.LanguageId = languageId;
+            var selectedMenuItems = await _utilityHelper.ExecuteAPICall<List<MenuModel>>(roleMenu, RestSharp.Method.Post, resource: "api/Admin/GetRoleMenus");
+
+            //Menu items
+            menuItems = menuItems.Where(x => !selectedMenuItems.Any(y => y.MenuName == x.MenuName)).ToList();
+
+            return new JsonResult(new { actualmenus = menuItems, selectMenus = selectedMenuItems });
         }
 
 

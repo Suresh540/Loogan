@@ -38,7 +38,7 @@
                         </div>
                         <div class="row">
                             <div class="col-12 text-center margintop5">
-                                <select id="ddlRoles" style="width:20vw">
+                                <select id="ddlRoles" style="width:20vw;border: 1px solid gray" onchange="roleChange()">
                                     <option value="3">Student</option>
                                     <option value="2">Teacher</option>
                                 </select>
@@ -46,7 +46,7 @@
                             <div class="col-12 text-center">
                                 <div class="row margintop5">
                                     <div class="col-5">
-                                        <select id="actualMenu" name="actualMenu" size="16" multiple>
+                                        <select id="actualMenu" name="actualMenu" size="16" multiple style="border: 1px solid gray;">
                                             @foreach (var item in Model.MenuItems ?? Enumerable.Empty<MenuModel>())
                                             {
                                                 <option value="@item.PrimaryMenuId">@item.MenuName</option>
@@ -54,11 +54,15 @@
                                         </select>
                                     </div>
                                     <div class="col-1">
-                                        <div class="margintop25"><span style="cursor:pointer" onclick="moveItemstoright()">>></span></div>
-                                        <div><span style="cursor:pointer" onclick="moveItemstoleft()"><<</span></div>
+                                        <div class="margintop25"><span style="cursor:pointer;color:green" onclick="moveItemstoright()">>></span></div>
+                                        <div><span style="cursor:pointer;color:red" onclick="moveItemstoleft()"><<</span></div>
                                     </div>
                                     <div class="col-5">
-                                        <select id="selectedMenu" name="selectedMenu" size="16" multiple>
+                                        <select id="selectedMenu" name="selectedMenu" size="16" multiple style="border: 1px solid gray">
+                                            @foreach (var item in Model.SelectedMenuItems ?? Enumerable.Empty<MenuModel>())
+                                            {
+                                                <option value="@item.PrimaryMenuId">@item.MenuName</option>
+                                            }
                                         </select>
                                     </div>
                                 </div>
@@ -75,3 +79,34 @@
         </div>
     </div>
 </div>
+<script>
+    function roleChange() {
+        $.ajax({
+            method: 'GET',
+            url: `/Admin/RoleChange?selectedVal=${document.getElementById('ddlRoles').value}`,
+            success: function (e) {
+                let menus = e.actualmenus;
+                let sMenus = e.selectMenus
+                $('#actualMenu').empty();
+                $('#selectedMenu').empty();
+
+                $.each(menus, function () {
+                    let item = this;
+                    $('#actualMenu').append($("<option></option>")
+                        .attr("value", item.primaryMenuId)
+                        .text(item.menuName));
+                });
+
+                $.each(sMenus, function () {
+                    let item = this;
+                    $('#selectedMenu').append($("<option></option>")
+                        .attr("value", item.primaryMenuId)
+                        .text(item.menuName));
+                });
+            },
+            error: function (e) {
+                console.log(e);
+            }
+        });
+    }
+</script>

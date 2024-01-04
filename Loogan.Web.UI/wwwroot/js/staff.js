@@ -69,9 +69,9 @@ function showStaffs(pageIndex, pageSize) {
                         <td class="text-danger anchornounderline" title="Delete Staff" onclick="deleteStaff('${index}')">X</td>
                         <td><a id="f${index}" href="#" data-toggle="modal" data-target="#top_modal" onclick="return staffEdit(${index})" style="cursor:pointer">${item.firstName}</a></td>
                         <td id="l${index}">${item.lastName}</td>
-                        <td id="sn${index}">${item.staffName}</td>
+                        <td id="sn${index}">${item.staffName == null ? "" : item.staffName}</td>
                         <td style="display:none" id="stc${index}">${item.code}</td>
-                         <td style="display:none" id="uid${index}">${item.userId}</td>
+                        <td style="display:none" id="uid${index}">${item.userId}</td>
                     </tr>`)
                         index++;
                     }
