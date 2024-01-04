@@ -130,7 +130,7 @@ function updateStudent() {
     //ddlStAdmissionReprestative
     model.nickName = $('#txtStNickName').val();
     model.middleInitial = $('#txtStMiddleInitial').val();
-    model.isMaritalStatus = $('#txtMaritalStatus').val();
+    model.isMaritalStatus = $('#chkMaritalStatus').val();
     //ddlGender
     //ddlCountry
     //ddlState
