@@ -17,7 +17,7 @@ namespace Loogan.Web.UI.Controllers
         [Route("SetLanguage")]
         public IActionResult SetLanguage()
         {
-            var returnUrl = Request.Form["returnurl"];
+            var returnUrl = Request.Form.ContainsKey("returnurl") ? Request.Form["returnurl"].ToString() : Request.Path.Value;
             var culture = Request.Form["culture"];
             HttpContext.Session.SetInt32("LanguageId", LanguageSelection.GetLanguageId(culture));
             Response.Cookies.Append(

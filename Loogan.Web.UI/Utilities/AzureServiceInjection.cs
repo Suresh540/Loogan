@@ -85,14 +85,6 @@ namespace Loogan.Web.UI.Utilities
                  options.DefaultChallengeScheme = "MultiAuthSchemas";
 
              });
-
-            //auth.AddCookie(options =>
-            //{
-            //    options.LoginPath = new PathString("/");
-            //    options.LogoutPath = new PathString("/Logout");
-            //    options.AccessDeniedPath = new PathString("/Access");
-            //});
-
             auth.AddJwtBearer();
             auth.AddMicrosoftIdentityWebApp(configuration.GetSection("AzureAd"));
             auth.AddPolicyScheme("MultiAuthSchemas", "MultiAuthSchemas", options =>
@@ -110,18 +102,16 @@ namespace Loogan.Web.UI.Utilities
                     }
                 };
             });
-
             services.AddAuthorization(options =>
             {
                 options.FallbackPolicy = options.DefaultPolicy;
             });
-
-            services.AddServerSideBlazor();
             services.AddRazorPages(options =>
             {
                 options.Conventions.AuthorizeFolder("/Admin");
                 options.Conventions.AuthorizePage("/Admin/AdminDashboard");
             }).AddMicrosoftIdentityUI();
+            services.AddServerSideBlazor();
 
             services.AddSingleton<IAuthorizationHandler, LooganAdminAuthorizationHandler>();
             services.AddSingleton<IAuthorizationHandler, LooganStudentAuthorizationHandler>();
