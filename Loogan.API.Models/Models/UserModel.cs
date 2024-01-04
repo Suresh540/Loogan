@@ -6,6 +6,8 @@ public class UserModel
 
     public int UserTypeId { get; set; }
 
+    public string? UserType { get; set; }
+
     public string? ProfilePicPath { get; set; }
 
     public string? PreFix { get; set; }

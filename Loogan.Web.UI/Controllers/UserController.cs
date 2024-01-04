@@ -41,6 +41,8 @@ namespace Loogan.Web.UI.Controllers
         [LooganAdminAuthorize("Admin")]
         public async Task<JsonResult> CreateUser(UserModel user)
         {
+            user.CreatedBy = HttpContext?.Session?.GetInt32("LoginUserId");
+            user.CreatedDate = DateTime.Now;
             var userModel = await _utilityHelper.ExecuteAPICall<bool>(user, RestSharp.Method.Post, resource: "api/User/CreateUser");
             return Json(new { value = "Success" });
         }
@@ -49,6 +51,8 @@ namespace Loogan.Web.UI.Controllers
         [LooganAdminAuthorize("Admin")]
         public async Task<JsonResult> UpdateUser(UserModel user)
         {
+            user.ModifyBy = HttpContext?.Session?.GetInt32("LoginUserId");
+            user.ModifyDate = DateTime.Now;
             var userModel = await _utilityHelper.ExecuteAPICall<bool>(user, RestSharp.Method.Post, resource: "api/User/UpdateUser");
             return Json(new { value = "Success" });
         }

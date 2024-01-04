@@ -104,7 +104,9 @@ namespace Loogan.API.Database.Models
                             LastName = userObj.LastName,
                             StaffName = userObj.AdditionalName,
                             Code = code,
-                            UserId = userObj.UserId
+                            UserId = userObj.UserId,
+                            CreatedBy = userObj.CreatedBy,
+                            CreatedDate = userObj.CreatedDate
                         };
                         context.Staff.Add(staffobj);
                         isCreated = await context.SaveChangesAsync();
@@ -112,17 +114,21 @@ namespace Loogan.API.Database.Models
                     else if (Convert.ToInt32(UserTypeEnum.student) == userObj.UserTypeId)
                     {
                         int? PerviousStudentId = context.Students.Max(u => (int?)u.StudentId);
-                        var Number = CodeGenertion("staff", PerviousStudentId);
+                        var Number = CodeGenertion("student", PerviousStudentId);
                         var studentobj = new Student()
                         {
                             FirstName = userObj.FirstName,
                             MiddleName = userObj.MiddleName,
                             LastName = userObj.LastName,
+                            GenderId = userObj.GenderId,
+                            FullName = userObj.AdditionalName,
                             Suffix = userObj.Suffix,
                             Title = userObj.JobTitle,
                             PostalCode = userObj.PostalCode,
                             UserId = userObj.UserId,
-                            StudentNumber = Number
+                            StudentNumber = Number,
+                            CreatedBy = userObj.CreatedBy,
+                            CreatedDate = userObj.CreatedDate
                         };
                         context.Students.Add(studentobj);
                         isCreated = await context.SaveChangesAsync();
@@ -149,7 +155,7 @@ namespace Loogan.API.Database.Models
             else if(type == "student")
             {
                 if (previousId > 0)
-                    code = "S_" + (previousId + 1);
+                    code = "student_" + (previousId + 1);
                 else
                     code = "Student_1";
             }

@@ -2,24 +2,24 @@
 function createUser() {
     var model = {}
     model.userId = $('#hdnUserId').val();
-    model.userTypeId = $('#hdnUserTypeId').val() == 0 ? 3 : $('#hdnUserTypeId').val();
+    model.userTypeId = $('#ddlUserType').val() != "" ? $('#ddlUserType').val() : $('#hdnUserTypeId').val();
+    model.preFix = $('#txtPreFix').val();
     model.firstName = $('#txtFirstName').val();
     model.middleName = $('#txtMiddleName').val();
     model.lastName = $('#txtLastName').val();
+    model.suffix = $('#txtSuffix').val();
     model.additionalName = $('#txtAdditionalName').val();
+    model.phoneNumber = $('#txtPhone').val();
     model.emailAddress = $('#txtEmailAddress').val();
+    model.genderId = $('#ddlGender').val();
     model.userName = $('#txtUserName').val();
     model.password = $('#txtPassword').val();
-    model.genderId = $('#ddlGender').val();
-    model.preFix = $('#txtPreFix').val();
-    model.suffix = $('#txtSuffix').val();
-    model.educationLevel = $("#ddlEductionLevel option:selected").text();
+    model.educationLevel = $("#ddlEductionLevel option:selected").text(); // need to change 
     model.webSite = $('#txtWebsite').val();
-    model.phoneNumber = $('#txtPhone').val();
+    model.fax = $('#txtFaxNumber').val();
     model.city = $('#txtCity').val();
     model.state = $('#txtState').val();
     model.country = $('#txtCountry').val();
-    model.fax = $('#txtFaxNumber').val();
     model.company = $('#txtCompany').val();
     model.jobTitle = $('#txtJobTitle').val();
     model.department = $('#txtDepartment').val();
@@ -128,6 +128,7 @@ function showUsers(pageIndex, pageSize) {
                         <td><a id="f${index}" href="#" onclick="return userEdit(${index})" style="cursor:pointer">${item.firstName}</a></td>
                         <td id="l${index}">${item.lastName}</td>
                         <td id="u${index}">${item.userName}</td>
+                        <td id="utna${index}">${item.userType == null ? "" : item.userType}</td>
                         <td id="ph${index}">${item.phoneNumber == null ? "" : item.phoneNumber}</td>
                         <td id="e${index}">${item.emailAddress == null ? "" : item.emailAddress}</td>
                         <td id="c${index}">${item.city == null ? "" : item.city}</td>
@@ -203,6 +204,11 @@ function sentMessage(msg) {
 }
 
 function userEdit(index) {
+
+    $("#ddlUserType").prop("disabled", true);
+    $("#txtEmailAddress").prop("disabled", true);
+    $("#txtUserName").prop("disabled", true);
+
     $('#hdnUserId').val(index);
     $('#hdnUserTypeId').val($('#ut' + index).html());
 
@@ -217,6 +223,7 @@ function userEdit(index) {
     $('#ddlGender').val($('#g' + index).html());
     $('#txtPreFix').val($('#pr' + index).html());
     $('#txtSuffix').val($('#su' + index).html());
+    $('#ddlUserType').val($('#ut' + index).html());
 
     var etext = $('#ed' + index).html();
     var ed = $('#ddlEductionLevel option').filter(function () { return $(this).html() == etext; }).val();
@@ -236,6 +243,9 @@ function userEdit(index) {
 }
 
 function clearUserData() {
+    $("#ddlUserType").prop("disabled", false);
+    $("#txtEmailAddress").prop("disabled", false);
+    $("#txtUserName").prop("disabled", false);
     $('#hdnUserId').val(0);
     $('#hdnUserTypeId').val(0);
     $('#ddlGender').val(0);
