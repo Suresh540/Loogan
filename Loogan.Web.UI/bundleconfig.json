@@ -1,0 +1,40 @@
+[
+  {
+    "outputFileName": "wwwroot/css/siteoutput.min.css",
+    "inputFiles": [
+      "wwwroot/css/ultra.css",
+      "wwwroot/css/prism.css",
+      "wwwroot/css/video-integration.css",
+      "wwwroot/css/ally-integration.css",
+      "wwwroot/lib/bootstrap/dist/css/bootstrap.min.css",
+      "wwwroot/ccss/_bb-icons.css",
+      "wwwroot/ccss/_colors.min.css",
+      "wwwroot/ccss/_flex.min.css",
+      "wwwroot/ccss/_foundation-global.css",
+      "wwwroot/ccss/_foundation-global.min.css",
+      "wwwroot/ccss/_functions.css",
+      "wwwroot/css/bootstrap-side-modals.css",
+      "wwwroot/css/site.css",
+      "wwwroot/css/balloon.min.css",
+      "wwwroot/js/jquery.toast.min.css"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/siteoutput.min.js",
+    "inputFiles": [
+      "wwwroot/lib/jquery/dist/jquery.min.js",
+      "wwwroot/js/site.js",
+      "wwwroot/js/user.js",
+      "wwwroot/js/staff.js",
+      "wwwroot/js/student.js",
+      "wwwroot/js/course.js",
+      "wwwroot/lib/bootstrap/bootstrap.bundle.min.js",
+      "wwwroot/js/jquery.toast.min.js"
+    ],
+    "minify": {
+      "enabled": true,
+      "renameLocals": true
+    },
+    "sourceMap": false
+  }
+]

@@ -22,31 +22,28 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title">@Localizer["ChangeLanguageKey"]</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" id="lClose">
                     <span aria-hidden="true">×</span>
                 </button>
             </div>
-            @using (Html.BeginForm("SetLanguage", "Language", FormMethod.Post))
-            {
-                <div class="modal-body">
-                    <input type="hidden" id="culture" />
-                    <input type="hidden" id="returnurl" name="returnurl" value="@Model.RequestValue" />
-                    <div class="row">
-                        <div class="col-1">
-                            <label class="form-label">Language:</label>
-                        </div>
-                        <div class="col-8">
-                            <select class="form-select" name="culture" onchange="onChange(this)"
-                                    asp-for="@requestCulture.RequestCulture.UICulture.Name"
-                                    asp-items="cultureItems">
-                            </select>
-                        </div>
+            <div class="modal-body">
+                <input type="hidden" id="culture" />
+                <input type="hidden" id="returnurl" name="returnurl" value="@Model.RequestValue" />
+                <div class="row">
+                    <div class="col-2">
+                        <label class="form-label">Language:</label>
+                    </div>
+                    <div class="col-7">
+                        <select class="form-select" name="culture" onchange="onChange(this)"
+                                asp-for="@requestCulture.RequestCulture.UICulture.Name"
+                                asp-items="cultureItems">
+                        </select>
                     </div>
                 </div>
-                <div class="modal-footer">
-                    <input class="btn btn-primary" type="submit" value="@Localizer["ChangeLanguageKey"]" />
-                </div>
-            }
+            </div>
+            <div class="modal-footer">
+                <input class="btn btn-primary" onclick="submitLangChange()" type="button" value="@Localizer["ChangeLanguageKey"]" />
+            </div>
         </div>
     </div>
 </div>
@@ -56,5 +53,21 @@
         document.getElementById('culture').value = ctrl.value;
         document.getElementById('returnurl').value = window.location.pathname;
     }
-    
+    function submitLangChange(){
+        $('#lClose').trigger('click');
+        $.ajax({
+            method: 'Post',
+            url: "/Language/SetJsonLanguage",
+            data: { culture: $('#culture').val() },
+            success: function (response) {
+                window.location.href = window.location.href;
+            },
+            failure: function (response) {
+                
+            },
+            error: function (response) {
+                
+            }
+        });
+    }
 </script>

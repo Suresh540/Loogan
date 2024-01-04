@@ -1,15 +1,18 @@
 ﻿@page
 @using Loogan.Web.UI.Components
 @using Loogan.Web.UI.Resources.Pages
+@using Microsoft.AspNetCore.Localization
 @using Microsoft.Extensions.Localization
 @inject IStringLocalizer<ContentLabel> Localizer
 @model IndexModel
 @{
     ViewData["Title"] = "Login";
 }
-
-<component type="typeof(Upper_Component)" render-mode="Static" />
-<component type="typeof(ForgotPassword_Component)" render-mode="Server" />
+<component type="typeof(Upper_Component)" render-mode="ServerPrerendered" />
+<component type="typeof(ForgotPassword_Component)" render-mode="ServerPrerendered" />
+<div style="position:absolute;z-index:3000;left:97vw">
+    @await Html.PartialAsync("_LanguageSwitcher", new Loogan.API.Models.Models.ApiRequest { RequestValue = "" })
+</div>
 <div>
     <div class="d-flex align-items-center justify-content-center">
         <div class="col-md-3">
@@ -53,12 +56,11 @@
             </div>
         </div>
     </div>
-    <component type="typeof(LoginDisclaimer_Component)" render-mode="Static" />
+    <component type="typeof(LoginDisclaimer_Component)" render-mode="ServerPrerendered" />
 </div>
-<component type="typeof(Lower_Component)" render-mode="Static" />
-
+<component type="typeof(Lower_Component)" render-mode="ServerPrerendered" />
 <script>
-    function onload(){
+    function onload() {
         if ('@Model.DisplayMessage' != '') {
             Alert('@Model.DisplayMessage', 'error');
         }
@@ -72,7 +74,7 @@
         var val = $('#ddlAuth').val();
         if (val == 0) {
             window.location.href = "/Common/Index";
-        }else{
+        } else {
             window.location.href = "/Common/Index/azure"
         }
     }

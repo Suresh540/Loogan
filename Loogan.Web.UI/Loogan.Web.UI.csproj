@@ -8,12 +8,10 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Content Remove="compilerconfig.json" />
     <Content Remove="Pages\Shared\CoursePopup.cshtml" />
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="compilerconfig.json" />
     <None Include="Pages\Courses\CoursePopup.cshtml" />
   </ItemGroup>
 
