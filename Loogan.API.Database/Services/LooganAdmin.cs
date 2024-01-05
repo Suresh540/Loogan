@@ -265,30 +265,26 @@ namespace Loogan.API.Database.Services
             {
                 using (var context = new LooganContext(_connectionString))
                 {
-
-                    foreach (var item in request)
+                    var roleId = request?.FirstOrDefault()?.RoleId;
+                    if (roleId > 0)
                     {
-                        if (item.MenuRoleMappingId > 0)
+                        var menuRoleMapping = context.MenuRoleMappings.Where(x => x.RoleId == roleId).ToList();
+                        if (menuRoleMapping.Any())
                         {
-                            var existingMenus = context.MenuRoleMappings.Where(x => x.MenuRoleMappingId == item.MenuRoleMappingId).SingleOrDefault();
-                            if (existingMenus != null)
-                            {
-                                existingMenus.PrimaryMenuId = item.PrimaryMenuId;
-                                existingMenus.RoleId = item.RoleId;
-                                context.MenuRoleMappings.Update(existingMenus);
-                            }
-                        }
-                        else
-                        {
-                            var menuRoleMapping = new MenuRoleMapping()
-                            {
-                                PrimaryMenuId = item.PrimaryMenuId,
-                                RoleId = item.RoleId
-                            };
-                            context.MenuRoleMappings.Add(menuRoleMapping);
+                            context.MenuRoleMappings.RemoveRange(menuRoleMapping.ToArray());
                         }
                     }
-                    isSuccess = await context.SaveChangesAsync();
+                    foreach (var item in request)
+                    {
+                        var menuRoleMapping = new MenuRoleMapping()
+                        {
+                            PrimaryMenuId = item.PrimaryMenuId,
+                            RoleId = item.RoleId
+                        };
+                        context.MenuRoleMappings.Add(menuRoleMapping);
+                    }
+
+                    context.SaveChanges();
                 }
             }
 
