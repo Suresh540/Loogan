@@ -82,7 +82,7 @@
                         <button id="btnStudentCreateClose" type="button" class="btn btn-secondary" data-dismiss="modal">
                             @Localizer["CloseKey"]
                         </button>
-                        <button type="button" class="btn btn-primary">@Localizer["SaveChangesKey"]</button>
+                        <button id="btnSavestudent" type="button" onclick="updateStudent('btnSavestudent')" class="btn btn-primary">@Localizer["SaveChangesKey"]</button>
                     </div>
                 </div>
             </div>
@@ -123,7 +123,7 @@
                                         <input type="hidden" id="hdnUserId" name="hdnUserId" value="0" />
                                         <input type="hidden" id="hdnStudentNumber" name="hdnStudentNumber" value="0" />
                                         <input type="hidden" id="hdnCampusId" name="hdnCampusId" value="0" />
-                                        <input type="hidden" id="hdnprogramId" name="hdnprogramId" value="0" />
+                                        <input type="hidden" id="hdnProgramId" name="hdnProgramId" value="0" />
                                         <input type="hidden" id="hdnSchoolId" name="hdnSchoolId" value="0" />
                                     </div>
                                     <div>

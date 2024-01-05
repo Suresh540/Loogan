@@ -33,6 +33,7 @@ namespace Loogan.Web.UI.Controllers
         [LooganAdminAuthorize("Admin")]
         public async Task<JsonResult> CreateStaff(StaffModel staff)
         {
+
             var staffModel = await _utilityHelper.ExecuteAPICall<bool>(staff, RestSharp.Method.Post, resource: "api/Admin/CreateStaff");
             return Json(new { value = "Success" });
         }
@@ -41,6 +42,8 @@ namespace Loogan.Web.UI.Controllers
         [LooganAdminAuthorize("Admin")]
         public async Task<JsonResult> UpdateStaff(StaffModel staff)
         {
+            staff.ModifyBy = HttpContext?.Session?.GetInt32("LoginUserId");
+            staff.ModifyDate = DateTime.Now;
             var staffModel = await _utilityHelper.ExecuteAPICall<bool>(staff, RestSharp.Method.Post, resource: "api/Admin/UpdateStaff");
             return Json(new { value = "Success" });
         }
@@ -71,6 +74,8 @@ namespace Loogan.Web.UI.Controllers
         [LooganAdminAuthorize("Admin")]
         public async Task<IActionResult> UpdateStudent(StudentModel studentObj)
         {
+            studentObj.ModifyBy = HttpContext?.Session?.GetInt32("LoginUserId");
+            studentObj.ModifyDate = DateTime.Now;
             var studentModel = await _utilityHelper.ExecuteAPICall<bool>(studentObj, RestSharp.Method.Post, resource: "api/Admin/UpdateStudent");
             return Json(new { value = "Success" });
         }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Loogan.API.Models.Models.Admin
 {
-    public class StudentModel
+    public class StudentModel 
     {
         public int StudentId { get; set; }
 
@@ -81,17 +81,17 @@ namespace Loogan.API.Models.Models.Admin
 
         public int? SchoolId { get; set; }
 
-      
+        public int? CreatedBy { get; set; }
 
-        
+        public DateTime? CreatedDate { get; set; }
 
-       
+        public int? ModifyBy { get; set; }
 
-        
+        public DateTime? ModifyDate { get; set; }
 
-        
 
-        
+
+
 
     }
 }

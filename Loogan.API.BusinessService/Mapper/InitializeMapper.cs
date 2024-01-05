@@ -57,7 +57,12 @@ public class InitializeMapper : Profile
             .ForMember(dest => dest.StaffName, opt => opt.MapFrom(src => src.StaffName))
             .ForMember(dest => dest.FirstName, opt => opt.MapFrom(src => src.FirstName))
             .ForMember(dest => dest.LastName, opt => opt.MapFrom(src => src.LastName))
-            .ForMember(dest => dest.Code, opt => opt.MapFrom(src => src.Code)).ReverseMap();
+            .ForMember(dest => dest.Code, opt => opt.MapFrom(src => src.Code))
+            .ForMember(dest => dest.CreatedBy, opt => opt.MapFrom(src => src.CreatedBy))
+            .ForMember(dest => dest.CreatedDate, opt => opt.MapFrom(src => src.CreatedDate))
+            .ForMember(dest => dest.ModifyBy, opt => opt.MapFrom(src => src.ModifyBy))
+            .ForMember(dest => dest.ModifyDate, opt => opt.MapFrom(src => src.ModifyDate))
+            .ReverseMap();
 
         var studentMap = CreateMap<Student, StudentModel>();
         studentMap.ForAllMembers(opt => opt.Ignore());
@@ -94,7 +99,12 @@ public class InitializeMapper : Profile
             .ForMember(dest => dest.StartDate, opt => opt.MapFrom(src => src.StartDate))
             .ForMember(dest => dest.LastActivityDate, opt => opt.MapFrom(src => src.LastActivityDate))
             .ForMember(dest => dest.HispanicInd, opt => opt.MapFrom(src => src.HispanicInd))
-            .ForMember(dest => dest.VeteranInd, opt => opt.MapFrom(src => src.VeteranInd)).ReverseMap();
+            .ForMember(dest => dest.VeteranInd, opt => opt.MapFrom(src => src.VeteranInd))
+            .ForMember(dest => dest.CreatedBy, opt => opt.MapFrom(src => src.CreatedBy))
+            .ForMember(dest => dest.CreatedDate, opt => opt.MapFrom(src => src.CreatedDate))
+            .ForMember(dest => dest.ModifyBy, opt => opt.MapFrom(src => src.ModifyBy))
+            .ForMember(dest => dest.ModifyDate, opt => opt.MapFrom(src => src.ModifyDate))
+            .ReverseMap();
 
         var courseMap = CreateMap<Course, CourseModel>();
         courseMap.ForAllMembers(opt => opt.Ignore());

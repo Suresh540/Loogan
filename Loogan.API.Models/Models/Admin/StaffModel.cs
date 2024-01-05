@@ -19,6 +19,15 @@ namespace Loogan.API.Models.Models.Admin
 
         public string? LastName { get; set; }
 
+        public int? CreatedBy { get; set; }
+
+        public DateTime? CreatedDate { get; set; }
+
+        public int? ModifyBy { get; set; }
+
+        public DateTime? ModifyDate { get; set; }
+
+
         public int TotalRecords { get; set; }
     }
 }

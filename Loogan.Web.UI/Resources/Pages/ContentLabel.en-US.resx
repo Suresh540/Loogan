@@ -372,6 +372,9 @@
 	<data name="FirstNameMandatoryKey" xml:space="preserve">
     <value>First Name is mandatory</value>
   </data>
+	<data name="FullNameMandatoryKey" xml:space="preserve">
+    <value>Full Name is mandatory</value>
+  </data>
 	<data name="GenderMandatoryKey" xml:space="preserve">
     <value>Gender is mandatory</value>
   </data>
