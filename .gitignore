@@ -30,3 +30,9 @@
 /Loogan.SqlServer.DatabaseScripts
 /Loogan.Web.UI/Properties/PublishProfiles/FolderProfile.pubxml.user
 /Loogan.Web.UI/wwwroot/images/nature1.svg
+/Loogan.API.BusinessService/bin/Release/net8.0
+/Loogan.API.Database/bin/Release/net8.0
+/Loogan.Web.API/.config
+/Loogan.Web.API/bin/Release/net8.0
+/Loogan.Web.API/Properties/PublishProfiles
+/Loogan.Web.UI/Properties/PublishProfiles/FolderProfile.pubxml

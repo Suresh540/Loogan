@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Localization;
 using System.Security.Claims;
 using Microsoft.AspNetCore.Authorization;
+using Loogan.API.Models.Enums;
 
 namespace Loogan.Web.UI.Pages
 {
@@ -76,10 +77,18 @@ namespace Loogan.Web.UI.Pages
                     CookieAuthenticationDefaults.AuthenticationScheme,
                     new ClaimsPrincipal(claimsIdentity));
 
-                if (model.UserTypeName == "Student")
+                if (model.UserTypeName.Equals(UserTypeEnum.student.ToString(), StringComparison.InvariantCultureIgnoreCase))
+                {
                     return LocalRedirect("/Courses/courses");
-                else
+                }
+                else if (model.UserTypeName.Equals(UserTypeEnum.teacher.ToString(), StringComparison.InvariantCultureIgnoreCase))
+                {
+                    return LocalRedirect("/Staff/StaffDashboard");
+                }
+                else if (model.UserTypeName.Equals(UserTypeEnum.admin.ToString(), StringComparison.InvariantCultureIgnoreCase))
+                {
                     return LocalRedirect("/Admin/AdminDashboard");
+                }
             }
             DisplayMessage = ""; //Localizer != null ? Localizer["UserPwdWrongKey"] : "";
             return Page();

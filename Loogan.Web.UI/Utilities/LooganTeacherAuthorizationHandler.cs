@@ -5,8 +5,9 @@ namespace Loogan.Web.UI.Utilities;
 
 public class LooganTeacherAuthorizeAttribute : AuthorizeAttribute, IAuthorizationRequirement, IAuthorizationRequirementData
 {
-    public LooganTeacherAuthorizeAttribute(string role) => Role = role;
-    public string Role { get; }
+    public LooganTeacherAuthorizeAttribute(string role) => Role = role.Split(',').ToList();
+    public List<string> Role { get; set; }
+
     public IEnumerable<IAuthorizationRequirement> GetRequirements()
     {
         yield return this;
@@ -15,10 +16,7 @@ public class LooganTeacherAuthorizeAttribute : AuthorizeAttribute, IAuthorizatio
 
 public class LooganTeacherAuthorizationHandler : AuthorizationHandler<LooganTeacherAuthorizeAttribute>
 {
-    private const string teacher = "TEACHER";
-    private const string admin = "admin";
     private readonly ILogger<LooganTeacherAuthorizationHandler> _logger;
-
     public LooganTeacherAuthorizationHandler(ILogger<LooganTeacherAuthorizationHandler> logger)
     {
         _logger = logger;
@@ -34,13 +32,7 @@ public class LooganTeacherAuthorizationHandler : AuthorizationHandler<LooganTeac
         var role = context.User.FindFirst(c => c.Type == ClaimTypes.Role);
         if (role != null)
         {
-            if (role.Value.ToLower() == admin)
-            {
-                context.Succeed(requirement);
-                return Task.CompletedTask;
-            }
-
-            if (role.Value == requirement.Role && role.Value.ToUpper() == teacher)
+            if (requirement.Role.Any(x => x.Equals(role.Value, StringComparison.InvariantCultureIgnoreCase)))
             {
                 _logger.LogInformation("Authorization requirement {Role} satisfied", requirement.Role);
                 context.Succeed(requirement);

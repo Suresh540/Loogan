@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Loogan.Web.UI.Controllers
 {
-    [LooganStudentAuthorize("Student")]
+    [LooganStudentAuthorize("Student,Admin")]
     [Route("StudentCourse")]
     public class StudentCourseController : Controller
     {

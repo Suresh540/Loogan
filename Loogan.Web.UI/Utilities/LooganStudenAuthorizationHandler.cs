@@ -1,13 +1,14 @@
 ﻿using Microsoft.AspNetCore.Authorization;
+using System.Linq;
 using System.Security.Claims;
 using static Loogan.Web.UI.Utilities.MicrosoftAuthentication;
 namespace Loogan.Web.UI.Utilities;
 
 public class LooganStudentAuthorizeAttribute : AuthorizeAttribute, IAuthorizationRequirement, IAuthorizationRequirementData
 {
-    public LooganStudentAuthorizeAttribute(string role) => Role = role;
+    public LooganStudentAuthorizeAttribute(string role) => Role = role.Split(',').ToList();
 
-    public string Role { get; set; }
+    public List<string> Role { get; set; }
 
     public string IsAzureAD { get; set; }
 
@@ -19,8 +20,6 @@ public class LooganStudentAuthorizeAttribute : AuthorizeAttribute, IAuthorizatio
 
 public class LooganStudentAuthorizationHandler : AuthorizationHandler<LooganStudentAuthorizeAttribute>
 {
-    private const string student = "STUDENT";
-    private const string admin = "admin";
     private readonly ILogger<LooganStudentAuthorizationHandler> _logger;
 
     public LooganStudentAuthorizationHandler(ILogger<LooganStudentAuthorizationHandler> logger)
@@ -38,13 +37,7 @@ public class LooganStudentAuthorizationHandler : AuthorizationHandler<LooganStud
         var role = context.User.FindFirst(c => c.Type == ClaimTypes.Role);
         if (role != null)
         {
-            if (role.Value.ToLower() == admin)
-            {
-                context.Succeed(requirement);
-                return Task.CompletedTask;
-            }
-
-            if (role.Value == requirement.Role && role.Value.ToUpper() == student)
+            if (requirement.Role.Any(x => x.Equals(role.Value, StringComparison.InvariantCultureIgnoreCase)))
             {
                 _logger.LogInformation("Authorization requirement {Role} satisfied", requirement.Role);
                 context.Succeed(requirement);

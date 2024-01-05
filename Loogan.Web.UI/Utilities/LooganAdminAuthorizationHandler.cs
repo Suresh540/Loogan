@@ -5,8 +5,10 @@ namespace Loogan.Web.UI.Utilities;
 
 public class LooganAdminAuthorizeAttribute : AuthorizeAttribute, IAuthorizationRequirement, IAuthorizationRequirementData
 {
-    public LooganAdminAuthorizeAttribute(string role) => Role = role;
-    public string Role { get; }
+    public LooganAdminAuthorizeAttribute(string role) => Role = role.Split(',').ToList();
+
+    public List<string> Role { get; set; }
+
     public IEnumerable<IAuthorizationRequirement> GetRequirements()
     {
         yield return this;
@@ -15,9 +17,7 @@ public class LooganAdminAuthorizeAttribute : AuthorizeAttribute, IAuthorizationR
 
 public class LooganAdminAuthorizationHandler : AuthorizationHandler<LooganAdminAuthorizeAttribute>
 {
-    private const string admin = "ADMIN";
     private readonly ILogger<LooganAdminAuthorizationHandler> _logger;
-
     public LooganAdminAuthorizationHandler(ILogger<LooganAdminAuthorizationHandler> logger)
     {
         _logger = logger;
@@ -34,7 +34,7 @@ public class LooganAdminAuthorizationHandler : AuthorizationHandler<LooganAdminA
         var role = context.User.FindFirst(c => c.Type == ClaimTypes.Role);
         if (role != null)
         {
-            if (role.Value == requirement.Role && role.Value.ToUpper() == admin)
+            if (requirement.Role.Any(x => x.Equals(role.Value, StringComparison.InvariantCultureIgnoreCase)))
             {
                 _logger.LogInformation("Authorization requirement {Role} satisfied", requirement.Role);
                 context.Succeed(requirement);
