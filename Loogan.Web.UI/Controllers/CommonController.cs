@@ -77,5 +77,25 @@ namespace Loogan.Web.UI.Controllers
         {
             return HttpContext != null && HttpContext?.User != null && HttpContext.User.Identity != null && HttpContext.User.Identity.IsAuthenticated;
         }
+
+        [HttpPost]
+        [Route("GetCountrys")]
+        public async Task<IActionResult> GetCountrys()
+        {
+            var languageId = HttpContext?.Session?.GetInt32("LanguageId");
+
+            var apiRequest = new ApiRequest() { RequestValue = languageId > 0 ? languageId.ToString() : "1" };
+            var countryList = await _utilityHelper.ExecuteAPICall<List<DropDownListModel>>(apiRequest, RestSharp.Method.Post, resource: "api/Common/GetCountrys");
+            return Json(countryList);
+        }
+
+        [HttpPost]
+        [Route("GetStatesByCountryId")]
+        public async Task<IActionResult> GetStatesByCountryId(int countryId)
+        {
+            var apiRequest = new RequestStateModel() { LanguageId = HttpContext?.Session?.GetInt32("LanguageId") ?? 1,CountryId = countryId };
+            var countryList = await _utilityHelper.ExecuteAPICall<List<DropDownListModel>>(apiRequest, RestSharp.Method.Post, resource: "api/Common/GetStatesByCountryId");
+            return Json(countryList);
+        }
     }
 }

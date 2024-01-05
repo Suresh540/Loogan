@@ -387,6 +387,9 @@
 	<data name="UserNameMandatoryKey" xml:space="preserve">
     <value>User name is mandatory</value>
   </data>
+	<data name="AdditionalNameMandatoryKey" xml:space="preserve">
+    <value>Additional name is mandatory</value>
+  </data>
 	<data name="UserSavedSuccessKey" xml:space="preserve">
     <value>User saved successfully</value>
   </data>

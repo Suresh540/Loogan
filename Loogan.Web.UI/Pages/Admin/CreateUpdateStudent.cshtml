@@ -98,7 +98,7 @@
                                 <p>
                                     <div>
                                         <b>
-                                            @Localizer["Title"]
+                                            @Localizer["Title"] <b class="text-danger">*</b>
                                         </b><br />
                                         <input id="txtStTitle" type="text" required />
                                     </div>
@@ -116,7 +116,7 @@
                                     </div>
                                     <div>
                                         <b>
-                                            @Localizer["FirstNameKey"]
+                                            @Localizer["FirstNameKey"] <b class="text-danger">*</b>
                                         </b><br />
                                         <input id="txtStFirstName" type="text" required />
                                         <input type="hidden" id="hdnStudentId" name="hdnStudentId" value="0" />
@@ -134,7 +134,7 @@
                                     </div>
                                     <div>
                                         <b>
-                                            @Localizer["LastNameKey"]
+                                            @Localizer["LastNameKey"] <b class="text-danger">*</b>
                                         </b><br />
                                         <input id="txtStLastName" type="text" required />
                                     </div>
@@ -147,7 +147,7 @@
                                     </div>
                                     <div>
                                         <b>
-                                            @Localizer["FullNameKey"]
+                                            @Localizer["FullNameKey"] <b class="text-danger">*</b>
                                         </b><br />
                                         <input id="txtStFullName" type="text" />
                                     </div>
@@ -166,7 +166,7 @@
                                     </div>
                                     <div>
                                         <b>
-                                            @Localizer["Gender"]
+                                            @Localizer["Gender"] <b class="text-danger">*</b>
                                         </b><br />
                                         <select id="ddlGender">
                                         </select> 
@@ -204,14 +204,6 @@
                                             @Localizer["PostalCode"]
                                         </b><br />
                                         <input id="txtStPostalCode" type="text" />
-                                    </div>
-
-                                    <div>
-                                        <b>
-                                            @Localizer["State"]
-                                        </b><br />
-                                        <select id="ddlState">
-                                        </select>
                                     </div>
                                     <div>
                                         <b>
@@ -285,5 +277,17 @@
     </div>
 </div>
 <script>
-    setTimeout(showStudents(), 700);
+    function fnLoad() {
+        ddlMasterLookup('ddlGender', 'gender');
+        ddlCountry('ddlCountry');
+        ddlstate('ddlState', 0);
+        ddlMasterLookup('ddlEducationalLevel', 'educationlevel');
+        ddlMasterLookup('ddlNationality', 'nationality');
+        ddlMasterLookup('ddlEthnicGroup', 'ethnicgroup');
+        ddlMasterLookup('ddlStCitizenShipStatus', 'citizenshipstatus');
+        
+        ddlStAdmissionReprestative();
+        showStudents();
+    }
+    setTimeout(fnLoad(), 700);
 </script>

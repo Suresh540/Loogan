@@ -41,6 +41,11 @@ function createUser() {
         $('#txtUserName').focus();
         return;
     }
+    if ($('#txtAdditionalName').val().trim() == '') {
+        Alert(localizationLib.getLocalizeData("UserNameMandatoryKey"), 'error');
+        $('#txtAdditionalName').focus();
+        return;
+    }
 
     if ($('#txtPassword').val().trim() == '') {
         Alert(localizationLib.getLocalizeData("PasswordMandatoryKey"), 'error');

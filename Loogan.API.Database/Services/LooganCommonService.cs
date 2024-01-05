@@ -87,9 +87,14 @@ namespace Loogan.API.Database.Services
         public async Task<List<DropDownListModel>?> GetStatesByCountryId(int languageId, int countryId)
         {
             var list = new List<DropDownListModel>();
+            var states = new List<State>();
             using (var context = new LooganContext(_connectionString))
             {
-                var states = context.States.Where(x => x.IsDeleted == false && x.LanguageId == languageId && x.CountryId == countryId).ToList();
+                if(countryId > 0)
+                    states = context.States.Where(x => x.IsDeleted == false && x.LanguageId == languageId && x.CountryId == countryId).ToList();
+                else
+                    states = context.States.Where(x => x.IsDeleted == false && x.LanguageId == languageId).ToList();
+
                 if (states.Any())
                 {
                     foreach (var item in states)

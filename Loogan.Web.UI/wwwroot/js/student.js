@@ -207,3 +207,27 @@ function clearStudentData() {
     $('#txtStaffName').val('');
 }
 
+function ddlStAdmissionReprestative() {
+    if (document.getElementById('ddlStAdmissionReprestative') == undefined) {
+        return;
+    }
+    $.ajax({
+        method: 'Post',
+        url: "/Admin/GetAllStaff",
+        data: {},
+        success: function (response) {
+            var dropDownListId = $('#ddlStAdmissionReprestative');
+            dropDownListId.append($("<option></option>").val("").html("Please Select"));
+            $.each(response, function () {
+                dropDownListId.append($("<option></option>").val(this['staffId']).html(this['staffName']));
+            });
+        },
+        failure: function (response) {
+            Alert(response.responseText, 'error');
+        },
+        error: function (response) {
+            Alert(response.responseText, 'error');
+        }
+    });
+}
+

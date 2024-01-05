@@ -95,6 +95,54 @@ function ddlMasterLookup(controlId, lookUpTypeValue, selectedValue) {
     });
 }
 
+function ddlCountry(controlId) {
+    if (document.getElementById(controlId) == undefined) {
+        return;
+    }
+    $.ajax({
+        method: 'Post',
+        url: "/Common/GetCountrys",
+        data: {},
+        success: function (response) {
+            var dropDownListId = $('#' + controlId);
+            dropDownListId.append($("<option></option>").val("").html("Please Select"));
+            $.each(response, function () {
+                dropDownListId.append($("<option></option>").val(this['id']).html(this['name']));
+            });
+        },
+        failure: function (response) {
+            Alert(response.responseText, 'error');
+        },
+        error: function (response) {
+            Alert(response.responseText, 'error');
+        }
+    });
+}
+
+function ddlstate(controlId,countryId) {
+    if (document.getElementById(controlId) == undefined) {
+        return;
+    }
+    $.ajax({
+        method: 'Post',
+        url: "/Common/GetStatesByCountryId",
+        data: { countryId: countryId },
+        success: function (response) {
+            var dropDownListId = $('#' + controlId);
+            dropDownListId.append($("<option></option>").val("").html("Please Select"));
+            $.each(response, function () {
+                dropDownListId.append($("<option></option>").val(this['id']).html(this['name']));
+            });
+        },
+        failure: function (response) {
+            Alert(response.responseText, 'error');
+        },
+        error: function (response) {
+            Alert(response.responseText, 'error');
+        }
+    });
+}
+
 function setInitialValue(selectedValue, dropDownListId) {
     if (selectedValue == '')
         dropDownListId.empty().append(`<option selected="selected" value="0">${localizationLib.getLocalizeData("PleaseSelectKey")}</option>`);

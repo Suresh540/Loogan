@@ -51,7 +51,7 @@ namespace Loogan.Web.API.Controllers
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<IActionResult> GetStatesByCountryId([FromBody] RequestStateModel apiRequest)
         {
-            var listUser = await _commonService.GetStatesByCountryId(apiRequest.LanguageId, apiRequest.LanguageId);
+            var listUser = await _commonService.GetStatesByCountryId(apiRequest.LanguageId, apiRequest.CountryId);
             return Ok(listUser);
         }
     }
