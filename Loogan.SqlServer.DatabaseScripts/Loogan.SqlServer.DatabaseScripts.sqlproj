@@ -56,16 +56,9 @@
   <Import Condition="'$(SQLDBExtensionsRefPath)' == ''" Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
   <ItemGroup>
     <Folder Include="Properties" />
-    <Folder Include="Sp" />
-    <Folder Include="TableType" />
-    <Folder Include="dmlscript" />
+    <Folder Include="Scripts" />
   </ItemGroup>
   <ItemGroup>
-    <Build Include="DbScript.sql" />
-    <Build Include="TableType\UserTableType.sql" />
-    <Build Include="Sp\[dbo].[Get_AllUserDetails].sql" />
-    <Build Include="Sp\[dbo].[Get_UserLoginDetails].sql" />
-    <Build Include="Sp\Get_MasterLookUpValues1.sql" />
-    <Build Include="dmlscript\12_Dec_2023_UserTable_Alter.sql" />
+    <Build Include="Scripts\Entire_DB_Drop_Create_IfExists_Script.sql" />
   </ItemGroup>
 </Project>
