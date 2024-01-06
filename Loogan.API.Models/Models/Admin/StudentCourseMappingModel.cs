@@ -24,7 +24,10 @@ namespace Loogan.API.Models.Models.Admin
         public int? ClassSectionId { get; set; }
         public int? EnrollmentId { get; set; }
         public int StudentId { get; set; }
+        public string? studentName { get; set; }
         public int StaffId { get; set; }
+
+        public string? StaffName { get; set; }
         public int? TermId { get; set; }
         public int? StudentCourseStatusId { get; set; }
 
