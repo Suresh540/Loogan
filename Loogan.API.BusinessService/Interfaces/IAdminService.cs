@@ -15,6 +15,8 @@ namespace Loogan.API.BusinessService.Interfaces
         public Task<int?> CreateCourse(CourseModel courseModelObj);
         public Task<int?> UpdateCourse(CourseModel courseModelObj);
 
+        Task<int?> DeleteCourse(int courseId);
+
         public Task<List<StaffModel>?> GetAllStaff();
 
         public Task<int?> CreateStaff(StaffModel staffModelObj);

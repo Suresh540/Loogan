@@ -57,6 +57,20 @@ namespace Loogan.Web.API.Controllers
             return Ok(result);
         }
 
+        [HttpPost]
+        [Route("DeleteCourse")]
+        [Produces("application/json")]
+        [Consumes("application/json")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public async Task<IActionResult> DeleteCourse([FromBody] ApiRequest request)
+        {
+            var courseId = request.RequestValue != "" ? Convert.ToInt32(request.RequestValue) : 0;
+            var result = await _adminService.DeleteCourse(courseId);
+            return Ok(result);
+        }
+
         #endregion
 
         #region Staff

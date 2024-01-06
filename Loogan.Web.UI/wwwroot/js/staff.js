@@ -35,7 +35,7 @@
         success: function (e) {
             $('#btnSavestaff').removeAttr('disabled');
             Alert(localizationLib.getLocalizeData("StaffUpdateSuccessKey"), 'Success');
-            clearUserData();
+            clearStaffData();
             showStaffs();
             $('#btntopclose').trigger('click');
         },

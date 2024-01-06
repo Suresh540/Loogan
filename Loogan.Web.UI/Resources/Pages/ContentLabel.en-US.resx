@@ -516,4 +516,78 @@
 	<data name="StudentFailedDeleteKey" xml:space="preserve">
     <value>Failed to delete Student.</value>
   </data>
+
+	<data name="CourseGroupKey" xml:space="preserve">
+    <value>Course Group</value>
+  </data>
+	<data name="CourseCodeKey" xml:space="preserve">
+    <value>Course Code</value>
+  </data>
+	<data name="CourseNameKey" xml:space="preserve">
+    <value>Course Name</value>
+  </data>
+	<data name="CourseDescriptionKey" xml:space="preserve">
+    <value>Course Desctiption</value>
+  </data>
+	<data name="CourseLevelKey" xml:space="preserve">
+    <value>Course Level</value>
+  </data>
+	<data name="CreditHoursKey" xml:space="preserve">
+    <value>Credit Hours</value>
+  </data>
+	<data name="CreditsKey" xml:space="preserve">
+    <value>Credits</value>
+  </data>
+	<data name="CourseListKey" xml:space="preserve">
+    <value>Course(s) List</value>
+  </data>
+	<data name="CourseDeleteMsgKey" xml:space="preserve">
+    <value>Course deleted successfully.</value>
+  </data>
+	<data name="CourseFailedDeleteKey" xml:space="preserve">
+    <value>Failed to delete Course.</value>
+  </data>
+	<data name="CourseCodeMandatoryKey" xml:space="preserve">
+    <value>Course Code is mandatory.</value>
+  </data>
+	<data name="CourseNameMandatoryKey" xml:space="preserve">
+    <value>Course Name is mandatory.</value>
+  </data>
+	<data name="CourseGroupMandatoryKey" xml:space="preserve">
+    <value>Course Group is mandatory.</value>
+  </data>
+	<data name="CourseUpdateSuccessKey" xml:space="preserve">
+    <value>Course saved successfully.</value>
+  </data>
+	<data name="FailedToCourseKey" xml:space="preserve">
+    <value>Failed to create staff.</value>
+  </data>
+	<data name="CourseGroupKey" xml:space="preserve">
+    <value>Failed to delete Student.</value>
+  </data>
+	<data name="CourseGroupKey" xml:space="preserve">
+    <value>Failed to delete Student.</value>
+  </data>
+	<data name="CourseGroupKey" xml:space="preserve">
+    <value>Failed to delete Student.</value>
+  </data>
+	<data name="CourseGroupKey" xml:space="preserve">
+    <value>Failed to delete Student.</value>
+  </data>
+	<data name="CourseGroupKey" xml:space="preserve">
+    <value>Failed to delete Student.</value>
+  </data>
+	<data name="CourseGroupKey" xml:space="preserve">
+    <value>Failed to delete Student.</value>
+  </data>
+	<data name="CourseGroupKey" xml:space="preserve">
+    <value>Failed to delete Student.</value>
+  </data>
+	<data name="CourseGroupKey" xml:space="preserve">
+    <value>Failed to delete Student.</value>
+  </data>
+	<data name="CourseGroupKey" xml:space="preserve">
+    <value>Failed to delete Student.</value>
+  </data>
+
 </root>

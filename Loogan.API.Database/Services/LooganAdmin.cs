@@ -66,6 +66,29 @@ namespace Loogan.API.Database.Services
             return isUpdated;
         }
 
+        public async Task<int?> DeleteCourse(int courseId)
+        {
+            var isDeleted = 0;
+
+            if (courseId != 0)
+            {
+                using (var context = new LooganContext(_connectionString))
+                {
+                    var course = context.Courses.FirstOrDefault(x => x.CourseId == courseId);
+
+                    if (course != null)
+                    {
+                        course.IsDeleted = true;
+                        context.Courses.Update(course);
+                        isDeleted = await context.SaveChangesAsync();
+                    }
+
+                }
+            }
+
+            return isDeleted;
+        }
+
         public async Task<List<StaffModel>?> GetAllStaff()
         {
             List<StaffModel>? staffs = new List<StaffModel>();
@@ -120,6 +143,9 @@ namespace Loogan.API.Database.Services
             return isUpdated;
         }
 
+
+
+        
         public async Task<int?> DeleteStaff(int staffId)
         {
             var isDeleted = 0;

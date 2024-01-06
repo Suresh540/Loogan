@@ -30,11 +30,11 @@
                         <button onclick="course.showCourses()" type="button" style="background:gray;color:black" class="btn btn-light border rounded-pill shadow-sm mb-1" data-toggle="modal" data-target="#bottom_modal">
                             <b>@Localizer["ShowCourseKey"]</b>
                         </button>
-                        <button type="button" class="btn btn-light border rounded-pill shadow-sm mb-1" onclick="clearUserData()"
+                        <button type="button" class="btn btn-light border rounded-pill shadow-sm mb-1" onclick="course.clearCourseData()"
                                 style="background:lightgreen;color:black">
                             <b>@Localizer["ClearKey"]</b>
                         </button>
-                        <button id="btnSaveuser" type="button" class="btn btn-light border rounded-pill shadow-sm mb-1" onclick="createUser('btnSaveuser')"
+                        <button id="btnSaveCourse" type="button" class="btn btn-light border rounded-pill shadow-sm mb-1" onclick="course.createCourse('btnSaveCourse')"
                                 style="background:blue;color:white">
                             <b>@Localizer["SaveKey"]</b>
                         </button>
@@ -54,8 +54,6 @@
                                 </b><br />
                                 <input id="txtCourseCode" type="text" required />
                                 <input type="hidden" id="hdnCourseId" name="hdnCourseId" value="0" />
-                                <input type="hidden" id="hdnCourseGroupId" name="hdnCourseGroupId" value="0" />
-                                <input type="hidden" id="hdnCourseLevelSourceId" name="hdnCourseLevelSourceId" value="0" />
                             </div>
                             <div>
                                 <b>
@@ -73,6 +71,13 @@
                     </div>
                     <div class="columns large-6 small-12 user-information">
                         <p>
+                            <div>
+                                <b>
+                                    @Localizer["CourseLevelKey"]
+                                </b><br />
+                                <select id="ddlCourseLevel">
+                                </select>
+                            </div>
                             <div>
                                 <b>
                                     @Localizer["CreditHoursKey"]
@@ -101,7 +106,7 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h2 class="modal-title">Course(s) List</h2>
+                <h2 class="modal-title">@Localizer["CourseListKey"]</h2>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -120,10 +125,10 @@
                                 @Localizer["CourseNameKey"]
                             </td>
                             <td>
-                                @Localizer["CourseDescKey"]
+                                @Localizer["CourseGroupKey"]
                             </td>
                             <td>
-                                @Localizer["CourseGroupNameKey"]
+                                @Localizer["CourseDescriptionKey"]
                             </td>
                         </tr>
                     </thead>
@@ -142,3 +147,9 @@
         </div>
     </div>
 </div>
+<script>
+    function fnLoad() {
+        course.ddlCourseCourseCategory('CourseCategory');
+    }
+    setTimeout(fnLoad(), 700);
+</script>

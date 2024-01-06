@@ -42,6 +42,12 @@ namespace Loogan.API.BusinessService.Services
             return result;
         }
 
+        public async Task<int?> DeleteCourse(int courseId)
+        {
+            var result = await _looganAdmin.DeleteCourse(courseId);
+            return result;
+        }
+
         public async Task<List<StaffModel>?> GetAllStaff()
         {
             var staffList = await _looganAdmin.GetAllStaff();
