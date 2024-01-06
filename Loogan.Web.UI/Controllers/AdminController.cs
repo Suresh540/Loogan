@@ -90,6 +90,50 @@ namespace Loogan.Web.UI.Controllers
         }
         #endregion
 
+        #region Course
+
+        [Route("GetAllCourses")]
+        [LooganAdminAuthorize("Admin")]
+        public async Task<JsonResult> GetAllCourses(PagingModel pageModel)
+        {
+            var courses = await _utilityHelper.ExecuteAPICall<List<CourseModel>>(null, RestSharp.Method.Post, resource: "api/Admin/GetAllCourses");
+            var pageList = courses?.Skip(pageModel.Pagesize * (pageModel.PageIndex - 1))
+                        .Take(pageModel.Pagesize).ToList();
+
+            return Json(pageList);
+        }
+
+        [Route("CreateCourse")]
+        [LooganAdminAuthorize("Admin")]
+        public async Task<JsonResult> CreateCourse(CourseModel course)
+        {
+            course.CreatedBy = HttpContext?.Session?.GetInt32("LoginUserId");
+            course.CreatedDate = DateTime.Now;
+            var courseModel = await _utilityHelper.ExecuteAPICall<bool>(course, RestSharp.Method.Post, resource: "api/Admin/CreateCourse");
+            return Json(new { value = "Success" });
+        }
+
+        [Route("UpdateCourse")]
+        [LooganAdminAuthorize("Admin")]
+        public async Task<JsonResult> UpdateCourse(CourseModel course)
+        {
+            course.ModifyBy = HttpContext?.Session?.GetInt32("LoginUserId");
+            course.ModifyDate = DateTime.Now;
+            var courseModel = await _utilityHelper.ExecuteAPICall<bool>(course, RestSharp.Method.Post, resource: "api/Admin/UpdateCourse");
+            return Json(new { value = "Success" });
+        }
+
+        [Route("DeleteCourse")]
+        [LooganAdminAuthorize("Admin")]
+        public async Task<JsonResult> DeleteCourse(string courseId)
+        {
+            var apiRequest = new ApiRequest() { RequestValue = courseId };
+            var IsDeleted = await _utilityHelper.ExecuteAPICall<bool>(apiRequest, RestSharp.Method.Post, resource: "api/Admin/DeleteCourse");
+            return Json(new { value = "Success" });
+        }
+       
+        #endregion
+
         [Route("GetUserRoles")]
         public async Task<JsonResult> GetUserRoles(int languageId)
         {

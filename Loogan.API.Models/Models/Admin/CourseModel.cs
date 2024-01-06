@@ -14,6 +14,10 @@ namespace Loogan.API.Models.Models.Admin
 
         public string? CourseGroupName { get; set; }
 
+        public int? CourseLevelSourceId { get; set; }
+
+        public string? CourseLevelName { get; set; }
+
         public string CourseCode { get; set; } = null!;
 
         public string? CourseName { get; set; }
@@ -24,6 +28,14 @@ namespace Loogan.API.Models.Models.Admin
         public double? Credits { get; set; }
 
         public int TotalRecords { get; set; }
+
+        public int? CreatedBy { get; set; }
+
+        public DateTime? CreatedDate { get; set; }
+
+        public int? ModifyBy { get; set; }
+
+        public DateTime? ModifyDate { get; set; }
 
     }
 }
