@@ -115,8 +115,52 @@ public class InitializeMapper : Profile
             .ForMember(dest => dest.CreditHours, opt => opt.MapFrom(src => src.CreditHours))
             .ForMember(dest => dest.Credits, opt => opt.MapFrom(src => src.Credits)).ReverseMap();
 
-       
+        var StudentCourseMappingMap = CreateMap<StudentCourseMapping, StudentCourseMappingModel>();
+        StudentCourseMappingMap.ForAllMembers(opt => opt.Ignore());
+        StudentCourseMappingMap.ForMember(dest => dest.StudentCourseMappingId, opt => opt.MapFrom(src => src.StudentCourseMappingId))
+            .ForMember(dest => dest.CampusId, opt => opt.MapFrom(src => src.CampusId))
+            .ForMember(dest => dest.ClassSectionId, opt => opt.MapFrom(src => src.ClassSectionId))
+            .ForMember(dest => dest.CourseId, opt => opt.MapFrom(src => src.CourseId))
+            .ForMember(dest => dest.EnrollmentId, opt => opt.MapFrom(src => src.EnrollmentId))
+            .ForMember(dest => dest.StudentId, opt => opt.MapFrom(src => src.StudentId))
+            .ForMember(dest => dest.StaffId, opt => opt.MapFrom(src => src.StaffId))
+            .ForMember(dest => dest.TermId, opt => opt.MapFrom(src => src.TermId))
+            .ForMember(dest => dest.StudentCourseStatusId, opt => opt.MapFrom(src => src.StudentCourseStatusId))
+            .ForMember(dest => dest.CourseCreditHours, opt => opt.MapFrom(src => src.CourseCreditHours))
+            .ForMember(dest => dest.CourseCredit, opt => opt.MapFrom(src => src.CourseCredit))
+            .ForMember(dest => dest.MinusAbsent, opt => opt.MapFrom(src => src.MinusAbsent))
+            .ForMember(dest => dest.MinusAttended, opt => opt.MapFrom(src => src.MinusAttended))
+            .ForMember(dest => dest.NumericGradeObtained, opt => opt.MapFrom(src => src.NumericGradeObtained))
+            .ForMember(dest => dest.TotalGradeAttempted, opt => opt.MapFrom(src => src.TotalGradeAttempted))
+            .ForMember(dest => dest.TotalCreditsEarned, opt => opt.MapFrom(src => src.TotalCreditsEarned))
+            .ForMember(dest => dest.TotalHoursAttempted, opt => opt.MapFrom(src => src.TotalHoursAttempted))
+            .ForMember(dest => dest.TotalHoursEarned, opt => opt.MapFrom(src => src.TotalHoursEarned))
+            .ForMember(dest => dest.GradeLetterCodeObtained, opt => opt.MapFrom(src => src.GradeLetterCodeObtained))
+            .ForMember(dest => dest.GradeNote, opt => opt.MapFrom(src => src.GradeNote))
+            .ForMember(dest => dest.CourseCompletedDate, opt => opt.MapFrom(src => src.CourseCompletedDate))
+            .ForMember(dest => dest.CourseDropDate, opt => opt.MapFrom(src => src.CourseDropDate))
+            .ForMember(dest => dest.CourseLastAttendedDate, opt => opt.MapFrom(src => src.CourseLastAttendedDate))
+            .ForMember(dest => dest.CourseRegisteredDate, opt => opt.MapFrom(src => src.CourseRegisteredDate))
+            .ForMember(dest => dest.CourseStartDate, opt => opt.MapFrom(src => src.CourseStartDate))
+            .ForMember(dest => dest.ExpectedCourseEndDate, opt => opt.MapFrom(src => src.ExpectedCourseEndDate))
+            .ForMember(dest => dest.GradePostedDate, opt => opt.MapFrom(src => src.GradePostedDate))
+            .ForMember(dest => dest.CourseCompletedStatusInd, opt => opt.MapFrom(src => src.CourseCompletedStatusInd))
+            .ForMember(dest => dest.CourseCurrentStatusInd, opt => opt.MapFrom(src => src.CourseCurrentStatusInd))
+            .ForMember(dest => dest.CourseDroppedStatusInd, opt => opt.MapFrom(src => src.CourseDroppedStatusInd))
+            .ForMember(dest => dest.CourseFutureStatusInd, opt => opt.MapFrom(src => src.CourseFutureStatusInd))
+            .ForMember(dest => dest.CourseLeaveOfAbsenceStatusInd, opt => opt.MapFrom(src => src.CourseLeaveOfAbsenceStatusInd))
+            .ForMember(dest => dest.CourseScheduledStatusInd, opt => opt.MapFrom(src => src.CourseScheduledStatusInd))
+            .ForMember(dest => dest.CourseRetakeInd, opt => opt.MapFrom(src => src.CourseRetakeInd))
+            .ForMember(dest => dest.CreatedBy, opt => opt.MapFrom(src => src.CreatedBy))
+            .ForMember(dest => dest.CreatedDate, opt => opt.MapFrom(src => src.CreatedDate))
+            .ForMember(dest => dest.ModifyBy, opt => opt.MapFrom(src => src.ModifyBy))
+            .ForMember(dest => dest.ModifyDate, opt => opt.MapFrom(src => src.ModifyDate))
+            .ReverseMap();
         
+
+
+
+
     }
 }
 

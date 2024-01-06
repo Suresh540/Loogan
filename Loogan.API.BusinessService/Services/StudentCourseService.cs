@@ -2,7 +2,9 @@
 using Loogan.API.BusinessService.Interfaces;
 using Loogan.API.Database.Interfaces;
 using Loogan.API.Database.Models;
+using Loogan.API.Database.Services;
 using Loogan.API.Models.Models;
+using Loogan.API.Models.Models.Admin;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,5 +29,32 @@ namespace Loogan.API.BusinessService.Services
             var studentCourseModelList = await _looganStudentCourse.GetStudentCourseDetails(studentId);
             return studentCourseModelList;
         }
+
+        public async Task<List<StudentCourseMappingModel>> GetStudentCourseMappingDetails()
+        {
+            var studentCourseMappingModelList = await _looganStudentCourse.GetStudentCourseMappingDetails();
+            return studentCourseMappingModelList;
+        }
+
+        public async Task<int?> CreateStudentCourseMapping(StudentCourseMappingModel studentCourseMappingModel)
+        {
+            var studentCourseMapping = _mapper.Map<StudentCourseMapping>(studentCourseMappingModel);
+            var result = await _looganStudentCourse.CreateStudentCourseMapping(studentCourseMapping);
+            return result;
+        }
+
+        public async Task<int?> UpdateStudentCourseMapping(StudentCourseMappingModel studentCourseMappingModel)
+        {
+            var studentCourseMapping = _mapper.Map<StudentCourseMapping>(studentCourseMappingModel);
+            var result = await _looganStudentCourse.UpdateStudentCourseMapping(studentCourseMapping);
+            return result;
+        }
+
+        public async Task<int?> DeleteStudentCourseMapping(int StudentCourseMappingId)
+        {
+            var result = await _looganStudentCourse.DeleteStudentCourseMapping(StudentCourseMappingId);
+            return result;
+        }
+
     }
 }

@@ -156,6 +156,9 @@
 	<data name="AddEditCourseKey" xml:space="preserve">
     <value>Add/Edit Course</value>
   </data>
+	<data name="AddEditStudentCourseMappingKey" xml:space="preserve">
+    <value>Student Course</value>
+  </data>
 	<data name="AdditionalNameKey" xml:space="preserve">
     <value>Additional Name</value>
   </data>
@@ -559,35 +562,6 @@
 	<data name="CourseUpdateSuccessKey" xml:space="preserve">
     <value>Course saved successfully.</value>
   </data>
-	<data name="FailedToCourseKey" xml:space="preserve">
-    <value>Failed to create staff.</value>
-  </data>
-	<data name="CourseGroupKey" xml:space="preserve">
-    <value>Failed to delete Student.</value>
-  </data>
-	<data name="CourseGroupKey" xml:space="preserve">
-    <value>Failed to delete Student.</value>
-  </data>
-	<data name="CourseGroupKey" xml:space="preserve">
-    <value>Failed to delete Student.</value>
-  </data>
-	<data name="CourseGroupKey" xml:space="preserve">
-    <value>Failed to delete Student.</value>
-  </data>
-	<data name="CourseGroupKey" xml:space="preserve">
-    <value>Failed to delete Student.</value>
-  </data>
-	<data name="CourseGroupKey" xml:space="preserve">
-    <value>Failed to delete Student.</value>
-  </data>
-	<data name="CourseGroupKey" xml:space="preserve">
-    <value>Failed to delete Student.</value>
-  </data>
-	<data name="CourseGroupKey" xml:space="preserve">
-    <value>Failed to delete Student.</value>
-  </data>
-	<data name="CourseGroupKey" xml:space="preserve">
-    <value>Failed to delete Student.</value>
-  </data>
+	
 
 </root>
