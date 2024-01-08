@@ -31,6 +31,8 @@ namespace Loogan.API.Models.Models.Admin
         public int? TermId { get; set; }
         public int? StudentCourseStatusId { get; set; }
 
+        public string? StudentCourseStatus { get; set; }
+
         public double? CourseCreditHours { get; set; }
 
         public double? CourseCredit { get; set; }

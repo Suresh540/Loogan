@@ -60,7 +60,7 @@ namespace Loogan.Web.UI.Controllers
         {
             studentCourseMapping.CreatedBy = HttpContext?.Session?.GetInt32("LoginUserId");
             studentCourseMapping.CreatedDate = DateTime.Now;
-            var courseModel = await _utilityHelper.ExecuteAPICall<bool>(studentCourseMapping, RestSharp.Method.Post, resource: "api/StudentCourse/CreateCourse");
+            var courseModel = await _utilityHelper.ExecuteAPICall<bool>(studentCourseMapping, RestSharp.Method.Post, resource: "api/StudentCourse/CreateStudentCourseMapping");
             return Json(new { value = "Success" });
         }
 
@@ -70,16 +70,16 @@ namespace Loogan.Web.UI.Controllers
         {
             studentCourseMapping.ModifyBy = HttpContext?.Session?.GetInt32("LoginUserId");
             studentCourseMapping.ModifyDate = DateTime.Now;
-            var courseModel = await _utilityHelper.ExecuteAPICall<bool>(studentCourseMapping, RestSharp.Method.Post, resource: "api/StudentCourse/UpdateCourse");
+            var courseModel = await _utilityHelper.ExecuteAPICall<bool>(studentCourseMapping, RestSharp.Method.Post, resource: "api/StudentCourse/UpdateStudentCourseMapping");
             return Json(new { value = "Success" });
         }
 
         [Route("DeleteStudentCourseMapping")]
         [LooganAdminAuthorize("Admin")]
-        public async Task<JsonResult> DeleteStudentCourseMapping(string courseId)
+        public async Task<JsonResult> DeleteStudentCourseMapping(string studentCourseMappingId)
         {
-            var apiRequest = new ApiRequest() { RequestValue = courseId };
-            var IsDeleted = await _utilityHelper.ExecuteAPICall<bool>(apiRequest, RestSharp.Method.Post, resource: "api/StudentCourse/DeleteCourse");
+            var apiRequest = new ApiRequest() { RequestValue = studentCourseMappingId };
+            var IsDeleted = await _utilityHelper.ExecuteAPICall<bool>(apiRequest, RestSharp.Method.Post, resource: "api/StudentCourse/DeleteStudentCourseMapping");
             return Json(new { value = "Success" });
         }
 

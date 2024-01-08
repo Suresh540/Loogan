@@ -1,5 +1,6 @@
 ﻿using Loogan.API.Models.Enums;
 using Loogan.API.Models.Models;
+using Loogan.API.Models.Models.Admin;
 using Loogan.Web.UI.Utilities;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -96,6 +97,30 @@ namespace Loogan.Web.UI.Controllers
             var apiRequest = new RequestStateModel() { LanguageId = HttpContext?.Session?.GetInt32("LanguageId") ?? 1,CountryId = countryId };
             var countryList = await _utilityHelper.ExecuteAPICall<List<DropDownListModel>>(apiRequest, RestSharp.Method.Post, resource: "api/Common/GetStatesByCountryId");
             return Json(countryList);
+        }
+
+        [HttpPost]
+        [Route("GetAllCourses")]
+        public async Task<IActionResult> GetAllCourses()
+        {
+            var courseList = await _utilityHelper.ExecuteAPICall<List<CourseModel>>(null, RestSharp.Method.Post, resource: "api/Admin/GetAllCourses");
+            return Json(courseList);
+        }
+
+        [HttpPost]
+        [Route("GetAllStudents")]
+        public async Task<IActionResult> GetAllStudents()
+        {
+            var courseList = await _utilityHelper.ExecuteAPICall<List<StudentModel>>(null, RestSharp.Method.Post, resource: "api/Admin/GetAllStudents");
+            return Json(courseList);
+        }
+
+        [HttpPost]
+        [Route("GetAllStaff")]
+        public async Task<IActionResult> GetAllStaff()
+        {
+            var courseList = await _utilityHelper.ExecuteAPICall<List<StaffModel>>(null, RestSharp.Method.Post, resource: "api/Admin/GetAllStaff");
+            return Json(courseList);
         }
     }
 }
