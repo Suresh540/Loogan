@@ -40,7 +40,7 @@ namespace Loogan.Web.UI.Pages.Courses
             var apiRequest = new ApiLookUpRequest() { LookupType = "CourseCategory", LanguageId = 1 };
             CourseDropdown = await _utilityHelper.ExecuteAPICall<List<DropDownListModel>>(apiRequest, RestSharp.Method.Post, resource: "api/StudentCourse/GetCourseCategory");
 
-            var request = new ApiRequest { RequestValue = "1" };
+            var request = new ApiRequest { RequestValue = HttpContext.Session.GetInt32("StudentId").ToString() };
             StudentCourseModels = await _utilityHelper.ExecuteAPICall<List<StudentCourseModel>>(request, RestSharp.Method.Post, resource: "api/StudentCourse/GetStudentCourseDetails");
 
             var courseType = TempData?["courseType"]?.ToString();

@@ -9,6 +9,7 @@ using Microsoft.Extensions.Localization;
 using System.Security.Claims;
 using Microsoft.AspNetCore.Authorization;
 using Loogan.API.Models.Enums;
+using Microsoft.AspNetCore.Http;
 
 namespace Loogan.Web.UI.Pages
 {
@@ -43,12 +44,12 @@ namespace Loogan.Web.UI.Pages
             DisplayMessage = "";
             if (string.IsNullOrEmpty(UserName))
             {
-                DisplayMessage = ""; //Localizer != null ? Localizer["UserNameEmptyKey"] : "";
+                DisplayMessage = "";
                 return Page();
             }
             if (string.IsNullOrEmpty(Password))
             {
-                DisplayMessage = ""; //Localizer != null ? Localizer["PasswordEmptyKey"] : "";
+                DisplayMessage = "";
                 return Page();
             }
             UserQuery query = new UserQuery();
@@ -59,15 +60,17 @@ namespace Loogan.Web.UI.Pages
             {
                 HttpContext.Session.SetInt32("LoginUserId", model.UserId);
                 HttpContext.Session.SetInt32("LoginUserTypeId", model.UserTypeId);
-                HttpContext.Session.SetString("LoginUserType", model?.UserTypeName);
-                HttpContext.Session.SetString("UserName", model?.UserName);
-                HttpContext.Session.SetString("FullName", model?.FullName);
+                HttpContext.Session.SetString("LoginUserType", model?.UserTypeName ?? "");
+                HttpContext.Session.SetString("UserName", model?.UserName ?? "");
+                HttpContext.Session.SetString("FullName", model?.FullName ?? "");
+                HttpContext.Session.SetInt32("StudentId", model?.StudentId ?? 0);
+                HttpContext.Session.SetInt32("TeacherId", model?.TeacherId ?? 0);
 
                 var claims = new List<Claim>
                 {
-                    new Claim(ClaimTypes.Name, model.UserName),
-                    new Claim(ClaimTypes.Authentication, model.FullName),
-                    new Claim(ClaimTypes.Role, model.UserTypeName)
+                    new Claim(ClaimTypes.Name, model?.UserName??""),
+                    new Claim(ClaimTypes.Authentication, model?.FullName??""),
+                    new Claim(ClaimTypes.Role, model?.UserTypeName??"")
                 };
 
                 var claimsIdentity = new ClaimsIdentity(
@@ -77,20 +80,20 @@ namespace Loogan.Web.UI.Pages
                     CookieAuthenticationDefaults.AuthenticationScheme,
                     new ClaimsPrincipal(claimsIdentity));
 
-                if (model.UserTypeName.Equals(UserTypeEnum.student.ToString(), StringComparison.InvariantCultureIgnoreCase))
+                if (model != null && model.UserTypeName != null && model.UserTypeName.Equals(UserTypeEnum.student.ToString(), StringComparison.InvariantCultureIgnoreCase))
                 {
                     return LocalRedirect("/Courses/courses");
                 }
-                else if (model.UserTypeName.Equals(UserTypeEnum.teacher.ToString(), StringComparison.InvariantCultureIgnoreCase))
+                else if (model != null && model.UserTypeName != null && model.UserTypeName.Equals(UserTypeEnum.teacher.ToString(), StringComparison.InvariantCultureIgnoreCase))
                 {
                     return LocalRedirect("/Staff/StaffDashboard");
                 }
-                else if (model.UserTypeName.Equals(UserTypeEnum.admin.ToString(), StringComparison.InvariantCultureIgnoreCase))
+                else if (model != null && model.UserTypeName != null && model.UserTypeName.Equals(UserTypeEnum.admin.ToString(), StringComparison.InvariantCultureIgnoreCase))
                 {
                     return LocalRedirect("/Admin/AdminDashboard");
                 }
             }
-            DisplayMessage = ""; //Localizer != null ? Localizer["UserPwdWrongKey"] : "";
+            DisplayMessage = "";
             return Page();
         }
     }

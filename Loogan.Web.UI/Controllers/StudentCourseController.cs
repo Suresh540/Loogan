@@ -28,7 +28,8 @@ namespace Loogan.Web.UI.Controllers
         [Route("GetStudentCourseDetails")]
         public async Task<JsonResult> GetStudentCourseDetails(int studentId)
         {
-            var studentCourseList = await _utilityHelper.ExecuteAPICall<List<StudentCourseModel>>(null, RestSharp.Method.Post, resource: "api/StudentCourse/GetStudentCourseDetails");
+            var apiRequest = new ApiRequest() { RequestValue = studentId.ToString() };
+            var studentCourseList = await _utilityHelper.ExecuteAPICall<List<StudentCourseModel>>(apiRequest, RestSharp.Method.Post, resource: "api/StudentCourse/GetStudentCourseDetails");
             return Json(studentCourseList);
         }
 
