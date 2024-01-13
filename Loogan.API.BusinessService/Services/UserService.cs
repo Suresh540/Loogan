@@ -72,7 +72,7 @@ public class UserService : IUserService
     public async Task<UserModel> GetUserDetailsUsingEmailAddress(string email)
     {
         var user = await _storedProcedures.GetUserDetailsUsingEmailAddress(email);
-        UserModel userModel = _mapper.Map<UserModel>(user);
+        UserModel userModel = _mapper.Map<User, UserModel>(user);
         return userModel;
     }
 }

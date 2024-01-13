@@ -5,11 +5,11 @@ using Loogan.API.Database.Interfaces;
 using Loogan.API.Database.Models;
 using Loogan.API.Database.Services;
 using Loogan.Common.Utilities;
-using Microsoft.Extensions.DependencyInjection;
 using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddAutoMapper(typeof(Program), typeof(InitializeMapper));
+
 builder.Services.AddSingleton<ILooganStoredProcedures>((opt) =>
 {
     return new LooganStoredProcedures(builder.Configuration);
