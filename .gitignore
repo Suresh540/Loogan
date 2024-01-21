@@ -27,7 +27,6 @@
 /Loogan.Web.UI/bin/Release/net8.0
 /Loogan.Database/obj/Debug
 /Loogan.SqlServer.DatabaseScripts/obj/Debug
-/Loogan.SqlServer.DatabaseScripts
 /Loogan.Web.UI/Properties/PublishProfiles/FolderProfile.pubxml.user
 /Loogan.Web.UI/wwwroot/images/nature1.svg
 /Loogan.API.BusinessService/bin/Release/net8.0
@@ -36,3 +35,5 @@
 /Loogan.Web.API/bin/Release/net8.0
 /Loogan.Web.API/Properties/PublishProfiles
 /Loogan.Web.UI/Properties/PublishProfiles/FolderProfile.pubxml
+/Loogan.SqlServer.DatabaseScripts/Loogan.SqlServer.DatabaseScripts.dbmdl
+*.jfm
