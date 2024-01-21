@@ -1,5 +1,4 @@
 ﻿using Loogan.API.BusinessService.Interfaces;
-using Loogan.API.BusinessService.Services;
 using Loogan.API.Models.Models;
 using Loogan.API.Models.Models.Admin;
 using Microsoft.AspNetCore.Mvc;
@@ -8,7 +7,7 @@ namespace Loogan.Web.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class AdminController : Controller
+    public class AdminController : ControllerBase
     {
         private readonly IAdminService _adminService;
         public AdminController(IAdminService adminService)

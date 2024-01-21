@@ -1,9 +1,6 @@
 ﻿using Loogan.API.BusinessService.Interfaces;
-using Loogan.API.Database.Models;
 using Loogan.API.Models.Models;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Formatters;
 
 namespace Loogan.Web.API.Controllers
 {

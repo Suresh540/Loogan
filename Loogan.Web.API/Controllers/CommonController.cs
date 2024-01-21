@@ -1,5 +1,4 @@
 ﻿using Loogan.API.BusinessService.Interfaces;
-using Loogan.API.BusinessService.Services;
 using Loogan.API.Models.Models;
 using Microsoft.AspNetCore.Mvc;
 

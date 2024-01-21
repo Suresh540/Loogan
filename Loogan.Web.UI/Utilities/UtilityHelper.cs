@@ -1,4 +1,6 @@
-﻿using RestSharp;
+﻿using Loogan.Common.Utilities;
+using Newtonsoft.Json;
+using RestSharp;
 using System.Net.Mime;
 
 namespace Loogan.Web.UI.Utilities;
@@ -36,6 +38,11 @@ public class UtilityHelper : IUtilityHelper
             if (response != null && response.IsSuccessStatusCode)
             {
                 result = response.Data;
+            }
+            else
+            {
+                var error = JsonConvert.DeserializeObject<ErrorMessage>(response.Content);
+                throw new Exception(error.Message);
             }
         }
         return result;

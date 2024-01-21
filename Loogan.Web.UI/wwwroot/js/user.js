@@ -102,7 +102,8 @@ function createUser() {
         },
         error: function (e) {
             $('#btnSaveuser').removeAttr('disabled');
-            console.log(e);
+            var msg = JSON.parse(e.responseText);
+            Alert(msg.detail, 'error')
             Alert(localizationLib.getLocalizeData("FailedToCreateUserKey"), 'error');
         }
     })

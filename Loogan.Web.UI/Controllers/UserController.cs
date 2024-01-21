@@ -43,7 +43,7 @@ namespace Loogan.Web.UI.Controllers
         {
             user.CreatedBy = HttpContext?.Session?.GetInt32("LoginUserId");
             user.CreatedDate = DateTime.Now;
-            var userModel = await _utilityHelper.ExecuteAPICall<bool>(user, RestSharp.Method.Post, resource: "api/User/CreateUser");
+            await _utilityHelper.ExecuteAPICall<bool>(user, RestSharp.Method.Post, resource: "api/User/CreateUser");
             return Json(new { value = "Success" });
         }
 
