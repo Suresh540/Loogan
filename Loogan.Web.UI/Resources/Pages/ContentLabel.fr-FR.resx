@@ -546,4 +546,124 @@
 	<data name="FailedToCourseKey" xml:space="preserve">
     <value>Échec de la création du personnel.</value>
   </data>
+	<data name="StudentCourseMappingKey" xml:space="preserve">
+    <value>Cours pour étudiants</value>
+  </data>
+	<data name="CourseKey" xml:space="preserve">
+    <value>Cours</value>
+  </data>
+	<data name="StudentKey" xml:space="preserve">
+    <value>Étudiante</value>
+  </data>
+	<data name="StaffKey" xml:space="preserve">
+    <value>Personnelle</value>
+  </data>
+	<data name="StudentCourseStatusKey" xml:space="preserve">
+    <value>Statut du cours étudiant</value>
+  </data>
+	<data name="CourseCreditHoursKey" xml:space="preserve">
+    <value>Heures de crédit de cours</value>
+  </data>
+	<data name="CourseCreditKey" xml:space="preserve">
+    <value>Crédit de cours</value>
+  </data>
+	<data name="MinusAbsentKey" xml:space="preserve">
+    <value>Moins Absent</value>
+  </data>
+	<data name="MinusAttendedKey" xml:space="preserve">
+    <value>Moins fréquenté</value>
+  </data>
+	<data name="NumericGradeObtainedKey" xml:space="preserve">
+    <value>Note numérique obtenue</value>
+  </data>
+	<data name="TotalGradeAttemptedKey" xml:space="preserve">
+    <value>Note totale tentée</value>
+  </data>
+	<data name="TotalCreditsEarnedKey" xml:space="preserve">
+    <value>Total des crédits gagnés</value>
+  </data>
+	<data name="TotalHoursAttemptedKey" xml:space="preserve">
+    <value>Nombre total d'heures tentées</value>
+  </data>
+	<data name="TotalHoursEarnedKey" xml:space="preserve">
+    <value>Nombre total d'heures gagnées</value>
+  </data>
+	<data name="GradeLetterCodeObtainedKey" xml:space="preserve">
+    <value>Code de lettre de note</value>
+  </data>
+	<data name="GradeNoteKey" xml:space="preserve">
+    <value>Note de note</value>
+  </data>
+	<data name="CourseCompletedDateKey" xml:space="preserve">
+    <value>Date de fin du cours</value>
+  </data>
+	<data name="CourseDropDateKey" xml:space="preserve">
+    <value>Date d'abandon du cours</value>
+  </data>
+	<data name="CourseLastAttendedDateKey" xml:space="preserve">
+    <value>Date de la dernière participation au cours</value>
+  </data>
+	<data name="CourseRegisteredDateKey" xml:space="preserve">
+    <value>Date d'inscription au cours</value>
+  </data>
+	<data name="CourseStartDateKey" xml:space="preserve">
+    <value>Date de début du cours</value>
+  </data>
+	<data name="ExpectedCourseEndDateKey" xml:space="preserve">
+    <value>Date de fin prévue du cours</value>
+  </data>
+	<data name="GradePostedDateKey" xml:space="preserve">
+    <value>Date de publication de la note</value>
+  </data>
+	<data name="CourseCompletedStatusIndKey" xml:space="preserve">
+    <value>Statut du cours terminé</value>
+  </data>
+	<data name="CourseCurrentStatusIndKey" xml:space="preserve">
+    <value>Statut actuel du cours</value>
+  </data>
+	<data name="CourseDroppedStatusIndKey" xml:space="preserve">
+    <value>Statut de cours abandonné</value>
+  </data>
+	<data name="CourseFutureStatusIndKey" xml:space="preserve">
+    <value>Statut futur du cours</value>
+  </data>
+	<data name="CourseLeaveOfAbsenceStatusIndKey" xml:space="preserve">
+    <value>Statut de congé de cours</value>
+  </data>
+	<data name="CourseScheduledStatusIndKey" xml:space="preserve">
+    <value>Statut prévu du cours</value>
+  </data>
+	<data name="CourseRetakeIndKey" xml:space="preserve">
+    <value>Reprise du cours</value>
+  </data>
+	<data name="StudentKey" xml:space="preserve">
+    <value>Étudiante</value>
+  </data>
+	<data name="CourseTypeKey" xml:space="preserve">
+    <value>Type de cours</value>
+  </data>
+	<data name="ShowStudentCourseKey" xml:space="preserve">
+    <value>Cours pour étudiants</value>
+  </data>
+	<data name="CourseMandatoryKey" xml:space="preserve">
+    <value>Le cours est obligatoire</value>
+  </data>
+	<data name="StudentMandatoryKey" xml:space="preserve">
+    <value>L'étudiant est obligatoire</value>
+  </data>
+	<data name="StaffMandatoryKey" xml:space="preserve">
+    <value>Le personnel est obligatoire</value>
+  </data>
+	<data name="StudentCourseUpdateSuccessKey" xml:space="preserve">
+    <value>Cours étudiant enregistré avec succès</value>
+  </data>
+	<data name="FailedToStudenCoursetKey" xml:space="preserve">
+    <value>Échec de la création du cours étudiant</value>
+  </data>
+	<data name="StudentCourseDeleteMsgKey" xml:space="preserve">
+    <value>Cours étudiant supprimé avec succès</value>
+  </data>
+	<data name="StudentCourseFailedDeleteKey" xml:space="preserve">
+    <value>Échec de la suppression du cours étudiant</value>
+  </data>
 </root>

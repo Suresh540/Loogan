@@ -178,13 +178,13 @@
             success: function (e) {
                 $('#btnSaveStudentCourse').removeAttr('disabled');
                 Alert(localizationLib.getLocalizeData("StudentCourseUpdateSuccessKey"), 'Success');
-                course.clearCourseData();
+                course.clearCourseStudentData();
                 $('#btntopclose').trigger('click');
             },
             error: function (e) {
                 $('#btnSaveStudentCourse').removeAttr('disabled');
                 console.log(e);
-                Alert(localizationLib.getLocalizeData("FailedToStudentKey"), 'error');
+                Alert(localizationLib.getLocalizeData("FailedToStudenCoursetKey"), 'error');
             }
         })
     }
@@ -269,13 +269,44 @@
                 data: { studentCourseMappingId: id },
                 success: function (e) {
                     Alert(localizationLib.getLocalizeData("StudentCourseDeleteMsgKey"), 'Success');
-                    course.showCourses();
+                    course.showStudentCourses();
                 },
                 error: function (e) {
-                    Alert(localizationLib.getLocalizeData("StudentFailedDeleteKey"), 'error');
+                    Alert(localizationLib.getLocalizeData("StudentCourseFailedDeleteKey"), 'error');
                 }
             })
         }
+    }
+
+    public.clearCourseStudentData = function () {
+        $('#hdnStudentCourseMappingId').val(0);
+        $('#ddlStudentCourse').val(0);
+        $('#ddlStudent').val(0);
+        $('#ddlStaff').val(0);
+        $('#txtCourseCreditHours').val('');
+        $('#txtCourseCredit').val('');
+        $('#txtMinusAbsent').val('');
+        $('#txtNumericGradeObtained').val('');
+        $('#txtTotalGradeAttempted').val('');
+        $('#txtTotalCreditsEarned').val('');
+        $('#txtTotalHoursAttempted').val('');
+        $('#txtTotalHoursEarned').val('');
+        $('#txtGradeLetterCodeObtained').val('');
+        $('#txtGradeNote').val('');
+        $('#txtCourseCompletedDate').val('');
+        $('#txtCourseDropDate').val('');
+        $('#txtCourseLastAttendedDate').val('');
+        $('#txtCourseRegisteredDate').val('');
+        $('#txtCourseStartDate').val('');
+        $('#txtExpectedCourseEndDate').val('');
+        $('#txtGradePostedDate').val('');
+        $('#chkCourseCompletedStatusInd').prop('checked', false);
+        $('#chkCourseCurrentStatusInd').prop('checked', false);
+        $('#chkCourseDroppedStatusInd').prop('checked', false);
+        $('#chkCourseFutureStatusInd').prop('checked', false);
+        $('#chkCourseLeaveOfAbsenceStatusInd').prop('checked', false);;
+        $('#chkCourseScheduledStatusInd').prop('checked', false);
+        $('#chkCourseRetakeInd').prop('checked', false);
     }
 
     return public;
