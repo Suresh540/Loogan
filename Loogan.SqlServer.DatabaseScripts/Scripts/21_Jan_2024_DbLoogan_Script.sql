@@ -2611,3 +2611,13 @@ LEFT JOIN [DBO].Student S ON U.UserId = S.UserId
 LEFT JOIN [DBO].Staff St ON U.UserId = St.UserId
 WHERE UserName = @UserName AND [Password] = @Password AND U.IsDeleted = 0  
 GO
+
+ALTER TABLE [dbo].[Student] DROP CONSTRAINT [FK_Student_State_StateId]
+GO
+
+ALTER TABLE [dbo].[Student]  WITH CHECK ADD  CONSTRAINT [FK_Student_State_StateId] FOREIGN KEY([StateId])
+REFERENCES [dbo].[State] ([StateId])
+GO
+
+ALTER TABLE [dbo].[Student] CHECK CONSTRAINT [FK_Student_State_StateId]
+GO
