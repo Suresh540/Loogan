@@ -1027,3 +1027,10 @@
     border-width: 0 24px 17px 0;
     border-color: transparent #8d4a99 transparent transparent;
 }
+
+.chatcontainer {
+    background-color: #99CCFF;
+    border: thick solid #808080;
+    padding: 20px;
+    margin: 20px;
+}

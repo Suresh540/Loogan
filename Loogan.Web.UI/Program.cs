@@ -22,10 +22,9 @@ var localizationOptions = new RequestLocalizationOptions().SetDefaultCulture(sup
     .AddSupportedCultures(supportedCultures)
     .AddSupportedUICultures(supportedCultures);
 app.UseRequestLocalization(localizationOptions);
-
 app.UseAuthentication();
 app.UseAuthorization();
-
 app.MapBlazorHub();
+app.MapHub<ChatHub>("/chatHub");
 app.MapControllers();
 app.Run();

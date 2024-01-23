@@ -1,0 +1,60 @@
+﻿@page "/ActivityStream/ActivityStream"
+@using Loogan.API.Models.Models
+@using Loogan.Web.UI.Components
+@using Loogan.Web.UI.Models
+@using Loogan.Web.UI.Pages.Shared
+@using Loogan.Web.UI.Resources.Pages
+@using Microsoft.Extensions.Localization
+@model Loogan.Web.UI.Pages.ActivityStream.ActivityStreamModel
+@inject IStringLocalizer<ContentLabel> _localizer
+@attribute [Loogan.Web.UI.Utilities.LooganStudentAuthorize("Student,Teacher")]
+<component type="typeof(Upper_Component)" render-mode="Static" />
+<div id="site-wrap" class="off-canvas-wrap">
+    <div class="inner-wrap">
+        <div class="row">
+            <div class="col-2 bb-login pointscroll leftmenu">
+                <component type="typeof(LeftSideBar_Component)" render-mode="Server" />
+            </div>
+            <div class="col-10">
+                <div class="base-profile pointscroll righcontent scrollrightend">
+                    <div class="chatcontainer">
+                        <div class="row p-1">
+                            <div class="col-1">
+                                User
+                            </div>
+                            <div class="col-5">
+                                <input type="text" id="userInput" value="@HttpContext.Session.GetString("FullName")" disabled />
+                            </div>
+                        </div>
+                        <div class="row p-1">
+                            <div class="col-1">
+                                Message
+                            </div>
+                            <div class="col-5">
+                                <input type="text" class="w-100" id="messageInput" />
+                            </div>
+                        </div>
+                        <div class="row p-1">
+                            <div class="col-6 text-end">
+                                <input type="button" id="sendButton" value="Send Message" />
+                            </div>
+                        </div>
+                        <div class="row p-1">
+                            <div class="col-6">
+                                <hr />
+                            </div>
+                        </div>
+                        <div class="row p-1">
+                            <div class="col-6">
+                                <ul id="messagesList"></ul>
+                            </div>
+                        </div>
+                    </div>
+                    <component type="typeof(Lower_Component)" render-mode="Static" /><br />
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="~/js/signalr/dist/browser/signalr.js"></script>
+<script src="~/js/chat.js"></script>

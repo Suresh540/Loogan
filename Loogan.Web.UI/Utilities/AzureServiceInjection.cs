@@ -49,6 +49,7 @@ namespace Loogan.Web.UI.Utilities
                     }
                 };
             });
+            services.AddSignalR();
             services.AddAuthorization(opt =>
             {
                 opt.FallbackPolicy = opt.DefaultPolicy;
