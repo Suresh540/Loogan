@@ -18,4 +18,11 @@ namespace Loogan.API.Models.Models
 
         public int LanguageId { get; set; }
     }
+
+    public class UserNameEmailRequest
+    {
+        public string Text { get; set; }
+
+        public int UserId { get; set; }
+    }
 }

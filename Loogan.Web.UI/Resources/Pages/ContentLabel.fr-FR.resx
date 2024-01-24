@@ -396,8 +396,14 @@
 	<data name="UserSavedSuccessKey" xml:space="preserve">
     <value>Utilisateur enregistré avec succès</value>
   </data>
+	<data name="UserNameAlreadyExistKey" xml:space="preserve">
+    <value>Le nom d'utilisateur existe déjà. Veuillez le modifier.</value>
+  </data>
+	<data name="EmailAlreadyExistKey" xml:space="preserve">
+    <value>Email Address is Already Exist Please change.</value>
+  </data>
 	<data name="RoleMappingKey" xml:space="preserve">
-    <value>Cartographie des rôles</value>
+    <value>L'adresse e-mail existe déjà. Veuillez la modifier.</value>
   </data>
 	<data name="StaffListMappingKey" xml:space="preserve">
     <value>Liste du personnel</value>

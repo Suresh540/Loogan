@@ -119,5 +119,31 @@ namespace Loogan.Web.API.Controllers
             var result = await _userService.GetUserDetailsUsingEmailAddress(request?.EmailId);
             return Ok(result);
         }
+
+        [HttpPost]
+        [Route("IsUserNameExist")]
+        [Produces("application/json")]
+        [Consumes("application/json")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public async Task<IActionResult> IsUserNameExist([FromBody] UserNameEmailRequest request)
+        {
+            var result = await _userService.IsUserNameExist(request?.Text,request.UserId);
+            return Ok(result);
+        }
+
+        [HttpPost]
+        [Route("IsUserEmailExist")]
+        [Produces("application/json")]
+        [Consumes("application/json")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public async Task<IActionResult> IsUserEmailExist([FromBody] UserNameEmailRequest request)
+        {
+            var result = await _userService.IsUserEmailExist(request?.Text, request.UserId);
+            return Ok(result);
+        }
     }
 }

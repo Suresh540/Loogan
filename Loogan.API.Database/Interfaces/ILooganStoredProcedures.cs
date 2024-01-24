@@ -16,5 +16,9 @@ public interface ILooganStoredProcedures
     public Task<User> GetUserDetailsUsingEmailAddress(string email);
 
     public Task<int?> DeleteUser(int userId);
+
+    public Task<bool> IsUserNameExist(string userName, int userId);
+
+    public Task<bool> IsUserEmailExist(string userEmail, int userId);
 }
 

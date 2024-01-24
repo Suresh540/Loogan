@@ -14,7 +14,7 @@ function createUser() {
     model.genderId = $('#ddlGender').val();
     model.userName = $('#txtUserName').val();
     model.password = $('#txtPassword').val();
-    model.educationLevel = $("#ddlEductionLevel option:selected").text(); // need to change 
+    model.educationLevel = $("#ddlEductionLevel").val();
     model.webSite = $('#txtWebsite').val();
     model.fax = $('#txtFaxNumber').val();
     model.city = $('#txtCity').val();
@@ -42,7 +42,7 @@ function createUser() {
         return;
     }
     if ($('#txtAdditionalName').val().trim() == '') {
-        Alert(localizationLib.getLocalizeData("UserNameMandatoryKey"), 'error');
+        Alert(localizationLib.getLocalizeData("AdditionalNameMandatoryKey"), 'error');
         $('#txtAdditionalName').focus();
         return;
     }
@@ -91,14 +91,22 @@ function createUser() {
 
     $('#btnSaveuser').prop('disabled', 'disabled');
 
+
+
     $.ajax({
         method: 'Post',
         url: model.userId == 0 ? "/User/CreateUser" : "/User/UpdateUser",
         data: { user: model },
         success: function (e) {
             $('#btnSaveuser').removeAttr('disabled');
-            Alert(localizationLib.getLocalizeData("UserSavedSuccessKey"), 'Success');
-            clearUserData();
+            if (e.value == 'UserNameAlreadyExist') {
+                Alert(localizationLib.getLocalizeData("UserNameAlreadyExistKey"), 'error');
+            } else if (e.value == 'UserEmailAlreadyExist') {
+                Alert(localizationLib.getLocalizeData("EmailAlreadyExistKey"), 'error');
+            } else {
+                Alert(localizationLib.getLocalizeData("UserSavedSuccessKey"), 'Success');
+                clearUserData();
+            }
         },
         error: function (e) {
             $('#btnSaveuser').removeAttr('disabled');
@@ -332,11 +340,11 @@ function ddlUsertype() {
     $.ajax({
         method: 'Post',
         url: "/Admin/GetUserRoles",
-        data: { },
+        data: {},
         success: function (response) {
             var dropDownListId = $('#ddlUserType');
             $.each(response, function () {
-                    dropDownListId.append($("<option></option>").val(this['userTypeId']).html(this['userType']));
+                dropDownListId.append($("<option></option>").val(this['userTypeId']).html(this['userType']));
             });
         },
         failure: function (response) {

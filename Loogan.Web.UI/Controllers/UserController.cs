@@ -43,8 +43,15 @@ namespace Loogan.Web.UI.Controllers
         {
             user.CreatedBy = HttpContext?.Session?.GetInt32("LoginUserId");
             user.CreatedDate = DateTime.Now;
-            await _utilityHelper.ExecuteAPICall<bool>(user, RestSharp.Method.Post, resource: "api/User/CreateUser");
-            return Json(new { value = "Success" });
+            if (await IsUserNameExist(user?.UserName, user.UserId))
+                return Json(new { value = "UserNameAlreadyExist" });
+            else if (await IsUserEmailExist(user?.EmailAddress, user.UserId))
+                return Json(new { value = "UserEmailAlreadyExist" });
+            else
+            {
+                await _utilityHelper.ExecuteAPICall<bool>(user, RestSharp.Method.Post, resource: "api/User/CreateUser");
+                return Json(new { value = "Success" });
+            }
         }
 
         [Route("UpdateUser")]
@@ -53,8 +60,15 @@ namespace Loogan.Web.UI.Controllers
         {
             user.ModifyBy = HttpContext?.Session?.GetInt32("LoginUserId");
             user.ModifyDate = DateTime.Now;
-            var userModel = await _utilityHelper.ExecuteAPICall<bool>(user, RestSharp.Method.Post, resource: "api/User/UpdateUser");
-            return Json(new { value = "Success" });
+            if (await IsUserNameExist(user?.UserName, user.UserId))
+                return Json(new { value = "UserNameAlreadyExist" });
+            else if (await IsUserEmailExist(user?.EmailAddress, user.UserId))
+                return Json(new { value = "UserEmailAlreadyExist" });
+            else
+            {
+                var userModel = await _utilityHelper.ExecuteAPICall<bool>(user, RestSharp.Method.Post, resource: "api/User/UpdateUser");
+                return Json(new { value = "Success" });
+            }
         }
 
         [Route("DeleteUser")]
@@ -75,6 +89,20 @@ namespace Loogan.Web.UI.Controllers
 
             var userModel = await _utilityHelper.ExecuteAPICall<UserModel>(request, RestSharp.Method.Post, resource: "api/User/UserByEmailAddress");
             return Json(userModel);
+        }
+
+        private async Task<bool> IsUserNameExist(string userName,int userId)
+        {
+            var apiRequest = new UserNameEmailRequest() { Text = userName, UserId =userId };
+            var isUserNameExist = await _utilityHelper.ExecuteAPICall<bool>(apiRequest, RestSharp.Method.Post, resource: "api/User/IsUserNameExist");
+            return isUserNameExist;
+        }
+
+        private async Task<bool> IsUserEmailExist(string userEmail, int userId)
+        {
+            var apiRequest = new UserNameEmailRequest() { Text = userEmail, UserId = userId };
+            var isUserNameExist = await _utilityHelper.ExecuteAPICall<bool>(apiRequest, RestSharp.Method.Post, resource: "api/User/IsUserEmailExist");
+            return isUserNameExist;
         }
     }
 }

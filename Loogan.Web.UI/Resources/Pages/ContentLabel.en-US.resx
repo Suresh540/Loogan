@@ -399,6 +399,13 @@
 	<data name="UserSavedSuccessKey" xml:space="preserve">
     <value>User saved successfully</value>
   </data>
+	<data name="UserNameAlreadyExistKey" xml:space="preserve">
+    <value>User Name is Already Exist Please change.</value>
+  </data>
+	<data name="EmailAlreadyExistKey" xml:space="preserve">
+    <value>Email Address is Already Exist Please change.</value>
+  </data>
+	
 	<data name="RoleMappingKey" xml:space="preserve">
     <value>Role Mapping</value>
   </data>

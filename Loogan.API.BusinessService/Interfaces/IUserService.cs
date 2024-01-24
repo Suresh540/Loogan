@@ -21,6 +21,10 @@ public interface IUserService
 
     public Task<UserModel> GetUserDetailsUsingEmailAddress(string email);
 
+    public Task<bool> IsUserNameExist(string userName,int userId);
+
+    public Task<bool> IsUserEmailExist(string userEmail, int userId);
+
 
 }
 

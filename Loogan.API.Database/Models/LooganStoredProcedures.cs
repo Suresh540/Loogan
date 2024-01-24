@@ -201,5 +201,59 @@ namespace Loogan.API.Database.Models
 
             return isDeleted;
         }
+
+        public async Task<bool> IsUserNameExist(string userName,int userId)
+        {
+            var isUserNameExist = false;
+
+            if (userName != null)
+            {
+                using (var context = new LooganContext(_connectionString))
+                {
+                    if (userId > 0)
+                    {
+                        var existingUser = await context.Users.Where(x=>x.UserId == userId).FirstOrDefaultAsync(); 
+                        if (existingUser != null && existingUser.UserName != userName)
+                        {
+                            isUserNameExist = await context.Users.AnyAsync(x => x.UserName.ToUpper() == userName.ToUpper());
+                        }
+                    }
+                    else
+                    {
+                        isUserNameExist = await context.Users.AnyAsync(x => x.UserName.ToUpper() == userName.ToUpper());
+                    }
+                }
+            }
+
+            return isUserNameExist;
+
+        }
+
+        public async Task<bool> IsUserEmailExist(string userEmail, int userId)
+        {
+            var isUserEmailExist = false;
+
+            if (userEmail != null)
+            {
+                using (var context = new LooganContext(_connectionString))
+                {
+                    if (userId > 0)
+                    {
+                        var existingUser = await context.Users.Where(x => x.UserId == userId).FirstOrDefaultAsync();
+                        if (existingUser != null && existingUser.EmailAddress != userEmail)
+                        {
+                            isUserEmailExist = await context.Users.AnyAsync(x => x.EmailAddress.ToUpper() == userEmail.ToUpper());
+                        }
+                    }
+                    else
+                    {
+                        isUserEmailExist = await context.Users.AnyAsync(x => x.EmailAddress.ToUpper() == userEmail.ToUpper());
+                    }
+                }
+            }
+
+            return isUserEmailExist;
+
+        }
     }
 }

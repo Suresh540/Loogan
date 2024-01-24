@@ -75,5 +75,17 @@ public class UserService : IUserService
         UserModel userModel = _mapper.Map<User, UserModel>(user);
         return userModel;
     }
+
+    public async Task<bool> IsUserNameExist(string userName,int userId)
+    {
+        var isUserNameExist = await _storedProcedures.IsUserNameExist(userName,userId);
+        return isUserNameExist;
+    }
+
+    public async Task<bool> IsUserEmailExist(string userEmail, int userId)
+    {
+        var isUserNameExist = await _storedProcedures.IsUserEmailExist(userEmail, userId);
+        return isUserNameExist;
+    }
 }
 
