@@ -20,18 +20,32 @@
                     <div class="chatcontainer">
                         <div class="row p-1">
                             <div class="col-1">
+                                Me
+                            </div>
+                            <div class="col-5">
+                                <input type="text" id="userInput" value="@HttpContext.Session.GetString("UserName")" disabled />
+                            </div>
+                        </div>
+                        <div class="row p-1">
+                            <div class="col-1">
                                 User
                             </div>
                             <div class="col-5">
-                                <input type="text" id="userInput" value="@HttpContext.Session.GetString("FullName")" disabled />
+                                <select id="selectedUser">
+                                    @foreach (var item in Model.Users ?? Enumerable.Empty<PagingUserModel>())
+                                    {
+                                        <option value="@item.UserName">@(item.FirstName+' '+item.LastName)</option>
+                                    }
+                                </select>
                             </div>
                         </div>
                         <div class="row p-1">
                             <div class="col-1">
                                 Message
                             </div>
-                            <div class="col-5">
-                                <input type="text" class="w-100" id="messageInput" />
+                            <div class="col-10">
+                                <textarea class="form-control" id="messageInput">
+                                </textarea>
                             </div>
                         </div>
                         <div class="row p-1">

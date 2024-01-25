@@ -49,6 +49,7 @@ namespace Loogan.Web.UI.Utilities
                     }
                 };
             });
+            services.AddHttpContextAccessor();
             services.AddSignalR();
             services.AddAuthorization(opt =>
             {

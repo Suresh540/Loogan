@@ -35,6 +35,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Loogan.API.BusinessService\Loogan.API.BusinessService.csproj" />
     <ProjectReference Include="..\Loogan.API.Models\Loogan.API.Models.csproj" />
     <ProjectReference Include="..\Loogan.Common.Utilities\Loogan.Common.Utilities.csproj" />
   </ItemGroup>
