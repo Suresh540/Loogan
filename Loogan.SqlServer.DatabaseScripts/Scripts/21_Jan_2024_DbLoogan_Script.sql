@@ -2621,3 +2621,42 @@ GO
 
 ALTER TABLE [dbo].[Student] CHECK CONSTRAINT [FK_Student_State_StateId]
 GO
+
+GO
+/****** Object:  StoredProcedure [dbo].[Get_AllStudentCourseMappingDetails]    Script Date: 26-01-2024 15:59:30 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE or Alter  PROC [dbo].[Get_CourseCalendarDetails] 
+AS
+SELECT
+scm.CourseRegisteredDate,
+scm.CourseStartDate,
+scm.CourseCompletedDate,
+scm.CourseCurrentStatusInd,
+'' as CourseCurrentStatus,
+SCM.CourseId,
+CS.CourseCode,
+CS.CourseName,
+CRL.CourseRelatedLookUpValue As CourseType,
+SCM.StudentId,
+ST.FullName AS studentName,
+SCM.StudentCourseStatusId,
+SLStudCour.StatusLookUpValue As StudentCourseStatus,
+SCM.StaffId,
+SF.StaffName,
+SCM.CourseCreditHours,
+SCM.CourseCredit,
+SCM.MinusAbsent,
+SCM.MinusAttended,
+SCM.TotalHoursAttempted,
+SCM.TotalHoursEarned,
+scm.CourseCompletedStatusInd
+FROM [dbo].[Student_Course_Mapping] SCM
+left JOIN [dbo].[Courses] CS ON CS.CourseId = SCM.CourseId
+left JOIN [dbo].[Course_Related_LookUp] CRL ON crl.CourseRelatedLookUpId = CS.CourseTypeSourceId and crl.IsDeleted = 0
+left JOIN [dbo].[Student] ST ON ST.StudentId = scm.StudentId and ST.IsDeleted = 0
+left JOIN [dbo].[Staff] SF ON SF.StaffId = scm.StaffId and SF.IsDeleted = 0
+left JOIN [dbo].[Status_LookUp] SLStudCour on SLStudCour.StatusLookUpId = SCM.StudentCourseStatusId
+

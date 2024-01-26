@@ -30,11 +30,17 @@ builder.Services.AddSingleton<ILooganAdmin>((opt) =>
     return new LooganAdmin(builder.Configuration);
 });
 
+builder.Services.AddSingleton<ILooganCalendar>((opt) =>
+{
+    return new LooganCalendar(builder.Configuration);
+});
+
 builder.Services.AddExceptionHandler<GlobalExceptionHandler>();
 builder.Services.AddProblemDetails();
 builder.Services.AddTransient<IUserService, UserService>();
 builder.Services.AddTransient<ICommonService, CommonService>();
 builder.Services.AddTransient<IStudentCourseService, StudentCourseService>();
+builder.Services.AddTransient<ICalendarService, CalendarService>();
 builder.Services.AddTransient<IAdminService, AdminService>();
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
