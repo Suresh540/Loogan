@@ -37,3 +37,11 @@
 /Loogan.Web.UI/Properties/PublishProfiles/FolderProfile.pubxml
 /Loogan.SqlServer.DatabaseScripts/Loogan.SqlServer.DatabaseScripts.dbmdl
 *.jfm
+/Loogan.Web.API/Properties/ServiceDependencies
+/Loogan.Web.API/Properties/serviceDependencies.devlooganwebapp - Web Deploy.json
+/Loogan.Web.API/Properties/serviceDependencies.devlooganwebapp - Web Deploy1.json
+/Loogan.Web.API/Properties/serviceDependencies.devlooganwebapp - Web Deploy.json.user
+/Loogan.Web.API/Properties/serviceDependencies.devlooganwebapp - Web Deploy1.json.user
+/Loogan.Web.API/Properties/serviceDependencies.json
+/Loogan.Web.API/Properties/serviceDependencies.loogandevapi - Web Deploy.json
+/Loogan.Web.API/Properties/serviceDependencies.loogandevapi - Web Deploy.json.user
