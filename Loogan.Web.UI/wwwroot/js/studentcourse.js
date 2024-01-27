@@ -77,6 +77,7 @@
         $('#txtCourseCredit').val($('#coursecredit' + index).html());
         $('#txtMinusAbsent').val($('#minusabsent' + index).html());
         $('#txtMinusAttended').val($('#minusattended' + index).html());
+        $('#txtCourseCreditHours').val($('#coursecredithours' + index).html());
         $('#txtNumericGradeObtained').val($('#numericgradeobtained' + index).html());
         $('#txtTotalGradeAttempted').val($('#totalgradeattempted' + index).html());
         $('#txtTotalCreditsEarned').val($('#totalcreditsearned' + index).html());
@@ -128,6 +129,7 @@
         model.studentCourseStatusId = 1;//$('#ddlStudentCourseStatus').val();
         model.courseCreditHours = $('#txtCourseCreditHours').val();
         model.courseCredit = $('#txtCourseCredit').val();
+        model.minusAttended = $('#txtMinusAttended').val();
         model.minusAbsent = $('#txtMinusAbsent').val();
         model.numericGradeObtained = $('#txtNumericGradeObtained').val();
         model.totalGradeAttempted = $('#txtTotalGradeAttempted').val();
@@ -286,6 +288,7 @@
         $('#txtCourseCreditHours').val('');
         $('#txtCourseCredit').val('');
         $('#txtMinusAbsent').val('');
+        $('#txtMinusAttended').val('');
         $('#txtNumericGradeObtained').val('');
         $('#txtTotalGradeAttempted').val('');
         $('#txtTotalCreditsEarned').val('');

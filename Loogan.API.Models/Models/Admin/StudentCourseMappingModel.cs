@@ -55,19 +55,19 @@ namespace Loogan.API.Models.Models.Admin
 
         public string? GradeNote { get; set; }
 
-        public DateTime? CourseCompletedDate { get; set; }
+        public string? CourseCompletedDate { get; set; }
 
-        public DateTime? CourseDropDate { get; set; }
+        public string? CourseDropDate { get; set; }
 
-        public DateTime? CourseLastAttendedDate { get; set; }
+        public string? CourseLastAttendedDate { get; set; }
 
-        public DateTime? CourseRegisteredDate { get; set; }
+        public string? CourseRegisteredDate { get; set; }
 
-        public DateTime? CourseStartDate { get; set; }
+        public string? CourseStartDate { get; set; }
 
-        public DateTime? ExpectedCourseEndDate { get; set; }
+        public string? ExpectedCourseEndDate { get; set; }
 
-        public DateTime? GradePostedDate { get; set; }
+        public string? GradePostedDate { get; set; }
 
         public bool? CourseCompletedStatusInd { get; set; }
 

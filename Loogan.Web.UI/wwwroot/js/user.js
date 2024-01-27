@@ -24,6 +24,12 @@ function createUser() {
     model.jobTitle = $('#txtJobTitle').val();
     model.department = $('#txtDepartment').val();
 
+    if ($('#ddlUserType').val().trim() == '0') {
+        Alert(localizationLib.getLocalizeData("UserTypeMandatoryKey"), 'error');
+        $('#ddlUserType').focus();
+        return;
+    }
+
     if ($('#txtFirstName').val().trim() == '') {
         Alert(localizationLib.getLocalizeData("FirstNameMandatoryKey"), 'error');
         $('#txtFirstName').focus();
@@ -36,32 +42,28 @@ function createUser() {
         return;
     }
 
-    if ($('#txtUserName').val().trim() == '') {
-        Alert(localizationLib.getLocalizeData("UserNameMandatoryKey"), 'error');
-        $('#txtUserName').focus();
-        return;
-    }
     if ($('#txtAdditionalName').val().trim() == '') {
         Alert(localizationLib.getLocalizeData("AdditionalNameMandatoryKey"), 'error');
         $('#txtAdditionalName').focus();
         return;
     }
 
-    if ($('#txtPassword').val().trim() == '') {
-        Alert(localizationLib.getLocalizeData("PasswordMandatoryKey"), 'error');
-        $('#txtPassword').focus();
-        return;
-    }
-
-    if ($('#txtPhone').val().trim() == '') {
-        Alert(localizationLib.getLocalizeData("PhoneMandatoryKey"), 'error');
-        $('#txtPhone').focus();
-        return;
-    }
-
     if ($('#txtEmailAddress').val().trim() == '') {
         Alert(localizationLib.getLocalizeData("EmailMandatoryKey"), 'error');
         $('#txtEmailAddress').focus();
+        return;
+    }
+
+    if ($('#txtUserName').val().trim() == '') {
+        Alert(localizationLib.getLocalizeData("UserNameMandatoryKey"), 'error');
+        $('#txtUserName').focus();
+        return;
+    }
+    
+
+    if ($('#txtPassword').val().trim() == '') {
+        Alert(localizationLib.getLocalizeData("PasswordMandatoryKey"), 'error');
+        $('#txtPassword').focus();
         return;
     }
 
@@ -83,9 +85,9 @@ function createUser() {
         return;
     }
 
-    if ($('#ddlUserType').val().trim() == '0') {
-        Alert(localizationLib.getLocalizeData("UserTypeMandatoryKey"), 'error');
-        $('#ddlUserType').focus();
+    if ($('#txtPhone').val().trim() == '') {
+        Alert(localizationLib.getLocalizeData("PhoneMandatoryKey"), 'error');
+        $('#txtPhone').focus();
         return;
     }
 

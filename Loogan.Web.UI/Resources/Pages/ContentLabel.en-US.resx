@@ -533,6 +533,9 @@
 	<data name="CourseCodeKey" xml:space="preserve">
     <value>Course Code</value>
   </data>
+	<data name="StudentCourseListKey" xml:space="preserve">
+    <value>Student Course list</value>
+  </data>
 	<data name="CourseNameKey" xml:space="preserve">
     <value>Course Name</value>
   </data>

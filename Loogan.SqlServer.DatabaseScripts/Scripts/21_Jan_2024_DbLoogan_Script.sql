@@ -2660,3 +2660,126 @@ left JOIN [dbo].[Student] ST ON ST.StudentId = scm.StudentId and ST.IsDeleted = 
 left JOIN [dbo].[Staff] SF ON SF.StaffId = scm.StaffId and SF.IsDeleted = 0
 left JOIN [dbo].[Status_LookUp] SLStudCour on SLStudCour.StatusLookUpId = SCM.StudentCourseStatusId
 
+/****** Object:  Index [unique_EmailAddress]    Script Date: 27-01-2024 11:06:57 ******/
+DROP INDEX [unique_EmailAddress] ON [dbo].[Users]
+GO
+DROP INDEX [unique_username] ON [dbo].[Users]
+GO
+
+ALTER  PROC [dbo].[Get_AllStudents]   
+AS  
+	SELECT s.StudentId,
+		   s.userId,
+		CM.CampusId,
+		p.programId,
+		SH.SchoolId,
+		s.StudentNumber,
+		s.FirstName,
+		s.MiddleName,
+		s.LastName,
+		s.FullName,
+		s.AdminssionRepresentativeId,
+		sf.StaffName As AdminssionReprestative,
+		S.Title,
+		S.Suffix,
+		S.MaidenName,
+		S.NickName,
+		S.MiddleInitial,
+		s.CitizenShipStatusId,
+		s.CountryId,
+		cu.CountryName,
+		s.StateId,
+		st.StateName,
+		s.PostalCode,
+		s.EducationalLevelId,
+		s.EthnicGroupId,
+		s.GenderId,
+		ml.LookUpValue As Gender,
+		s.MaritalStatus As IsMaritalStatus,
+		CASE WHEN s.MaritalStatus = 1 THEN 'Yes' ELSE 'No' END  MaritalStatus,
+		s.NationalityId,
+        s.ProgramGroupId,
+        s.ProspectId,
+		s.ProspectCategoryId,
+        s.ProspectTypeId,
+	    FORMAT (s.OriginalExceptedStartDate, 'yyyy-MM-dd') as OriginalExceptedStartDate,
+	    FORMAT (s.OriginalStartDate, 'yyyy-MM-dd') as OriginalStartDate,
+	    FORMAT (s.StartDate, 'yyyy-MM-dd') as StartDate,
+        s.LastActivityDate,
+        s.HispanicInd,
+        s.VeteranInd,
+		s.CreatedBy,
+		s.CreatedDate,
+		s.ModifyBy,
+		s.ModifyDate,
+		Count(*) OVER(Partition BY S.IsDeleted) AS TotalRecords
+	FROM dbo.Student S
+	LEFT JOIN dbo.Staff SF ON SF.StaffId = s.AdminssionRepresentativeId AND sf.IsDeleted = 0
+	LEFT JOIN dbo.Campus CM on CM.CampusId = s.CampusId and cm.IsDeleted = 0
+	LEFT JOIN dbo.Program P on P.ProgramId = s.ProgramId and p.IsDeleted = 0
+	LEFT JOIN dbo.school SH on SH.schoolId = S.schoolId and SH.IsDeleted = 0
+	LEFT JOIN dbo.Country cu on cu.CountryId = s.CountryId and cu.IsDeleted = 0
+	LEFT JOIN dbo.State st on st.StateId = s.StateId and cu.IsDeleted = 0
+	LEFT JOIN dbo.Master_LookUp ml on ml.LookUpId = s.GenderId and ml.IsDeleted = 0
+
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+ALTER   PROC [dbo].[Get_AllStudentCourseMappingDetails] 
+AS
+SELECT 
+SCM.StudentCourseMappingId,
+SCM.CampusId,
+SCM.CourseId,
+CS.CourseTypeSourceId,
+CS.CourseCode,
+CS.CourseName,
+CRL.CourseRelatedLookUpValue As CourseType,
+SCM.ClassSectionId,
+SCM.EnrollmentId,
+SCM.StudentId,
+ST.FullName AS studentName,
+SCM.StaffId,
+SF.StaffName,
+SCM.TermId,
+SCM.StudentCourseStatusId,
+SLStudCour.StatusLookUpValue As StudentCourseStatus,
+SCM.CourseCreditHours,
+SCM.CourseCredit,
+SCM.MinusAbsent,
+SCM.MinusAttended,
+SCM.NumericGradeObtained,
+SCM.TotalGradeAttempted,
+SCM.TotalCreditsEarned,
+SCM.TotalHoursAttempted,
+SCM.TotalHoursEarned,
+SCM.GradeLetterCodeObtained,
+SCM.GradeNote,
+FORMAT (SCM.CourseCompletedDate, 'yyyy-MM-dd') as CourseCompletedDate,
+FORMAT (SCM.CourseDropDate, 'yyyy-MM-dd') as CourseDropDate,
+FORMAT (SCM.CourseLastAttendedDate, 'yyyy-MM-dd') as CourseLastAttendedDate,
+FORMAT (SCM.CourseRegisteredDate, 'yyyy-MM-dd') as CourseRegisteredDate,
+FORMAT (SCM.CourseStartDate, 'yyyy-MM-dd') as CourseStartDate,
+FORMAT (SCM.ExpectedCourseEndDate, 'yyyy-MM-dd') as ExpectedCourseEndDate,
+FORMAT (SCM.GradePostedDate, 'yyyy-MM-dd') as GradePostedDate,
+scm.CourseCompletedStatusInd,
+scm.CourseCurrentStatusInd,
+scm.CourseDroppedStatusInd,
+scm.CourseFutureStatusInd,
+scm.CourseLeaveOfAbsenceStatusInd,
+scm.CourseScheduledStatusInd,
+scm.CourseRetakeInd,
+scm.CreatedBy,
+scm.CreatedDate,
+scm.ModifyBy,
+scm.ModifyDate,
+Count(*) OVER(Partition BY cs.IsDeleted) AS TotalRecords
+FROM [dbo].[Student_Course_Mapping] SCM
+left JOIN [dbo].[Courses] CS ON CS.CourseId = SCM.CourseId
+left JOIN [dbo].[Course_Related_LookUp] CRL ON crl.CourseRelatedLookUpId = CS.CourseTypeSourceId and crl.IsDeleted = 0
+left JOIN [dbo].[Student] ST ON ST.StudentId = scm.StudentId and ST.IsDeleted = 0
+left JOIN [dbo].[Staff] SF ON SF.StaffId = scm.StaffId and SF.IsDeleted = 0
+left JOIN [dbo].[Status_LookUp] SLStudCour on SLStudCour.StatusLookUpId = SCM.StudentCourseStatusId
+
+

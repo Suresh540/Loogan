@@ -212,15 +212,15 @@ namespace Loogan.API.Database.Models
                 {
                     if (userId > 0)
                     {
-                        var existingUser = await context.Users.Where(x=>x.UserId == userId).FirstOrDefaultAsync(); 
+                        var existingUser = await context.Users.Where(x=>x.UserId == userId && !x.IsDeleted).FirstOrDefaultAsync(); 
                         if (existingUser != null && existingUser.UserName != userName)
                         {
-                            isUserNameExist = await context.Users.AnyAsync(x => x.UserName.ToUpper() == userName.ToUpper());
+                            isUserNameExist = await context.Users.AnyAsync(x => x.UserName.ToUpper() == userName.ToUpper() && !x.IsDeleted);
                         }
                     }
                     else
                     {
-                        isUserNameExist = await context.Users.AnyAsync(x => x.UserName.ToUpper() == userName.ToUpper());
+                        isUserNameExist = await context.Users.AnyAsync(x => x.UserName.ToUpper() == userName.ToUpper() && !x.IsDeleted);
                     }
                 }
             }
@@ -239,15 +239,15 @@ namespace Loogan.API.Database.Models
                 {
                     if (userId > 0)
                     {
-                        var existingUser = await context.Users.Where(x => x.UserId == userId).FirstOrDefaultAsync();
+                        var existingUser = await context.Users.Where(x => x.UserId == userId && !x.IsDeleted).FirstOrDefaultAsync();
                         if (existingUser != null && existingUser.EmailAddress != userEmail)
                         {
-                            isUserEmailExist = await context.Users.AnyAsync(x => x.EmailAddress.ToUpper() == userEmail.ToUpper());
+                            isUserEmailExist = await context.Users.AnyAsync(x => x.EmailAddress.ToUpper() == userEmail.ToUpper() && !x.IsDeleted);
                         }
                     }
                     else
                     {
-                        isUserEmailExist = await context.Users.AnyAsync(x => x.EmailAddress.ToUpper() == userEmail.ToUpper());
+                        isUserEmailExist = await context.Users.AnyAsync(x => x.EmailAddress.ToUpper() == userEmail.ToUpper() && !x.IsDeleted);
                     }
                 }
             }

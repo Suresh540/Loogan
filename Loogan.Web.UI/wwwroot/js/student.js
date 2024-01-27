@@ -51,6 +51,7 @@ function showStudents(pageIndex, pageSize) {
                         <td style="display:none" id="stusid${index}">${item.userId}</td>
                         <td style="display:none" id="stucntry${index}">${item.countryId == null ? "" : item.countryId}</td>
                         <td style="display:none" id="stustate${index}">${item.stateId == null ? "" : item.stateId}</td>
+                        <td style="display:none" id="stugender${index}">${item.genderId == null ? "" : item.genderId}</td>
 
                         <td style="display:none" id="stuadmins${index}">${item.adminssionRepresentativeId == null ? "" : item.adminssionRepresentativeId}</td>
                         <td style="display:none" id="stusnumber${index}">${item.studentNumber == null ? "" : item.studentNumber}</td>
@@ -108,7 +109,7 @@ function studentEdit(index) {
     $('#txtStMiddleInitial').val($('#snmiddleintial' + index).html());
     if ($('#snismaritalstatus' + index).html() == 'true')
         $("#chkMaritalStatus").prop("checked", true);
-    $('#ddlGender').val($('#stg' + index).html());
+    $('#ddlGender').val($('#stugender' + index).html());
     $('#ddlCountry').val($('#stucntry' + index).html());
     $('#ddlState').val($('#stustate' + index).html());
     $('#txtStPostalCode').val($('#snpostalcode' + index).html());

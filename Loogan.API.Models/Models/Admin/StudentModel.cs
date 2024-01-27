@@ -61,11 +61,11 @@ namespace Loogan.API.Models.Models.Admin
 
         public int? ProspectTypeId { get; set; }
 
-        public DateTime? OriginalExceptedStartDate { get; set; }
+        public string? OriginalExceptedStartDate { get; set; }
 
-        public DateTime? OriginalStartDate { get; set; }
+        public string? OriginalStartDate { get; set; }
 
-        public DateTime? StartDate { get; set; }
+        public string? StartDate { get; set; }
 
         public DateTime? LastActivityDate { get; set; }
 
