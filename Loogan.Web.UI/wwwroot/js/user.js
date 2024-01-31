@@ -187,6 +187,8 @@ function deleteUser(id) {
                 showUsers();
             },
             error: function (e) {
+                var msg = JSON.parse(e.responseText);
+                Alert(msg.detail, 'error');
                 Alert(localizationLib.getLocalizeData("UserFailedDeleteKey"), 'error');
             }
         })
@@ -210,7 +212,8 @@ function getUserEmailByUserName() {
             console.log(e);
         },
         error: function (e) {
-            console.log(e);
+            var msg = JSON.parse(e.responseText);
+            Alert(msg.detail, 'error');
         }
     })
 }

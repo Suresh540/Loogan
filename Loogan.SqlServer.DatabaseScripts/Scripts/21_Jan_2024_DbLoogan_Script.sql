@@ -2782,4 +2782,259 @@ left JOIN [dbo].[Student] ST ON ST.StudentId = scm.StudentId and ST.IsDeleted = 
 left JOIN [dbo].[Staff] SF ON SF.StaffId = scm.StaffId and SF.IsDeleted = 0
 left JOIN [dbo].[Status_LookUp] SLStudCour on SLStudCour.StatusLookUpId = SCM.StudentCourseStatusId
 
+/****** Object:  StoredProcedure [dbo].[Get_AllStudentCourseMappingDetails]    Script Date: 31-01-2024 12:27:15 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+ALTER   PROC [dbo].[Get_AllStudentCourseMappingDetails] 
+AS
+SELECT 
+SCM.StudentCourseMappingId,
+SCM.CampusId,
+SCM.CourseId,
+CS.CourseTypeSourceId,
+CS.CourseCode,
+CS.CourseName,
+CRL.CourseRelatedLookUpValue As CourseType,
+SCM.ClassSectionId,
+SCM.EnrollmentId,
+SCM.StudentId,
+ST.FullName AS studentName,
+SCM.StaffId,
+SF.StaffName,
+SCM.TermId,
+SCM.StudentCourseStatusId,
+SLStudCour.StatusLookUpValue As StudentCourseStatus,
+SCM.CourseCreditHours,
+SCM.CourseCredit,
+SCM.MinusAbsent,
+SCM.MinusAttended,
+SCM.NumericGradeObtained,
+SCM.TotalGradeAttempted,
+SCM.TotalCreditsEarned,
+SCM.TotalHoursAttempted,
+SCM.TotalHoursEarned,
+SCM.GradeLetterCodeObtained,
+SCM.GradeNote,
+FORMAT (SCM.CourseCompletedDate, 'yyyy-MM-dd') as CourseCompletedDate,
+FORMAT (SCM.CourseDropDate, 'yyyy-MM-dd') as CourseDropDate,
+FORMAT (SCM.CourseLastAttendedDate, 'yyyy-MM-dd') as CourseLastAttendedDate,
+FORMAT (SCM.CourseRegisteredDate, 'yyyy-MM-dd') as CourseRegisteredDate,
+FORMAT (SCM.CourseStartDate, 'yyyy-MM-dd') as CourseStartDate,
+FORMAT (SCM.ExpectedCourseEndDate, 'yyyy-MM-dd') as ExpectedCourseEndDate,
+FORMAT (SCM.GradePostedDate, 'yyyy-MM-dd') as GradePostedDate,
+scm.CourseCompletedStatusInd,
+scm.CourseCurrentStatusInd,
+scm.CourseDroppedStatusInd,
+scm.CourseFutureStatusInd,
+scm.CourseLeaveOfAbsenceStatusInd,
+scm.CourseScheduledStatusInd,
+scm.CourseRetakeInd,
+scm.CreatedBy,
+scm.CreatedDate,
+scm.ModifyBy,
+scm.ModifyDate,
+Count(*) OVER(Partition BY cs.IsDeleted) AS TotalRecords
+FROM [dbo].[Student_Course_Mapping] SCM 
+left JOIN [dbo].[Courses] CS ON CS.CourseId = SCM.CourseId and CS.IsDeleted = 0
+left JOIN [dbo].[Course_Related_LookUp] CRL ON crl.CourseRelatedLookUpId = CS.CourseTypeSourceId and crl.IsDeleted = 0
+left JOIN [dbo].[Student] ST ON ST.StudentId = scm.StudentId and ST.IsDeleted = 0
+left JOIN [dbo].[Staff] SF ON SF.StaffId = scm.StaffId and SF.IsDeleted = 0
+left JOIN [dbo].[Status_LookUp] SLStudCour on SLStudCour.StatusLookUpId = SCM.StudentCourseStatusId and SLStudCour.IsDeleted = 0
+where SCM.IsDeleted = 0
+
+
+/****** Object:  StoredProcedure [dbo].[Get_AllStudents]    Script Date: 31-01-2024 12:29:38 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE OR ALTER  PROC [dbo].[Get_AllStudents]   
+AS  
+	SELECT s.StudentId,
+		   s.userId,
+		CM.CampusId,
+		p.programId,
+		SH.SchoolId,
+		s.StudentNumber,
+		s.FirstName,
+		s.MiddleName,
+		s.LastName,
+		s.FullName,
+		s.AdminssionRepresentativeId,
+		sf.StaffName As AdminssionReprestative,
+		S.Title,
+		S.Suffix,
+		S.MaidenName,
+		S.NickName,
+		S.MiddleInitial,
+		s.CitizenShipStatusId,
+		s.CountryId,
+		cu.CountryName,
+		s.StateId,
+		st.StateName,
+		s.PostalCode,
+		s.EducationalLevelId,
+		s.EthnicGroupId,
+		s.GenderId,
+		ml.LookUpValue As Gender,
+		s.MaritalStatus As IsMaritalStatus,
+		CASE WHEN s.MaritalStatus = 1 THEN 'Yes' ELSE 'No' END  MaritalStatus,
+		s.NationalityId,
+        s.ProgramGroupId,
+        s.ProspectId,
+		s.ProspectCategoryId,
+        s.ProspectTypeId,
+	    FORMAT (s.OriginalExceptedStartDate, 'yyyy-MM-dd') as OriginalExceptedStartDate,
+	    FORMAT (s.OriginalStartDate, 'yyyy-MM-dd') as OriginalStartDate,
+	    FORMAT (s.StartDate, 'yyyy-MM-dd') as StartDate,
+        s.LastActivityDate,
+        s.HispanicInd,
+        s.VeteranInd,
+		s.CreatedBy,
+		s.CreatedDate,
+		s.ModifyBy,
+		s.ModifyDate,
+		Count(*) OVER(Partition BY S.IsDeleted) AS TotalRecords
+	FROM dbo.Student S
+	LEFT JOIN dbo.Staff SF ON SF.StaffId = s.AdminssionRepresentativeId AND sf.IsDeleted = 0
+	LEFT JOIN dbo.Campus CM on CM.CampusId = s.CampusId and cm.IsDeleted = 0
+	LEFT JOIN dbo.Program P on P.ProgramId = s.ProgramId and p.IsDeleted = 0
+	LEFT JOIN dbo.school SH on SH.schoolId = S.schoolId and SH.IsDeleted = 0
+	LEFT JOIN dbo.Country cu on cu.CountryId = s.CountryId and cu.IsDeleted = 0
+	LEFT JOIN dbo.State st on st.StateId = s.StateId and cu.IsDeleted = 0
+	LEFT JOIN dbo.Master_LookUp ml on ml.LookUpId = s.GenderId and ml.IsDeleted = 0
+	WHERE S.IsDeleted = 0
+
+/****** Object:  StoredProcedure [dbo].[Get_AllUserDetails]    Script Date: 31-01-2024 12:34:07 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+ALTER   PROC [dbo].[Get_AllUserDetails]     
+AS    
+SELECT U.*,     
+ GN.LookUpValue As Gender,    
+ LG.LookUpValue As UserLanguage,
+ UT.UserType,
+ Count(*) OVER(Partition BY U.IsDeleted) AS TotalRecords  
+FROM [DBO].[Users] U    
+LEFT JOIN [DBO].master_Lookup GN on GN.LookUpId = u.GenderId and GN.IsDeleted = 0 and GN.LookUpType = 'gender'    
+LEFT JOIN [DBO].master_Lookup LG on LG.LookUpId = u.languageId and LG.IsDeleted = 0 and LG.LookUpType = 'language'
+LEFT JOIN [DBO].usertype UT on UT.userTypeId = u.UserTypeId AND UT.IsDeleted = 0 
+WHERE U.IsDeleted = 0 OR U.IsDeleted IS NULL
+
+/****** Object:  StoredProcedure [dbo].[Get_CourseCalendarDetails]    Script Date: 31-01-2024 12:36:12 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+ALTER    PROC [dbo].[Get_CourseCalendarDetails] 
+AS
+SELECT
+scm.CourseRegisteredDate,
+scm.CourseStartDate,
+scm.CourseCompletedDate,
+scm.CourseCurrentStatusInd,
+'' as CourseCurrentStatus,
+SCM.CourseId,
+CS.CourseCode,
+CS.CourseName,
+CRL.CourseRelatedLookUpValue As CourseType,
+SCM.StudentId,
+ST.FullName AS studentName,
+SCM.StudentCourseStatusId,
+SLStudCour.StatusLookUpValue As StudentCourseStatus,
+SCM.StaffId,
+SF.StaffName,
+SCM.CourseCreditHours,
+SCM.CourseCredit,
+SCM.MinusAbsent,
+SCM.MinusAttended,
+SCM.TotalHoursAttempted,
+SCM.TotalHoursEarned,
+scm.CourseCompletedStatusInd
+FROM [dbo].[Student_Course_Mapping] SCM
+left JOIN [dbo].[Courses] CS ON CS.CourseId = SCM.CourseId AND CS.IsDeleted = 0
+left JOIN [dbo].[Course_Related_LookUp] CRL ON crl.CourseRelatedLookUpId = CS.CourseTypeSourceId and crl.IsDeleted = 0
+left JOIN [dbo].[Student] ST ON ST.StudentId = scm.StudentId and ST.IsDeleted = 0
+left JOIN [dbo].[Staff] SF ON SF.StaffId = scm.StaffId and SF.IsDeleted = 0
+left JOIN [dbo].[Status_LookUp] SLStudCour on SLStudCour.StatusLookUpId = SCM.StudentCourseStatusId AND SLStudCour.IsDeleted = 0
+WHERE SCM.IsDeleted = 0
+
+/****** Object:  StoredProcedure [dbo].[Get_RoleMenus]    Script Date: 31-01-2024 12:40:55 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+ALTER   PROC [dbo].[Get_RoleMenus]    
+( @roleId INT,    
+@languageId INT )    
+AS      
+SELECT mp.PrimaryMenuId,    
+ mrp.RoleId,    
+ ut.UserType As RoleName,    
+ ms.MenuName,    
+ mp.MenuCode,    
+ mp.MenuUrl,    
+ mp.MenuIcon,    
+ mp.SequenceOrder
+FROM [dbo].Menu_Role_Mapping mrp    
+inner join [dbo].[Menu_Primary] mp on mp.PrimaryMenuId = mrp.PrimaryMenuId and mp.IsDeleted = 0    
+INNER JOIN [dbo].[Menu_Secondary] ms ON mp.PrimaryMenuId = ms.PrimaryMenuId and ms.IsDeleted = 0    
+inner join [dbo].[UserType] ut on ut.UserTypeId = mrp.RoleId and ut.IsDeleted = 0    
+WHERE mrp.RoleId = @roleId and ms.LanguageId = @languageId and mrp.IsDeleted = 0     
+ORDER BY SequenceOrder
+
+/****** Object:  StoredProcedure [dbo].[Get_StudentCourseDetails]    Script Date: 31-01-2024 12:44:28 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+ALTER   PROC [dbo].[Get_StudentCourseDetails]   
+(@studentId INT)  
+AS  
+SELECT   
+CR.CourseId,  
+CR.CourseTypeSourceId,  
+CRL.CourseRelatedLookUpValue As CourseType,  
+CR.CourseCode,  
+CR.CourseName,  
+CR.CourseDesc,  
+ST.StudentId,  
+ST.StudentNumber,  
+ST.FullName As StudentName,  
+SF.StaffId,  
+SF.StaffName,  
+SL.StatusLookUpValue As StudentCourseStatus  
+FROM [dbo].[Courses] CR  
+INNER JOIN [dbo].[Course_Related_LookUp] CRL ON crl.CourseRelatedLookUpId = cr.CourseTypeSourceId and crl.IsDeleted = 0  
+INNER JOIN [dbo].[Student_Course_Mapping] SCM ON SCM.CourseId = cr.CourseId and SCM.IsDeleted = 0  
+INNER JOIN [dbo].[Student] ST on ST.StudentId = scm.StudentId and ST.IsDeleted = 0  
+INNER JOIN [dbo].[Staff] SF on SF.StaffId = SCM.StaffId and SF.IsDeleted = 0  
+INNER JOIN [dbo].[Status_LookUp] SL on SL.StatusLookUpId = SCM.StudentCourseStatusId and SL.IsDeleted = 0
+WHERE CR.IsDeleted = 0 AND ST.StudentId = @studentId 
+
+/****** Object:  StoredProcedure [dbo].[Get_UserDetails]    Script Date: 31-01-2024 12:47:15 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+ALTER   PROC [dbo].[Get_UserDetails]   
+(@userId INT)  
+AS  
+SELECT U.*,   
+ GN.LookUpValue As Gender,  
+ LG.LookUpValue As UserLanguage,
+ UT.UserType
+FROM [DBO].[Users] U
+JOIN [DBO].[UserType] UT ON U.UserTypeId = UT.UserTypeId AND UT.IsDeleted = 0
+LEFT JOIN [DBO].master_Lookup GN on GN.LookUpId = u.GenderId and GN.IsDeleted = 0 and GN.LookUpType = 'gender'  
+LEFT JOIN [DBO].master_Lookup LG on LG.LookUpId = u.languageId and LG.IsDeleted = 0 and LG.LookUpType = 'language'  
+WHERE U.UserId = @userId AND U.IsDeleted = 0
+
+
+
 

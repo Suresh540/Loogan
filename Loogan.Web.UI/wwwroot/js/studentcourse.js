@@ -185,7 +185,8 @@
             },
             error: function (e) {
                 $('#btnSaveStudentCourse').removeAttr('disabled');
-                console.log(e);
+                var msg = JSON.parse(e.responseText);
+                Alert(msg.detail, 'error');
                 Alert(localizationLib.getLocalizeData("FailedToStudenCoursetKey"), 'error');
             }
         })
@@ -274,6 +275,8 @@
                     course.showStudentCourses();
                 },
                 error: function (e) {
+                    var msg = JSON.parse(e.responseText);
+                    Alert(msg.detail, 'error');
                     Alert(localizationLib.getLocalizeData("StudentCourseFailedDeleteKey"), 'error');
                 }
             })

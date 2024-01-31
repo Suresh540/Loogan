@@ -41,7 +41,8 @@
         },
         error: function (e) {
             $('#btnSavestaff').removeAttr('disabled');
-            console.log(e);
+            var msg = JSON.parse(e.responseText);
+            Alert(msg.detail, 'error')
             Alert(localizationLib.getLocalizeData("FailedToCreateStaffKey"), 'error');
         }
     })
@@ -110,6 +111,8 @@ function deleteStaff(id) {
                 showStaffs();
             },
             error: function (e) {
+                var msg = JSON.parse(e.responseText);
+                Alert(msg.detail, 'error');
                 Alert(localizationLib.getLocalizeData("StaffFailedDeleteKey"), 'error');
             }
         })

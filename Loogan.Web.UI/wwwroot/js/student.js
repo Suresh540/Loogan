@@ -80,7 +80,8 @@ function showStudents(pageIndex, pageSize) {
                 }
             },
             error: function (e) {
-                console.log(e);
+                var msg = JSON.parse(e.responseText);
+                Alert(msg.detail, 'error');
             }
         })
 
@@ -215,7 +216,8 @@ function updateStudent() {
         },
         error: function (e) {
             $('#btnSavestudent').removeAttr('disabled');
-            console.log(e);
+            var msg = JSON.parse(e.responseText);
+            Alert(msg.detail, 'error');
             Alert(localizationLib.getLocalizeData("FailedToCreateStudentKey"), 'error');
         }
     })
@@ -232,6 +234,8 @@ function deleteStudent(id) {
                 showStudents();
             },
             error: function (e) {
+                var msg = JSON.parse(e.responseText);
+                Alert(msg.detail, 'error');
                 Alert(localizationLib.getLocalizeData("StudentFailedDeleteKey"), 'error');
             }
         })

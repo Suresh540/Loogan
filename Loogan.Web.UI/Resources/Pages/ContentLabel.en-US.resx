@@ -540,7 +540,7 @@
     <value>Course Name</value>
   </data>
 	<data name="CourseDescriptionKey" xml:space="preserve">
-    <value>Course Desctiption</value>
+    <value>Course Description</value>
   </data>
 	<data name="CourseLevelKey" xml:space="preserve">
     <value>Course Level</value>

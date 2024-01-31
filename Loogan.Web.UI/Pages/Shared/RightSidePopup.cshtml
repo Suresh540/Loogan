@@ -145,6 +145,8 @@
                 $('#btnClose').trigger('click');
             },
             error: function (e) {
+                var msg = JSON.parse(e.responseText);
+                Alert(msg.detail, 'error')
                 Alert('@Localizer["FailedSaveKey"]', 'error');
                 $('#btnClose').trigger('click');
             }

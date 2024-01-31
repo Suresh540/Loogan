@@ -69,6 +69,8 @@
                     course.showCourses();
                 },
                 error: function (e) {
+                    var msg = JSON.parse(e.responseText);
+                    Alert(msg.detail, 'error');
                     Alert(localizationLib.getLocalizeData("CourseFailedDeleteKey"), 'error');
                 }
             })
@@ -118,7 +120,8 @@
             },
             error: function (e) {
                 $('#btnSaveCourse').removeAttr('disabled');
-                console.log(e);
+                var msg = JSON.parse(e.responseText);
+                Alert(msg.detail, 'error');
                 Alert(localizationLib.getLocalizeData("FailedToCourseKey"), 'error');
             }
         })
