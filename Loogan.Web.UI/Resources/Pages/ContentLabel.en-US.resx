@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <root>
-	<!-- 
+  <!-- 
     Microsoft ResX Schema 
     
     Version 2.0
@@ -59,637 +59,635 @@
             : using a System.ComponentModel.TypeConverter
             : and then encoded with base64 encoding.
     -->
-	<xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
-		<xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
-		<xsd:element name="root" msdata:IsDataSet="true">
-			<xsd:complexType>
-				<xsd:choice maxOccurs="unbounded">
-					<xsd:element name="metadata">
-						<xsd:complexType>
-							<xsd:sequence>
-								<xsd:element name="value" type="xsd:string" minOccurs="0" />
-							</xsd:sequence>
-							<xsd:attribute name="name" use="required" type="xsd:string" />
-							<xsd:attribute name="type" type="xsd:string" />
-							<xsd:attribute name="mimetype" type="xsd:string" />
-							<xsd:attribute ref="xml:space" />
-						</xsd:complexType>
-					</xsd:element>
-					<xsd:element name="assembly">
-						<xsd:complexType>
-							<xsd:attribute name="alias" type="xsd:string" />
-							<xsd:attribute name="name" type="xsd:string" />
-						</xsd:complexType>
-					</xsd:element>
-					<xsd:element name="data">
-						<xsd:complexType>
-							<xsd:sequence>
-								<xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
-								<xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
-							</xsd:sequence>
-							<xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
-							<xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
-							<xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
-							<xsd:attribute ref="xml:space" />
-						</xsd:complexType>
-					</xsd:element>
-					<xsd:element name="resheader">
-						<xsd:complexType>
-							<xsd:sequence>
-								<xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
-							</xsd:sequence>
-							<xsd:attribute name="name" type="xsd:string" use="required" />
-						</xsd:complexType>
-					</xsd:element>
-				</xsd:choice>
-			</xsd:complexType>
-		</xsd:element>
-	</xsd:schema>
-	<resheader name="resmimetype">
-		<value>text/microsoft-resx</value>
-	</resheader>
-	<resheader name="version">
-		<value>2.0</value>
-	</resheader>
-	<resheader name="reader">
-		<value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-	</resheader>
-	<resheader name="writer">
-		<value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-	</resheader>
-	<data name="ActivityStreamKey" xml:space="preserve">
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="ActivityStreamKey" xml:space="preserve">
     <value>Activity Stream</value>
   </data>
-	<data name="CalendarKey" xml:space="preserve">
+  <data name="CalendarKey" xml:space="preserve">
     <value>Calendar</value>
   </data>
-	<data name="CoursesKey" xml:space="preserve">
+  <data name="CoursesKey" xml:space="preserve">
     <value>Courses</value>
   </data>
-	<data name="GradesKey" xml:space="preserve">
+  <data name="GradesKey" xml:space="preserve">
     <value>Grades</value>
   </data>
-	<data name="InstitutionPageKey" xml:space="preserve">
+  <data name="InstitutionPageKey" xml:space="preserve">
     <value>Institution Page</value>
   </data>
-	<data name="MessagesKey" xml:space="preserve">
+  <data name="MessagesKey" xml:space="preserve">
     <value>Messages</value>
   </data>
-	<data name="OrgnizationsKey" xml:space="preserve">
+  <data name="OrgnizationsKey" xml:space="preserve">
     <value>Orgnizations</value>
   </data>
-	<data name="SignOutKey" xml:space="preserve">
+  <data name="SignOutKey" xml:space="preserve">
     <value>Sign Out</value>
   </data>
-	<data name="ToolsKey" xml:space="preserve">
+  <data name="ToolsKey" xml:space="preserve">
     <value>Tools</value>
   </data>
-	<data name="AddEditUserKey" xml:space="preserve">
+  <data name="AddEditUserKey" xml:space="preserve">
     <value>Add/Edit User</value>
   </data>
-	<data name="AddEditStaffKey" xml:space="preserve">
+  <data name="AddEditStaffKey" xml:space="preserve">
     <value>Edit Staff</value>
   </data>
-	<data name="AddEditStudentKey" xml:space="preserve">
+  <data name="AddEditStudentKey" xml:space="preserve">
     <value>Edit Student</value>
   </data>
-	<data name="AddEditCourseKey" xml:space="preserve">
+  <data name="AddEditCourseKey" xml:space="preserve">
     <value>Add/Edit Course</value>
   </data>
-	<data name="AddEditStudentCourseMappingKey" xml:space="preserve">
+  <data name="AddEditStudentCourseMappingKey" xml:space="preserve">
     <value>Student Course</value>
   </data>
-	<data name="AdditionalNameKey" xml:space="preserve">
+  <data name="AdditionalNameKey" xml:space="preserve">
     <value>Additional Name</value>
   </data>
-	<data name="BasicInformationKey" xml:space="preserve">
+  <data name="BasicInformationKey" xml:space="preserve">
     <value>Basic Information</value>
   </data>
-	<data name="CityKey" xml:space="preserve">
+  <data name="CityKey" xml:space="preserve">
     <value>City</value>
   </data>
-	<data name="ClearKey" xml:space="preserve">
+  <data name="ClearKey" xml:space="preserve">
     <value>Clear</value>
   </data>
-	<data name="CompanyKey" xml:space="preserve">
+  <data name="CompanyKey" xml:space="preserve">
     <value>Company</value>
   </data>
-	<data name="ConfirmPasswordKey" xml:space="preserve">
+  <data name="ConfirmPasswordKey" xml:space="preserve">
     <value>Confirm Password</value>
   </data>
-	<data name="CountryKey" xml:space="preserve">
+  <data name="CountryKey" xml:space="preserve">
     <value>Country</value>
   </data>
-	<data name="DepartmentKey" xml:space="preserve">
+  <data name="DepartmentKey" xml:space="preserve">
     <value>Department</value>
   </data>
-	<data name="EducationLevelKey" xml:space="preserve">
+  <data name="EducationLevelKey" xml:space="preserve">
     <value>Education Level</value>
   </data>
-	<data name="EmailAddressKey" xml:space="preserve">
+  <data name="EmailAddressKey" xml:space="preserve">
     <value>Email Address</value>
   </data>
-	<data name="FaxNumberKey" xml:space="preserve">
+  <data name="FaxNumberKey" xml:space="preserve">
     <value>Fax Number</value>
   </data>
-	<data name="FirstNameKey" xml:space="preserve">
+  <data name="FirstNameKey" xml:space="preserve">
     <value>First Name</value>
   </data>
-	<data name="GenderKey" xml:space="preserve">
+  <data name="GenderKey" xml:space="preserve">
     <value>Gender</value>
   </data>
-	<data name="JobTitleKey" xml:space="preserve">
+  <data name="JobTitleKey" xml:space="preserve">
     <value>Job Title</value>
   </data>
-	<data name="LastNameKey" xml:space="preserve">
+  <data name="LastNameKey" xml:space="preserve">
     <value>Last Name</value>
   </data>
-	<data name="MiddleNameKey" xml:space="preserve">
+  <data name="MiddleNameKey" xml:space="preserve">
     <value>Middle Name</value>
   </data>
-	<data name="PasswordKey" xml:space="preserve">
+  <data name="PasswordKey" xml:space="preserve">
     <value>Password</value>
   </data>
-	<data name="PhoneNumberKey" xml:space="preserve">
+  <data name="PhoneNumberKey" xml:space="preserve">
     <value>Phone Number</value>
   </data>
-	<data name="PrefixKey" xml:space="preserve">
+  <data name="PrefixKey" xml:space="preserve">
     <value>Prefix</value>
   </data>
-	<data name="SaveKey" xml:space="preserve">
+  <data name="SaveKey" xml:space="preserve">
     <value>Save</value>
   </data>
-	<data name="ShowUsersKey" xml:space="preserve">
+  <data name="ShowUsersKey" xml:space="preserve">
     <value>Show Users</value>
   </data>
-	<data name="ShowStaffKey" xml:space="preserve">
+  <data name="ShowStaffKey" xml:space="preserve">
     <value>Show Staffs</value>
   </data>
-	<data name="ShowStudentKey" xml:space="preserve">
+  <data name="ShowStudentKey" xml:space="preserve">
     <value>Show Students</value>
   </data>
-	<data name="ShowCourseKey" xml:space="preserve">
+  <data name="ShowCourseKey" xml:space="preserve">
     <value>Show Courses</value>
   </data>
-	<data name="State_ProvinceKey" xml:space="preserve">
+  <data name="State_ProvinceKey" xml:space="preserve">
     <value>State/Province</value>
   </data>
-	<data name="SuffixKey" xml:space="preserve">
+  <data name="SuffixKey" xml:space="preserve">
     <value>Suffix</value>
   </data>
-	<data name="UserNameKey" xml:space="preserve">
+  <data name="UserNameKey" xml:space="preserve">
     <value>User Name</value>
   </data>
-	<data name="WebsiteKey" xml:space="preserve">
+  <data name="WebsiteKey" xml:space="preserve">
     <value>Website</value>
   </data>
-	<data name="AdditionalInformationKey" xml:space="preserve">
+  <data name="AdditionalInformationKey" xml:space="preserve">
     <value>Additional Information</value>
   </data>
-	<data name="ADFSLoginKey" xml:space="preserve">
+  <data name="ADFSLoginKey" xml:space="preserve">
     <value>ADFS Login</value>
   </data>
-	<data name="CloseKey" xml:space="preserve">
+  <data name="CloseKey" xml:space="preserve">
     <value>Close</value>
   </data>
-	<data name="ContactInformationKey" xml:space="preserve">
+  <data name="ContactInformationKey" xml:space="preserve">
     <value>Contact Information</value>
   </data>
-	<data name="DataSavedKey" xml:space="preserve">
+  <data name="DataSavedKey" xml:space="preserve">
     <value>Data saved successfully</value>
   </data>
-	<data name="FailedSaveKey" xml:space="preserve">
+  <data name="FailedSaveKey" xml:space="preserve">
     <value>Failed to save</value>
   </data>
-	<data name="ForgotPasswordKey" xml:space="preserve">
+  <data name="ForgotPasswordKey" xml:space="preserve">
     <value>Forgot Password</value>
   </data>
-	<data name="JobInformationKey" xml:space="preserve">
+  <data name="JobInformationKey" xml:space="preserve">
     <value>Job Information</value>
   </data>
-	<data name="LooganLearnKey" xml:space="preserve">
+  <data name="LooganLearnKey" xml:space="preserve">
     <value>Loogan Learn</value>
   </data>
-	<data name="PasswordEmptyKey" xml:space="preserve">
+  <data name="PasswordEmptyKey" xml:space="preserve">
     <value>Password is empty</value>
   </data>
-	<data name="SaveChangesKey" xml:space="preserve">
+  <data name="SaveChangesKey" xml:space="preserve">
     <value>Save changes</value>
   </data>
-	<data name="SignInKey" xml:space="preserve">
+  <data name="SignInKey" xml:space="preserve">
     <value>Sign In</value>
   </data>
-	<data name="SignThirdPartyKey" xml:space="preserve">
+  <data name="SignThirdPartyKey" xml:space="preserve">
     <value>Sign in with third-party account</value>
   </data>
-	<data name="UserNameEmptyKey" xml:space="preserve">
+  <data name="UserNameEmptyKey" xml:space="preserve">
     <value>User name is empty</value>
   </data>
-	<data name="UserPwdWrongKey" xml:space="preserve">
+  <data name="UserPwdWrongKey" xml:space="preserve">
     <value>User name/Password is wrong</value>
   </data>
-	<data name="CancelKey" xml:space="preserve">
+  <data name="CancelKey" xml:space="preserve">
     <value>Cancel</value>
   </data>
-	<data name="ChangeLanguageKey" xml:space="preserve">
+  <data name="ChangeLanguageKey" xml:space="preserve">
     <value>Change Language</value>
   </data>
-	<data name="LooganReservedKey" xml:space="preserve">
+  <data name="LooganReservedKey" xml:space="preserve">
     <value>Loogan Inc. All Rights Reserved.</value>
   </data>
-	<data name="MailSentKey" xml:space="preserve">
+  <data name="MailSentKey" xml:space="preserve">
     <value>Mail sent successfully to email</value>
   </data>
-	<data name="SubmitKey" xml:space="preserve">
+  <data name="SubmitKey" xml:space="preserve">
     <value>Submit</value>
   </data>
-	<data name="FullNameKey" xml:space="preserve">
+  <data name="FullNameKey" xml:space="preserve">
     <value>Full Name</value>
   </data>
-	<data name="AddBusinessFaxNumberKey" xml:space="preserve">
+  <data name="AddBusinessFaxNumberKey" xml:space="preserve">
     <value>Add business fax number</value>
   </data>
-	<data name="AddCompanyKey" xml:space="preserve">
+  <data name="AddCompanyKey" xml:space="preserve">
     <value>Add company</value>
   </data>
-	<data name="AddDepartmentKey" xml:space="preserve">
+  <data name="AddDepartmentKey" xml:space="preserve">
     <value>Add department</value>
   </data>
-	<data name="AddJobTitleKey" xml:space="preserve">
+  <data name="AddJobTitleKey" xml:space="preserve">
     <value>Add job title</value>
   </data>
-	<data name="AddMailingAddressKey" xml:space="preserve">
+  <data name="AddMailingAddressKey" xml:space="preserve">
     <value>Add mailing address</value>
   </data>
-	<data name="AddPhoneNumberKey" xml:space="preserve">
+  <data name="AddPhoneNumberKey" xml:space="preserve">
     <value>Add phone number</value>
   </data>
-	<data name="AddWebsiteKey" xml:space="preserve">
+  <data name="AddWebsiteKey" xml:space="preserve">
     <value>Add Website</value>
   </data>
-	<data name="EmailNotificationsKey" xml:space="preserve">
+  <data name="EmailNotificationsKey" xml:space="preserve">
     <value>Email notifications</value>
   </data>
-	<data name="GlobalNotificationSettingsKey" xml:space="preserve">
+  <data name="GlobalNotificationSettingsKey" xml:space="preserve">
     <value>Global Notification Settings</value>
   </data>
-	<data name="LanguageKey" xml:space="preserve">
+  <data name="LanguageKey" xml:space="preserve">
     <value>Language</value>
   </data>
-	<data name="MailingAddressKey" xml:space="preserve">
+  <data name="MailingAddressKey" xml:space="preserve">
     <value>Mailing Address</value>
   </data>
-	<data name="OnlyInstructorViewKey" xml:space="preserve">
+  <data name="OnlyInstructorViewKey" xml:space="preserve">
     <value>Only instructors can &lt;br/&gt; view my profile&lt;br/&gt; information</value>
   </data>
-	<data name="PrivacySettigsKey" xml:space="preserve">
+  <data name="PrivacySettigsKey" xml:space="preserve">
     <value>Privacy Settigs</value>
   </data>
-	<data name="PushNotificationsKey" xml:space="preserve">
+  <data name="PushNotificationsKey" xml:space="preserve">
     <value>Push notifications</value>
   </data>
-	<data name="StreamNotificationsKey" xml:space="preserve">
+  <data name="StreamNotificationsKey" xml:space="preserve">
     <value>Stream notifications</value>
   </data>
-	<data name="SystemSettingsKey" xml:space="preserve">
+  <data name="SystemSettingsKey" xml:space="preserve">
     <value>System Settings</value>
   </data>
-	<data name="ErrorMessageUserPasswordKey" xml:space="preserve">
+  <data name="ErrorMessageUserPasswordKey" xml:space="preserve">
     <value>Enter a username and password.</value>
   </data>
-	<data name="PleaseSelectKey" xml:space="preserve">
+  <data name="PleaseSelectKey" xml:space="preserve">
     <value>Please select</value>
   </data>
-	<data name="ConfirmPwdMandatoryKey" xml:space="preserve">
+  <data name="ConfirmPwdMandatoryKey" xml:space="preserve">
     <value>Confirm password is mandatory</value>
   </data>
-	<data name="ConfirmPwdPwdDifferentKey" xml:space="preserve">
+  <data name="ConfirmPwdPwdDifferentKey" xml:space="preserve">
     <value>Confirm password, password are different</value>
   </data>
-	<data name="EmailMandatoryKey" xml:space="preserve">
+  <data name="EmailMandatoryKey" xml:space="preserve">
     <value>Email Address is mandatory</value>
   </data>
-	<data name="FailedToCreateUserKey" xml:space="preserve">
+  <data name="FailedToCreateUserKey" xml:space="preserve">
     <value>Failed to create user</value>
   </data>
-	<data name="FirstNameMandatoryKey" xml:space="preserve">
+  <data name="FirstNameMandatoryKey" xml:space="preserve">
     <value>First Name is mandatory</value>
   </data>
-	<data name="FullNameMandatoryKey" xml:space="preserve">
+  <data name="FullNameMandatoryKey" xml:space="preserve">
     <value>Full Name is mandatory</value>
   </data>
-	<data name="GenderMandatoryKey" xml:space="preserve">
+  <data name="GenderMandatoryKey" xml:space="preserve">
     <value>Gender is mandatory</value>
   </data>
-	<data name="LastNameMandatoryKey" xml:space="preserve">
+  <data name="LastNameMandatoryKey" xml:space="preserve">
     <value>Last Name is mandatory</value>
   </data>
-	<data name="PasswordMandatoryKey" xml:space="preserve">
+  <data name="PasswordMandatoryKey" xml:space="preserve">
     <value>Password is mandatory</value>
   </data>
-	<data name="PhoneMandatoryKey" xml:space="preserve">
+  <data name="PhoneMandatoryKey" xml:space="preserve">
     <value>Phone is mandatory</value>
   </data>
-	<data name="UserNameMandatoryKey" xml:space="preserve">
+  <data name="UserNameMandatoryKey" xml:space="preserve">
     <value>User name is mandatory</value>
   </data>
-	<data name="AdditionalNameMandatoryKey" xml:space="preserve">
+  <data name="AdditionalNameMandatoryKey" xml:space="preserve">
     <value>Additional name is mandatory</value>
   </data>
-	<data name="UserSavedSuccessKey" xml:space="preserve">
+  <data name="UserSavedSuccessKey" xml:space="preserve">
     <value>User saved successfully</value>
   </data>
-	<data name="UserNameAlreadyExistKey" xml:space="preserve">
+  <data name="UserNameAlreadyExistKey" xml:space="preserve">
     <value>User Name is Already Exist Please change.</value>
   </data>
-	<data name="EmailAlreadyExistKey" xml:space="preserve">
+  <data name="EmailAlreadyExistKey" xml:space="preserve">
     <value>Email Address is Already Exist Please change.</value>
   </data>
-	
-	<data name="RoleMappingKey" xml:space="preserve">
+  <data name="RoleMappingKey" xml:space="preserve">
     <value>Role Mapping</value>
   </data>
-	<data name="StaffListMappingKey" xml:space="preserve">
+  <data name="StaffListMappingKey" xml:space="preserve">
     <value>Staff List</value>
   </data>
-	<data name="CourseMappingKey" xml:space="preserve">
+  <data name="CourseMappingKey" xml:space="preserve">
     <value>Course Details</value>
   </data>
-	<data name="StudentListMappingKey" xml:space="preserve">
+  <data name="StudentListMappingKey" xml:space="preserve">
     <value>Student List</value>
   </data>
-	<data name="UserDeleteMsgKey" xml:space="preserve">
+  <data name="UserDeleteMsgKey" xml:space="preserve">
     <value>User deleted successfully.</value>
   </data>
-	<data name="UserFailedDeleteKey" xml:space="preserve">
+  <data name="UserFailedDeleteKey" xml:space="preserve">
     <value>Failed to delete user.</value>
   </data>
-	<data name="SelectChangesKey" xml:space="preserve">
+  <data name="SelectChangesKey" xml:space="preserve">
     <value>Select items to save</value>
   </data>
-	<data name="StaffInformationKey" xml:space="preserve">
+  <data name="StaffInformationKey" xml:space="preserve">
     <value>Staff Information</value>
   </data>
-	<data name="StaffNameKey" xml:space="preserve">
+  <data name="StaffNameKey" xml:space="preserve">
     <value>Staff Name</value>
   </data>
-	<data name="StaffNameMandatoryKey" xml:space="preserve">
+  <data name="StaffNameMandatoryKey" xml:space="preserve">
     <value>Staff Name is mandatory</value>
   </data>
-	<data name="StaffSavedSuccessKey" xml:space="preserve">
+  <data name="StaffSavedSuccessKey" xml:space="preserve">
     <value>Staff saved successfully</value>
   </data>
-	<data name="StaffUpdateSuccessKey" xml:space="preserve">
+  <data name="StaffUpdateSuccessKey" xml:space="preserve">
     <value>Staff saved successfully</value>
   </data>
-	<data name="FailedToCreateStaffKey" xml:space="preserve">
+  <data name="FailedToCreateStaffKey" xml:space="preserve">
     <value>Failed to create staff</value>
   </data>
-	<data name="UserTypeKey" xml:space="preserve">
+  <data name="UserTypeKey" xml:space="preserve">
     <value>User Type</value>
   </data>
-	<data name="UserTypeMandatoryKey" xml:space="preserve">
+  <data name="UserTypeMandatoryKey" xml:space="preserve">
     <value>UserType is mandatory</value>
   </data>
-	<data name="AddFavoriteKey" xml:space="preserve">
+  <data name="AddFavoriteKey" xml:space="preserve">
     <value>Added to favourite</value>
   </data>
-	<data name="RemovedFromFavoriteKey" xml:space="preserve">
+  <data name="RemovedFromFavoriteKey" xml:space="preserve">
     <value>Removed from your favorites</value>
   </data>
-	<data name="RemoveFavoriteKey" xml:space="preserve">
+  <data name="RemoveFavoriteKey" xml:space="preserve">
     <value>Remove from your favorites</value>
   </data>
-	<data name="AdmissionReprestativeKey" xml:space="preserve">
+  <data name="AdmissionReprestativeKey" xml:space="preserve">
     <value>Admission Represtative </value>
   </data>
-	<data name="StateKey" xml:space="preserve">
+  <data name="StateKey" xml:space="preserve">
     <value>State</value>
   </data>
-	<data name="PostalKey" xml:space="preserve">
+  <data name="PostalKey" xml:space="preserve">
     <value>Postal</value>
   </data>
-	<data name="StudentInformationKey" xml:space="preserve">
+  <data name="StudentInformationKey" xml:space="preserve">
     <value>Student Information</value>
   </data>
-	<data name="MaidenNameKey" xml:space="preserve">
+  <data name="MaidenNameKey" xml:space="preserve">
     <value>Maiden Name</value>
   </data>
-	<data name="NickNameKey" xml:space="preserve">
+  <data name="NickNameKey" xml:space="preserve">
     <value>Nick Name</value>
   </data>
-	<data name="MiddleInitialKey" xml:space="preserve">
+  <data name="MiddleInitialKey" xml:space="preserve">
     <value>Middle Initial</value>
   </data>
-	<data name="MartialStatusKey" xml:space="preserve">
+  <data name="MartialStatusKey" xml:space="preserve">
     <value>Martial Status</value>
   </data>
-	<data name="CitizenShipStatusKey" xml:space="preserve">
+  <data name="CitizenShipStatusKey" xml:space="preserve">
     <value>Citizen Ship Status</value>
   </data>
-	<data name="EducationalLevelKey" xml:space="preserve">
+  <data name="EducationalLevelKey" xml:space="preserve">
     <value>Educational Level</value>
   </data>
-	<data name="EthnicGroupKey" xml:space="preserve">
+  <data name="EthnicGroupKey" xml:space="preserve">
     <value>Ethnic Group</value>
   </data>
-	<data name="NationalityKey" xml:space="preserve">
+  <data name="NationalityKey" xml:space="preserve">
     <value>Nationality</value>
   </data>
-	<data name="OriginalExceptedStartDateKey" xml:space="preserve">
+  <data name="OriginalExceptedStartDateKey" xml:space="preserve">
     <value>Original Excepted Start Date</value>
   </data>
-	<data name="OriginalStartDateKey" xml:space="preserve">
+  <data name="OriginalStartDateKey" xml:space="preserve">
     <value>Original Start Date</value>
   </data>
-	<data name="StartDateKey" xml:space="preserve">
+  <data name="StartDateKey" xml:space="preserve">
     <value>Start Date</value>
   </data>
-	<data name="HispanicKey" xml:space="preserve">
+  <data name="HispanicKey" xml:space="preserve">
     <value>Hispanic</value>
   </data>
-	<data name="VeteranKey" xml:space="preserve">
+  <data name="VeteranKey" xml:space="preserve">
     <value>Veteran</value>
   </data>
-	<data name="TitleMandatoryKey" xml:space="preserve">
+  <data name="TitleMandatoryKey" xml:space="preserve">
     <value>Title is mandatory</value>
   </data>
-	<data name="StaffDeleteMsgKey" xml:space="preserve">
+  <data name="StaffDeleteMsgKey" xml:space="preserve">
     <value>Staff deleted successfully.</value>
   </data>
-	<data name="StaffFailedDeleteKey" xml:space="preserve">
+  <data name="StaffFailedDeleteKey" xml:space="preserve">
     <value>Failed to delete Staff.</value>
   </data>
-	<data name="StudentDeleteMsgKey" xml:space="preserve">
+  <data name="StudentDeleteMsgKey" xml:space="preserve">
     <value>Student deleted successfully.</value>
   </data>
-	<data name="StudentFailedDeleteKey" xml:space="preserve">
+  <data name="StudentFailedDeleteKey" xml:space="preserve">
     <value>Failed to delete Student.</value>
   </data>
-
-	<data name="CourseGroupKey" xml:space="preserve">
+  <data name="CourseGroupKey" xml:space="preserve">
     <value>Course Group</value>
   </data>
-	<data name="CourseCodeKey" xml:space="preserve">
+  <data name="CourseCodeKey" xml:space="preserve">
     <value>Course Code</value>
   </data>
-	<data name="StudentCourseListKey" xml:space="preserve">
+  <data name="StudentCourseListKey" xml:space="preserve">
     <value>Student Course list</value>
   </data>
-	<data name="CourseNameKey" xml:space="preserve">
+  <data name="CourseNameKey" xml:space="preserve">
     <value>Course Name</value>
   </data>
-	<data name="CourseDescriptionKey" xml:space="preserve">
+  <data name="CourseDescriptionKey" xml:space="preserve">
     <value>Course Description</value>
   </data>
-	<data name="CourseLevelKey" xml:space="preserve">
+  <data name="CourseLevelKey" xml:space="preserve">
     <value>Course Level</value>
   </data>
-	<data name="CreditHoursKey" xml:space="preserve">
+  <data name="CreditHoursKey" xml:space="preserve">
     <value>Credit Hours</value>
   </data>
-	<data name="CreditsKey" xml:space="preserve">
+  <data name="CreditsKey" xml:space="preserve">
     <value>Credits</value>
   </data>
-	<data name="CourseListKey" xml:space="preserve">
+  <data name="CourseListKey" xml:space="preserve">
     <value>Course(s) List</value>
   </data>
-	<data name="CourseDeleteMsgKey" xml:space="preserve">
+  <data name="CourseDeleteMsgKey" xml:space="preserve">
     <value>Course deleted successfully.</value>
   </data>
-	<data name="CourseFailedDeleteKey" xml:space="preserve">
+  <data name="CourseFailedDeleteKey" xml:space="preserve">
     <value>Failed to delete Course.</value>
   </data>
-	<data name="CourseCodeMandatoryKey" xml:space="preserve">
+  <data name="CourseCodeMandatoryKey" xml:space="preserve">
     <value>Course Code is mandatory.</value>
   </data>
-	<data name="CourseNameMandatoryKey" xml:space="preserve">
+  <data name="CourseNameMandatoryKey" xml:space="preserve">
     <value>Course Name is mandatory.</value>
   </data>
-	<data name="CourseGroupMandatoryKey" xml:space="preserve">
+  <data name="CourseGroupMandatoryKey" xml:space="preserve">
     <value>Course Group is mandatory.</value>
   </data>
-	<data name="CourseUpdateSuccessKey" xml:space="preserve">
+  <data name="CourseUpdateSuccessKey" xml:space="preserve">
     <value>Course saved successfully.</value>
   </data>
-	<data name="StudentCourseMappingKey" xml:space="preserve">
+  <data name="StudentCourseMappingKey" xml:space="preserve">
     <value>Student Course</value>
   </data>
-	<data name="CourseKey" xml:space="preserve">
+  <data name="CourseKey" xml:space="preserve">
     <value>Course</value>
   </data>
-	<data name="StudentKey" xml:space="preserve">
+  <data name="StudentKey" xml:space="preserve">
     <value>Student</value>
   </data>
-	<data name="StaffKey" xml:space="preserve">
+  <data name="StaffKey" xml:space="preserve">
     <value>Staff</value>
   </data>
-	<data name="StudentCourseStatusKey" xml:space="preserve">
+  <data name="StudentCourseStatusKey" xml:space="preserve">
     <value>Student Course Status</value>
   </data>
-	<data name="CourseCreditHoursKey" xml:space="preserve">
+  <data name="CourseCreditHoursKey" xml:space="preserve">
     <value>Course Credit Hours</value>
   </data>
-	<data name="CourseCreditKey" xml:space="preserve">
+  <data name="CourseCreditKey" xml:space="preserve">
     <value>Course Credit</value>
   </data>
-	<data name="MinusAbsentKey" xml:space="preserve">
+  <data name="MinusAbsentKey" xml:space="preserve">
     <value>Minus Absent</value>
   </data>
-	<data name="MinusAttendedKey" xml:space="preserve">
+  <data name="MinusAttendedKey" xml:space="preserve">
     <value>Minus Attended</value>
   </data>
-	<data name="NumericGradeObtainedKey" xml:space="preserve">
+  <data name="NumericGradeObtainedKey" xml:space="preserve">
     <value>Numeric Grade Obtained</value>
   </data>
-	<data name="TotalGradeAttemptedKey" xml:space="preserve">
+  <data name="TotalGradeAttemptedKey" xml:space="preserve">
     <value>Total Grade Attempted</value>
   </data>
-	<data name="TotalCreditsEarnedKey" xml:space="preserve">
+  <data name="TotalCreditsEarnedKey" xml:space="preserve">
     <value>Total Credits Earned</value>
   </data>
-	<data name="TotalHoursAttemptedKey" xml:space="preserve">
+  <data name="TotalHoursAttemptedKey" xml:space="preserve">
     <value>Total Hours Attempted</value>
   </data>
-	<data name="TotalHoursEarnedKey" xml:space="preserve">
+  <data name="TotalHoursEarnedKey" xml:space="preserve">
     <value>Total Hours Earned</value>
   </data>
-	<data name="GradeLetterCodeObtainedKey" xml:space="preserve">
+  <data name="GradeLetterCodeObtainedKey" xml:space="preserve">
     <value>Grade Letter Code</value>
   </data>
-	<data name="GradeNoteKey" xml:space="preserve">
+  <data name="GradeNoteKey" xml:space="preserve">
     <value>Grade Note</value>
   </data>
-	<data name="CourseCompletedDateKey" xml:space="preserve">
+  <data name="CourseCompletedDateKey" xml:space="preserve">
     <value>Course Completed Date</value>
   </data>
-	<data name="CourseDropDateKey" xml:space="preserve">
+  <data name="CourseDropDateKey" xml:space="preserve">
     <value>Course Drop Date</value>
   </data>
-	<data name="CourseLastAttendedDateKey" xml:space="preserve">
+  <data name="CourseLastAttendedDateKey" xml:space="preserve">
     <value>Course Last Attended Date</value>
   </data>
-	<data name="CourseRegisteredDateKey" xml:space="preserve">
+  <data name="CourseRegisteredDateKey" xml:space="preserve">
     <value>Course Registered Date</value>
   </data>
-	<data name="CourseStartDateKey" xml:space="preserve">
+  <data name="CourseStartDateKey" xml:space="preserve">
     <value>Course Start Date</value>
   </data>
-	<data name="ExpectedCourseEndDateKey" xml:space="preserve">
+  <data name="ExpectedCourseEndDateKey" xml:space="preserve">
     <value>Expected Course End Date</value>
   </data>
-	<data name="GradePostedDateKey" xml:space="preserve">
+  <data name="GradePostedDateKey" xml:space="preserve">
     <value>Grade Posted Date</value>
   </data>
-	<data name="CourseCompletedStatusIndKey" xml:space="preserve">
+  <data name="CourseCompletedStatusIndKey" xml:space="preserve">
     <value>Course Completed Status</value>
   </data>
-	<data name="CourseCurrentStatusIndKey" xml:space="preserve">
+  <data name="CourseCurrentStatusIndKey" xml:space="preserve">
     <value>Course Current Status</value>
   </data>
-	<data name="CourseDroppedStatusIndKey" xml:space="preserve">
+  <data name="CourseDroppedStatusIndKey" xml:space="preserve">
     <value>Course Dropped Status</value>
   </data>
-	<data name="CourseFutureStatusIndKey" xml:space="preserve">
+  <data name="CourseFutureStatusIndKey" xml:space="preserve">
     <value>Course Future Status</value>
   </data>
-	<data name="CourseLeaveOfAbsenceStatusIndKey" xml:space="preserve">
+  <data name="CourseLeaveOfAbsenceStatusIndKey" xml:space="preserve">
     <value>Course Leave Of Absence Status</value>
   </data>
-	<data name="CourseScheduledStatusIndKey" xml:space="preserve">
+  <data name="CourseScheduledStatusIndKey" xml:space="preserve">
     <value>Course Scheduled Status</value>
   </data>
-	<data name="CourseRetakeIndKey" xml:space="preserve">
+  <data name="CourseRetakeIndKey" xml:space="preserve">
     <value>Course Retake</value>
   </data>
-	<data name="StudentKey" xml:space="preserve">
-    <value>Student</value>
-  </data>
-	<data name="CourseTypeKey" xml:space="preserve">
+  <data name="CourseTypeKey" xml:space="preserve">
     <value>Course Type</value>
   </data>
-	<data name="ShowStudentCourseKey" xml:space="preserve">
+  <data name="ShowStudentCourseKey" xml:space="preserve">
     <value>Student Course</value>
   </data>
-	<data name="CourseMandatoryKey" xml:space="preserve">
+  <data name="CourseMandatoryKey" xml:space="preserve">
     <value>Course is mandatory</value>
   </data>
-	<data name="StudentMandatoryKey" xml:space="preserve">
+  <data name="StudentMandatoryKey" xml:space="preserve">
     <value>Student is mandatory</value>
   </data>
-	<data name="StaffMandatoryKey" xml:space="preserve">
+  <data name="StaffMandatoryKey" xml:space="preserve">
     <value>Staff is mandatory</value>
   </data>
-	<data name="StudentCourseUpdateSuccessKey" xml:space="preserve">
+  <data name="StudentCourseUpdateSuccessKey" xml:space="preserve">
     <value>Student Course saved successfully</value>
   </data>
-	<data name="FailedToStudenCoursetKey" xml:space="preserve">
+  <data name="FailedToStudenCoursetKey" xml:space="preserve">
     <value>Failed to create Student Course</value>
   </data>
-	<data name="StudentCourseDeleteMsgKey" xml:space="preserve">
+  <data name="StudentCourseDeleteMsgKey" xml:space="preserve">
     <value>Student Course Delete successfully</value>
   </data>
-	<data name="StudentCourseFailedDeleteKey" xml:space="preserve">
+  <data name="StudentCourseFailedDeleteKey" xml:space="preserve">
     <value>Failed to delete Student Course</value>
+  </data>
+  <data name="EmailTemplateKey" xml:space="preserve">
+    <value>Email Template</value>
   </data>
 </root>

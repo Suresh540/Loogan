@@ -1,0 +1,66 @@
+﻿@page "/Admin/EmailTemplate"
+@using Loogan.Web.UI.Components
+@using Loogan.Web.UI.Pages.Shared
+@using Loogan.Web.UI.Resources.Pages
+@using Loogan.Web.UI.Utilities
+@using Microsoft.Extensions.Localization
+@model Loogan.Web.UI.Pages.Admin.EmailTemplatesModel
+@inject IStringLocalizer<ContentLabel> Localizer
+@attribute [LooganAdminAuthorizeAttribute("Admin")]
+
+<component type="typeof(Upper_Component)" render-mode="Static" />
+<div id="site-wrap" class="off-canvas-wrap">
+    <div class="inner-wrap">
+        <div class="row">
+            <div class="col-2 bb-login pointscroll leftmenu">
+                <component type="typeof(LeftSideBar_Component)" render-mode="Server" />
+            </div>
+            <div class="col-10">
+                <div class="base-profile pointscroll righcontent scrollrightend">
+                    <div style="height:5vh">
+                        &nbsp;
+                    </div>
+                    <div class="row">
+                        <div class="col-12 left-align">
+                            <h2 class="coursetitle">@Localizer["EmailTemplateKey"]</h2>
+                            <hr />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-11">
+                            <div style="text-align:right">
+                                <button type="button" class="btn btn-light border rounded-pill shadow-sm mb-1" onclick="course.clearCourseData()"
+                                        style="background:lightgreen;color:black">
+                                    <b>@Localizer["ClearKey"]</b>
+                                </button>
+                                <button id="btnSaveCourse" type="button" class="btn btn-light border rounded-pill shadow-sm mb-1" onclick="course.createCourse('btnSaveCourse')"
+                                        style="background:blue;color:white">
+                                    <b>@Localizer["SaveKey"]</b>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-1">
+                            &nbsp;
+                        </div>
+                        <div class="col-10 align-content-center align-items-center">
+                            <textarea id="input" name="input"></textarea>
+                        </div>
+                    </div>
+                    <div style="height:5vh">
+                        &nbsp;
+                    </div>
+                    <component type="typeof(Lower_Component)" render-mode="Static" /><br />
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<link href="~/css/jquery.cleditor.css" rel="stylesheet" />
+<script src="~/js/jquery.cleditor.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $("#input").cleditor();
+    });
+</script>
