@@ -1,0 +1,79 @@
+﻿@page "/Calendar/Calendar"
+@using Loogan.API.Models.Models
+@using Loogan.Web.UI.Components
+@using Loogan.Web.UI.Models
+@using Loogan.Web.UI.Pages.Shared
+@using Loogan.Web.UI.Resources.Pages
+@using Microsoft.Extensions.Localization
+@model Loogan.Web.UI.Pages.Calendar.IndexModel
+@inject IStringLocalizer<ContentLabel> _localizer
+@attribute [Loogan.Web.UI.Utilities.LooganStudentAuthorize("Student,Teacher")]
+
+<style>
+
+    body {
+        margin: 40px 10px;
+        padding: 0;
+        font-family: Arial, Helvetica Neue, Helvetica, sans-serif;
+        font-size: 14px;
+    }
+
+    #calendar {
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+</style>
+<component type="typeof(Upper_Component)" render-mode="Static" />
+<div id="site-wrap" class="off-canvas-wrap">
+    <div class="inner-wrap">
+        <div class="row">
+            <div class="col-2 bb-login pointscroll leftmenu">
+                <component type="typeof(LeftSideBar_Component)" render-mode="Server" />
+            </div>
+            <div class="col-10">
+                <div class="base-profile pointscroll righcontent scrollrightend">
+                    <div id='calendar'></div>
+                    <component type="typeof(Lower_Component)" render-mode="Static" /><br />
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="~/js/index.global.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var calendarEl = document.getElementById('calendar');
+        var schedules = @Html.Raw(Json.Serialize(Model.CourseCalendars));
+        var events = [];
+        let iDate = new Date();
+        if (schedules != null && schedules.length > 0) {
+            iDate = new Date(schedules[0].courseStartDate);
+            for (var item of schedules) {
+                let sDate = new Date(item.courseStartDate);
+                let eDate = new Date(item.courseCompletedDate);
+                events.push({
+                    title: item.courseName,
+                    start: sDate,
+                    end: eDate
+                });
+            }
+        }
+        var calendar = new FullCalendar.Calendar(calendarEl, {
+            headerToolbar: {
+                left: 'prev,next today',
+                center: 'title',
+                right: 'dayGridYear,dayGridMonth,timeGridWeek'
+            },
+            initialView: 'dayGridYear',
+            initialDate: iDate,
+            editable: true,
+            selectable: true,
+            dayMaxEvents: true, // allow "more" link when too many events
+            // businessHours: true,
+            // weekends: false,
+            events: events
+        });
+        calendar.render();
+    });
+</script>
