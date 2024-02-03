@@ -13,21 +13,21 @@ public partial class User
 
     public string? PreFix { get; set; }
 
-    public string? FirstName { get; set; }
+    public string FirstName { get; set; } = null!;
 
-    public string? LastName { get; set; }
+    public string LastName { get; set; } = null!;
 
     public string? Suffix { get; set; }
 
     public string? AdditionalName { get; set; }
 
-    public string? PhoneNumber { get; set; }
+    public string PhoneNumber { get; set; } = null!;
 
-    public string? EmailAddress { get; set; }
+    public string EmailAddress { get; set; } = null!;
 
     public int? GenderId { get; set; }
 
-    public string? Password { get; set; }
+    public string Password { get; set; } = null!;
 
     public string? EducationLevel { get; set; }
 
@@ -63,7 +63,7 @@ public partial class User
 
     public DateTime? ModifyDate { get; set; }
 
-    public string? UserName { get; set; }
+    public string UserName { get; set; } = null!;
 
     public int? LanguageId { get; set; }
 
@@ -74,6 +74,4 @@ public partial class User
     public virtual MasterLookUp? Language { get; set; }
 
     public virtual ICollection<Staff> Staff { get; set; } = new List<Staff>();
-
-    public virtual ICollection<Student> Students { get; set; } = new List<Student>();
 }

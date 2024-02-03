@@ -89,13 +89,13 @@ public partial class Student
 
     public virtual Campus? Campus { get; set; }
 
-    public virtual StatusLookUp? CitizenShipStatus { get; set; }
+    public virtual MasterLookUp? CitizenShipStatus { get; set; }
 
     public virtual Country? Country { get; set; }
 
     public virtual CourseRelatedLookUp? EducationalLevel { get; set; }
 
-    public virtual CourseRelatedLookUp? EthnicGroup { get; set; }
+    public virtual MasterLookUp? EthnicGroup { get; set; }
 
     public virtual ICollection<PreviousEducation> PreviousEducations { get; set; } = new List<PreviousEducation>();
 
@@ -111,13 +111,11 @@ public partial class Student
 
     public virtual School? School { get; set; }
 
-    public virtual State Student1 { get; set; } = null!;
+    public virtual State? State { get; set; }
 
     public virtual ICollection<StudentCourseMapping> StudentCourseMappings { get; set; } = new List<StudentCourseMapping>();
 
     public virtual MasterLookUp StudentNavigation { get; set; } = null!;
 
     public virtual ICollection<TestScore> TestScores { get; set; } = new List<TestScore>();
-
-    public virtual User? User { get; set; }
 }

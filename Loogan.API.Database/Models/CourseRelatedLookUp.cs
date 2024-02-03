@@ -61,8 +61,6 @@ public partial class CourseRelatedLookUp
 
     public virtual ICollection<Student> StudentEducationalLevels { get; set; } = new List<Student>();
 
-    public virtual ICollection<Student> StudentEthnicGroups { get; set; } = new List<Student>();
-
     public virtual ICollection<Student> StudentProgramGroups { get; set; } = new List<Student>();
 
     public virtual ICollection<Student> StudentProspectCategories { get; set; } = new List<Student>();

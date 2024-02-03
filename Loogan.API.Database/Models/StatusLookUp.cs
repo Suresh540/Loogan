@@ -22,6 +22,4 @@ public partial class StatusLookUp
     public virtual School? School { get; set; }
 
     public virtual ICollection<StudentCourseMapping> StudentCourseMappings { get; set; } = new List<StudentCourseMapping>();
-
-    public virtual ICollection<Student> Students { get; set; } = new List<Student>();
 }

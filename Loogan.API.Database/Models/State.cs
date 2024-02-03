@@ -23,5 +23,5 @@ public partial class State
 
     public virtual Country StateNavigation { get; set; } = null!;
 
-    public virtual Student? Student { get; set; }
+    public virtual ICollection<Student> Students { get; set; } = new List<Student>();
 }

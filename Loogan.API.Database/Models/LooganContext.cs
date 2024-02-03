@@ -11,7 +11,6 @@ public partial class LooganContext : DbContext
     {
         _connectionString = connectionString;
     }
-
     public virtual DbSet<AreaOfStudy> AreaOfStudies { get; set; }
 
     public virtual DbSet<AreaOfStudyCourseMapping> AreaOfStudyCourseMappings { get; set; }
@@ -36,11 +35,15 @@ public partial class LooganContext : DbContext
 
     public virtual DbSet<CourseRelatedLookUp> CourseRelatedLookUps { get; set; }
 
+    public virtual DbSet<EmailTemplate> EmailTemplates { get; set; }
+
     public virtual DbSet<Enrollment> Enrollments { get; set; }
 
     public virtual DbSet<EnrollmentAreasOfStudyMapping> EnrollmentAreasOfStudyMappings { get; set; }
 
     public virtual DbSet<Language> Languages { get; set; }
+
+    public virtual DbSet<MasterEmailTemplate> MasterEmailTemplates { get; set; }
 
     public virtual DbSet<MasterLookUp> MasterLookUps { get; set; }
 
@@ -85,7 +88,7 @@ public partial class LooganContext : DbContext
     public virtual DbSet<UserType> UserTypes { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-         => optionsBuilder.UseSqlServer(_connectionString);
+       => optionsBuilder.UseSqlServer(_connectionString);
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -353,13 +356,13 @@ public partial class LooganContext : DbContext
         modelBuilder.Entity<Course>(entity =>
         {
             entity.Property(e => e.CourseCode)
-                .HasMaxLength(200)
+                .HasMaxLength(100)
                 .IsUnicode(false);
             entity.Property(e => e.CourseDesc)
                 .HasMaxLength(500)
                 .IsUnicode(false);
             entity.Property(e => e.CourseName)
-                .HasMaxLength(200)
+                .HasMaxLength(100)
                 .IsUnicode(false);
             entity.Property(e => e.CreatedDate).HasColumnType("datetime");
             entity.Property(e => e.ModifyDate).HasColumnType("datetime");
@@ -392,6 +395,18 @@ public partial class LooganContext : DbContext
                 .HasMaxLength(200)
                 .IsUnicode(false);
             entity.Property(e => e.Description)
+                .HasMaxLength(500)
+                .IsUnicode(false);
+        });
+
+        modelBuilder.Entity<EmailTemplate>(entity =>
+        {
+            entity.ToTable("Email_Templates");
+
+            entity.Property(e => e.Body).IsUnicode(false);
+            entity.Property(e => e.CreatedDate).HasColumnType("datetime");
+            entity.Property(e => e.ModifyDate).HasColumnType("datetime");
+            entity.Property(e => e.Subject)
                 .HasMaxLength(500)
                 .IsUnicode(false);
         });
@@ -441,6 +456,15 @@ public partial class LooganContext : DbContext
             entity.ToTable("Language");
 
             entity.Property(e => e.LanguageName)
+                .HasMaxLength(100)
+                .IsUnicode(false);
+        });
+
+        modelBuilder.Entity<MasterEmailTemplate>(entity =>
+        {
+            entity.ToTable("Master_EmailTemplate");
+
+            entity.Property(e => e.Name)
                 .HasMaxLength(100)
                 .IsUnicode(false);
         });
@@ -724,10 +748,10 @@ public partial class LooganContext : DbContext
                 .IsUnicode(false);
             entity.Property(e => e.CreatedDate).HasColumnType("datetime");
             entity.Property(e => e.FirstName)
-                .HasMaxLength(100)
+                .HasMaxLength(200)
                 .IsUnicode(false);
             entity.Property(e => e.LastName)
-                .HasMaxLength(100)
+                .HasMaxLength(200)
                 .IsUnicode(false);
             entity.Property(e => e.ModifyDate).HasColumnType("datetime");
             entity.Property(e => e.StaffName)
@@ -736,7 +760,7 @@ public partial class LooganContext : DbContext
 
             entity.HasOne(d => d.User).WithMany(p => p.Staff)
                 .HasForeignKey(d => d.UserId)
-                .HasConstraintName("FK_Staff_User_UserId");
+                .HasConstraintName("FK__Staff__UserId__540C7B00");
         });
 
         modelBuilder.Entity<State>(entity =>
@@ -823,7 +847,7 @@ public partial class LooganContext : DbContext
 
             entity.HasOne(d => d.Campus).WithMany(p => p.Students).HasForeignKey(d => d.CampusId);
 
-            entity.HasOne(d => d.CitizenShipStatus).WithMany(p => p.Students)
+            entity.HasOne(d => d.CitizenShipStatus).WithMany(p => p.StudentCitizenShipStatuses)
                 .HasForeignKey(d => d.CitizenShipStatusId)
                 .HasConstraintName("FK_Student_StatusLookup_CitizenShipStatId");
 
@@ -857,19 +881,12 @@ public partial class LooganContext : DbContext
 
             entity.HasOne(d => d.School).WithMany(p => p.Students).HasForeignKey(d => d.SchoolId);
 
-            entity.HasOne(d => d.StudentNavigation).WithOne(p => p.Student)
+            entity.HasOne(d => d.State).WithMany(p => p.Students).HasForeignKey(d => d.StateId);
+
+            entity.HasOne(d => d.StudentNavigation).WithOne(p => p.StudentStudentNavigation)
                 .HasForeignKey<Student>(d => d.StudentId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK_Student_MasterLookup_GenderId");
-
-            entity.HasOne(d => d.Student1).WithOne(p => p.Student)
-                .HasForeignKey<Student>(d => d.StudentId)
-                .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK_Student_State_StateId");
-
-            entity.HasOne(d => d.User).WithMany(p => p.Students)
-                .HasForeignKey(d => d.UserId)
-                .HasConstraintName("FK__Student__UserId__297722B6");
         });
 
         modelBuilder.Entity<StudentCourseMapping>(entity =>
@@ -995,6 +1012,8 @@ public partial class LooganContext : DbContext
 
         modelBuilder.Entity<User>(entity =>
         {
+            entity.HasIndex(e => e.EmailAddress, "unique_EmailAddress").IsUnique();
+
             entity.Property(e => e.AdditionalName)
                 .HasMaxLength(200)
                 .IsUnicode(false);
@@ -1041,7 +1060,7 @@ public partial class LooganContext : DbContext
                 .IsUnicode(false);
             entity.Property(e => e.ModifyDate).HasColumnType("datetime");
             entity.Property(e => e.Password)
-                .HasMaxLength(50)
+                .HasMaxLength(100)
                 .IsUnicode(false);
             entity.Property(e => e.PhoneNumber)
                 .HasMaxLength(100)
@@ -1062,7 +1081,7 @@ public partial class LooganContext : DbContext
                 .HasMaxLength(50)
                 .IsUnicode(false);
             entity.Property(e => e.UserName)
-                .HasMaxLength(50)
+                .HasMaxLength(100)
                 .IsUnicode(false);
             entity.Property(e => e.WebSite)
                 .HasMaxLength(100)

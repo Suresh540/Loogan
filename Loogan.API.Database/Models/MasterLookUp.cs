@@ -17,7 +17,11 @@ public partial class MasterLookUp
 
     public bool IsDeleted { get; set; }
 
-    public virtual Student? Student { get; set; }
+    public virtual ICollection<Student> StudentCitizenShipStatuses { get; set; } = new List<Student>();
+
+    public virtual ICollection<Student> StudentEthnicGroups { get; set; } = new List<Student>();
+
+    public virtual Student? StudentStudentNavigation { get; set; }
 
     public virtual ICollection<User> UserGenders { get; set; } = new List<User>();
 
