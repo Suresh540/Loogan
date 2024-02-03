@@ -4,7 +4,7 @@
 @using Loogan.Web.UI.Resources.Pages
 @using Loogan.Web.UI.Utilities
 @using Microsoft.Extensions.Localization
-@model Loogan.Web.UI.Pages.Admin.EmailTemplatesModel
+@model Loogan.API.Models.Models.EmailTemplatesModel
 @inject IStringLocalizer<ContentLabel> Localizer
 @attribute [LooganAdminAuthorizeAttribute("Admin")]
 
@@ -29,11 +29,11 @@
                     <div class="row">
                         <div class="col-11">
                             <div style="text-align:right">
-                                <button type="button" class="btn btn-light border rounded-pill shadow-sm mb-1" onclick="course.clearCourseData()"
+                                <button type="button" class="btn btn-light border rounded-pill shadow-sm mb-1" onclick="emailtemplates.clearEmailTemplateData()"
                                         style="background:lightgreen;color:black">
                                     <b>@Localizer["ClearKey"]</b>
                                 </button>
-                                <button id="btnSaveCourse" type="button" class="btn btn-light border rounded-pill shadow-sm mb-1" onclick="course.createCourse('btnSaveCourse')"
+                                <button id="btnSaveEmailTemplate" type="button" class="btn btn-light border rounded-pill shadow-sm mb-1" onclick="emailtemplates.createEmailTemplate('btnSaveEmailTemplate')"
                                         style="background:blue;color:white">
                                     <b>@Localizer["SaveKey"]</b>
                                 </button>
@@ -42,10 +42,28 @@
                     </div>
                     <div class="row">
                         <div class="col-1">
-                            &nbsp;
+                            @Localizer["EmailTemplate"] <b class="text-danger">*</b>
                         </div>
-                        <div class="col-10 align-content-center align-items-center">
-                            <textarea id="input" name="input"></textarea>
+                        <div class="col-3 align-content-center align-items-center">
+                            <input type="hidden" id="hdnemailTemplateId" name="hdnemailTemplateId" value="0" />
+                            <select id="ddlEmailTemplate">
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-1">
+                            @Localizer["EmailSubject"] <b class="text-danger">*</b>
+                        </div>
+                        <div class="col-8 align-content-center align-items-center">
+                            <input id="txtemailsubject" type="text"/>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-1">
+                            @Localizer["EmailBody"] <b class="text-danger">*</b>
+                        </div>
+                        <div class="col-8 align-content-center align-items-center">
+                            <textarea id="txtemailBody" name="input"></textarea>
                         </div>
                     </div>
                     <div style="height:5vh">
@@ -61,6 +79,10 @@
 <script src="~/js/jquery.cleditor.min.js"></script>
 <script>
     $(document).ready(function () {
-        $("#input").cleditor();
+        $("#txtemailBody").cleditor();
     });
+    function emailTemplateLoad() {
+        emailtemplates.ddlMasterEmailTemplates();
+    }
+    setTimeout(emailTemplateLoad(), 700);
 </script>
