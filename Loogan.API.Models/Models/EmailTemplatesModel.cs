@@ -12,6 +12,8 @@ namespace Loogan.API.Models.Models
 
         public int MasterEmailTemplateId { get; set; }
 
+        public string EmailTemplateName { get; set; }   
+
         public string Subject { get; set; } = null!;
 
         public string? Body { get; set; }
@@ -25,5 +27,7 @@ namespace Loogan.API.Models.Models
         public int? ModifyBy { get; set; }
 
         public DateTime? ModifyDate { get; set; }
+
+        public int TotalRecords { get; set; }
     }
 }

@@ -23,6 +23,8 @@ namespace Loogan.API.BusinessService.Interfaces
 
         public Task<int?> UpdateEmailTemplates(EmailTemplatesModel emailObj);
 
+        public Task<List<EmailTemplatesModel>?> GetAllEmailTemplates();
+
         public Task<int?> DeleteEmailTemplates(int emailTemplateId);
     }
 }

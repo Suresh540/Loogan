@@ -8,6 +8,11 @@
 @inject IStringLocalizer<ContentLabel> Localizer
 @attribute [LooganAdminAuthorizeAttribute("Admin")]
 
+@{
+    var showEmailTemplates = "showEmailTemplates";
+    var getTotalRecords = "getTotalRecords";
+}
+
 <component type="typeof(Upper_Component)" render-mode="Static" />
 <div id="site-wrap" class="off-canvas-wrap">
     <div class="inner-wrap">
@@ -22,13 +27,16 @@
                     </div>
                     <div class="row">
                         <div class="col-12 left-align">
-                            <h2 class="coursetitle">@Localizer["EmailTemplateKey"]</h2>
+                            <h2 class="EmailTemplatetitle">@Localizer["EmailTemplateKey"]</h2>
                             <hr />
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-11">
                             <div style="text-align:right">
+                                <button onclick="emailtemplates.showEmailTemplates()" type="button" style="background:gray;color:black" class="btn btn-light border rounded-pill shadow-sm mb-1" data-toggle="modal" data-target="#bottom_modal">
+                                    <b>@Localizer["ShowEmailTemplatesKey"]</b>
+                                </button>
                                 <button type="button" class="btn btn-light border rounded-pill shadow-sm mb-1" onclick="emailtemplates.clearEmailTemplateData()"
                                         style="background:lightgreen;color:black">
                                     <b>@Localizer["ClearKey"]</b>
@@ -71,6 +79,46 @@
                     </div>
                     <component type="typeof(Lower_Component)" render-mode="Static" /><br />
                 </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal modal-full fade" id="bottom_modal" tabindex="-1" role="dialog" aria-labelledby="fullscreen_modal">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">@Localizer["EmailTemplateListKey"]</h2>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <table class="table">
+                    <thead id="tdHeader">
+                        <tr>
+                            <td>
+                                &nbsp;
+                            </td>
+
+                            <td>
+                                @Localizer["EmailTemplateKey"]
+                            </td>
+                            <td>
+                                @Localizer["EmailSubjectKey"]
+                            </td>
+                        </tr>
+                    </thead>
+                    <tbody id="tdBody">
+                    </tbody>
+                </table>
+                <component type="typeof(Paging_Component)" render-mode="ServerPrerendered"
+                           param-TotalRecords="10" param-NavigateURL="showEmailTemplates" param-TotalRecordsURL="getTotalRecords" />
+            </div>
+            <div class="modal-footer modal-footer-fixed d-none">
+                <button id="btnCreateClose" type="button" class="btn btn-secondary" data-dismiss="modal">
+                    @Localizer["CloseKey"]
+                </button>
+                <button type="button" class="btn btn-primary">@Localizer["SaveChangesKey"]</button>
             </div>
         </div>
     </div>

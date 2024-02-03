@@ -71,11 +71,77 @@
         })
     }
 
+    public.showEmailTemplates = function (pageIndex, pageSize) {
+        setTimeout(() => {
+            var model = {};
+            model.pagesize = pageSize == undefined ? 10 : pageSize;
+            model.pageIndex = pageIndex == undefined ? 1 : pageIndex;
+            model.totalRecords = getTotalRecords();
+            $.ajax({
+                method: 'Post',
+                url: "/Common/GetAllEmailTemplates",
+                data: { pageModel: model },
+                success: function (data) {
+                    $('#tdBody').empty();
+
+                    if (data != null && data != undefined && data.length > 0) {
+                        setTotalRecords(data[0].totalRecords);
+
+                        for (var item of data) {
+                            let index = item.emailTemplateId
+                            $('#tdBody').append(`<tr>
+                        <td class="text-danger anchornounderline" title="Delete email template" onclick="emailtemplates.deleteEmailTemplate('${index}')">X</td>
+                        <td><a id="emailtemplatename${index}" href="#" data-toggle="modal" data-target="#top_modal" onclick="return emailtemplates.emailTemplatesEdit(${index})" style="cursor:pointer">${item.emailTemplateName}</a></td>
+                        <td id="emailtemplatesubject${index}">${item.subject == null ? "" : item.subject}</td>
+                        <td style="display:none" id="emailtemplatebody${index}">${item.body == null ? "" : item.body}</td>
+                        <td style="display:none" id="emailtemplatemasterid${index}">${item.masterEmailTemplateId == null ? "" : item.masterEmailTemplateId}</td>
+                    </tr>`)
+                            index++;
+                        }
+                    }
+                },
+                error: function (e) {
+                    console.log(e);
+                }
+            })
+
+        }, 1000)
+    }
+
+    public.emailTemplatesEdit = function (index) {
+        $('#hdnemailTemplateId').val(index);
+        $('#ddlEmailTemplate').val($('#emailtemplatemasterid' + index).html());
+        $('#txtemailsubject').val($('#emailtemplatesubject' + index).html());
+        $('#txtemailBody').val($('#emailtemplatebody' + index).html());
+        $('#btnCreateClose').trigger('click');
+
+        return false;
+    }
+
     public.clearEmailTemplateData = function () {
         $('#hdnemailTemplateId').val(0);
         $('#ddlEmailTemplate').val(0);
         $('#txtemailsubject').val('');
         $('#txtemailBody').val('');
+    }
+
+    public.deleteEmailTemplate = function (id) {
+        if (confirm('Are you sure, you want delete EmailTemplate')) {
+            $.ajax({
+                method: 'Post',
+                url: "/Common/DeleteEmailTemplates",
+                data: { emailTemplateId: id },
+                success: function (e) {
+                    Alert(localizationLib.getLocalizeData("StudentCourseDeleteMsgKey"), 'Success');
+                    course.showEmailTemplates();
+                },
+                error: function (e) {
+                    var msg = JSON.parse(e.responseText);
+                    Alert(msg.detail, 'error');
+                    Alert(localizationLib.getLocalizeData("StudentCourseFailedDeleteKey"), 'error');
+                }
+            })
+        }
     }
 
     return public;

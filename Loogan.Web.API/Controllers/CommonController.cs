@@ -72,6 +72,19 @@ namespace Loogan.Web.API.Controllers
         }
 
         [HttpPost]
+        [Route("GetAllEmailTemplates")]
+        [Produces("application/json")]
+        [Consumes("application/json")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public async Task<IActionResult> GetAllEmailTemplates()
+        {
+            var emailTemplateList = await _commonService.GetAllEmailTemplates();
+            return Ok(emailTemplateList);
+        }
+
+        [HttpPost]
         [Route("CreateEmailTemplates")]
         [Produces("application/json")]
         [Consumes("application/json")]

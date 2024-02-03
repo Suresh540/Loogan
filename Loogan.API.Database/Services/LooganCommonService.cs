@@ -1,6 +1,7 @@
 ﻿using Loogan.API.Database.Interfaces;
 using Loogan.API.Database.Models;
 using Loogan.API.Models.Models;
+using Loogan.API.Models.Models.Admin;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using System;
@@ -123,6 +124,20 @@ namespace Loogan.API.Database.Services
                 }
             }
             return list;
+        }
+
+        public async Task<List<EmailTemplatesModel>?> GetAllEmailTemplates()
+        {
+            List<EmailTemplatesModel>? emailTemplateList = new List<EmailTemplatesModel>();
+            using (var context = new LooganContext(_connectionString))
+            {
+                var query = context.Database.SqlQuery<EmailTemplatesModel>($"Get_AllEmailTemplates").AsNoTracking().AsAsyncEnumerable();
+                await foreach (var item in query)
+                {
+                    emailTemplateList.Add(item);
+                }
+            }
+            return emailTemplateList;
         }
 
         public async Task<int?> CreateEmailTemplates(EmailTemplate emailObj)

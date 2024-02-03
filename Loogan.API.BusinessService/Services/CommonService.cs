@@ -2,7 +2,9 @@
 using Loogan.API.BusinessService.Interfaces;
 using Loogan.API.Database.Interfaces;
 using Loogan.API.Database.Models;
+using Loogan.API.Database.Services;
 using Loogan.API.Models.Models;
+using Loogan.API.Models.Models.Admin;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -43,6 +45,12 @@ namespace Loogan.API.BusinessService.Services
         {
             var stateList = await _LooganCommon.GetStatesByCountryId(languageId,countryId);
             return stateList;
+        }
+
+        public async Task<List<EmailTemplatesModel>?> GetAllEmailTemplates()
+        {
+            var emaiTemplateList = await _LooganCommon.GetAllEmailTemplates();
+            return emaiTemplateList;
         }
 
         public async Task<List<DropDownListModel>?> GetMasterEmailTemplates(int languageId)
