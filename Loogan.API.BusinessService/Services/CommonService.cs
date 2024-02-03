@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Loogan.API.BusinessService.Interfaces;
 using Loogan.API.Database.Interfaces;
+using Loogan.API.Database.Models;
 using Loogan.API.Models.Models;
 using System;
 using System.Collections.Generic;
@@ -13,10 +14,12 @@ namespace Loogan.API.BusinessService.Services
     public class CommonService : ICommonService
     {
         private readonly ILooganCommon _LooganCommon;
+        private readonly IMapper _mapper;
 
-        public CommonService(ILooganCommon LooganCommon)
+        public CommonService(ILooganCommon LooganCommon, IMapper mapper)
         {
             _LooganCommon = LooganCommon;
+            _mapper = mapper;
         }
         public async Task<List<DropDownListModel>?> GetMaserLookUpValues(string lookUpType,int languageId)
         {
@@ -40,6 +43,32 @@ namespace Loogan.API.BusinessService.Services
         {
             var stateList = await _LooganCommon.GetStatesByCountryId(languageId,countryId);
             return stateList;
+        }
+
+        public async Task<List<DropDownListModel>?> GetMasterEmailTemplates(int languageId)
+        {
+            var masterEmailTemplatesList = await _LooganCommon.GetMasterEmailTemplates(languageId);
+            return masterEmailTemplatesList;
+        }
+
+        public async Task<int?> CreateEmailTemplates(EmailTemplatesModel emailObj)
+        {
+            var emailTemplateObj = _mapper.Map<EmailTemplate>(emailObj);
+            var result = await _LooganCommon.CreateEmailTemplates(emailTemplateObj);
+            return result;
+        }
+
+        public async Task<int?> UpdateEmailTemplates(EmailTemplatesModel emailObj)
+        {
+            var emailTemplateObj = _mapper.Map<EmailTemplate>(emailObj);
+            var result = await _LooganCommon.UpdateEmailTemplates(emailTemplateObj);
+            return result;
+        }
+
+        public async Task<int?> DeleteEmailTemplates(int emailTemplateId)
+        {
+            var result = await _LooganCommon.DeleteEmailTemplates(emailTemplateId);
+            return result;
         }
     }
 }

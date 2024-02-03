@@ -106,5 +106,79 @@ namespace Loogan.API.Database.Services
             }
             return list;
         }
+
+        public async Task<List<DropDownListModel>?> GetMasterEmailTemplates(int languageId)
+        {
+            var list = new List<DropDownListModel>();
+            using (var context = new LooganContext(_connectionString))
+            {
+                var country = context.MasterEmailTemplates.Where(x => x.IsDeleted == false).ToList();
+                if (country.Any())
+                {
+                    foreach (var item in country)
+                    {
+                        list.Add(new DropDownListModel() { Id = item.MasterEmailTemplateId, Name = item.Name });
+                    }
+
+                }
+            }
+            return list;
+        }
+
+        public async Task<int?> CreateEmailTemplates(EmailTemplate emailObj)
+        {
+            var isCreated = 0;
+
+            if (emailObj != null)
+            {
+                using (var context = new LooganContext(_connectionString))
+                {
+                    context.EmailTemplates.Add(emailObj);
+                    isCreated = await context.SaveChangesAsync();
+                }
+            }
+
+            return isCreated;
+        }
+
+        public async Task<int?> UpdateEmailTemplates(EmailTemplate emailObj)
+        {
+            var isUpdated = 0;
+
+            if (emailObj != null)
+            {
+                using (var context = new LooganContext(_connectionString))
+                {
+                    context.EmailTemplates.Update(emailObj);
+                    isUpdated = await context.SaveChangesAsync();
+                }
+            }
+
+            return isUpdated;
+        }
+
+        public async Task<int?> DeleteEmailTemplates(int emailTemplateId)
+        {
+            var isDeleted = 0;
+
+            if (emailTemplateId != 0)
+            {
+                using (var context = new LooganContext(_connectionString))
+                {
+                    var emailTemplate = context.EmailTemplates.FirstOrDefault(x => x.EmailTemplateId == emailTemplateId);
+
+                    if (emailTemplate != null)
+                    {
+                        emailTemplate.IsDeleted = true;
+                        context.EmailTemplates.Update(emailTemplate);
+                        isDeleted = await context.SaveChangesAsync();
+                    }
+
+                }
+            }
+
+            return isDeleted;
+        }
+
     }
 }

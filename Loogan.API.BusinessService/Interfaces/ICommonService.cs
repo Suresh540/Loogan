@@ -16,5 +16,13 @@ namespace Loogan.API.BusinessService.Interfaces
         public Task<List<DropDownListModel>?> GetCountryList(int languageId);
 
         public Task<List<DropDownListModel>?> GetStatesByCountryId(int languageId,int countryId);
+
+        public Task<List<DropDownListModel>?> GetMasterEmailTemplates(int languageId);
+
+        public Task<int?> CreateEmailTemplates(EmailTemplatesModel emailObj);
+
+        public Task<int?> UpdateEmailTemplates(EmailTemplatesModel emailObj);
+
+        public Task<int?> DeleteEmailTemplates(int emailTemplateId);
     }
 }
