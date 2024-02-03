@@ -156,6 +156,17 @@ public class InitializeMapper : Profile
             .ForMember(dest => dest.ModifyBy, opt => opt.MapFrom(src => src.ModifyBy))
             .ForMember(dest => dest.ModifyDate, opt => opt.MapFrom(src => src.ModifyDate))
             .ReverseMap();
+
+
+        var emailTemplateMap = CreateMap<EmailTemplate, EmailTemplatesModel>();
+        emailTemplateMap.ForMember(dest => dest.EmailTemplateId, opt => opt.MapFrom(src => src.EmailTemplateId))
+            .ForMember(dest => dest.MasterEmailTemplateId, opt => opt.MapFrom(src => src.MasterEmailTemplateId))
+            .ForMember(dest => dest.Subject, opt => opt.MapFrom(src => src.Subject))
+            .ForMember(dest => dest.Body, opt => opt.MapFrom(src => src.Body))
+            .ForMember(dest => dest.CreatedBy, opt => opt.MapFrom(src => src.CreatedBy))
+            .ForMember(dest => dest.CreatedDate, opt => opt.MapFrom(src => src.CreatedDate))
+            .ForMember(dest => dest.ModifyBy, opt => opt.MapFrom(src => src.ModifyBy))
+            .ForMember(dest => dest.ModifyDate, opt => opt.MapFrom(src => src.ModifyDate)).ReverseMap();
     }
 }
 

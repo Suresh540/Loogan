@@ -1,4 +1,5 @@
-﻿using Loogan.API.Models.Enums;
+﻿using Loogan.API.Database.Models;
+using Loogan.API.Models.Enums;
 using Loogan.API.Models.Models;
 using Loogan.API.Models.Models.Admin;
 using Loogan.Web.UI.Utilities;
@@ -122,5 +123,52 @@ namespace Loogan.Web.UI.Controllers
             var courseList = await _utilityHelper.ExecuteAPICall<List<StaffModel>>(null, RestSharp.Method.Post, resource: "api/Admin/GetAllStaff");
             return Json(courseList);
         }
+
+        #region EmailTemplates
+
+        [HttpPost]
+        [Route("GetMasterEmailTemplates")]
+        public async Task<IActionResult> GetMasterEmailTemplates()
+        {
+            var languageId = HttpContext?.Session?.GetInt32("LanguageId");
+
+            var apiRequest = new ApiRequest() { RequestValue = languageId > 0 ? languageId.ToString() : "1" };
+
+            var courseList = await _utilityHelper.ExecuteAPICall<List<DropDownListModel>>(apiRequest, RestSharp.Method.Post, resource: "api/Common/GetMasterEmailTemplates");
+            return Json(courseList);
+        }
+
+        [Route("CreateEmailTemplates")]
+        [LooganAdminAuthorize("Admin")]
+        public async Task<JsonResult> CreateEmailTemplates(EmailTemplatesModel emailTemplateModel)
+        {
+            emailTemplateModel.CreatedBy = HttpContext?.Session?.GetInt32("LoginUserId");
+            emailTemplateModel.CreatedDate = DateTime.Now;
+
+            await _utilityHelper.ExecuteAPICall<bool>(emailTemplateModel, RestSharp.Method.Post, resource: "api/Common/CreateEmailTemplates");
+            return Json(new { value = "Success" });
+        }
+
+        [Route("UpdateEmailTemplates")]
+        [LooganAdminAuthorize("Admin")]
+        public async Task<JsonResult> UpdateEmailTemplates(EmailTemplatesModel emailTemplateModel)
+        {
+            emailTemplateModel.CreatedBy = HttpContext?.Session?.GetInt32("LoginUserId");
+            emailTemplateModel.CreatedDate = DateTime.Now;
+
+            var userModel = await _utilityHelper.ExecuteAPICall<bool>(emailTemplateModel, RestSharp.Method.Post, resource: "api/Common/UpdateEmailTemplates");
+                return Json(new { value = "Success" });
+        }
+
+        [Route("DeleteEmailTemplates")]
+        [LooganAdminAuthorize("Admin")]
+        public async Task<JsonResult> DeleteEmailTemplates(string emailTemplateId)
+        {
+            var apiRequest = new ApiRequest() { RequestValue = emailTemplateId };
+            var userModel = await _utilityHelper.ExecuteAPICall<bool>(apiRequest, RestSharp.Method.Post, resource: "api/User/DeleteEmailTemplates");
+            return Json(new { value = "Success" });
+        }
+
+        #endregion
     }
 }

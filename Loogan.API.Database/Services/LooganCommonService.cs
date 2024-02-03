@@ -112,7 +112,7 @@ namespace Loogan.API.Database.Services
             var list = new List<DropDownListModel>();
             using (var context = new LooganContext(_connectionString))
             {
-                var country = context.MasterEmailTemplates.Where(x => x.IsDeleted == false).ToList();
+                var country = context.MasterEmailTemplates.Where(x => x.IsDeleted == false && x.LanguageId == languageId).ToList();
                 if (country.Any())
                 {
                     foreach (var item in country)
