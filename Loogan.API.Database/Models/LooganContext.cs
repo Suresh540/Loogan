@@ -11,6 +11,7 @@ public partial class LooganContext : DbContext
     {
         _connectionString = connectionString;
     }
+
     public virtual DbSet<AreaOfStudy> AreaOfStudies { get; set; }
 
     public virtual DbSet<AreaOfStudyCourseMapping> AreaOfStudyCourseMappings { get; set; }

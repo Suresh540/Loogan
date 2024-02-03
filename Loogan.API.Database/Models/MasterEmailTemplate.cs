@@ -9,5 +9,7 @@ public partial class MasterEmailTemplate
 
     public string Name { get; set; } = null!;
 
+    public int? LanguageId { get; set; }
+
     public bool IsDeleted { get; set; }
 }
