@@ -61,5 +61,6 @@
   <ItemGroup>
     <Build Include="Scripts\Entire_DB_Drop_Create_IfExists_Script.sql" />
     <Build Include="Scripts\21_Jan_2024_DbLoogan_Script.sql" />
+    <Build Include="Scripts\Email_TemplateScripts_3rdFeb.sql" />
   </ItemGroup>
 </Project>

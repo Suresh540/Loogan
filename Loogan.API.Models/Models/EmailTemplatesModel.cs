@@ -12,9 +12,9 @@ namespace Loogan.API.Models.Models
 
         public int MasterEmailTemplateId { get; set; }
 
-        public string EmailTemplateName { get; set; }   
+        public string? EmailTemplateName { get; set; }   
 
-        public string Subject { get; set; } = null!;
+        public string? Subject { get; set; }
 
         public string? Body { get; set; }
 

@@ -14,6 +14,7 @@
 }
 
 <component type="typeof(Upper_Component)" render-mode="Static" />
+<input type="hidden" id="hdnemailTemplateId" name="hdnemailTemplateId" value="0" />
 <div id="site-wrap" class="off-canvas-wrap">
     <div class="inner-wrap">
         <div class="row">
@@ -50,16 +51,21 @@
                     </div>
                     <div class="row">
                         <div class="col-1">
+                            &nbsp;
+                        </div>
+                        <div class="col-2 pt-2">
                             @Localizer["EmailTemplate"] <b class="text-danger">*</b>
                         </div>
-                        <div class="col-3 align-content-center align-items-center">
-                            <input type="hidden" id="hdnemailTemplateId" name="hdnemailTemplateId" value="0" />
+                        <div class="col-3 align-content-center align-items-center" style="padding:5px;padding-left:12px">
                             <select id="ddlEmailTemplate">
                             </select>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-1">
+                            &nbsp;
+                        </div>
+                        <div class="col-2 pt-2">
                             @Localizer["EmailSubject"] <b class="text-danger">*</b>
                         </div>
                         <div class="col-8 align-content-center align-items-center">
@@ -68,13 +74,16 @@
                     </div>
                     <div class="row">
                         <div class="col-1">
+                            &nbsp;
+                        </div>
+                        <div class="col-2 pt-2">
                             @Localizer["EmailBody"] <b class="text-danger">*</b>
                         </div>
                         <div class="col-8 align-content-center align-items-center">
                             <textarea id="txtemailBody" name="input"></textarea>
                         </div>
                     </div>
-                    <div style="height:5vh">
+                    <div style="height:8vh">
                         &nbsp;
                     </div>
                     <component type="typeof(Lower_Component)" render-mode="Static" /><br />
