@@ -177,6 +177,15 @@ namespace Loogan.Web.UI.Controllers
             return Json(new { value = "Success" });
         }
 
+        [HttpPost]
+        [Route("GetEmailTemplateByMasterId")]
+        public async Task<IActionResult> GetEmailTemplateByMasterId(int masterEmailTemplateId)
+        {
+            var apiRequest = new ApiRequest() { RequestValue = Convert.ToString(masterEmailTemplateId) };
+            var emailTemplateList = await _utilityHelper.ExecuteAPICall<List<EmailTemplatesModel>>(apiRequest, RestSharp.Method.Post, resource: "api/Common/GetEmailTemplateByMasterId");
+            return Json(emailTemplateList);
+        }
+
         #endregion
     }
 }

@@ -78,5 +78,13 @@ namespace Loogan.API.BusinessService.Services
             var result = await _LooganCommon.DeleteEmailTemplates(emailTemplateId);
             return result;
         }
+
+        public async Task<List<EmailTemplatesModel>?> GetEmailTemplateByMasterId(int masterEmailTemplateId)
+        {
+            var emaiTemplateList = await _LooganCommon.GetEmailTemplateByMasterId(masterEmailTemplateId);
+            return emaiTemplateList;
+        }
+
+        
     }
 }

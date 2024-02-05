@@ -58,7 +58,7 @@
             data: { emailTemplateModel: model },
             success: function (e) {
                 $('#btnSaveEmailTemplate').removeAttr('disabled');
-                Alert(localizationLib.getLocalizeData("StudentCourseUpdateSuccessKey"), 'Success');
+                Alert(localizationLib.getLocalizeData("EmailTemplateUpdateSuccessKey"), 'Success');
                 emailtemplates.clearEmailTemplateData();
                 $('#btntopclose').trigger('click');
             },
@@ -66,7 +66,7 @@
                 $('#btnSaveEmailTemplate').removeAttr('disabled');
                 var msg = JSON.parse(e.responseText);
                 Alert(msg.detail, 'error');
-                Alert(localizationLib.getLocalizeData("FailedToStudenCoursetKey"), 'error');
+                Alert(localizationLib.getLocalizeData("FailedToEmailTemplateKey"), 'error');
             }
         })
     }
@@ -132,13 +132,13 @@
                 url: "/Common/DeleteEmailTemplates",
                 data: { emailTemplateId: id },
                 success: function (e) {
-                    Alert(localizationLib.getLocalizeData("StudentCourseDeleteMsgKey"), 'Success');
-                    course.showEmailTemplates();
+                    Alert(localizationLib.getLocalizeData("EmailTemplateDeleteMsgKey"), 'Success');
+                    emailtemplates.showEmailTemplates();
                 },
                 error: function (e) {
                     var msg = JSON.parse(e.responseText);
                     Alert(msg.detail, 'error');
-                    Alert(localizationLib.getLocalizeData("StudentCourseFailedDeleteKey"), 'error');
+                    Alert(localizationLib.getLocalizeData("EmailTemplateFailedDeleteKey"), 'error');
                 }
             })
         }

@@ -124,6 +124,20 @@ namespace Loogan.Web.API.Controllers
             return Ok(result);
         }
 
+        [HttpPost]
+        [Route("GetEmailTemplateByMasterId")]
+        [Produces("application/json")]
+        [Consumes("application/json")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public async Task<IActionResult> GetEmailTemplateByMasterId([FromBody] ApiRequest apiRequest)
+        {
+            var masterTemplateId = apiRequest.RequestValue != null ? Convert.ToInt32(apiRequest.RequestValue) : 0;
+            var listMasterEmailTemplates = await _commonService.GetEmailTemplateByMasterId(masterTemplateId);
+            return Ok(listMasterEmailTemplates);
+        }
+
         #endregion
     }
 }

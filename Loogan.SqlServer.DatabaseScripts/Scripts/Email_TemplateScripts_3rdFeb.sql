@@ -83,3 +83,44 @@ FROM Email_Templates ET
 inner join Master_EmailTemplate MET on MET.MasterEmailTemplateId = ET.EmailTemplateId and MET.IsDeleted = 0
 where ET.IsDeleted = 0
 GO
+--5th FEb Scripts
+
+ALTER PROC [dbo].[Get_AllEmailTemplates]   
+AS  
+	SELECT ET.EmailTemplateId,
+	ET.MasterEmailTemplateId,
+	MET.Name As EmailTemplateName,
+	ET.Subject,
+	ET.Body,
+	ET.IsDeleted,
+	ET.CreatedBy,
+	ET.CreatedDate,
+	ET.ModifyBy,
+	ET.ModifyDate,
+	Count(*) OVER(Partition BY ET.IsDeleted) AS TotalRecords
+FROM Email_Templates ET
+inner join Master_EmailTemplate MET on MET.MasterEmailTemplateId = ET.MasterEmailTemplateId and MET.IsDeleted = 0
+where ET.IsDeleted = 0
+
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE PROC [dbo].[Get_EmailTemplatesByMasterTemplateId] 
+@MasterEmailTemplateId VARCHAR(50)
+AS  
+	SELECT ET.EmailTemplateId,
+	ET.MasterEmailTemplateId,
+	MET.Name As EmailTemplateName,
+	ET.Subject,
+	ET.Body,
+	ET.IsDeleted,
+	ET.CreatedBy,
+	ET.CreatedDate,
+	ET.ModifyBy,
+	ET.ModifyDate,
+	Count(*) OVER(Partition BY ET.IsDeleted) AS TotalRecords
+FROM Email_Templates ET
+inner join Master_EmailTemplate MET on MET.MasterEmailTemplateId = ET.MasterEmailTemplateId and MET.IsDeleted = 0
+where ET.IsDeleted = 0 and MET.MasterEmailTemplateId = @MasterEmailTemplateId

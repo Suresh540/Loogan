@@ -27,5 +27,7 @@ namespace Loogan.API.Database.Interfaces
         public Task<int?> DeleteEmailTemplates(int emailTemplateId);
 
         public Task<List<EmailTemplatesModel>?> GetAllEmailTemplates();
+
+        public Task<List<EmailTemplatesModel>?> GetEmailTemplateByMasterId(int masterEmailTemplateId);
     }
 }
