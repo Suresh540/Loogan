@@ -112,9 +112,8 @@
         $('#hdnemailTemplateId').val(index);
         $('#ddlEmailTemplate').val($('#emailtemplatemasterid' + index).html());
         $('#txtemailsubject').val($('#emailtemplatesubject' + index).html());
-        $('#txtemailBody').val($('#emailtemplatebody' + index).html());
+        $(".cleditorMain iframe").contents().find('body').html($('#emailtemplatebody' + index).html());
         $('#btnCreateClose').trigger('click');
-
         return false;
     }
 
@@ -122,7 +121,7 @@
         $('#hdnemailTemplateId').val(0);
         $('#ddlEmailTemplate').val(0);
         $('#txtemailsubject').val('');
-        $('#txtemailBody').val('');
+        $(".cleditorMain iframe").contents().find('body').html('');
     }
 
     public.deleteEmailTemplate = function (id) {
