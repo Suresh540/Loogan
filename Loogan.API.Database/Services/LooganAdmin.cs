@@ -317,5 +317,230 @@ namespace Loogan.API.Database.Services
             return isSuccess;
 
         }
+
+        public async Task<List<InstitutionModel>?> GetAllInstitutions()
+        {
+            List<InstitutionModel>? institutionList = new List<InstitutionModel>();
+            using (var context = new LooganContext(_connectionString))
+            {
+                var query = context.Database.SqlQuery<InstitutionModel>($"Get_AllInstitutions").AsNoTracking().AsAsyncEnumerable();
+                await foreach (var item in query)
+                {
+                    institutionList.Add(item);
+                }
+            }
+            return institutionList;
+        }
+
+        public async Task<int?> CreateInstitution(Institution institutionObj)
+        {
+            var isCreated = 0;
+
+            if (institutionObj != null)
+            {
+                using (var context = new LooganContext(_connectionString))
+                {
+                    context.Institutions.Add(institutionObj);
+                    isCreated = await context.SaveChangesAsync();
+                }
+            }
+
+            return isCreated;
+        }
+
+        public async Task<int?> UpdateInstitution(Institution institutionObj)
+        {
+            var isUpdated = 0;
+
+            if (institutionObj != null)
+            {
+                using (var context = new LooganContext(_connectionString))
+                {
+                    context.Institutions.Update(institutionObj);
+                    isUpdated = await context.SaveChangesAsync();
+                }
+            }
+
+            return isUpdated;
+        }
+
+        public async Task<int?> DeleteInstitution(int institutionId)
+        {
+            var isDeleted = 0;
+
+            if (institutionId != 0)
+            {
+                using (var context = new LooganContext(_connectionString))
+                {
+                    var institutionobj = context.Institutions.FirstOrDefault(x => x.InstitutionId == institutionId);
+
+                    if (institutionobj != null)
+                    {
+                        institutionobj.IsDeleted = true;
+                        context.Institutions.Update(institutionobj);
+                        isDeleted = await context.SaveChangesAsync();
+                    }
+
+                }
+            }
+
+            return isDeleted;
+        }
+
+        public async Task<List<DropDownListModel>?> GetInstitutionsList()
+        {
+            var list = new List<DropDownListModel>();
+            using (var context = new LooganContext(_connectionString))
+            {
+                var country = context.Institutions.Where(x => x.IsDeleted == false).ToList();
+                if (country.Any())
+                {
+                    foreach (var item in country)
+                    {
+                        list.Add(new DropDownListModel() { Id = item.InstitutionId, Name = item.InstitutionName });
+                    }
+
+                }
+            }
+            return list;
+        }
+
+        public async Task<List<InstitutionNewsModel>?> GetAllInstitutionNews()
+        {
+            List<InstitutionNewsModel>? institutionNewsList = new List<InstitutionNewsModel>();
+            using (var context = new LooganContext(_connectionString))
+            {
+                var query = context.Database.SqlQuery<InstitutionNewsModel>($"Get_AllInstitutionsNews").AsNoTracking().AsAsyncEnumerable();
+                await foreach (var item in query)
+                {
+                    institutionNewsList.Add(item);
+                }
+            }
+            return institutionNewsList;
+        }
+
+        public async Task<int?> CreateInstitutionNews(InstitutionNews institutionNewsObj)
+        {
+            var isCreated = 0;
+
+            if (institutionNewsObj != null)
+            {
+                using (var context = new LooganContext(_connectionString))
+                {
+                    context.InstitutionNews.Add(institutionNewsObj);
+                    isCreated = await context.SaveChangesAsync();
+                }
+            }
+
+            return isCreated;
+        }
+
+        public async Task<int?> UpdateInstitutionNews(InstitutionNews institutionNewsObj)
+        {
+            var isUpdated = 0;
+
+            if (institutionNewsObj != null)
+            {
+                using (var context = new LooganContext(_connectionString))
+                {
+                    context.InstitutionNews.Update(institutionNewsObj);
+                    isUpdated = await context.SaveChangesAsync();
+                }
+            }
+
+            return isUpdated;
+        }
+
+        public async Task<int?> DeleteInstitutionNews(int institutionNewsId)
+        {
+            var isDeleted = 0;
+
+            if (institutionNewsId != 0)
+            {
+                using (var context = new LooganContext(_connectionString))
+                {
+                    var institutionNewsobj = context.InstitutionNews.FirstOrDefault(x => x.InstitutionNewsId == institutionNewsId);
+
+                    if (institutionNewsobj != null)
+                    {
+                        institutionNewsobj.IsDeleted = true;
+                        context.InstitutionNews.Update(institutionNewsobj);
+                        isDeleted = await context.SaveChangesAsync();
+                    }
+
+                }
+            }
+
+            return isDeleted;
+        }
+
+        public async Task<List<InstitutionAnnouncementModel>?> GetAllInstitutionAnnouncement()
+        {
+            List<InstitutionAnnouncementModel>? institutionAnnouncementList = new List<InstitutionAnnouncementModel>();
+            using (var context = new LooganContext(_connectionString))
+            {
+                var query = context.Database.SqlQuery<InstitutionAnnouncementModel>($"Get_AllInstitutionsAnnouncements").AsNoTracking().AsAsyncEnumerable();
+                await foreach (var item in query)
+                {
+                    institutionAnnouncementList.Add(item);
+                }
+            }
+            return institutionAnnouncementList;
+        }
+
+        public async Task<int?> CreateInstitutionAnnouncement(InstitutionAnnouncement institutionAnnouncementObj)
+        {
+            var isCreated = 0;
+
+            if (institutionAnnouncementObj != null)
+            {
+                using (var context = new LooganContext(_connectionString))
+                {
+                    context.InstitutionAnnouncements.Add(institutionAnnouncementObj);
+                    isCreated = await context.SaveChangesAsync();
+                }
+            }
+
+            return isCreated;
+        }
+
+        public async Task<int?> UpdateInstitutionAnnouncement(InstitutionAnnouncement institutionAnnouncementObj)
+        {
+            var isUpdated = 0;
+
+            if (institutionAnnouncementObj != null)
+            {
+                using (var context = new LooganContext(_connectionString))
+                {
+                    context.InstitutionAnnouncements.Update(institutionAnnouncementObj);
+                    isUpdated = await context.SaveChangesAsync();
+                }
+            }
+
+            return isUpdated;
+        }
+
+        public async Task<int?> DeleteInstitutionAnnouncement(int institutionAnnouncementId)
+        {
+            var isDeleted = 0;
+
+            if (institutionAnnouncementId != 0)
+            {
+                using (var context = new LooganContext(_connectionString))
+                {
+                    var institutionNewsobj = context.InstitutionAnnouncements.FirstOrDefault(x => x.InstitutionAnnouncementId == institutionAnnouncementId);
+
+                    if (institutionNewsobj != null)
+                    {
+                        institutionNewsobj.IsDeleted = true;
+                        context.InstitutionAnnouncements.Update(institutionNewsobj);
+                        isDeleted = await context.SaveChangesAsync();
+                    }
+
+                }
+            }
+
+            return isDeleted;
+        }
     }
 }

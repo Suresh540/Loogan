@@ -121,5 +121,86 @@ namespace Loogan.API.BusinessService.Services
             var listMenus = await _looganAdmin.SaveRoleMenus(request);
             return listMenus;
         }
+
+        public async Task<List<InstitutionModel>?> GetAllInstitutions()
+        {
+            var institutionList = await _looganAdmin.GetAllInstitutions();
+            return institutionList;
+        }
+
+        public async Task<int?> CreateInstitution(InstitutionModel institutionModelObj)
+        {
+            var institutionObj = _mapper.Map<Institution>(institutionModelObj);
+            var result = await _looganAdmin.CreateInstitution(institutionObj);
+            return result;
+        }
+        public async Task<int?> UpdateInstitution(InstitutionModel institutionModelObj)
+        {
+            var institutionObj = _mapper.Map<Institution>(institutionModelObj);
+            var result = await _looganAdmin.UpdateInstitution(institutionObj);
+            return result;
+        }
+
+        public async Task<int?> DeleteInstitution(int institutionId)
+        {
+            var result = await _looganAdmin.DeleteInstitution(institutionId);
+            return result;
+        }
+
+        public async Task<List<DropDownListModel>?> GetInstitutionsList()
+        {
+            var institutionsList = await _looganAdmin.GetInstitutionsList();
+            return institutionsList;
+        }
+
+        public async Task<List<InstitutionNewsModel>?> GetAllInstitutionNews()
+        {
+            var institutionNewsList = await _looganAdmin.GetAllInstitutionNews();
+            return institutionNewsList;
+        }
+
+        public async Task<int?> CreateInstitutionNews(InstitutionNewsModel institutionNewsModelObj)
+        {
+            var institutionNewsObj = _mapper.Map<InstitutionNews>(institutionNewsModelObj);
+            var result = await _looganAdmin.CreateInstitutionNews(institutionNewsObj);
+            return result;
+        }
+        public async Task<int?> UpdateInstitutionNews(InstitutionNewsModel institutionNewsModelObj)
+        {
+            var institutionNewsObj = _mapper.Map<InstitutionNews>(institutionNewsModelObj);
+            var result = await _looganAdmin.UpdateInstitutionNews(institutionNewsObj);
+            return result;
+        }
+
+        public async Task<int?> DeleteInstitutionNews(int institutionNewsId)
+        {
+            var result = await _looganAdmin.DeleteInstitutionNews(institutionNewsId);
+            return result;
+        }
+
+        public async Task<List<InstitutionAnnouncementModel>?> GetAllInstitutionAnnouncement()
+        {
+            var institutionNewsList = await _looganAdmin.GetAllInstitutionAnnouncement();
+            return institutionNewsList;
+        }
+
+        public async Task<int?> CreateInstitutionAnnouncement(InstitutionAnnouncementModel institutionAnnouncementModelObj)
+        {
+            var institutionAnnouncementObj = _mapper.Map<InstitutionAnnouncement>(institutionAnnouncementModelObj);
+            var result = await _looganAdmin.CreateInstitutionAnnouncement(institutionAnnouncementObj);
+            return result;
+        }
+        public async Task<int?> UpdateInstitutionAnnouncement(InstitutionAnnouncementModel institutionAnnouncementModelObj)
+        {
+            var institutionAnnouncementObj = _mapper.Map<InstitutionAnnouncement>(institutionAnnouncementModelObj);
+            var result = await _looganAdmin.UpdateInstitutionAnnouncement(institutionAnnouncementObj);
+            return result;
+        }
+
+        public async Task<int?> DeleteInstitutionAnnouncement(int institutionNewsId)
+        {
+            var result = await _looganAdmin.DeleteInstitutionAnnouncement(institutionNewsId);
+            return result;
+        }
     }
 }

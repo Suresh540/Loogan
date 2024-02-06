@@ -38,5 +38,23 @@ namespace Loogan.API.BusinessService.Interfaces
         public Task<List<RoleMenuModel>> GetRoleMenus(int roleId, int languageId);
 
         public Task<int> SaveRoleMenus(List<SaveRoleMenuRequest> request);
+
+        public Task<List<InstitutionModel>?> GetAllInstitutions();
+        public Task<int?> CreateInstitution(InstitutionModel institutionModelObj);
+        public Task<int?> UpdateInstitution(InstitutionModel institutionModelObj);
+        public Task<int?> DeleteInstitution(int institutionId);
+
+        public Task<List<DropDownListModel>?> GetInstitutionsList();
+
+        public Task<List<InstitutionNewsModel>?> GetAllInstitutionNews();
+        public Task<int?> CreateInstitutionNews(InstitutionNewsModel institutionNewsModelObj);
+        public Task<int?> UpdateInstitutionNews(InstitutionNewsModel institutionNewsModelObj);
+        public Task<int?> DeleteInstitutionNews(int institutionId);
+
+        public Task<List<InstitutionAnnouncementModel>?> GetAllInstitutionAnnouncement();
+        public Task<int?> CreateInstitutionAnnouncement(InstitutionAnnouncementModel institutionAnnouncementModelObj);
+        public Task<int?> UpdateInstitutionAnnouncement(InstitutionAnnouncementModel institutionAnnouncementModelObj);
+        public Task<int?> DeleteInstitutionAnnouncement(int institutionId);
+
     }
 }

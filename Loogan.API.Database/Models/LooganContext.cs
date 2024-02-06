@@ -12,6 +12,7 @@ public partial class LooganContext : DbContext
         _connectionString = connectionString;
     }
 
+
     public virtual DbSet<AreaOfStudy> AreaOfStudies { get; set; }
 
     public virtual DbSet<AreaOfStudyCourseMapping> AreaOfStudyCourseMappings { get; set; }
@@ -41,6 +42,12 @@ public partial class LooganContext : DbContext
     public virtual DbSet<Enrollment> Enrollments { get; set; }
 
     public virtual DbSet<EnrollmentAreasOfStudyMapping> EnrollmentAreasOfStudyMappings { get; set; }
+
+    public virtual DbSet<Institution> Institutions { get; set; }
+
+    public virtual DbSet<InstitutionAnnouncement> InstitutionAnnouncements { get; set; }
+
+    public virtual DbSet<InstitutionNews> InstitutionNews { get; set; }
 
     public virtual DbSet<Language> Languages { get; set; }
 
@@ -88,7 +95,7 @@ public partial class LooganContext : DbContext
 
     public virtual DbSet<UserType> UserTypes { get; set; }
 
-    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
        => optionsBuilder.UseSqlServer(_connectionString);
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -450,6 +457,88 @@ public partial class LooganContext : DbContext
             entity.HasOne(d => d.Enrollment).WithMany(p => p.EnrollmentAreasOfStudyMappings)
                 .HasForeignKey(d => d.EnrollmentId)
                 .HasConstraintName("FK_EnrollmentAreaMapping_Enrollment_EnrollmentId");
+        });
+
+        modelBuilder.Entity<Institution>(entity =>
+        {
+            entity.ToTable("Institution");
+
+            entity.Property(e => e.AdditionalComments)
+                .HasMaxLength(200)
+                .IsUnicode(false);
+            entity.Property(e => e.Address)
+                .HasMaxLength(200)
+                .IsUnicode(false);
+            entity.Property(e => e.CreatedDate).HasColumnType("datetime");
+            entity.Property(e => e.Description)
+                .HasMaxLength(200)
+                .IsUnicode(false);
+            entity.Property(e => e.EmailAddress)
+                .HasMaxLength(100)
+                .IsUnicode(false);
+            entity.Property(e => e.InstitutionImageUrl)
+                .HasMaxLength(200)
+                .IsUnicode(false);
+            entity.Property(e => e.InstitutionName)
+                .HasMaxLength(100)
+                .IsUnicode(false);
+            entity.Property(e => e.Mission)
+                .HasMaxLength(500)
+                .IsUnicode(false);
+            entity.Property(e => e.ModifyDate).HasColumnType("datetime");
+            entity.Property(e => e.PhoneNumber)
+                .HasMaxLength(100)
+                .IsUnicode(false);
+            entity.Property(e => e.Vision)
+                .HasMaxLength(500)
+                .IsUnicode(false);
+            entity.Property(e => e.Website)
+                .HasMaxLength(100)
+                .IsUnicode(false);
+        });
+
+        modelBuilder.Entity<InstitutionAnnouncement>(entity =>
+        {
+            entity.ToTable("Institution_Announcement");
+
+            entity.Property(e => e.Announcement)
+                .HasMaxLength(500)
+                .IsUnicode(false);
+            entity.Property(e => e.CreatedDate).HasColumnType("datetime");
+            entity.Property(e => e.Description)
+                .HasMaxLength(200)
+                .IsUnicode(false);
+            entity.Property(e => e.ModifyDate).HasColumnType("datetime");
+            entity.Property(e => e.Title)
+                .HasMaxLength(100)
+                .IsUnicode(false);
+
+            entity.HasOne(d => d.Institution).WithMany(p => p.InstitutionAnnouncements)
+                .HasForeignKey(d => d.InstitutionId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_Institution_Announcement_Institution");
+        });
+
+        modelBuilder.Entity<InstitutionNews>(entity =>
+        {
+            entity.ToTable("Institution_News");
+
+            entity.Property(e => e.CreatedDate).HasColumnType("datetime");
+            entity.Property(e => e.Description)
+                .HasMaxLength(50)
+                .IsUnicode(false);
+            entity.Property(e => e.ModifyDate).HasColumnType("datetime");
+            entity.Property(e => e.News)
+                .HasMaxLength(500)
+                .IsUnicode(false);
+            entity.Property(e => e.Title)
+                .HasMaxLength(100)
+                .IsUnicode(false);
+
+            entity.HasOne(d => d.Institution).WithMany(p => p.InstitutionNews)
+                .HasForeignKey(d => d.InstitutionId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_Institution_News_Institution");
         });
 
         modelBuilder.Entity<Language>(entity =>

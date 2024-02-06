@@ -167,6 +167,52 @@ public class InitializeMapper : Profile
             .ForMember(dest => dest.CreatedDate, opt => opt.MapFrom(src => src.CreatedDate))
             .ForMember(dest => dest.ModifyBy, opt => opt.MapFrom(src => src.ModifyBy))
             .ForMember(dest => dest.ModifyDate, opt => opt.MapFrom(src => src.ModifyDate)).ReverseMap();
+
+        var institutionMap = CreateMap<Institution, InstitutionModel>();
+        institutionMap.ForMember(dest => dest.InstitutionId, opt => opt.MapFrom(src => src.InstitutionId))
+            .ForMember(dest => dest.InstitutionName, opt => opt.MapFrom(src => src.InstitutionName))
+            .ForMember(dest => dest.PhoneNumber, opt => opt.MapFrom(src => src.PhoneNumber))
+            .ForMember(dest => dest.EmailAddress, opt => opt.MapFrom(src => src.EmailAddress))
+            .ForMember(dest => dest.AdditionalComments, opt => opt.MapFrom(src => src.AdditionalComments))
+            .ForMember(dest => dest.Mission, opt => opt.MapFrom(src => src.Mission))
+            .ForMember(dest => dest.Vision, opt => opt.MapFrom(src => src.Vision))
+            .ForMember(dest => dest.Description, opt => opt.MapFrom(src => src.Description))
+            .ForMember(dest => dest.Website, opt => opt.MapFrom(src => src.Website))
+            .ForMember(dest => dest.InstitutionImageUrl, opt => opt.MapFrom(src => src.InstitutionImageUrl))
+            .ForMember(dest => dest.Address, opt => opt.MapFrom(src => src.Address))
+            .ForMember(dest => dest.IsDeleted, opt => opt.MapFrom(src => src.IsDeleted))
+            .ForMember(dest => dest.CreatedBy, opt => opt.MapFrom(src => src.CreatedBy))
+            .ForMember(dest => dest.CreatedDate, opt => opt.MapFrom(src => src.CreatedDate))
+            .ForMember(dest => dest.ModifyBy, opt => opt.MapFrom(src => src.ModifyBy))
+            .ForMember(dest => dest.ModifyDate, opt => opt.MapFrom(src => src.ModifyDate)).ReverseMap();
+
+        var institutionNewsMap = CreateMap<InstitutionNews, InstitutionNewsModel>();
+        institutionNewsMap.ForMember(dest => dest.InstitutionNewsId, opt => opt.MapFrom(src => src.InstitutionNewsId))
+            .ForMember(dest => dest.InstitutionId, opt => opt.MapFrom(src => src.InstitutionId))
+            .ForMember(dest => dest.Title, opt => opt.MapFrom(src => src.Title))
+            .ForMember(dest => dest.News, opt => opt.MapFrom(src => src.News))
+            .ForMember(dest => dest.Description, opt => opt.MapFrom(src => src.Description))
+            .ForMember(dest => dest.StartDate, opt => opt.MapFrom(src => src.StartDate))
+            .ForMember(dest => dest.EndDate, opt => opt.MapFrom(src => src.EndDate))
+            .ForMember(dest => dest.IsDeleted, opt => opt.MapFrom(src => src.IsDeleted))
+            .ForMember(dest => dest.CreatedBy, opt => opt.MapFrom(src => src.CreatedBy))
+            .ForMember(dest => dest.CreatedDate, opt => opt.MapFrom(src => src.CreatedDate))
+            .ForMember(dest => dest.ModifyBy, opt => opt.MapFrom(src => src.ModifyBy))
+            .ForMember(dest => dest.ModifyDate, opt => opt.MapFrom(src => src.ModifyDate)).ReverseMap();
+
+        var institutionAnnouncementMap = CreateMap<InstitutionAnnouncement, InstitutionAnnouncementModel>();
+        institutionAnnouncementMap.ForMember(dest => dest.InstitutionAnnouncementId, opt => opt.MapFrom(src => src.InstitutionAnnouncementId))
+            .ForMember(dest => dest.InstitutionId, opt => opt.MapFrom(src => src.InstitutionId))
+            .ForMember(dest => dest.Title, opt => opt.MapFrom(src => src.Title))
+            .ForMember(dest => dest.Announcement, opt => opt.MapFrom(src => src.Announcement))
+            .ForMember(dest => dest.Description, opt => opt.MapFrom(src => src.Description))
+            .ForMember(dest => dest.StartDate, opt => opt.MapFrom(src => src.StartDate))
+            .ForMember(dest => dest.EndDate, opt => opt.MapFrom(src => src.EndDate))
+            .ForMember(dest => dest.IsDeleted, opt => opt.MapFrom(src => src.IsDeleted))
+            .ForMember(dest => dest.CreatedBy, opt => opt.MapFrom(src => src.CreatedBy))
+            .ForMember(dest => dest.CreatedDate, opt => opt.MapFrom(src => src.CreatedDate))
+            .ForMember(dest => dest.ModifyBy, opt => opt.MapFrom(src => src.ModifyBy))
+            .ForMember(dest => dest.ModifyDate, opt => opt.MapFrom(src => src.ModifyDate)).ReverseMap();
     }
 }
 

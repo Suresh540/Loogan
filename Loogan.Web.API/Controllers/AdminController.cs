@@ -1,4 +1,5 @@
 ﻿using Loogan.API.BusinessService.Interfaces;
+using Loogan.API.BusinessService.Services;
 using Loogan.API.Models.Models;
 using Loogan.API.Models.Models.Admin;
 using Microsoft.AspNetCore.Mvc;
@@ -229,6 +230,190 @@ namespace Loogan.Web.API.Controllers
         }
 
 
+
+        #endregion
+
+        #region Institution
+
+        [HttpPost]
+        [Route("GetAllInstitutions")]
+        [Produces("application/json")]
+        [Consumes("application/json")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public async Task<IActionResult> GetAllInstitutions()
+        {
+            var listStudent = await _adminService.GetAllInstitutions();
+            return Ok(listStudent);
+        }
+
+        [HttpPost]
+        [Route("CreateInstitution")]
+        [Produces("application/json")]
+        [Consumes("application/json")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public async Task<IActionResult> CreateInstitution([FromBody] InstitutionModel institutionModelObj)
+        {
+            var result = await _adminService.CreateInstitution(institutionModelObj);
+            return Ok(result);
+        }
+
+        [HttpPost]
+        [Route("UpdateInstitution")]
+        [Produces("application/json")]
+        [Consumes("application/json")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public async Task<IActionResult> UpdateInstitution([FromBody] InstitutionModel institutionModelObj)
+        {
+            var result = await _adminService.UpdateInstitution(institutionModelObj);
+            return Ok(result);
+        }
+
+        [HttpPost]
+        [Route("DeleteInstitution")]
+        [Produces("application/json")]
+        [Consumes("application/json")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public async Task<IActionResult> DeleteInstitution([FromBody] ApiRequest request)
+        {
+            var studentId = request.RequestValue != "" ? Convert.ToInt32(request.RequestValue) : 0;
+            var result = await _adminService.DeleteStudent(studentId);
+            return Ok(result);
+        }
+
+        [HttpPost]
+        [Route("GetInstitutionsList")]
+        [Produces("application/json")]
+        [Consumes("application/json")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public async Task<IActionResult> GetInstitutionsList()
+        {
+            var institutionsList = await _adminService.GetInstitutionsList();
+            return Ok(institutionsList);
+        }
+
+        #endregion
+
+        #region InstitutionNews
+
+        [HttpPost]
+        [Route("GetAllInstitutionNews")]
+        [Produces("application/json")]
+        [Consumes("application/json")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public async Task<IActionResult> GetAllInstitutionNews()
+        {
+            var listStudent = await _adminService.GetAllStudents();
+            return Ok(listStudent);
+        }
+
+        [HttpPost]
+        [Route("CreateInstitutionNews")]
+        [Produces("application/json")]
+        [Consumes("application/json")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public async Task<IActionResult> CreateInstitutionNews([FromBody] InstitutionNewsModel institutionNewsModelObj)
+        {
+            var result = await _adminService.CreateInstitutionNews(institutionNewsModelObj);
+            return Ok(result);
+        }
+
+        [HttpPost]
+        [Route("UpdateInstitutionNews")]
+        [Produces("application/json")]
+        [Consumes("application/json")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public async Task<IActionResult> UpdateInstitutionNews([FromBody] InstitutionNewsModel institutionNewsModelObj)
+        {
+            var result = await _adminService.UpdateInstitutionNews(institutionNewsModelObj);
+            return Ok(result);
+        }
+
+        [HttpPost]
+        [Route("DeleteInstitutionNews")]
+        [Produces("application/json")]
+        [Consumes("application/json")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public async Task<IActionResult> DeleteInstitutionNews([FromBody] ApiRequest request)
+        {
+            var studentId = request.RequestValue != "" ? Convert.ToInt32(request.RequestValue) : 0;
+            var result = await _adminService.DeleteInstitutionNews(studentId);
+            return Ok(result);
+        }
+
+        #endregion
+
+        #region InstitutionAnnouncement
+
+        [HttpPost]
+        [Route("GetAllInstitutionAnnouncement")]
+        [Produces("application/json")]
+        [Consumes("application/json")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public async Task<IActionResult> GetAllInstitutionAnnouncement()
+        {
+            var listStudent = await _adminService.GetAllStudents();
+            return Ok(listStudent);
+        }
+
+        [HttpPost]
+        [Route("CreateInstitutionAnnouncement")]
+        [Produces("application/json")]
+        [Consumes("application/json")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public async Task<IActionResult> CreateInstitutionAnnouncement([FromBody] InstitutionAnnouncementModel institutionAnnouncementModelObj)
+        {
+            var result = await _adminService.CreateInstitutionAnnouncement(institutionAnnouncementModelObj);
+            return Ok(result);
+        }
+
+        [HttpPost]
+        [Route("UpdateInstitutionAnnouncement")]
+        [Produces("application/json")]
+        [Consumes("application/json")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public async Task<IActionResult> UpdateInstitutionAnnouncement([FromBody] InstitutionAnnouncementModel institutionAnnouncementModelObj)
+        {
+            var result = await _adminService.UpdateInstitutionAnnouncement(institutionAnnouncementModelObj);
+            return Ok(result);
+        }
+
+        [HttpPost]
+        [Route("DeleteInstitutionAnnouncement")]
+        [Produces("application/json")]
+        [Consumes("application/json")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public async Task<IActionResult> DeleteInstitutionAnnouncement([FromBody] ApiRequest request)
+        {
+            var studentId = request.RequestValue != "" ? Convert.ToInt32(request.RequestValue) : 0;
+            var result = await _adminService.DeleteInstitutionAnnouncement(studentId);
+            return Ok(result);
+        }
 
         #endregion
     }
