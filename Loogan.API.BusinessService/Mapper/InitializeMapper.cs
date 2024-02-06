@@ -13,12 +13,12 @@ public class InitializeMapper : Profile
 {
     public InitializeMapper()
     {
-        var map = CreateMap<User, UserModel>();
-        //map.ForAllMembers(opt => opt.Ignore());//This is causing issue for reversemap
+        var map = CreateMap<UserModel, User>();
         map.ForMember(dest => dest.AdditionalName, opt => opt.MapFrom(src => src.AdditionalName))
             .ForMember(dest => dest.Address1, opt => opt.MapFrom(src => src.Address1))
             .ForMember(dest => dest.Address2, opt => opt.MapFrom(src => src.Address2))
             .ForMember(dest => dest.City, opt => opt.MapFrom(src => src.City))
+            .ForMember(dest => dest.Gender, opt => opt.Ignore())
             .ForMember(dest => dest.Suffix, opt => opt.MapFrom(src => src.Suffix))
             .ForMember(dest => dest.State, opt => opt.MapFrom(src => src.State))
             .ForMember(dest => dest.Company, opt => opt.MapFrom(src => src.Company))
@@ -51,7 +51,6 @@ public class InitializeMapper : Profile
             .ForMember(dest => dest.ModifyDate, opt => opt.MapFrom(src => src.ModifyDate)).ReverseMap();
 
         var staffMap = CreateMap<Staff, StaffModel>();
-        //staffMap.ForAllMembers(opt => opt.Ignore());
         staffMap.ForMember(dest => dest.StaffId, opt => opt.MapFrom(src => src.StaffId))
             .ForMember(dest => dest.UserId, opt => opt.MapFrom(src => src.UserId))
             .ForMember(dest => dest.StaffName, opt => opt.MapFrom(src => src.StaffName))
@@ -65,7 +64,6 @@ public class InitializeMapper : Profile
             .ReverseMap();
 
         var studentMap = CreateMap<Student, StudentModel>();
-        //studentMap.ForAllMembers(opt => opt.Ignore());
         studentMap.ForMember(dest => dest.StudentId, opt => opt.MapFrom(src => src.StudentId))
             .ForMember(dest => dest.AdminssionRepresentativeId, opt => opt.MapFrom(src => src.AdminssionRepresentativeId))
             .ForMember(dest => dest.CampusId, opt => opt.MapFrom(src => src.CampusId))
@@ -107,7 +105,6 @@ public class InitializeMapper : Profile
             .ReverseMap();
 
         var courseMap = CreateMap<Course, CourseModel>();
-        //courseMap.ForAllMembers(opt => opt.Ignore());
         courseMap.ForMember(dest => dest.CourseId, opt => opt.MapFrom(src => src.CourseId))
             .ForMember(dest => dest.CourseName, opt => opt.MapFrom(src => src.CourseName))
             .ForMember(dest => dest.CourseGroupId, opt => opt.MapFrom(src => src.CourseTypeSourceId))
@@ -116,7 +113,6 @@ public class InitializeMapper : Profile
             .ForMember(dest => dest.Credits, opt => opt.MapFrom(src => src.Credits)).ReverseMap();
 
         var StudentCourseMappingMap = CreateMap<StudentCourseMapping, StudentCourseMappingModel>();
-        //StudentCourseMappingMap.ForAllMembers(opt => opt.Ignore());
         StudentCourseMappingMap.ForMember(dest => dest.StudentCourseMappingId, opt => opt.MapFrom(src => src.StudentCourseMappingId))
             .ForMember(dest => dest.CampusId, opt => opt.MapFrom(src => src.CampusId))
             .ForMember(dest => dest.ClassSectionId, opt => opt.MapFrom(src => src.ClassSectionId))
