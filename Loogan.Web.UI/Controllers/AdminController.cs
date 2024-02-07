@@ -183,6 +183,48 @@ namespace Loogan.Web.UI.Controllers
             return new JsonResult(new { actualmenus = menuItems, selectMenus = selectedMenuItems });
         }
 
+        #region Institution
+        [Route("GetAllInstitutions")]
+        [LooganAdminAuthorize("Admin")]
+        public async Task<JsonResult> GetAllInstitutions(PagingModel pageModel)
+        {
+            var institutions = await _utilityHelper.ExecuteAPICall<List<InstitutionModel>>(null, RestSharp.Method.Post, resource: "api/Admin/GetAllInstitutions");
+            var pageList = institutions?.Skip(pageModel.Pagesize * (pageModel.PageIndex - 1))
+                        .Take(pageModel.Pagesize).ToList();
+
+            return Json(pageList);
+        }
+
+        [Route("CreateInstitution")]
+        [LooganAdminAuthorize("Admin")]
+        public async Task<JsonResult> CreateInstitution(InstitutionModel instituationViewModel)
+        {
+            instituationViewModel.CreatedBy = HttpContext?.Session?.GetInt32("LoginUserId");
+            instituationViewModel.CreatedDate = DateTime.Now;
+            await _utilityHelper.ExecuteAPICall<bool>(instituationViewModel, RestSharp.Method.Post, resource: "api/Admin/CreateInstitution");
+            return Json(new { value = "Success" });
+        }
+
+        [Route("UpdateInstitution")]
+        [LooganAdminAuthorize("Admin")]
+        public async Task<IActionResult> UpdateInstitution(InstitutionModel instituationViewModel)
+        {
+            instituationViewModel.ModifyBy = HttpContext?.Session?.GetInt32("LoginUserId");
+            instituationViewModel.ModifyDate = DateTime.Now;
+            await _utilityHelper.ExecuteAPICall<bool>(instituationViewModel, RestSharp.Method.Post, resource: "api/Admin/UpdateInstitution");
+            return Json(new { value = "Success" });
+        }
+
+        [Route("DeleteInstitution")]
+        [LooganAdminAuthorize("Admin")]
+        public async Task<JsonResult> DeleteInstitution(int institutionId)
+        {
+            var apiRequest = new ApiRequest() { RequestValue = Convert.ToString(institutionId) };
+            var IsDeleted = await _utilityHelper.ExecuteAPICall<bool>(apiRequest, RestSharp.Method.Post, resource: "api/Admin/DeleteInstitution");
+            return Json(new { value = "Success" });
+        }
+        #endregion
+
 
     }
 }
