@@ -314,7 +314,7 @@ namespace Loogan.Web.API.Controllers
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<IActionResult> GetAllInstitutionNews()
         {
-            var listStudent = await _adminService.GetAllStudents();
+            var listStudent = await _adminService.GetAllInstitutionNews();
             return Ok(listStudent);
         }
 
@@ -371,7 +371,7 @@ namespace Loogan.Web.API.Controllers
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<IActionResult> GetAllInstitutionAnnouncement()
         {
-            var listStudent = await _adminService.GetAllStudents();
+            var listStudent = await _adminService.GetAllInstitutionAnnouncement();
             return Ok(listStudent);
         }
 

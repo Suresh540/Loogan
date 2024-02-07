@@ -31,6 +31,8 @@
       "wwwroot/js/studentcourse.js",
       "wwwroot/js/emailtemplates.js",
       "wwwroot/js/institution.js",
+      "wwwroot/js/institutionnews.js",
+      "wwwroot/js/institutionannouncement.js",
       "wwwroot/lib/bootstrap/bootstrap.bundle.min.js",
       "wwwroot/js/jquery.toast.min.js"
     ],

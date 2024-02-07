@@ -184,6 +184,15 @@ namespace Loogan.Web.UI.Controllers
         }
 
         #region Institution
+
+        [HttpPost]
+        [Route("GetInstitutionsList")]
+        public async Task<IActionResult> GetInstitutionsList()
+        {
+            var institutionlist = await _utilityHelper.ExecuteAPICall<List<DropDownListModel>>(null, RestSharp.Method.Post, resource: "api/Admin/GetInstitutionsList");
+            return Json(institutionlist);
+        }
+
         [Route("GetAllInstitutions")]
         [LooganAdminAuthorize("Admin")]
         public async Task<JsonResult> GetAllInstitutions(PagingModel pageModel)
@@ -225,6 +234,91 @@ namespace Loogan.Web.UI.Controllers
         }
         #endregion
 
+        #region InstitutionNews
+
+        [Route("GetAllInstitutionNews")]
+        [LooganAdminAuthorize("Admin")]
+        public async Task<JsonResult> GetAllInstitutionNews(PagingModel pageModel)
+        {
+            var institutionNewss = await _utilityHelper.ExecuteAPICall<List<InstitutionNewsModel>>(null, RestSharp.Method.Post, resource: "api/Admin/GetAllInstitutionNews");
+            var pageList = institutionNewss?.Skip(pageModel.Pagesize * (pageModel.PageIndex - 1))
+                        .Take(pageModel.Pagesize).ToList();
+
+            return Json(pageList);
+        }
+
+        [Route("CreateInstitutionNews")]
+        [LooganAdminAuthorize("Admin")]
+        public async Task<JsonResult> CreateInstitutionNews(InstitutionNewsModel institutionNewsModelObj)
+        {
+            institutionNewsModelObj.CreatedBy = HttpContext?.Session?.GetInt32("LoginUserId");
+            institutionNewsModelObj.CreatedDate = DateTime.Now;
+            await _utilityHelper.ExecuteAPICall<bool>(institutionNewsModelObj, RestSharp.Method.Post, resource: "api/Admin/CreateInstitutionNews");
+            return Json(new { value = "Success" });
+        }
+
+        [Route("UpdateInstitutionNews")]
+        [LooganAdminAuthorize("Admin")]
+        public async Task<IActionResult> UpdateInstitutionNews(InstitutionNewsModel institutionNewsModelObj)
+        {
+            institutionNewsModelObj.ModifyBy = HttpContext?.Session?.GetInt32("LoginUserId");
+            institutionNewsModelObj.ModifyDate = DateTime.Now;
+            await _utilityHelper.ExecuteAPICall<bool>(institutionNewsModelObj, RestSharp.Method.Post, resource: "api/Admin/UpdateInstitutionNews");
+            return Json(new { value = "Success" });
+        }
+
+        [Route("DeleteInstitutionNews")]
+        [LooganAdminAuthorize("Admin")]
+        public async Task<JsonResult> DeleteInstitutionNews(int institutionNewsId)
+        {
+            var apiRequest = new ApiRequest() { RequestValue = Convert.ToString(institutionNewsId) };
+            var IsDeleted = await _utilityHelper.ExecuteAPICall<bool>(apiRequest, RestSharp.Method.Post, resource: "api/Admin/DeleteInstitutionNews");
+            return Json(new { value = "Success" });
+        }
+        #endregion
+
+        #region InstitutionAnnouncement
+
+        [Route("GetAllInstitutionAnnouncement")]
+        [LooganAdminAuthorize("Admin")]
+        public async Task<JsonResult> GetAllInstitutionAnnouncement(PagingModel pageModel)
+        {
+            var institutions = await _utilityHelper.ExecuteAPICall<List<InstitutionAnnouncementModel>>(null, RestSharp.Method.Post, resource: "api/Admin/GetAllInstitutionAnnouncement");
+            var pageList = institutions?.Skip(pageModel.Pagesize * (pageModel.PageIndex - 1))
+                        .Take(pageModel.Pagesize).ToList();
+
+            return Json(pageList);
+        }
+
+        [Route("CreateInstitutionAnnouncement")]
+        [LooganAdminAuthorize("Admin")]
+        public async Task<JsonResult> CreateInstitutionAnnouncement(InstitutionAnnouncementModel instituationAnnouncementViewModel)
+        {
+            instituationAnnouncementViewModel.CreatedBy = HttpContext?.Session?.GetInt32("LoginUserId");
+            instituationAnnouncementViewModel.CreatedDate = DateTime.Now;
+            await _utilityHelper.ExecuteAPICall<bool>(instituationAnnouncementViewModel, RestSharp.Method.Post, resource: "api/Admin/CreateInstitutionAnnouncement");
+            return Json(new { value = "Success" });
+        }
+
+        [Route("UpdateInstitutionAnnouncement")]
+        [LooganAdminAuthorize("Admin")]
+        public async Task<IActionResult> UpdateInstitutionAnnouncement(InstitutionAnnouncementModel instituationAnnouncementViewModel)
+        {
+            instituationAnnouncementViewModel.ModifyBy = HttpContext?.Session?.GetInt32("LoginUserId");
+            instituationAnnouncementViewModel.ModifyDate = DateTime.Now;
+            await _utilityHelper.ExecuteAPICall<bool>(instituationAnnouncementViewModel, RestSharp.Method.Post, resource: "api/Admin/UpdateInstitutionAnnouncement");
+            return Json(new { value = "Success" });
+        }
+
+        [Route("DeleteInstitutionAnnouncement")]
+        [LooganAdminAuthorize("Admin")]
+        public async Task<JsonResult> DeleteInstitutionAnnouncement(int institutionId)
+        {
+            var apiRequest = new ApiRequest() { RequestValue = Convert.ToString(institutionId) };
+            var IsDeleted = await _utilityHelper.ExecuteAPICall<bool>(apiRequest, RestSharp.Method.Post, resource: "api/Admin/DeleteInstitutionAnnouncement");
+            return Json(new { value = "Success" });
+        }
+        #endregion
 
     }
 }

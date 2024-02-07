@@ -147,6 +147,15 @@
 	<data name="AddEditUserKey" xml:space="preserve">
     <value>Ajouter/Modifier un utilisateur</value>
   </data>
+	<data name="AddEditInstitutionNewsKey" xml:space="preserve">
+    <value>Actualités de l'établissement</value>
+  </data>
+	<data name="AddEditInstitutionAnnouncementKey" xml:space="preserve">
+    <value>Annonce de l'établissement</value>
+  </data>
+	<data name="AddEditInstitutionKey" xml:space="preserve">
+    <value>Ajouter/Modifier un établissement</value>
+  </data>
 	<data name="AddEditStaffKey" xml:space="preserve">
     <value>Modifier le personnel</value>
   </data>

@@ -10,17 +10,18 @@ namespace Loogan.API.Models.Models.Admin
     {
         public int InstitutionAnnouncementId { get; set; }
 
+        public string? InstitutionName { get; set; }
         public int InstitutionId { get; set; }
 
         public string? Title { get; set; }
 
-        public string Announcement { get; set; } = null!;
+        public string? Announcement { get; set; }
 
         public string? Description { get; set; }
 
-        public DateOnly? StartDate { get; set; }
+        public string? StartDate { get; set; }
 
-        public DateOnly? EndDate { get; set; }
+        public string? EndDate { get; set; }
 
         public bool IsDeleted { get; set; }
 

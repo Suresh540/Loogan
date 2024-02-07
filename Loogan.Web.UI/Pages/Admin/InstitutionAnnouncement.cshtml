@@ -1,0 +1,153 @@
+﻿@page "/Admin/InstitutionAnnouncement"
+@using Loogan.Web.UI.Components
+@using Loogan.Web.UI.Resources.Pages
+@using Loogan.Web.UI.Utilities
+@using Microsoft.Extensions.Localization
+@model Loogan.API.Models.Models.Admin.InstitutionAnnouncementModel
+@attribute [LooganAdminAuthorize("Admin")]
+@inject IStringLocalizer<ContentLabel> Localizer
+@{
+    var showInstitutionAnnouncements = "showInstitutionAnnouncements";
+    var getTotalRecords = "getTotalRecords";
+}
+}
+<component type="typeof(Upper_Component)" render-mode="Static" />
+
+<div id="site-wrap" class="off-canvas-wrap">
+    <div class="inner-wrap">
+        <div class="row">
+            <div class="col-2 bb-login pointscroll leftmenu">
+                <component type="typeof(LeftSideBar_Component)" render-mode="Server" />
+            </div>
+            <div class="col-10">
+                <div class="base-profile pointscroll righcontent scrollrightend">
+                    <div class="columns small-12 profile-content" style="margin-top:2px !important">
+                        <div class="row">
+                            <div class="col-12 left-align">
+                                <h2 class="institutiontitle">@Localizer["InstitutionAnnouncementsKey"]</h2>
+                                <hr />
+                            </div>
+                        </div>
+                        <div style="text-align:right">
+                            <button onclick="institutionannouncement.showInstitutionAnnouncements()" type="button" style="background:gray;color:black" class="btn btn-light border rounded-pill shadow-sm mb-1" data-toggle="modal" data-target="#bottom_modal">
+                                <b>@Localizer["ShowInstitutionAnnouncementsKey"]</b>
+                            </button>
+                            <button type="button" class="btn btn-light border rounded-pill shadow-sm mb-1" onclick="institutionannouncement.clearInstitutionAnnouncement()"
+                                    style="background:lightgreen;color:black">
+                                <b>@Localizer["ClearKey"]</b>
+                            </button>
+                            <button id="btnSaveInstitutionAnnouncements" type="button" class="btn btn-light border rounded-pill shadow-sm mb-1" onclick="institutionannouncement.createInstitutionAnnouncement('btnSaveInstitutionAnnouncements')"
+                                    style="background:blue;color:white">
+                                <b>@Localizer["SaveKey"]</b>
+                            </button>
+                        </div>
+                        <div class="columns large-6 small-12 user-information">
+                            <p>
+                                <div>
+                                    <b>
+                                        @Localizer["InstitutionKey"] <b class="text-danger">*</b>
+                                    </b><br />
+                                    <select id="ddlInstitutions">
+                                    </select>
+                                    <input type="hidden" id="hdnInstitutionAnnouncementId" name="hdnInstitutionAnnouncementId" value="0" />
+                                    <input type="hidden" id="hdnInstitutionId" name="hdnInstitutionId" value="0" />
+                                </div>
+                                <div>
+                                    <b>
+                                        @Localizer["TitleKey"] <b class="text-danger">*</b>
+                                    </b><br />
+                                    <input id="txtTitle" type="text" />
+                                </div>
+                                <div>
+                                    <b>
+                                        @Localizer["AnnouncementKey"]
+                                    </b><br />
+                                    <input id="txtAnnouncement" type="text" />
+                                </div>
+                                <div>
+                                    <b>
+                                        @Localizer["DescriptionKey"]
+                                    </b><br />
+                                    <input id="txtDescription" type="text" />
+                                </div>
+                            </p>
+                        </div>
+                        <div class="columns large-6 small-12 user-information">
+                            <p>
+                                <div>
+                                    <b>
+                                        @Localizer["StartDateKey"]
+                                    </b><br />
+                                    <input id="txtStartDate" type="date" />
+                                </div>
+                                <div>
+                                    <b>
+                                        @Localizer["EndDateKey"]
+                                    </b><br />
+                                    <input id="txtEndDate" type="date" />
+                                </div>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <component type="typeof(Lower_Component)" render-mode="Static" /><br />
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal modal-full fade" id="bottom_modal" tabindex="-1" role="dialog" aria-labelledby="fullscreen_modal">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">@Localizer["InstitutionAnnouncementListKey"]</h2>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <table class="table">
+                    <thead id="tdHeader">
+                        <tr>
+                            <td>
+                                &nbsp;
+                            </td>
+
+                            <td>
+                                @Localizer["InstitutionNameKey"]
+                            </td>
+                            <td>
+                                @Localizer["TitleKey"]
+                            </td>
+                            <td>
+                                @Localizer["AnnouncementKey"]
+                            </td>
+                            <td>
+                                @Localizer["StartDateKey"]
+                            </td>
+                            <td>
+                                @Localizer["EndDateKey"]
+                            </td>
+                        </tr>
+                    </thead>
+                    <tbody id="tdBody">
+                    </tbody>
+                </table>
+                <component type="typeof(Paging_Component)" render-mode="ServerPrerendered"
+                           param-TotalRecords="10" param-NavigateURL="showInstitutionAnnouncements" param-TotalRecordsURL="getTotalRecords" />
+            </div>
+            <div class="modal-footer modal-footer-fixed d-none">
+                <button id="btnCreateClose" type="button" class="btn btn-secondary" data-dismiss="modal">
+                    @Localizer["CloseKey"]
+                </button>
+                <button type="button" class="btn btn-primary">@Localizer["SaveChangesKey"]</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    function fnLoad() {
+        institution.ddlinstitution();
+    }
+    setTimeout(fnLoad(), 700);
+</script>

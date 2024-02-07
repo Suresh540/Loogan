@@ -12,7 +12,6 @@ public partial class LooganContext : DbContext
         _connectionString = connectionString;
     }
 
-
     public virtual DbSet<AreaOfStudy> AreaOfStudies { get; set; }
 
     public virtual DbSet<AreaOfStudyCourseMapping> AreaOfStudyCourseMappings { get; set; }
@@ -95,8 +94,8 @@ public partial class LooganContext : DbContext
 
     public virtual DbSet<UserType> UserTypes { get; set; }
 
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-       => optionsBuilder.UseSqlServer(_connectionString);
+    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+   => optionsBuilder.UseSqlServer(_connectionString);
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -508,7 +507,9 @@ public partial class LooganContext : DbContext
             entity.Property(e => e.Description)
                 .HasMaxLength(200)
                 .IsUnicode(false);
+            entity.Property(e => e.EndDate).HasColumnType("datetime");
             entity.Property(e => e.ModifyDate).HasColumnType("datetime");
+            entity.Property(e => e.StartDate).HasColumnType("datetime");
             entity.Property(e => e.Title)
                 .HasMaxLength(100)
                 .IsUnicode(false);
@@ -527,10 +528,12 @@ public partial class LooganContext : DbContext
             entity.Property(e => e.Description)
                 .HasMaxLength(50)
                 .IsUnicode(false);
+            entity.Property(e => e.EndDate).HasColumnType("datetime");
             entity.Property(e => e.ModifyDate).HasColumnType("datetime");
             entity.Property(e => e.News)
                 .HasMaxLength(500)
                 .IsUnicode(false);
+            entity.Property(e => e.StartDate).HasColumnType("datetime");
             entity.Property(e => e.Title)
                 .HasMaxLength(100)
                 .IsUnicode(false);

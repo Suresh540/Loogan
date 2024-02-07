@@ -10,6 +10,8 @@ namespace Loogan.API.Models.Models.Admin
     {
         public int InstitutionNewsId { get; set; }
 
+        public string? InstitutionName { get; set; }
+
         public int InstitutionId { get; set; }
 
         public string Title { get; set; } = null!;
@@ -18,9 +20,9 @@ namespace Loogan.API.Models.Models.Admin
 
         public string? Description { get; set; }
 
-        public DateOnly? StartDate { get; set; }
+        public string? StartDate { get; set; }
 
-        public DateOnly? EndDate { get; set; }
+        public string? EndDate { get; set; }
 
         public bool IsDeleted { get; set; }
 

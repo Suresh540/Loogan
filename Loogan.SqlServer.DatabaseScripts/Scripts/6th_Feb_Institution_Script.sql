@@ -173,3 +173,16 @@ AS
   FROM [dbo].[Institution_News] InsNews
   inner join [dbo].[Institution] Ins on Ins.InstitutionId = InsNews.InstitutionId and Ins.IsDeleted = 0
 GO
+
+--7th_feb
+ALTER TABLE Institution_News
+ALTER COLUMN StartDate datetime;
+
+ALTER TABLE Institution_News
+ALTER COLUMN EndDate datetime;
+
+ALTER TABLE Institution_Announcement
+ALTER COLUMN StartDate datetime;
+
+ALTER TABLE Institution_Announcement
+ALTER COLUMN EndDate datetime;
