@@ -1,0 +1,17 @@
+﻿@page
+@model Loogan.Web.UI.Pages.Shared.UploadModel
+@{
+    ViewData["Title"] = "Upload Image";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<form method="post" enctype="multipart/form-data">
+    <input type="file" name="imageFile" />
+    <button type="submit">Upload</button>
+</form>
+
+@if (!string.IsNullOrEmpty(Model.Message))
+{
+    <p>@Model.Message</p>
+}
