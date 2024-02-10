@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <root>
-	<!-- 
+  <!-- 
     Microsoft ResX Schema 
     
     Version 2.0
@@ -59,767 +59,764 @@
             : using a System.ComponentModel.TypeConverter
             : and then encoded with base64 encoding.
     -->
-	<xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
-		<xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
-		<xsd:element name="root" msdata:IsDataSet="true">
-			<xsd:complexType>
-				<xsd:choice maxOccurs="unbounded">
-					<xsd:element name="metadata">
-						<xsd:complexType>
-							<xsd:sequence>
-								<xsd:element name="value" type="xsd:string" minOccurs="0" />
-							</xsd:sequence>
-							<xsd:attribute name="name" use="required" type="xsd:string" />
-							<xsd:attribute name="type" type="xsd:string" />
-							<xsd:attribute name="mimetype" type="xsd:string" />
-							<xsd:attribute ref="xml:space" />
-						</xsd:complexType>
-					</xsd:element>
-					<xsd:element name="assembly">
-						<xsd:complexType>
-							<xsd:attribute name="alias" type="xsd:string" />
-							<xsd:attribute name="name" type="xsd:string" />
-						</xsd:complexType>
-					</xsd:element>
-					<xsd:element name="data">
-						<xsd:complexType>
-							<xsd:sequence>
-								<xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
-								<xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
-							</xsd:sequence>
-							<xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
-							<xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
-							<xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
-							<xsd:attribute ref="xml:space" />
-						</xsd:complexType>
-					</xsd:element>
-					<xsd:element name="resheader">
-						<xsd:complexType>
-							<xsd:sequence>
-								<xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
-							</xsd:sequence>
-							<xsd:attribute name="name" type="xsd:string" use="required" />
-						</xsd:complexType>
-					</xsd:element>
-				</xsd:choice>
-			</xsd:complexType>
-		</xsd:element>
-	</xsd:schema>
-	<resheader name="resmimetype">
-		<value>text/microsoft-resx</value>
-	</resheader>
-	<resheader name="version">
-		<value>2.0</value>
-	</resheader>
-	<resheader name="reader">
-		<value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-	</resheader>
-	<resheader name="writer">
-		<value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-	</resheader>
-	<data name="ActivityStreamKey" xml:space="preserve">
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="ActivityStreamKey" xml:space="preserve">
     <value>Flux d'activités</value>
   </data>
-	<data name="CalendarKey" xml:space="preserve">
+  <data name="CalendarKey" xml:space="preserve">
     <value>Calendrier</value>
   </data>
-	<data name="CoursesKey" xml:space="preserve">
+  <data name="CoursesKey" xml:space="preserve">
     <value>Cours</value>
   </data>
-	<data name="GradesKey" xml:space="preserve">
+  <data name="GradesKey" xml:space="preserve">
     <value>Notes</value>
   </data>
-	<data name="InstitutionPageKey" xml:space="preserve">
+  <data name="InstitutionPageKey" xml:space="preserve">
     <value>Page de l'établissement</value>
   </data>
-	<data name="MessagesKey" xml:space="preserve">
+  <data name="MessagesKey" xml:space="preserve">
     <value>messages</value>
   </data>
-	<data name="OrgnizationsKey" xml:space="preserve">
+  <data name="OrgnizationsKey" xml:space="preserve">
     <value>Organisations</value>
   </data>
-	<data name="SignOutKey" xml:space="preserve">
+  <data name="SignOutKey" xml:space="preserve">
     <value>Se déconnecter</value>
   </data>
-	<data name="ToolsKey" xml:space="preserve">
+  <data name="ToolsKey" xml:space="preserve">
     <value>Outils</value>
   </data>
-	<data name="AddEditUserKey" xml:space="preserve">
-    <value>Ajouter/Modifier un utilisateur</value>
+  <data name="AddEditUserKey" xml:space="preserve">
+    <value>un utilisateur</value>
   </data>
-	<data name="AddEditInstitutionNewsKey" xml:space="preserve">
-    <value>Actualités de l'établissement</value>
+  <data name="AddEditInstitutionNewsKey" xml:space="preserve">
+    <value>Actualités</value>
   </data>
-	<data name="AddEditInstitutionAnnouncementKey" xml:space="preserve">
-    <value>Annonce de l'établissement</value>
-  </data>
-	<data name="AddEditInstitutionKey" xml:space="preserve">
-    <value>Ajouter/Modifier un établissement</value>
-  </data>
-	<data name="AddEditStaffKey" xml:space="preserve">
-    <value>Modifier le personnel</value>
-  </data>
-	<data name="AddEditStudentKey" xml:space="preserve">
-    <value>Modifier l'élève</value>
-  </data>
-	<data name="AddEditCourseKey" xml:space="preserve">
-    <value>Ajouter/Modifier un cours</value>
-  </data>
-	<data name="AddEditStudentCourseMappingKey" xml:space="preserve">
-    <value>Cours pour étudiants</value>
-  </data>
-	<data name="AdditionalNameKey" xml:space="preserve">
-    <value>Nom supplémentaire</value>
-  </data>
-	<data name="BasicInformationKey" xml:space="preserve">
-    <value>Informations de base</value>
-  </data>
-	<data name="CityKey" xml:space="preserve">
-    <value>Ville</value>
-  </data>
-	<data name="ClearKey" xml:space="preserve">
-    <value>Claire</value>
-  </data>
-	<data name="CompanyKey" xml:space="preserve">
-    <value>Entreprise</value>
-  </data>
-	<data name="ConfirmPasswordKey" xml:space="preserve">
-    <value>Confirmez le mot de passe</value>
-  </data>
-	<data name="CountryKey" xml:space="preserve">
-    <value>Pays</value>
-  </data>
-	<data name="DepartmentKey" xml:space="preserve">
-    <value>Département</value>
-  </data>
-	<data name="EducationLevelKey" xml:space="preserve">
-    <value>niveau d'éducation</value>
-  </data>
-	<data name="EmailAddressKey" xml:space="preserve">
-    <value>Adresse e-mail</value>
-  </data>
-	<data name="FaxNumberKey" xml:space="preserve">
-    <value>Numéro de fax</value>
-  </data>
-	<data name="FirstNameKey" xml:space="preserve">
-    <value>Prénom</value>
-  </data>
-	<data name="GenderKey" xml:space="preserve">
-    <value>Genre</value>
-  </data>
-	<data name="JobTitleKey" xml:space="preserve">
-    <value>Titre d'emploi</value>
-  </data>
-	<data name="LastNameKey" xml:space="preserve">
-    <value>Nom de famille</value>
-  </data>
-	<data name="MiddleNameKey" xml:space="preserve">
-    <value>Deuxième prénom</value>
-  </data>
-	<data name="PasswordKey" xml:space="preserve">
-    <value>Mot de passe</value>
-  </data>
-	<data name="PhoneNumberKey" xml:space="preserve">
-    <value>Numéro de téléphone</value>
-  </data>
-	<data name="PrefixKey" xml:space="preserve">
-    <value>Préfixe</value>
-  </data>
-	<data name="SaveKey" xml:space="preserve">
-    <value>Sauvegarder</value>
-  </data>
-	<data name="ShowUsersKey" xml:space="preserve">
-    <value>Afficher les utilisateurs</value>
-  </data>
-	<data name="ShowStaffKey" xml:space="preserve">
-    <value>Afficher les bâtons</value>
-  </data>
-	<data name="ShowStudentKey" xml:space="preserve">
-    <value>Afficher les étudiants</value>
-  </data>
-	<data name="ShowCourseKey" xml:space="preserve">
-    <value>Afficher les cours</value>
-  </data>
-	<data name="State_ProvinceKey" xml:space="preserve">
-    <value>État/Province</value>
-  </data>
-	<data name="SuffixKey" xml:space="preserve">
-    <value>Suffixe</value>
-  </data>
-	<data name="UserNameKey" xml:space="preserve">
-    <value>Nom d'utilisateur</value>
-  </data>
-	<data name="WebsiteKey" xml:space="preserve">
-    <value>Site web</value>
-  </data>
-	<data name="AdditionalInformationKey" xml:space="preserve">
-    <value>Informations Complémentaires</value>
-  </data>
-	<data name="ADFSLoginKey" xml:space="preserve">
-    <value>Connexion ADFS</value>
-  </data>
-	<data name="CloseKey" xml:space="preserve">
-    <value>Fermer</value>
-  </data>
-	<data name="ContactInformationKey" xml:space="preserve">
-    <value>Coordonnées</value>
-  </data>
-	<data name="DataSavedKey" xml:space="preserve">
-    <value>Données enregistrées avec succès</value>
-  </data>
-	<data name="FailedSaveKey" xml:space="preserve">
-    <value>Échec de l'enregistrement</value>
-  </data>
-	<data name="ForgotPasswordKey" xml:space="preserve">
-    <value>Mot de passe oublié</value>
-  </data>
-	<data name="JobInformationKey" xml:space="preserve">
-    <value>Informations sur l'emploi</value>
-  </data>
-	<data name="LooganLearnKey" xml:space="preserve">
-    <value>Loogan Apprendre</value>
-  </data>
-	<data name="PasswordEmptyKey" xml:space="preserve">
-    <value>Le mot de passe est vide</value>
-  </data>
-	<data name="SaveChangesKey" xml:space="preserve">
-    <value>Sauvegarder les modifications</value>
-  </data>
-	<data name="SignInKey" xml:space="preserve">
-    <value>Se connecter</value>
-  </data>
-	<data name="SignThirdPartyKey" xml:space="preserve">
-    <value>Connectez-vous avec un compte tiers</value>
-  </data>
-	<data name="UserNameEmptyKey" xml:space="preserve">
-    <value>Le nom d'utilisateur est vide</value>
-  </data>
-	<data name="UserPwdWrongKey" xml:space="preserve">
-    <value>Le nom d'utilisateur/mot de passe est erroné</value>
-  </data>
-	<data name="CancelKey" xml:space="preserve">
-    <value>Annuler</value>
-  </data>
-	<data name="ChangeLanguageKey" xml:space="preserve">
-    <value>Changer de langue</value>
-  </data>
-	<data name="LooganReservedKey" xml:space="preserve">
-    <value>Loogan Inc. Tous droits réservés.</value>
-  </data>
-	<data name="MailSentKey" xml:space="preserve">
-    <value>Courrier envoyé avec succès à l'e-mail</value>
-  </data>
-	<data name="SubmitKey" xml:space="preserve">
-    <value>Soumettre</value>
-  </data>
-	<data name="FullNameKey" xml:space="preserve">
-    <value>Nom et prénom</value>
-  </data>
-	<data name="AddBusinessFaxNumberKey" xml:space="preserve">
-    <value>Ajouter un numéro de fax professionnel</value>
-  </data>
-	<data name="AddCompanyKey" xml:space="preserve">
-    <value>Ajouter une entreprise</value>
-  </data>
-	<data name="AddDepartmentKey" xml:space="preserve">
-    <value>Ajouter un département</value>
-  </data>
-	<data name="AddJobTitleKey" xml:space="preserve">
-    <value>Ajouter un titre de poste</value>
-  </data>
-	<data name="AddMailingAddressKey" xml:space="preserve">
-    <value>Ajouter une adresse postale</value>
-  </data>
-	<data name="AddPhoneNumberKey" xml:space="preserve">
-    <value>Ajouter un numéro de téléphone</value>
-  </data>
-	<data name="AddWebsiteKey" xml:space="preserve">
-    <value>Ajouter un site Web</value>
-  </data>
-	<data name="EmailNotificationsKey" xml:space="preserve">
-    <value>Notifications par email</value>
-  </data>
-	<data name="GlobalNotificationSettingsKey" xml:space="preserve">
-    <value>Paramètres de notification globaux</value>
-  </data>
-	<data name="LanguageKey" xml:space="preserve">
-    <value>Langue</value>
-  </data>
-	<data name="MailingAddressKey" xml:space="preserve">
-    <value>Adresse postale</value>
-  </data>
-	<data name="OnlyInstructorViewKey" xml:space="preserve">
-    <value>Seuls les instructeurs peuvent &lt;br/&gt; voir les informations de mon profil&lt;br/&gt;</value>
-  </data>
-	<data name="PrivacySettigsKey" xml:space="preserve">
-    <value>Paramètres de confidentialité</value>
-  </data>
-	<data name="PushNotificationsKey" xml:space="preserve">
-    <value>Notifications push</value>
-  </data>
-	<data name="StreamNotificationsKey" xml:space="preserve">
-    <value>Notifications de flux</value>
-  </data>
-	<data name="SystemSettingsKey" xml:space="preserve">
-    <value>Les paramètres du système</value>
-  </data>
-	<data name="ConfirmPwdMandatoryKey" xml:space="preserve">
-    <value>La confirmation du mot de passe est obligatoire</value>
-  </data>
-	<data name="ConfirmPwdPwdDifferentKey" xml:space="preserve">
-    <value>Confirmez le mot de passe, le mot de passe est différent</value>
-  </data>
-	<data name="EmailMandatoryKey" xml:space="preserve">
-    <value>L'adresse e-mail est obligatoire</value>
-  </data>
-	<data name="ErrorMessageUserPasswordKey" xml:space="preserve">
-    <value>Entrez un nom d'utilisateur et un mot de passe.</value>
-  </data>
-	<data name="FailedToCreateUserKey" xml:space="preserve">
-    <value>Échec de la création de l'utilisateur</value>
-  </data>
-	<data name="FirstNameMandatoryKey" xml:space="preserve">
-    <value>Le prénom est obligatoire</value>
-  </data>
-	<data name="GenderMandatoryKey" xml:space="preserve">
-    <value>Le sexe est obligatoire</value>
-  </data>
-	<data name="LastNameMandatoryKey" xml:space="preserve">
-    <value>Le nom de famille est obligatoire</value>
-  </data>
-	<data name="PasswordMandatoryKey" xml:space="preserve">
-    <value>Le mot de passe est obligatoire</value>
-  </data>
-	<data name="PhoneMandatoryKey" xml:space="preserve">
-    <value>Le téléphone est obligatoire</value>
-  </data>
-	<data name="PleaseSelectKey" xml:space="preserve">
-    <value>Veuillez sélectionner</value>
-  </data>
-	<data name="UserNameMandatoryKey" xml:space="preserve">
-    <value>Le nom d'utilisateur est obligatoire</value>
-  </data>
-	<data name="AdditionalNameMandatoryKey" xml:space="preserve">
-    <value>Additional name is mandatory</value>
-  </data>
-	<data name="UserSavedSuccessKey" xml:space="preserve">
-    <value>Utilisateur enregistré avec succès</value>
-  </data>
-	<data name="UserNameAlreadyExistKey" xml:space="preserve">
-    <value>Le nom d'utilisateur existe déjà. Veuillez le modifier.</value>
-  </data>
-	<data name="EmailAlreadyExistKey" xml:space="preserve">
-    <value>Email Address is Already Exist Please change.</value>
-  </data>
-	<data name="RoleMappingKey" xml:space="preserve">
-    <value>L'adresse e-mail existe déjà. Veuillez la modifier.</value>
-  </data>
-	<data name="StaffListMappingKey" xml:space="preserve">
-    <value>Liste du personnel</value>
-  </data>
-	<data name="StudentListMappingKey" xml:space="preserve">
-    <value>Liste des étudiants</value>
-  </data>
-	<data name="CourseMappingKey" xml:space="preserve">
-    <value>Détails du cours</value>
-  </data>
-	<data name="UserDeleteMsgKey" xml:space="preserve">
-    <value>L’utilisateur a été supprimé avec succès.</value>
-  </data>
-	<data name="UserFailedDeleteKey" xml:space="preserve">
-    <value>Echec de la suppression de l’utilisateur.</value>
-  </data>
-	<data name="SelectChangesKey" xml:space="preserve">
-    <value>Sélectionnez les éléments à enregistrer</value>
-  </data>
-	<data name="StaffInformationKey" xml:space="preserve">
-    <value>Informations sur le personnel</value>
-  </data>
-	<data name="StaffNameKey" xml:space="preserve">
-    <value>Nom du personnel</value>
-  </data>
-	<data name="StaffNameMandatoryKey" xml:space="preserve">
-    <value>Le nom du personnel est obligatoire</value>
-  </data>
-	<data name="StaffUpdateSuccessKey" xml:space="preserve">
-    <value>Personnel enregistré avec succès</value>
-  </data>
-	<data name="FailedToCreateStaffKey" xml:space="preserve">
-    <value>Échec de la création du personnel</value>
-  </data>
-	<data name="UserTypeKey" xml:space="preserve">
-    <value>Type d'utilisateur</value>
-  </data>
-	<data name="UserTypeMandatoryKey" xml:space="preserve">
-    <value>Le type d'utilisateur est obligatoire</value>
-  </data>
-	<data name="AddFavoriteKey" xml:space="preserve">
-    <value>Ajouté aux favoris</value>
-  </data>
-	<data name="RemovedFromFavoriteKey" xml:space="preserve">
-    <value>Supprimé de vos favoris</value>
-  </data>
-	<data name="RemoveFavoriteKey" xml:space="preserve">
-    <value>Supprimer de vos favoris</value>
-  </data>
-	<data name="AdmissionReprestativeKey" xml:space="preserve">
-    <value>Représentant d'admission</value>
-  </data>
-	<data name="StateKey" xml:space="preserve">
-    <value>État</value>
-  </data>
-	<data name="PostalKey" xml:space="preserve">
-    <value>Postale</value>
-  </data>
-	<data name="StudentInformationKey" xml:space="preserve">
-    <value>Liste des étudiants</value>
-  </data>
-	<data name="MaidenNameKey" xml:space="preserve">
-    <value>Nom de jeune fille</value>
-  </data>
-	<data name="NickNameKey" xml:space="preserve">
-    <value>Surnom</value>
-  </data>
-	<data name="MiddleInitialKey" xml:space="preserve">
-    <value>Initiale du milieu</value>
-  </data>
-	<data name="MartialStatusKey" xml:space="preserve">
-    <value>État civil</value>
-  </data>
-	<data name="CitizenShipStatusKey" xml:space="preserve">
-    <value>Statut de citoyenneté</value>
-  </data>
-	<data name="EducationalLevelKey" xml:space="preserve">
-    <value>Niveau d'éducation</value>
-  </data>
-	<data name="EthnicGroupKey" xml:space="preserve">
-    <value>Groupe ethnique</value>
-  </data>
-	<data name="NationalityKey" xml:space="preserve">
-    <value>Nationalité</value>
-  </data>
-	<data name="OriginalExceptedStartDateKey" xml:space="preserve">
-    <value>Date de début originale exceptée</value>
-  </data>
-	<data name="OriginalStartDateKey" xml:space="preserve">
-    <value>Date de début initiale</value>
-  </data>
-	<data name="StartDateKey" xml:space="preserve">
-    <value>Date de début</value>
-  </data>
-	<data name="HispanicKey" xml:space="preserve">
-    <value>hispanique</value>
-  </data>
-	<data name="VeteranKey" xml:space="preserve">
-    <value>Vétéran</value>
-  </data>
-	<data name="TitleMandatoryKey" xml:space="preserve">
-    <value>Le titre est obligatoire</value>
-  </data>
-	<data name="CourseGroupKey" xml:space="preserve">
-    <value>Groupe de cours</value>
-  </data>
-	<data name="CourseCodeKey" xml:space="preserve">
-    <value>Code de cours</value>
-  </data>
-	<data name="StudentCourseListKey" xml:space="preserve">
-    <value>Liste des cours pour étudiants</value>
-  </data>
-	<data name="CourseNameKey" xml:space="preserve">
-    <value>Nom du cours</value>
-  </data>
-	<data name="CourseDescriptionKey" xml:space="preserve">
-    <value>Description du cours</value>
-  </data>
-	<data name="CourseLevelKey" xml:space="preserve">
-    <value>Niveau du cours</value>
-  </data>
-	<data name="CreditHoursKey" xml:space="preserve">
-    <value>Des heures de credit</value>
-  </data>
-	<data name="CreditsKey" xml:space="preserve">
-    <value>Crédits</value>
-  </data>
-	<data name="CourseListKey" xml:space="preserve">
-    <value>Cours) Liste</value>
-  </data>
-	<data name="CourseDeleteMsgKey" xml:space="preserve">
-    <value>Cours supprimé avec succès.</value>
-  </data>
-	<data name="CourseFailedDeleteKey" xml:space="preserve">
-    <value>Échec de la suppression du cours.</value>
-  </data>
-	<data name="CourseCodeMandatoryKey" xml:space="preserve">
-    <value>Le code du cours est obligatoire.</value>
-  </data>
-	<data name="CourseNameMandatoryKey" xml:space="preserve">
-    <value>Le nom du cours est obligatoire.</value>
-  </data>
-	<data name="CourseGroupMandatoryKey" xml:space="preserve">
-    <value>Le groupe de cours est obligatoire.</value>
-  </data>
-	<data name="CourseUpdateSuccessKey" xml:space="preserve">
-    <value>Cours enregistré avec succès.</value>
-  </data>
-	<data name="FailedToCourseKey" xml:space="preserve">
-    <value>Échec de la création du personnel.</value>
-  </data>
-	<data name="StudentCourseMappingKey" xml:space="preserve">
-    <value>Cours pour étudiants</value>
-  </data>
-	<data name="CourseKey" xml:space="preserve">
-    <value>Cours</value>
-  </data>
-	<data name="StudentKey" xml:space="preserve">
-    <value>Étudiante</value>
-  </data>
-	<data name="StaffKey" xml:space="preserve">
-    <value>Personnelle</value>
-  </data>
-	<data name="StudentCourseStatusKey" xml:space="preserve">
-    <value>Statut du cours étudiant</value>
-  </data>
-	<data name="CourseCreditHoursKey" xml:space="preserve">
-    <value>Heures de crédit de cours</value>
-  </data>
-	<data name="CourseCreditKey" xml:space="preserve">
-    <value>Crédit de cours</value>
-  </data>
-	<data name="MinusAbsentKey" xml:space="preserve">
-    <value>Moins Absent</value>
-  </data>
-	<data name="MinusAttendedKey" xml:space="preserve">
-    <value>Moins fréquenté</value>
-  </data>
-	<data name="NumericGradeObtainedKey" xml:space="preserve">
-    <value>Note numérique obtenue</value>
-  </data>
-	<data name="TotalGradeAttemptedKey" xml:space="preserve">
-    <value>Note totale tentée</value>
-  </data>
-	<data name="TotalCreditsEarnedKey" xml:space="preserve">
-    <value>Total des crédits gagnés</value>
-  </data>
-	<data name="TotalHoursAttemptedKey" xml:space="preserve">
-    <value>Nombre total d'heures tentées</value>
-  </data>
-	<data name="TotalHoursEarnedKey" xml:space="preserve">
-    <value>Nombre total d'heures gagnées</value>
-  </data>
-	<data name="GradeLetterCodeObtainedKey" xml:space="preserve">
-    <value>Code de lettre de note</value>
-  </data>
-	<data name="GradeNoteKey" xml:space="preserve">
-    <value>Note de note</value>
-  </data>
-	<data name="CourseCompletedDateKey" xml:space="preserve">
-    <value>Date de fin du cours</value>
-  </data>
-	<data name="CourseDropDateKey" xml:space="preserve">
-    <value>Date d'abandon du cours</value>
-  </data>
-	<data name="CourseLastAttendedDateKey" xml:space="preserve">
-    <value>Date de la dernière participation au cours</value>
-  </data>
-	<data name="CourseRegisteredDateKey" xml:space="preserve">
-    <value>Date d'inscription au cours</value>
-  </data>
-	<data name="CourseStartDateKey" xml:space="preserve">
-    <value>Date de début du cours</value>
-  </data>
-	<data name="ExpectedCourseEndDateKey" xml:space="preserve">
-    <value>Date de fin prévue du cours</value>
-  </data>
-	<data name="GradePostedDateKey" xml:space="preserve">
-    <value>Date de publication de la note</value>
-  </data>
-	<data name="CourseCompletedStatusIndKey" xml:space="preserve">
-    <value>Statut du cours terminé</value>
-  </data>
-	<data name="CourseCurrentStatusIndKey" xml:space="preserve">
-    <value>Statut actuel du cours</value>
-  </data>
-	<data name="CourseDroppedStatusIndKey" xml:space="preserve">
-    <value>Statut de cours abandonné</value>
-  </data>
-	<data name="CourseFutureStatusIndKey" xml:space="preserve">
-    <value>Statut futur du cours</value>
-  </data>
-	<data name="CourseLeaveOfAbsenceStatusIndKey" xml:space="preserve">
-    <value>Statut de congé de cours</value>
-  </data>
-	<data name="CourseScheduledStatusIndKey" xml:space="preserve">
-    <value>Statut prévu du cours</value>
-  </data>
-	<data name="CourseRetakeIndKey" xml:space="preserve">
-    <value>Reprise du cours</value>
-  </data>
-	<data name="CourseTypeKey" xml:space="preserve">
-    <value>Type de cours</value>
-  </data>
-	<data name="ShowStudentCourseKey" xml:space="preserve">
-    <value>Cours pour étudiants</value>
-  </data>
-	<data name="CourseMandatoryKey" xml:space="preserve">
-    <value>Le cours est obligatoire</value>
-  </data>
-	<data name="StudentMandatoryKey" xml:space="preserve">
-    <value>L'étudiant est obligatoire</value>
-  </data>
-	<data name="StaffMandatoryKey" xml:space="preserve">
-    <value>Le personnel est obligatoire</value>
-  </data>
-	<data name="StudentCourseUpdateSuccessKey" xml:space="preserve">
-    <value>Cours étudiant enregistré avec succès</value>
-  </data>
-	<data name="FailedToStudenCoursetKey" xml:space="preserve">
-    <value>Échec de la création du cours étudiant</value>
-  </data>
-	<data name="StudentCourseDeleteMsgKey" xml:space="preserve">
-    <value>Cours étudiant supprimé avec succès</value>
-  </data>
-	<data name="StudentCourseFailedDeleteKey" xml:space="preserve">
-    <value>Échec de la suppression du cours étudiant</value>
-  </data>
-	<data name="EmailTemplateKey" xml:space="preserve">
-    <value>Modèle d'e-mail</value>
-  </data>
-	<data name="ShowEmailTemplatesKey" xml:space="preserve">
-    <value>Scomment Modèles d'e-mails</value>
-  </data>
-	<data name="EmailSubjectKey" xml:space="preserve">
-    <value>Sujet du courriel</value>
-  </data>
-	<data name="EmailBodyKey" xml:space="preserve">
-    <value>Corps de l'e-mail</value>
-  </data>
-	<data name="EmailTemplateMandatoryKey" xml:space="preserve">
-    <value>Le modèle de courrier électronique est obligatoire</value>
-  </data>
-	<data name="EmailSubjectMandatoryKey" xml:space="preserve">
-    <value>Le sujet de l'e-mail est obligatoire</value>
-  </data>
-	<data name="EmailBodyMandatoryKey" xml:space="preserve">
-    <value>L'email de Boday est obligatoire</value>
-  </data>
-	<data name="EmailTemplateUpdateSuccessKey" xml:space="preserve">
-    <value>Modèle d'e-mail enregistré avec succès</value>
-  </data>
-	<data name="FailedToEmailTemplateKey" xml:space="preserve">
-    <value>Échec de la création du modèle d'e-mail</value>
-  </data>
-	<data name="EmailTemplateDeleteMsgKey" xml:space="preserve">
-    <value>Modèle d'e-mail supprimé avec succès</value>
-  </data>
-	<data name="EmailTemplateFailedDeleteKey" xml:space="preserve">
-    <value>Échec de la suppression du modèle d'e-mail</value>
-  </data>
-	<data name="EmailTemplateListKey" xml:space="preserve">
-    <value>Liste des modèles d'e-mail</value>
-	</data>
-	<data name="InstitutionKey" xml:space="preserve">
-    <value>Détails de l'établissement</value>
-  </data>
-	<data name="InstitutionNameKey" xml:space="preserve">
-    <value>nom de l'institution</value>
-  </data>
-	<data name="DescriptionKey" xml:space="preserve">
-    <value>Description</value>
-  </data>
-	<data name="AddressKey" xml:space="preserve">
-    <value>Adresse</value>
-  </data>
-	<data name="LogoKey" xml:space="preserve">
-    <value>Logo</value>
-  </data>
-	<data name="MissionKey" xml:space="preserve">
-    <value>Mission</value>
-  </data>
-	<data name="VisionKey" xml:space="preserve">
-    <value>Vision</value>
-  </data>
-	<data name="CommentsKey" xml:space="preserve">
-    <value>commentaires</value>
-  </data>
-	<data name="ShowInstitutionKey" xml:space="preserve">
-    <value>Afficher l'établissement</value>
-  </data>
-	<data name="InstitutionListKey" xml:space="preserve">
-    <value>Liste des établissements</value>
-  </data>
-	<data name="institutionUpdateSuccessKey" xml:space="preserve">
-    <value>établissement enregistré avec succès</value>
-  </data>
-	<data name="FailedToinstitutionKey" xml:space="preserve">
-    <value>Échec de l'accès à l'établissement</value>
-  </data>
-	<data name="InstitutionDeleteMsgKey" xml:space="preserve">
-    <value>Établissement supprimé avec succès.</value>
-  </data>
-	<data name="InstitutionFailedDeleteKey" xml:space="preserve">
-    <value>Échec de la suppression de l'établissement.</value>
-  </data>
-	<data name="InstitutionNewsKey" xml:space="preserve">
-    <value>Détails des actualités de l'institution</value>
-  </data>
-	<data name="ShowInstitutionNewsKey" xml:space="preserve">
-    <value>Afficher les actualités de l'établissement</value>
-  </data>
-	<data name="TitleKey" xml:space="preserve">
-    <value>Titre</value>
-  </data>
-	<data name="NewsKey" xml:space="preserve">
-    <value>Nouvelles</value>
-  </data>
-	<data name="EndDateKey" xml:space="preserve">
-    <value>Date de fin</value>
-  </data>
-	<data name="InstituationNewsListKey" xml:space="preserve">
-    <value>Nouvelle liste des institutions</value>
-  </data>
-	<data name="InstitutionNameMandatoryKey" xml:space="preserve">
-    <value>Le nom de l'établissement est obligatoire</value>
-  </data>
-	<data name="TitleMandatoryKey" xml:space="preserve">
-    <value>Le titre est obligatoire</value>
-  </data>
-	<data name="NewsMandatoryKey" xml:space="preserve">
-    <value>Les nouvelles sont obligatoires</value>
-  </data>
-	<data name="institutionNewsUpdateSuccessKey" xml:space="preserve">
-    <value>les actualités de l'institution ont été enregistrées avec succès</value>
-  </data>
-	<data name="FailedToinstitutionNewsKey" xml:space="preserve">
-    <value>Échec de l'accès aux actualités de l'établissement</value>
-  </data>
-	<data name="InstitutionNewsDeleteMsgKey" xml:space="preserve">
-    <value>Institution News a été supprimé avec succès.</value>
-  </data>
-	<data name="InstitutionNewsFailedDeleteKey" xml:space="preserve">
-    <value>Actualités de l'institution supprimées. Échec.</value>
-  </data>
-	<data name="InstitutionAnnouncementsKey" xml:space="preserve">
-    <value>Liste des annonces des établissements</value>
-  </data>
-	<data name="ShowInstitutionAnnouncementsKey" xml:space="preserve">
-    <value>Afficher les annonces de l'établissement</value>
-  </data>
-	<data name="AnnouncementKey" xml:space="preserve">
+  <data name="AddEditInstitutionAnnouncementKey" xml:space="preserve">
     <value>Annonce</value>
   </data>
-	<data name="AnnouncementMandatoryKey" xml:space="preserve">
+  <data name="AddEditInstitutionKey" xml:space="preserve">
+    <value>un établissement</value>
+  </data>
+  <data name="AddEditStaffKey" xml:space="preserve">
+    <value>le personnel</value>
+  </data>
+  <data name="AddEditStudentKey" xml:space="preserve">
+    <value>l'élève</value>
+  </data>
+  <data name="AddEditCourseKey" xml:space="preserve">
+    <value>un cours</value>
+  </data>
+  <data name="AddEditStudentCourseMappingKey" xml:space="preserve">
+    <value>Cours pour étudiants</value>
+  </data>
+  <data name="AdditionalNameKey" xml:space="preserve">
+    <value>Nom supplémentaire</value>
+  </data>
+  <data name="BasicInformationKey" xml:space="preserve">
+    <value>Informations de base</value>
+  </data>
+  <data name="CityKey" xml:space="preserve">
+    <value>Ville</value>
+  </data>
+  <data name="ClearKey" xml:space="preserve">
+    <value>Claire</value>
+  </data>
+  <data name="CompanyKey" xml:space="preserve">
+    <value>Entreprise</value>
+  </data>
+  <data name="ConfirmPasswordKey" xml:space="preserve">
+    <value>Confirmez le mot de passe</value>
+  </data>
+  <data name="CountryKey" xml:space="preserve">
+    <value>Pays</value>
+  </data>
+  <data name="DepartmentKey" xml:space="preserve">
+    <value>Département</value>
+  </data>
+  <data name="EducationLevelKey" xml:space="preserve">
+    <value>niveau d'éducation</value>
+  </data>
+  <data name="EmailAddressKey" xml:space="preserve">
+    <value>Adresse e-mail</value>
+  </data>
+  <data name="FaxNumberKey" xml:space="preserve">
+    <value>Numéro de fax</value>
+  </data>
+  <data name="FirstNameKey" xml:space="preserve">
+    <value>Prénom</value>
+  </data>
+  <data name="GenderKey" xml:space="preserve">
+    <value>Genre</value>
+  </data>
+  <data name="JobTitleKey" xml:space="preserve">
+    <value>Titre d'emploi</value>
+  </data>
+  <data name="LastNameKey" xml:space="preserve">
+    <value>Nom de famille</value>
+  </data>
+  <data name="MiddleNameKey" xml:space="preserve">
+    <value>Deuxième prénom</value>
+  </data>
+  <data name="PasswordKey" xml:space="preserve">
+    <value>Mot de passe</value>
+  </data>
+  <data name="PhoneNumberKey" xml:space="preserve">
+    <value>Numéro de téléphone</value>
+  </data>
+  <data name="PrefixKey" xml:space="preserve">
+    <value>Préfixe</value>
+  </data>
+  <data name="SaveKey" xml:space="preserve">
+    <value>Sauvegarder</value>
+  </data>
+  <data name="ShowUsersKey" xml:space="preserve">
+    <value>Afficher les utilisateurs</value>
+  </data>
+  <data name="ShowStaffKey" xml:space="preserve">
+    <value>Afficher les bâtons</value>
+  </data>
+  <data name="ShowStudentKey" xml:space="preserve">
+    <value>Afficher les étudiants</value>
+  </data>
+  <data name="ShowCourseKey" xml:space="preserve">
+    <value>Afficher les cours</value>
+  </data>
+  <data name="State_ProvinceKey" xml:space="preserve">
+    <value>État/Province</value>
+  </data>
+  <data name="SuffixKey" xml:space="preserve">
+    <value>Suffixe</value>
+  </data>
+  <data name="UserNameKey" xml:space="preserve">
+    <value>Nom d'utilisateur</value>
+  </data>
+  <data name="WebsiteKey" xml:space="preserve">
+    <value>Site web</value>
+  </data>
+  <data name="AdditionalInformationKey" xml:space="preserve">
+    <value>Informations Complémentaires</value>
+  </data>
+  <data name="ADFSLoginKey" xml:space="preserve">
+    <value>Connexion ADFS</value>
+  </data>
+  <data name="CloseKey" xml:space="preserve">
+    <value>Fermer</value>
+  </data>
+  <data name="ContactInformationKey" xml:space="preserve">
+    <value>Coordonnées</value>
+  </data>
+  <data name="DataSavedKey" xml:space="preserve">
+    <value>Données enregistrées avec succès</value>
+  </data>
+  <data name="FailedSaveKey" xml:space="preserve">
+    <value>Échec de l'enregistrement</value>
+  </data>
+  <data name="ForgotPasswordKey" xml:space="preserve">
+    <value>Mot de passe oublié</value>
+  </data>
+  <data name="JobInformationKey" xml:space="preserve">
+    <value>Informations sur l'emploi</value>
+  </data>
+  <data name="LooganLearnKey" xml:space="preserve">
+    <value>Loogan Apprendre</value>
+  </data>
+  <data name="PasswordEmptyKey" xml:space="preserve">
+    <value>Le mot de passe est vide</value>
+  </data>
+  <data name="SaveChangesKey" xml:space="preserve">
+    <value>Sauvegarder les modifications</value>
+  </data>
+  <data name="SignInKey" xml:space="preserve">
+    <value>Se connecter</value>
+  </data>
+  <data name="SignThirdPartyKey" xml:space="preserve">
+    <value>Connectez-vous avec un compte tiers</value>
+  </data>
+  <data name="UserNameEmptyKey" xml:space="preserve">
+    <value>Le nom d'utilisateur est vide</value>
+  </data>
+  <data name="UserPwdWrongKey" xml:space="preserve">
+    <value>Le nom d'utilisateur/mot de passe est erroné</value>
+  </data>
+  <data name="CancelKey" xml:space="preserve">
+    <value>Annuler</value>
+  </data>
+  <data name="ChangeLanguageKey" xml:space="preserve">
+    <value>Changer de langue</value>
+  </data>
+  <data name="LooganReservedKey" xml:space="preserve">
+    <value>Loogan Inc. Tous droits réservés.</value>
+  </data>
+  <data name="MailSentKey" xml:space="preserve">
+    <value>Courrier envoyé avec succès à l'e-mail</value>
+  </data>
+  <data name="SubmitKey" xml:space="preserve">
+    <value>Soumettre</value>
+  </data>
+  <data name="FullNameKey" xml:space="preserve">
+    <value>Nom et prénom</value>
+  </data>
+  <data name="AddBusinessFaxNumberKey" xml:space="preserve">
+    <value>Ajouter un numéro de fax professionnel</value>
+  </data>
+  <data name="AddCompanyKey" xml:space="preserve">
+    <value>Ajouter une entreprise</value>
+  </data>
+  <data name="AddDepartmentKey" xml:space="preserve">
+    <value>Ajouter un département</value>
+  </data>
+  <data name="AddJobTitleKey" xml:space="preserve">
+    <value>Ajouter un titre de poste</value>
+  </data>
+  <data name="AddMailingAddressKey" xml:space="preserve">
+    <value>Ajouter une adresse postale</value>
+  </data>
+  <data name="AddPhoneNumberKey" xml:space="preserve">
+    <value>Ajouter un numéro de téléphone</value>
+  </data>
+  <data name="AddWebsiteKey" xml:space="preserve">
+    <value>Ajouter un site Web</value>
+  </data>
+  <data name="EmailNotificationsKey" xml:space="preserve">
+    <value>Notifications par email</value>
+  </data>
+  <data name="GlobalNotificationSettingsKey" xml:space="preserve">
+    <value>Paramètres de notification globaux</value>
+  </data>
+  <data name="LanguageKey" xml:space="preserve">
+    <value>Langue</value>
+  </data>
+  <data name="MailingAddressKey" xml:space="preserve">
+    <value>Adresse postale</value>
+  </data>
+  <data name="OnlyInstructorViewKey" xml:space="preserve">
+    <value>Seuls les instructeurs peuvent &lt;br/&gt; voir les informations de mon profil&lt;br/&gt;</value>
+  </data>
+  <data name="PrivacySettigsKey" xml:space="preserve">
+    <value>Paramètres de confidentialité</value>
+  </data>
+  <data name="PushNotificationsKey" xml:space="preserve">
+    <value>Notifications push</value>
+  </data>
+  <data name="StreamNotificationsKey" xml:space="preserve">
+    <value>Notifications de flux</value>
+  </data>
+  <data name="SystemSettingsKey" xml:space="preserve">
+    <value>Les paramètres du système</value>
+  </data>
+  <data name="ConfirmPwdMandatoryKey" xml:space="preserve">
+    <value>La confirmation du mot de passe est obligatoire</value>
+  </data>
+  <data name="ConfirmPwdPwdDifferentKey" xml:space="preserve">
+    <value>Confirmez le mot de passe, le mot de passe est différent</value>
+  </data>
+  <data name="EmailMandatoryKey" xml:space="preserve">
+    <value>L'adresse e-mail est obligatoire</value>
+  </data>
+  <data name="ErrorMessageUserPasswordKey" xml:space="preserve">
+    <value>Entrez un nom d'utilisateur et un mot de passe.</value>
+  </data>
+  <data name="FailedToCreateUserKey" xml:space="preserve">
+    <value>Échec de la création de l'utilisateur</value>
+  </data>
+  <data name="FirstNameMandatoryKey" xml:space="preserve">
+    <value>Le prénom est obligatoire</value>
+  </data>
+  <data name="GenderMandatoryKey" xml:space="preserve">
+    <value>Le sexe est obligatoire</value>
+  </data>
+  <data name="LastNameMandatoryKey" xml:space="preserve">
+    <value>Le nom de famille est obligatoire</value>
+  </data>
+  <data name="PasswordMandatoryKey" xml:space="preserve">
+    <value>Le mot de passe est obligatoire</value>
+  </data>
+  <data name="PhoneMandatoryKey" xml:space="preserve">
+    <value>Le téléphone est obligatoire</value>
+  </data>
+  <data name="PleaseSelectKey" xml:space="preserve">
+    <value>Veuillez sélectionner</value>
+  </data>
+  <data name="UserNameMandatoryKey" xml:space="preserve">
+    <value>Le nom d'utilisateur est obligatoire</value>
+  </data>
+  <data name="AdditionalNameMandatoryKey" xml:space="preserve">
+    <value>Additional name is mandatory</value>
+  </data>
+  <data name="UserSavedSuccessKey" xml:space="preserve">
+    <value>Utilisateur enregistré avec succès</value>
+  </data>
+  <data name="UserNameAlreadyExistKey" xml:space="preserve">
+    <value>Le nom d'utilisateur existe déjà. Veuillez le modifier.</value>
+  </data>
+  <data name="EmailAlreadyExistKey" xml:space="preserve">
+    <value>Email Address is Already Exist Please change.</value>
+  </data>
+  <data name="RoleMappingKey" xml:space="preserve">
+    <value>L'adresse e-mail existe déjà. Veuillez la modifier.</value>
+  </data>
+  <data name="StaffListMappingKey" xml:space="preserve">
+    <value>Liste du personnel</value>
+  </data>
+  <data name="StudentListMappingKey" xml:space="preserve">
+    <value>Liste des étudiants</value>
+  </data>
+  <data name="CourseMappingKey" xml:space="preserve">
+    <value>Détails du cours</value>
+  </data>
+  <data name="UserDeleteMsgKey" xml:space="preserve">
+    <value>L’utilisateur a été supprimé avec succès.</value>
+  </data>
+  <data name="UserFailedDeleteKey" xml:space="preserve">
+    <value>Echec de la suppression de l’utilisateur.</value>
+  </data>
+  <data name="SelectChangesKey" xml:space="preserve">
+    <value>Sélectionnez les éléments à enregistrer</value>
+  </data>
+  <data name="StaffInformationKey" xml:space="preserve">
+    <value>Informations sur le personnel</value>
+  </data>
+  <data name="StaffNameKey" xml:space="preserve">
+    <value>Nom du personnel</value>
+  </data>
+  <data name="StaffNameMandatoryKey" xml:space="preserve">
+    <value>Le nom du personnel est obligatoire</value>
+  </data>
+  <data name="StaffUpdateSuccessKey" xml:space="preserve">
+    <value>Personnel enregistré avec succès</value>
+  </data>
+  <data name="FailedToCreateStaffKey" xml:space="preserve">
+    <value>Échec de la création du personnel</value>
+  </data>
+  <data name="UserTypeKey" xml:space="preserve">
+    <value>Type d'utilisateur</value>
+  </data>
+  <data name="UserTypeMandatoryKey" xml:space="preserve">
+    <value>Le type d'utilisateur est obligatoire</value>
+  </data>
+  <data name="AddFavoriteKey" xml:space="preserve">
+    <value>Ajouté aux favoris</value>
+  </data>
+  <data name="RemovedFromFavoriteKey" xml:space="preserve">
+    <value>Supprimé de vos favoris</value>
+  </data>
+  <data name="RemoveFavoriteKey" xml:space="preserve">
+    <value>Supprimer de vos favoris</value>
+  </data>
+  <data name="AdmissionReprestativeKey" xml:space="preserve">
+    <value>Représentant d'admission</value>
+  </data>
+  <data name="StateKey" xml:space="preserve">
+    <value>État</value>
+  </data>
+  <data name="PostalKey" xml:space="preserve">
+    <value>Postale</value>
+  </data>
+  <data name="StudentInformationKey" xml:space="preserve">
+    <value>Liste des étudiants</value>
+  </data>
+  <data name="MaidenNameKey" xml:space="preserve">
+    <value>Nom de jeune fille</value>
+  </data>
+  <data name="NickNameKey" xml:space="preserve">
+    <value>Surnom</value>
+  </data>
+  <data name="MiddleInitialKey" xml:space="preserve">
+    <value>Initiale du milieu</value>
+  </data>
+  <data name="MartialStatusKey" xml:space="preserve">
+    <value>État civil</value>
+  </data>
+  <data name="CitizenShipStatusKey" xml:space="preserve">
+    <value>Statut de citoyenneté</value>
+  </data>
+  <data name="EducationalLevelKey" xml:space="preserve">
+    <value>Niveau d'éducation</value>
+  </data>
+  <data name="EthnicGroupKey" xml:space="preserve">
+    <value>Groupe ethnique</value>
+  </data>
+  <data name="NationalityKey" xml:space="preserve">
+    <value>Nationalité</value>
+  </data>
+  <data name="OriginalExceptedStartDateKey" xml:space="preserve">
+    <value>Date de début originale exceptée</value>
+  </data>
+  <data name="OriginalStartDateKey" xml:space="preserve">
+    <value>Date de début initiale</value>
+  </data>
+  <data name="StartDateKey" xml:space="preserve">
+    <value>Date de début</value>
+  </data>
+  <data name="HispanicKey" xml:space="preserve">
+    <value>hispanique</value>
+  </data>
+  <data name="VeteranKey" xml:space="preserve">
+    <value>Vétéran</value>
+  </data>
+  <data name="TitleMandatoryKey" xml:space="preserve">
+    <value>Le titre est obligatoire</value>
+  </data>
+  <data name="CourseGroupKey" xml:space="preserve">
+    <value>Groupe de cours</value>
+  </data>
+  <data name="CourseCodeKey" xml:space="preserve">
+    <value>Code de cours</value>
+  </data>
+  <data name="StudentCourseListKey" xml:space="preserve">
+    <value>Liste des cours pour étudiants</value>
+  </data>
+  <data name="CourseNameKey" xml:space="preserve">
+    <value>Nom du cours</value>
+  </data>
+  <data name="CourseDescriptionKey" xml:space="preserve">
+    <value>Description du cours</value>
+  </data>
+  <data name="CourseLevelKey" xml:space="preserve">
+    <value>Niveau du cours</value>
+  </data>
+  <data name="CreditHoursKey" xml:space="preserve">
+    <value>Des heures de credit</value>
+  </data>
+  <data name="CreditsKey" xml:space="preserve">
+    <value>Crédits</value>
+  </data>
+  <data name="CourseListKey" xml:space="preserve">
+    <value>Cours) Liste</value>
+  </data>
+  <data name="CourseDeleteMsgKey" xml:space="preserve">
+    <value>Cours supprimé avec succès.</value>
+  </data>
+  <data name="CourseFailedDeleteKey" xml:space="preserve">
+    <value>Échec de la suppression du cours.</value>
+  </data>
+  <data name="CourseCodeMandatoryKey" xml:space="preserve">
+    <value>Le code du cours est obligatoire.</value>
+  </data>
+  <data name="CourseNameMandatoryKey" xml:space="preserve">
+    <value>Le nom du cours est obligatoire.</value>
+  </data>
+  <data name="CourseGroupMandatoryKey" xml:space="preserve">
+    <value>Le groupe de cours est obligatoire.</value>
+  </data>
+  <data name="CourseUpdateSuccessKey" xml:space="preserve">
+    <value>Cours enregistré avec succès.</value>
+  </data>
+  <data name="FailedToCourseKey" xml:space="preserve">
+    <value>Échec de la création du personnel.</value>
+  </data>
+  <data name="StudentCourseMappingKey" xml:space="preserve">
+    <value>Cours pour étudiants</value>
+  </data>
+  <data name="CourseKey" xml:space="preserve">
+    <value>Cours</value>
+  </data>
+  <data name="StudentKey" xml:space="preserve">
+    <value>Étudiante</value>
+  </data>
+  <data name="StaffKey" xml:space="preserve">
+    <value>Personnelle</value>
+  </data>
+  <data name="StudentCourseStatusKey" xml:space="preserve">
+    <value>Statut du cours étudiant</value>
+  </data>
+  <data name="CourseCreditHoursKey" xml:space="preserve">
+    <value>Heures de crédit de cours</value>
+  </data>
+  <data name="CourseCreditKey" xml:space="preserve">
+    <value>Crédit de cours</value>
+  </data>
+  <data name="MinusAbsentKey" xml:space="preserve">
+    <value>Moins Absent</value>
+  </data>
+  <data name="MinusAttendedKey" xml:space="preserve">
+    <value>Moins fréquenté</value>
+  </data>
+  <data name="NumericGradeObtainedKey" xml:space="preserve">
+    <value>Note numérique obtenue</value>
+  </data>
+  <data name="TotalGradeAttemptedKey" xml:space="preserve">
+    <value>Note totale tentée</value>
+  </data>
+  <data name="TotalCreditsEarnedKey" xml:space="preserve">
+    <value>Total des crédits gagnés</value>
+  </data>
+  <data name="TotalHoursAttemptedKey" xml:space="preserve">
+    <value>Nombre total d'heures tentées</value>
+  </data>
+  <data name="TotalHoursEarnedKey" xml:space="preserve">
+    <value>Nombre total d'heures gagnées</value>
+  </data>
+  <data name="GradeLetterCodeObtainedKey" xml:space="preserve">
+    <value>Code de lettre de note</value>
+  </data>
+  <data name="GradeNoteKey" xml:space="preserve">
+    <value>Note de note</value>
+  </data>
+  <data name="CourseCompletedDateKey" xml:space="preserve">
+    <value>Date de fin du cours</value>
+  </data>
+  <data name="CourseDropDateKey" xml:space="preserve">
+    <value>Date d'abandon du cours</value>
+  </data>
+  <data name="CourseLastAttendedDateKey" xml:space="preserve">
+    <value>Date de la dernière participation au cours</value>
+  </data>
+  <data name="CourseRegisteredDateKey" xml:space="preserve">
+    <value>Date d'inscription au cours</value>
+  </data>
+  <data name="CourseStartDateKey" xml:space="preserve">
+    <value>Date de début du cours</value>
+  </data>
+  <data name="ExpectedCourseEndDateKey" xml:space="preserve">
+    <value>Date de fin prévue du cours</value>
+  </data>
+  <data name="GradePostedDateKey" xml:space="preserve">
+    <value>Date de publication de la note</value>
+  </data>
+  <data name="CourseCompletedStatusIndKey" xml:space="preserve">
+    <value>Statut du cours terminé</value>
+  </data>
+  <data name="CourseCurrentStatusIndKey" xml:space="preserve">
+    <value>Statut actuel du cours</value>
+  </data>
+  <data name="CourseDroppedStatusIndKey" xml:space="preserve">
+    <value>Statut de cours abandonné</value>
+  </data>
+  <data name="CourseFutureStatusIndKey" xml:space="preserve">
+    <value>Statut futur du cours</value>
+  </data>
+  <data name="CourseLeaveOfAbsenceStatusIndKey" xml:space="preserve">
+    <value>Statut de congé de cours</value>
+  </data>
+  <data name="CourseScheduledStatusIndKey" xml:space="preserve">
+    <value>Statut prévu du cours</value>
+  </data>
+  <data name="CourseRetakeIndKey" xml:space="preserve">
+    <value>Reprise du cours</value>
+  </data>
+  <data name="CourseTypeKey" xml:space="preserve">
+    <value>Type de cours</value>
+  </data>
+  <data name="ShowStudentCourseKey" xml:space="preserve">
+    <value>Cours pour étudiants</value>
+  </data>
+  <data name="CourseMandatoryKey" xml:space="preserve">
+    <value>Le cours est obligatoire</value>
+  </data>
+  <data name="StudentMandatoryKey" xml:space="preserve">
+    <value>L'étudiant est obligatoire</value>
+  </data>
+  <data name="StaffMandatoryKey" xml:space="preserve">
+    <value>Le personnel est obligatoire</value>
+  </data>
+  <data name="StudentCourseUpdateSuccessKey" xml:space="preserve">
+    <value>Cours étudiant enregistré avec succès</value>
+  </data>
+  <data name="FailedToStudenCoursetKey" xml:space="preserve">
+    <value>Échec de la création du cours étudiant</value>
+  </data>
+  <data name="StudentCourseDeleteMsgKey" xml:space="preserve">
+    <value>Cours étudiant supprimé avec succès</value>
+  </data>
+  <data name="StudentCourseFailedDeleteKey" xml:space="preserve">
+    <value>Échec de la suppression du cours étudiant</value>
+  </data>
+  <data name="EmailTemplateKey" xml:space="preserve">
+    <value>Modèle d'e-mail</value>
+  </data>
+  <data name="ShowEmailTemplatesKey" xml:space="preserve">
+    <value>Scomment Modèles d'e-mails</value>
+  </data>
+  <data name="EmailSubjectKey" xml:space="preserve">
+    <value>Sujet du courriel</value>
+  </data>
+  <data name="EmailBodyKey" xml:space="preserve">
+    <value>Corps de l'e-mail</value>
+  </data>
+  <data name="EmailTemplateMandatoryKey" xml:space="preserve">
+    <value>Le modèle de courrier électronique est obligatoire</value>
+  </data>
+  <data name="EmailSubjectMandatoryKey" xml:space="preserve">
+    <value>Le sujet de l'e-mail est obligatoire</value>
+  </data>
+  <data name="EmailBodyMandatoryKey" xml:space="preserve">
+    <value>L'email de Boday est obligatoire</value>
+  </data>
+  <data name="EmailTemplateUpdateSuccessKey" xml:space="preserve">
+    <value>Modèle d'e-mail enregistré avec succès</value>
+  </data>
+  <data name="FailedToEmailTemplateKey" xml:space="preserve">
+    <value>Échec de la création du modèle d'e-mail</value>
+  </data>
+  <data name="EmailTemplateDeleteMsgKey" xml:space="preserve">
+    <value>Modèle d'e-mail supprimé avec succès</value>
+  </data>
+  <data name="EmailTemplateFailedDeleteKey" xml:space="preserve">
+    <value>Échec de la suppression du modèle d'e-mail</value>
+  </data>
+  <data name="EmailTemplateListKey" xml:space="preserve">
+    <value>Liste des modèles d'e-mail</value>
+  </data>
+  <data name="InstitutionKey" xml:space="preserve">
+    <value>Détails de l'établissement</value>
+  </data>
+  <data name="InstitutionNameKey" xml:space="preserve">
+    <value>nom de l'institution</value>
+  </data>
+  <data name="DescriptionKey" xml:space="preserve">
+    <value>Description</value>
+  </data>
+  <data name="AddressKey" xml:space="preserve">
+    <value>Adresse</value>
+  </data>
+  <data name="LogoKey" xml:space="preserve">
+    <value>Logo</value>
+  </data>
+  <data name="MissionKey" xml:space="preserve">
+    <value>Mission</value>
+  </data>
+  <data name="VisionKey" xml:space="preserve">
+    <value>Vision</value>
+  </data>
+  <data name="CommentsKey" xml:space="preserve">
+    <value>commentaires</value>
+  </data>
+  <data name="ShowInstitutionKey" xml:space="preserve">
+    <value>Afficher l'établissement</value>
+  </data>
+  <data name="InstitutionListKey" xml:space="preserve">
+    <value>Liste des établissements</value>
+  </data>
+  <data name="institutionUpdateSuccessKey" xml:space="preserve">
+    <value>établissement enregistré avec succès</value>
+  </data>
+  <data name="FailedToinstitutionKey" xml:space="preserve">
+    <value>Échec de l'accès à l'établissement</value>
+  </data>
+  <data name="InstitutionDeleteMsgKey" xml:space="preserve">
+    <value>Établissement supprimé avec succès.</value>
+  </data>
+  <data name="InstitutionFailedDeleteKey" xml:space="preserve">
+    <value>Les annonces de l'établissement ont été supprimées. Échec.</value>
+  </data>
+  <data name="InstitutionNewsKey" xml:space="preserve">
+    <value>Détails des actualités de l'institution</value>
+  </data>
+  <data name="ShowInstitutionNewsKey" xml:space="preserve">
+    <value>Afficher les actualités de l'établissement</value>
+  </data>
+  <data name="TitleKey" xml:space="preserve">
+    <value>Titre</value>
+  </data>
+  <data name="NewsKey" xml:space="preserve">
+    <value>Nouvelles</value>
+  </data>
+  <data name="EndDateKey" xml:space="preserve">
+    <value>Date de fin</value>
+  </data>
+  <data name="InstituationNewsListKey" xml:space="preserve">
+    <value>Nouvelle liste des institutions</value>
+  </data>
+  <data name="InstitutionNameMandatoryKey" xml:space="preserve">
+    <value>Le nom de l'établissement est obligatoire</value>
+  </data>
+  <data name="NewsMandatoryKey" xml:space="preserve">
+    <value>Les nouvelles sont obligatoires</value>
+  </data>
+  <data name="institutionNewsUpdateSuccessKey" xml:space="preserve">
+    <value>les actualités de l'institution ont été enregistrées avec succès</value>
+  </data>
+  <data name="FailedToinstitutionNewsKey" xml:space="preserve">
+    <value>Échec de l'accès aux actualités de l'établissement</value>
+  </data>
+  <data name="InstitutionNewsDeleteMsgKey" xml:space="preserve">
+    <value>Institution News a été supprimé avec succès.</value>
+  </data>
+  <data name="InstitutionNewsFailedDeleteKey" xml:space="preserve">
+    <value>Actualités de l'institution supprimées. Échec.</value>
+  </data>
+  <data name="InstitutionAnnouncementsKey" xml:space="preserve">
+    <value>Liste des annonces des établissements</value>
+  </data>
+  <data name="ShowInstitutionAnnouncementsKey" xml:space="preserve">
+    <value>Afficher les annonces de l'établissement</value>
+  </data>
+  <data name="AnnouncementKey" xml:space="preserve">
+    <value>Annonce</value>
+  </data>
+  <data name="AnnouncementMandatoryKey" xml:space="preserve">
     <value>L'annonce est obligatoire</value>
   </data>
-	<data name="institutionAnnouncementsUpdateSuccessKey" xml:space="preserve">
+  <data name="institutionAnnouncementsUpdateSuccessKey" xml:space="preserve">
     <value>l'annonce de l'établissement a été enregistrée avec succès</value>
   </data>
-	<data name="FailedToinstitutionAnnouncementsKey" xml:space="preserve">
+  <data name="FailedToinstitutionAnnouncementsKey" xml:space="preserve">
     <value>Échec de l'établissement des annonces</value>
   </data>
-	<data name="InstitutionAnnouncementsDeleteMsgKey" xml:space="preserve">
+  <data name="InstitutionAnnouncementsDeleteMsgKey" xml:space="preserve">
     <value>Les annonces de l'établissement ont été supprimées avec succès.</value>
   </data>
-	<data name="InstitutionFailedDeleteKey" xml:space="preserve">
-    <value>Les annonces de l'établissement ont été supprimées. Échec.</value>
+  <data name="AddEditKey" xml:space="preserve">
+    <value>Ajouter/Modifier</value>
   </data>
 </root>
