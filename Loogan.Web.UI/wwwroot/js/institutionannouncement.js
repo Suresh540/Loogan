@@ -67,13 +67,13 @@
         model.endDate = $('#txtEndDate').val();
 
         if ($('#txtTitle').val().trim() == '') {
-            Alert(localizationLib.getLocalizeData("InstitutionAnnouncementTitleMandatoryKey"), 'error');
+            Alert(localizationLib.getLocalizeData("TitleMandatoryKey"), 'error');
             $('#txtTitle').focus();
             return;
         }
 
         if ($('#txtAnnouncement').val().trim() == '') {
-            Alert(localizationLib.getLocalizeData("InstitutionAnnouncementMandatoryKey"), 'error');
+            Alert(localizationLib.getLocalizeData("AnnouncementMandatoryKey"), 'error');
             $('#txtAnnouncement').focus();
             return;
         }

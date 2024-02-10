@@ -34,7 +34,8 @@
                     }
                 },
                 error: function (e) {
-                    console.log(e);
+                    var msg = JSON.parse(e.responseText);
+                    Alert(msg.detail, 'error')
                 }
             })
 
@@ -67,13 +68,13 @@
         model.endDate = $('#txtEndDate').val();
 
         if ($('#txtTitle').val().trim() == '') {
-            Alert(localizationLib.getLocalizeData("InstitutionNewsTitleMandatoryKey"), 'error');
+            Alert(localizationLib.getLocalizeData("TitleMandatoryKey"), 'error');
             $('#txtTitle').focus();
             return;
         }
 
         if ($('#txtNews').val().trim() == '') {
-            Alert(localizationLib.getLocalizeData("InstitutionNewsNewsMandatoryKey"), 'error');
+            Alert(localizationLib.getLocalizeData("NewsMandatoryKey"), 'error');
             $('#txtNews').focus();
             return;
         }
@@ -112,7 +113,7 @@
                 error: function (e) {
                     var msg = JSON.parse(e.responseText);
                     Alert(msg.detail, 'error');
-                    Alert(localizationLib.getLocalizeData("InstitutionFailedDeleteKey"), 'error');
+                    Alert(localizationLib.getLocalizeData("InstitutionNewsFailedDeleteKey"), 'error');
                 }
             })
         }

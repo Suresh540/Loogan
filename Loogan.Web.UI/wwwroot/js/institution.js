@@ -37,7 +37,8 @@
                     }
                 },
                 error: function (e) {
-                    console.log(e);
+                    var msg = JSON.parse(e.responseText);
+                    Alert(msg.detail, 'error')
                 }
             })
 

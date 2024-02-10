@@ -717,4 +717,109 @@
 	<data name="EmailTemplateListKey" xml:space="preserve">
     <value>Liste des modèles d'e-mail</value>
 	</data>
+	<data name="InstitutionKey" xml:space="preserve">
+    <value>Détails de l'établissement</value>
+  </data>
+	<data name="InstitutionNameKey" xml:space="preserve">
+    <value>nom de l'institution</value>
+  </data>
+	<data name="DescriptionKey" xml:space="preserve">
+    <value>Description</value>
+  </data>
+	<data name="AddressKey" xml:space="preserve">
+    <value>Adresse</value>
+  </data>
+	<data name="LogoKey" xml:space="preserve">
+    <value>Logo</value>
+  </data>
+	<data name="MissionKey" xml:space="preserve">
+    <value>Mission</value>
+  </data>
+	<data name="VisionKey" xml:space="preserve">
+    <value>Vision</value>
+  </data>
+	<data name="CommentsKey" xml:space="preserve">
+    <value>commentaires</value>
+  </data>
+	<data name="ShowInstitutionKey" xml:space="preserve">
+    <value>Afficher l'établissement</value>
+  </data>
+	<data name="InstitutionListKey" xml:space="preserve">
+    <value>Liste des établissements</value>
+  </data>
+	<data name="institutionUpdateSuccessKey" xml:space="preserve">
+    <value>établissement enregistré avec succès</value>
+  </data>
+	<data name="FailedToinstitutionKey" xml:space="preserve">
+    <value>Échec de l'accès à l'établissement</value>
+  </data>
+	<data name="InstitutionDeleteMsgKey" xml:space="preserve">
+    <value>Établissement supprimé avec succès.</value>
+  </data>
+	<data name="InstitutionFailedDeleteKey" xml:space="preserve">
+    <value>Échec de la suppression de l'établissement.</value>
+  </data>
+	<data name="InstitutionNewsKey" xml:space="preserve">
+    <value>Détails des actualités de l'institution</value>
+  </data>
+	<data name="ShowInstitutionNewsKey" xml:space="preserve">
+    <value>Afficher les actualités de l'établissement</value>
+  </data>
+	<data name="TitleKey" xml:space="preserve">
+    <value>Titre</value>
+  </data>
+	<data name="NewsKey" xml:space="preserve">
+    <value>Nouvelles</value>
+  </data>
+	<data name="EndDateKey" xml:space="preserve">
+    <value>Date de fin</value>
+  </data>
+	<data name="InstituationNewsListKey" xml:space="preserve">
+    <value>Nouvelle liste des institutions</value>
+  </data>
+	<data name="InstitutionNameMandatoryKey" xml:space="preserve">
+    <value>Le nom de l'établissement est obligatoire</value>
+  </data>
+	<data name="TitleMandatoryKey" xml:space="preserve">
+    <value>Le titre est obligatoire</value>
+  </data>
+	<data name="NewsMandatoryKey" xml:space="preserve">
+    <value>Les nouvelles sont obligatoires</value>
+  </data>
+	<data name="institutionNewsUpdateSuccessKey" xml:space="preserve">
+    <value>les actualités de l'institution ont été enregistrées avec succès</value>
+  </data>
+	<data name="FailedToinstitutionNewsKey" xml:space="preserve">
+    <value>Échec de l'accès aux actualités de l'établissement</value>
+  </data>
+	<data name="InstitutionNewsDeleteMsgKey" xml:space="preserve">
+    <value>Institution News a été supprimé avec succès.</value>
+  </data>
+	<data name="InstitutionNewsFailedDeleteKey" xml:space="preserve">
+    <value>Actualités de l'institution supprimées. Échec.</value>
+  </data>
+	<data name="InstitutionAnnouncementsKey" xml:space="preserve">
+    <value>Liste des annonces des établissements</value>
+  </data>
+	<data name="ShowInstitutionAnnouncementsKey" xml:space="preserve">
+    <value>Afficher les annonces de l'établissement</value>
+  </data>
+	<data name="AnnouncementKey" xml:space="preserve">
+    <value>Annonce</value>
+  </data>
+	<data name="AnnouncementMandatoryKey" xml:space="preserve">
+    <value>L'annonce est obligatoire</value>
+  </data>
+	<data name="institutionAnnouncementsUpdateSuccessKey" xml:space="preserve">
+    <value>l'annonce de l'établissement a été enregistrée avec succès</value>
+  </data>
+	<data name="FailedToinstitutionAnnouncementsKey" xml:space="preserve">
+    <value>Échec de l'établissement des annonces</value>
+  </data>
+	<data name="InstitutionAnnouncementsDeleteMsgKey" xml:space="preserve">
+    <value>Les annonces de l'établissement ont été supprimées avec succès.</value>
+  </data>
+	<data name="InstitutionFailedDeleteKey" xml:space="preserve">
+    <value>Les annonces de l'établissement ont été supprimées. Échec.</value>
+  </data>
 </root>
