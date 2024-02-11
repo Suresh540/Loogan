@@ -1,0 +1,97 @@
+﻿@page "/Institution/institution"
+@using Loogan.API.Models.Models.Admin
+@using Loogan.Web.UI.Components
+@using Loogan.Web.UI.Models
+@using Loogan.Web.UI.Resources.Pages
+@using Microsoft.Extensions.Localization
+@model Loogan.Web.UI.Pages.Institution.InstitutionModel
+@inject IStringLocalizer<ContentLabel> Localizer
+@attribute [Loogan.Web.UI.Utilities.LooganStudentAuthorize("Student")]
+
+<component type="typeof(Upper_Component)" render-mode="Static" />
+<div id="site-wrap" class="off-canvas-wrap">
+    <div class="inner-wrap">
+        <div class="row">
+            <div class="col-2 bb-login pointscroll leftmenu">
+                <component type="typeof(LeftSideBar_Component)" render-mode="Server" />
+            </div>
+            <div class="col-10 base-profile pointscroll righcontent">
+                <div class="columns small-12 profile-content" style="margin-top:2px !important">
+                    <div class="row">
+                        <div class="col-12 left-align">
+                            @foreach (var item in Model.Institutionlist ?? Enumerable.Empty<InstitutionModelExtended>())
+                            {
+                                <div class="row" style="padding:5px">
+                                    <div class="col-1">
+                                        <img src="/institutionimages/@item.InstitutionImageUrl" />
+                                    </div>
+                                    <div class="col-11" style="text-align:left">
+                                        <h2 class="coursetitle">@item.InstitutionName</h2>
+                                        @if (!string.IsNullOrEmpty(item.Description))
+                                        {
+                                            <p>
+                                                <br />
+                                                @item.Description
+                                            </p>
+                                        }
+                                    </div>
+                                </div>
+                            }
+                            <hr />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xl-6">
+                            <div class="card mb-4">
+                                <div class="card-header">
+                                    <i class="fas fa-chart-area me-1"></i>
+                                    @Localizer["AddEditInstitutionNewsKey"]
+                                </div>
+                                <div class="card-body" style="height:60vh;">
+                                    @foreach (var news in Model.InstituteNews ?? Enumerable.Empty<InstitutionNewsModel>())
+                                    {
+                                        <div>
+                                            @news.News
+                                        </div>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-6">
+                            <div class="card mb-4">
+                                <div class="card-header">
+                                    <i class="fas fa-chart-bar me-1"></i>
+                                    @Localizer["AddEditInstitutionAnnouncementKey"]
+                                </div>
+                                <div class="card-body" style="height:60vh;">
+                                    @foreach (var announce in Model.InstituteAnouncements ?? Enumerable.Empty<InstitutionAnnouncementModel>())
+                                    {
+                                        <div>
+                                            @announce.Announcement
+                                        </div>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <component type="typeof(Lower_Component)" render-mode="Static" /><br />
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
