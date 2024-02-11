@@ -1,8 +1,11 @@
 ﻿using Loogan.API.Models.Models;
 using Loogan.API.Models.Models.Admin;
+using Loogan.Web.UI.Models;
 using Loogan.Web.UI.Utilities;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Primitives;
+using Newtonsoft.Json;
 
 namespace Loogan.Web.UI.Controllers
 {
@@ -10,6 +13,7 @@ namespace Loogan.Web.UI.Controllers
     [LooganStudentAuthorize("Admin")]
     public class AdminController : Controller
     {
+        private const string wwwroot = "wwwroot";
         private readonly IUtilityHelper _utilityHelper;
         public AdminController(IUtilityHelper utilityHelper)
         {
@@ -131,7 +135,7 @@ namespace Loogan.Web.UI.Controllers
             var IsDeleted = await _utilityHelper.ExecuteAPICall<bool>(apiRequest, RestSharp.Method.Post, resource: "api/Admin/DeleteCourse");
             return Json(new { value = "Success" });
         }
-       
+
         #endregion
 
         [Route("GetUserRoles")]
@@ -206,12 +210,41 @@ namespace Loogan.Web.UI.Controllers
 
         [Route("CreateInstitution")]
         [LooganAdminAuthorize("Admin")]
-        public async Task<JsonResult> CreateInstitution(InstitutionModel instituationViewModel)
+        public async Task<JsonResult> CreateInstitution()
         {
-            instituationViewModel.CreatedBy = HttpContext?.Session?.GetInt32("LoginUserId");
-            instituationViewModel.CreatedDate = DateTime.Now;
-            await _utilityHelper.ExecuteAPICall<bool>(instituationViewModel, RestSharp.Method.Post, resource: "api/Admin/CreateInstitution");
-            return Json(new { value = "Success" });
+            InstitutionModelExtended? instituationViewModel = null;
+            if (!StringValues.IsNullOrEmpty(Request.Form["model"]))
+            {
+                var model = Request?.Form?["model"];
+                instituationViewModel = JsonConvert.DeserializeObject<InstitutionModelExtended>(model);
+                await UploadImage(Request?.Form.Files?[0]);
+                if (instituationViewModel != null)
+                {
+                    instituationViewModel.CreatedBy = HttpContext?.Session?.GetInt32("LoginUserId");
+                    instituationViewModel.CreatedDate = DateTime.Now;
+                    await _utilityHelper.ExecuteAPICall<bool>(instituationViewModel, RestSharp.Method.Post, resource: "api/Admin/CreateInstitution");
+                    return Json(new { value = "Success" });
+                }
+            }
+            return Json(new { value = "Failure" });
+        }
+
+        private async Task UploadImage(IFormFile? imageFile)
+        {
+            if (imageFile != null && imageFile.Length > 0)
+            {
+                var fileName = Path.GetFileName(imageFile.FileName);
+                var filePath = Path.Combine(Directory.GetCurrentDirectory(), wwwroot, "institutionimages", fileName);
+                var directoryPath = Path.Combine(Directory.GetCurrentDirectory(), wwwroot, "institutionimages");
+                if (!Directory.Exists(directoryPath))
+                {
+                    Directory.CreateDirectory(directoryPath);
+                }
+                using (var stream = new FileStream(filePath, FileMode.Create))
+                {
+                    await imageFile.CopyToAsync(stream);
+                }
+            }
         }
 
         [Route("UpdateInstitution")]

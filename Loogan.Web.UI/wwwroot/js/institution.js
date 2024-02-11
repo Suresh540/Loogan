@@ -72,12 +72,19 @@
         model.phoneNumber = $('#txtPhoneNumber').val();
         model.emailAddress = $('#txtEmailAddress').val();
         model.website = $('#txtWebsite').val();
-        model.institutionImageUrl = $('#txtLogo').val();
+        
         model.mission = $('#txtMission').val();
         model.vision = $('#txtVision').val();
         model.additionalComments = $('#txtComments').val();
-        
+        var input = document.getElementById("ImagePathFile");
+        var files = input.files;
+        var formData = new FormData();
 
+        for (var i = 0; i != files.length; i++) {
+            formData.append("files", files[i]);
+            model.institutionImageUrl = files[i].name;
+        }
+        formData.append("model", JSON.stringify(model));
         if ($('#txtInstitutionName').val().trim() == '') {
             Alert(localizationLib.getLocalizeData("InstitutionNameMandatoryKey"), 'error');
             $('#txtInstitutionName').focus();
@@ -89,7 +96,9 @@
         $.ajax({
             method: 'Post',
             url: model.institutionId == 0 ? "/Admin/CreateInstitution" : "/Admin/UpdateInstitution",
-            data: { instituationViewModel: model },
+            processData: false,
+            contentType: false,
+            data: formData,
             success: function (e) {
                 $('#btnSaveInstitution').removeAttr('disabled');
                 Alert(localizationLib.getLocalizeData("institutionUpdateSuccessKey"), 'Success');

@@ -41,5 +41,7 @@ namespace Loogan.API.Models.Models.Admin
         public DateTime? ModifyDate { get; set; }
 
         public int TotalRecords { get; set; }
+
+        
     }
 }
