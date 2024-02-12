@@ -1,5 +1,6 @@
 ﻿using Loogan.API.Database.Models;
 using Loogan.API.Models.Models;
+using Loogan.API.Models.Models.Admin;
 using Microsoft.Identity.Client;
 using System;
 using System.Collections.Generic;
@@ -24,6 +25,10 @@ public interface IUserService
     public Task<bool> IsUserNameExist(string userName,int userId);
 
     public Task<bool> IsUserEmailExist(string userEmail, int userId);
+
+    public Task<List<UserModel>> GetUsersByUserType(int userTypeId);
+
+    public Task<List<InstitutionUserModel>> GetInstitutionUserList(int institutionId, int userTypeId);
 
 
 }

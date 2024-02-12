@@ -1,0 +1,92 @@
+﻿@page "/Admin/InstitutionMapping"
+@using Loogan.API.Models.Models
+@using Loogan.API.Models.Models.Admin
+@using Loogan.Web.UI.Components
+@using Loogan.Web.UI.Resources.Pages
+@using Loogan.Web.UI.Utilities
+@using Microsoft.Extensions.Localization
+@model Loogan.Web.UI.Pages.Admin.InstitutionMappingModel
+@attribute [LooganAdminAuthorize("Admin")]
+@inject IStringLocalizer<ContentLabel> _localizer
+
+<component type="typeof(Upper_Component)" render-mode="Static" />
+<div id="site-wrap" class="off-canvas-wrap">
+    <div class="inner-wrap">
+        <div class="row">
+            <div class="col-2 bb-login pointscroll leftmenu">
+                <component type="typeof(LeftSideBar_Component)" render-mode="Server" />
+            </div>
+            <div class="col-10">
+                <div class="base-profile pointscroll righcontent scrollrightend">
+                    <div class="columns small-12 profile-content" style="margin-top:2px !important">
+                        <div class="row">
+                            <div class="col-12 left-align">
+                                <h2 class="coursetitle">@_localizer["InstitutionMappingKey"]</h2>
+                                <hr />
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12 margintop5" style="text-align:right">
+                                <button type="button" class="btn btn-light border rounded-pill shadow-sm mb-1" onclick="clearRoleData()"
+                                        style="background:lightgreen;color:black">
+                                    <b>@_localizer["ClearKey"]</b>
+                                </button>
+                                <button id="btnSaveuser" type="button" class="btn btn-light border rounded-pill shadow-sm mb-1" onclick="createrolemenu()"
+                                        style="background:blue;color:white">
+                                    <b>@_localizer["SaveKey"]</b>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12 text-center margintop5">
+                                <select id="ddlInstitutions" style="width:20vw;border: 1px solid gray" onchange="institutionusermapping.institutionUserTypeChange()">
+                                </select>
+                            </div>
+                            <div class="col-12 text-center margintop5">
+                                <select id="ddlUserType" style="width:20vw;border: 1px solid gray" onchange="institutionusermapping.institutionUserTypeChange()">
+                                </select>
+                            </div>
+                            <div class="col-12 text-center">
+                                <div class="row margintop5">
+                                    <div class="col-5">
+                                        <select id="actualUser" name="actualUser" size="16" multiple style="border: 1px solid gray;">
+                                            @foreach (var item in Model.UserItems ?? Enumerable.Empty<UserModel>())
+                                            {
+                                                <option value="@item.UserId">@item.UserName</option>
+                                            }
+                                        </select>
+                                    </div>
+                                    <div class="col-1">
+                                        <div class="margintop25"><span style="cursor:pointer;color:green" onclick="institutionusermapping.moveUserItemstoright()">>></span></div>
+                                        <div><span style="cursor:pointer;color:red" onclick="institutionusermapping.moveUserItemstoleft()"><<</span></div>
+                                    </div>
+                                    <div class="col-5">
+                                        <select id="selectedUser" name="selectedUser" size="16" multiple style="border: 1px solid gray">
+                                            @foreach (var item in Model.SelectedUserItems ?? Enumerable.Empty<InstitutionUserModel>())
+                                            {
+                                                <option value="@item.UserId">@item.UserName</option>
+                                            }
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <br />
+                        <component type="typeof(Lower_Component)" render-mode="Static" />
+                        <br />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    function fnLoad() {
+        institution.ddlinstitution();
+        institutionusermapping.ddlUserRoles();
+    }
+    setTimeout(fnLoad(), 700);
+</script>
+

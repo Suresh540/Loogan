@@ -145,5 +145,62 @@ namespace Loogan.Web.API.Controllers
             var result = await _userService.IsUserEmailExist(request?.Text, request.UserId);
             return Ok(result);
         }
+
+        #region InstitutionUserMapping
+
+        [HttpPost]
+        [Route("GetUsersByUserType")]
+        [Produces("application/json")]
+        [Consumes("application/json")]
+        public async Task<IActionResult> GetUsersByUserType([FromBody] ApiRequest request)
+        {
+            var userTypeId = request.RequestValue != "" ? Convert.ToInt32(request.RequestValue) : 1;
+            var listMenus = await _userService.GetUsersByUserType(userTypeId);
+            return Ok(listMenus);
+        }
+
+        [HttpPost]
+        [Route("GetInstitutionUserList")]
+        [Produces("application/json")]
+        [Consumes("application/json")]
+        public async Task<IActionResult> GetInstitutionUserList([FromBody] InstitutionUserRequest request)
+        {
+            var listMenus = await _userService.GetInstitutionUserList(request.InstitutionId,request.UserTypeId);
+            return Ok(listMenus);
+        }
+
+        //[HttpPost]
+        //[Route("GetMenus")]
+        //[Produces("application/json")]
+        //[Consumes("application/json")]
+        //public async Task<IActionResult> GetAllMenus([FromBody] Request request)
+        //{
+        //    var listMenus = await _adminService.GetAllMenus(request.LanguageId);
+        //    return Ok(listMenus);
+        //}
+
+        //[HttpPost]
+        //[Route("GetRoleMenus")]
+        //[Produces("application/json")]
+        //[Consumes("application/json")]
+        //public async Task<IActionResult> GetRoleMenus([FromBody] RoleMenuRequest request)
+        //{
+        //    var listMenus = await _adminService.GetRoleMenus(request.RoleId, request.LanguageId);
+        //    return Ok(listMenus);
+        //}
+
+        //[HttpPost]
+        //[Route("SaveRoleMenus")]
+        //[Produces("application/json")]
+        //[Consumes("application/json")]
+        //public async Task<IActionResult> SaveRoleMenus([FromBody] List<SaveRoleMenuRequest> request)
+        //{
+        //    var listMenus = await _adminService.SaveRoleMenus(request);
+        //    return Ok(listMenus);
+        //}
+
+
+
+        #endregion
     }
 }

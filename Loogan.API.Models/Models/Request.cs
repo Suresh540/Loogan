@@ -24,4 +24,10 @@ namespace Loogan.API.Models.Models
 
         public int PrimaryMenuId { get; set; }
     }
+
+    public class InstitutionUserRequest
+    {
+        public int InstitutionId { get; set; }
+        public int UserTypeId { get; set; }
+    }
 }

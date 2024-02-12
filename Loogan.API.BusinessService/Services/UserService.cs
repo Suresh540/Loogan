@@ -3,11 +3,13 @@ using Loogan.API.BusinessService.Interfaces;
 using Loogan.API.Database.Interfaces;
 using Loogan.API.Database.Models;
 using Loogan.API.Models.Models;
+using Loogan.API.Models.Models.Admin;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 namespace Loogan.API.BusinessService.Services;
 
 public class UserService : IUserService
@@ -86,6 +88,19 @@ public class UserService : IUserService
     {
         var isUserNameExist = await _storedProcedures.IsUserEmailExist(userEmail, userId);
         return isUserNameExist;
+    }
+
+    public async Task<List<UserModel>> GetUsersByUserType(int userTypeId)
+    {
+        var getUsers = await _storedProcedures.GetUsersByUserType(userTypeId);
+        var userObj = _mapper.Map<List<UserModel>>(getUsers);
+        return userObj;
+    }
+
+    public async Task<List<InstitutionUserModel>> GetInstitutionUserList(int institutionId, int userTypeId)
+    {
+        var institutionUserList = await _storedProcedures.GetInstitutionUserList(institutionId, userTypeId);
+        return institutionUserList;
     }
 }
 

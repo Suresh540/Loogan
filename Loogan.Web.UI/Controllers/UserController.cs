@@ -1,4 +1,5 @@
 ﻿using Loogan.API.Models.Models;
+using Loogan.API.Models.Models.Admin;
 using Loogan.Web.UI.Pages.Shared;
 using Loogan.Web.UI.Utilities;
 using Microsoft.AspNetCore.Authorization;
@@ -104,5 +105,28 @@ namespace Loogan.Web.UI.Controllers
             var isUserNameExist = await _utilityHelper.ExecuteAPICall<bool>(apiRequest, RestSharp.Method.Post, resource: "api/User/IsUserEmailExist");
             return isUserNameExist;
         }
+
+        #region InstitutionUserMapping
+
+        [Route("InstitutionUserChange")]
+        [AllowAnonymous]
+        public async Task<IActionResult> OnInstitutionUserChange([FromQuery] string selectedInstitutionVal, string selectedUserTypeVal)
+        {
+            var apiRequest = new ApiRequest() { RequestValue = selectedUserTypeVal };
+            var userItems = await _utilityHelper.ExecuteAPICall<List<UserModel>>(apiRequest, RestSharp.Method.Post, resource: "api/User/GetUsersByUserType");
+
+            InstitutionUserRequest instUserRequest = new InstitutionUserRequest();
+            instUserRequest.InstitutionId = Convert.ToInt32(selectedInstitutionVal);
+            instUserRequest.UserTypeId = Convert.ToInt32(selectedUserTypeVal);
+
+            var selecteduserItems = await _utilityHelper.ExecuteAPICall<List<InstitutionUserModel>>(instUserRequest, RestSharp.Method.Post, resource: "api/User/GetInstitutionUserList");
+
+            //Menu items
+            userItems = userItems.Where(x => !selecteduserItems.Any(y => y.UserId == x.UserId)).ToList();
+
+            return new JsonResult(new { actualUsers = userItems, selectUsers = selecteduserItems });
+        }
+
+        #endregion
     }
 }

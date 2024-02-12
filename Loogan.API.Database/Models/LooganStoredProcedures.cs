@@ -1,6 +1,7 @@
 ﻿using Loogan.API.Database.Interfaces;
 using Loogan.API.Models.Enums;
 using Loogan.API.Models.Models;
+using Loogan.API.Models.Models.Admin;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 
@@ -253,6 +254,31 @@ namespace Loogan.API.Database.Models
             }
 
             return isUserEmailExist;
+
+        }
+
+        public async Task<List<User>> GetUsersByUserType(int userTypeId)
+        {
+            var userList = new List<User>();
+            using (var context = new LooganContext(_connectionString))
+            {
+                userList = await context.Users.Where(x => x.UserTypeId == userTypeId).ToListAsync();
+            }
+            return userList;
+        }
+
+        public async Task<List<InstitutionUserModel>> GetInstitutionUserList(int institutionId,int userTypeId)
+        {
+            List<InstitutionUserModel>? institutionuserList = new List<InstitutionUserModel>();
+            using (var context = new LooganContext(_connectionString))
+            {
+                var query = context.Database.SqlQuery<InstitutionUserModel>($"Get_InstitutionUsers {institutionId} ,{userTypeId}").AsNoTracking().AsAsyncEnumerable();
+                await foreach (var item in query)
+                {
+                    institutionuserList.Add(item);
+                }
+            }
+            return institutionuserList;
 
         }
     }
