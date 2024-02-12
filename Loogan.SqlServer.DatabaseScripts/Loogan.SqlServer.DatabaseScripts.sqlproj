@@ -63,5 +63,6 @@
     <Build Include="Scripts\21_Jan_2024_DbLoogan_Script.sql" />
     <Build Include="Scripts\Email_TemplateScripts_3rdFeb.sql" />
     <Build Include="Scripts\6th_Feb_Institution_Script.sql" />
+    <Build Include="Scripts\13_Feb_InstitutionMapping.sql" />
   </ItemGroup>
 </Project>

@@ -271,9 +271,10 @@ namespace Loogan.Web.UI.Controllers
 
         [Route("GetAllInstitutionNews")]
         [LooganAdminAuthorize("Admin")]
-        public async Task<JsonResult> GetAllInstitutionNews(PagingModel pageModel)
+        public async Task<JsonResult> GetAllInstitutionNews(PagingModel pageModel,string? userId)
         {
-            var institutionNewss = await _utilityHelper.ExecuteAPICall<List<InstitutionNewsModel>>(null, RestSharp.Method.Post, resource: "api/Admin/GetAllInstitutionNews");
+            var apiRequest = new ApiRequest() { RequestValue = userId };
+            var institutionNewss = await _utilityHelper.ExecuteAPICall<List<InstitutionNewsModel>>(apiRequest, RestSharp.Method.Post, resource: "api/Admin/GetAllInstitutionNews");
             var pageList = institutionNewss?.Skip(pageModel.Pagesize * (pageModel.PageIndex - 1))
                         .Take(pageModel.Pagesize).ToList();
 
@@ -314,9 +315,10 @@ namespace Loogan.Web.UI.Controllers
 
         [Route("GetAllInstitutionAnnouncement")]
         [LooganAdminAuthorize("Admin")]
-        public async Task<JsonResult> GetAllInstitutionAnnouncement(PagingModel pageModel)
+        public async Task<JsonResult> GetAllInstitutionAnnouncement(PagingModel pageModel, string? userId)
         {
-            var institutions = await _utilityHelper.ExecuteAPICall<List<InstitutionAnnouncementModel>>(null, RestSharp.Method.Post, resource: "api/Admin/GetAllInstitutionAnnouncement");
+            var apiRequest = new ApiRequest() { RequestValue = userId };
+            var institutions = await _utilityHelper.ExecuteAPICall<List<InstitutionAnnouncementModel>>(apiRequest, RestSharp.Method.Post, resource: "api/Admin/GetAllInstitutionAnnouncement");
             var pageList = institutions?.Skip(pageModel.Pagesize * (pageModel.PageIndex - 1))
                         .Take(pageModel.Pagesize).ToList();
 

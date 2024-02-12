@@ -1,4 +1,5 @@
-﻿using Loogan.API.BusinessService.Interfaces;
+﻿using Azure.Core;
+using Loogan.API.BusinessService.Interfaces;
 using Loogan.API.BusinessService.Services;
 using Loogan.API.Models.Models;
 using Loogan.API.Models.Models.Admin;
@@ -193,7 +194,7 @@ namespace Loogan.Web.API.Controllers
         [Route("GetUserRoles")]
         [Produces("application/json")]
         [Consumes("application/json")]
-        public async Task<IActionResult> GetUserRoles([FromBody] Request request)
+        public async Task<IActionResult> GetUserRoles([FromBody] Loogan.API.Models.Models.Request request)
         {
             var listMenus = await _adminService.GetUserRoles(request.LanguageId);
             return Ok(listMenus);
@@ -203,7 +204,7 @@ namespace Loogan.Web.API.Controllers
         [Route("GetMenus")]
         [Produces("application/json")]
         [Consumes("application/json")]
-        public async Task<IActionResult> GetAllMenus([FromBody] Request request)
+        public async Task<IActionResult> GetAllMenus([FromBody] Loogan.API.Models.Models.Request request)
         {
             var listMenus = await _adminService.GetAllMenus(request.LanguageId);
             return Ok(listMenus);
@@ -312,9 +313,10 @@ namespace Loogan.Web.API.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<IActionResult> GetAllInstitutionNews()
+        public async Task<IActionResult> GetAllInstitutionNews([FromBody] ApiRequest request)
         {
-            var listStudent = await _adminService.GetAllInstitutionNews();
+            var userId = request.RequestValue;
+            var listStudent = await _adminService.GetAllInstitutionNews(userId);
             return Ok(listStudent);
         }
 
@@ -369,9 +371,10 @@ namespace Loogan.Web.API.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<IActionResult> GetAllInstitutionAnnouncement()
+        public async Task<IActionResult> GetAllInstitutionAnnouncement([FromBody] ApiRequest request)
         {
-            var listStudent = await _adminService.GetAllInstitutionAnnouncement();
+            var userId = request.RequestValue;
+            var listStudent = await _adminService.GetAllInstitutionAnnouncement(userId);
             return Ok(listStudent);
         }
 

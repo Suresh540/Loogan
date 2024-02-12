@@ -834,4 +834,7 @@
   <data name="AddEditKey" xml:space="preserve">
     <value>Add/Edit</value>
   </data>
+	<data name="InstitutionMappingKey" xml:space="preserve">
+    <value>Institution Mapping</value>
+  </data>
 </root>

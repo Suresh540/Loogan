@@ -47,12 +47,12 @@ namespace Loogan.API.Database.Interfaces
 
         public Task<List<DropDownListModel>?> GetInstitutionsList();
 
-        public Task<List<InstitutionNewsModel>?> GetAllInstitutionNews();
+        public Task<List<InstitutionNewsModel>?> GetAllInstitutionNews(string? userId);
         public Task<int?> CreateInstitutionNews(InstitutionNews institutionNewsObj);
         public Task<int?> UpdateInstitutionNews(InstitutionNews institutionNewsObj);
         public Task<int?> DeleteInstitutionNews(int institutionNewsId);
 
-        public Task<List<InstitutionAnnouncementModel>?> GetAllInstitutionAnnouncement();
+        public Task<List<InstitutionAnnouncementModel>?> GetAllInstitutionAnnouncement(string? userId);
         public Task<int?> CreateInstitutionAnnouncement(InstitutionAnnouncement institutionAnnouncementObj);
         public Task<int?> UpdateInstitutionAnnouncement(InstitutionAnnouncement institutionAnnouncementObj);
         public Task<int?> DeleteInstitutionAnnouncement(int institutionAnnouncementId);

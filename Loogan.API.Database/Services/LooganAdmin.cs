@@ -145,7 +145,7 @@ namespace Loogan.API.Database.Services
 
 
 
-        
+
         public async Task<int?> DeleteStaff(int staffId)
         {
             var isDeleted = 0;
@@ -405,15 +405,28 @@ namespace Loogan.API.Database.Services
             return list;
         }
 
-        public async Task<List<InstitutionNewsModel>?> GetAllInstitutionNews()
+        public async Task<List<InstitutionNewsModel>?> GetAllInstitutionNews(string? userId)
         {
             List<InstitutionNewsModel>? institutionNewsList = new List<InstitutionNewsModel>();
+
             using (var context = new LooganContext(_connectionString))
             {
-                var query = context.Database.SqlQuery<InstitutionNewsModel>($"Get_AllInstitutionsNews").AsNoTracking().AsAsyncEnumerable();
-                await foreach (var item in query)
+                if (!string.IsNullOrEmpty(userId))
                 {
-                    institutionNewsList.Add(item);
+                    var Id = Convert.ToInt32(userId);
+                    var query = context.Database.SqlQuery<InstitutionNewsModel>($"Get_InstitutionsNewsByUserId {Id}").AsNoTracking().AsAsyncEnumerable();
+                    await foreach (var item in query)
+                    {
+                        institutionNewsList.Add(item);
+                    }
+                }
+                else
+                {
+                    var query = context.Database.SqlQuery<InstitutionNewsModel>($"Get_AllInstitutionsNews").AsNoTracking().AsAsyncEnumerable();
+                    await foreach (var item in query)
+                    {
+                        institutionNewsList.Add(item);
+                    }
                 }
             }
             return institutionNewsList;
@@ -474,15 +487,27 @@ namespace Loogan.API.Database.Services
             return isDeleted;
         }
 
-        public async Task<List<InstitutionAnnouncementModel>?> GetAllInstitutionAnnouncement()
+        public async Task<List<InstitutionAnnouncementModel>?> GetAllInstitutionAnnouncement(string? userId)
         {
             List<InstitutionAnnouncementModel>? institutionAnnouncementList = new List<InstitutionAnnouncementModel>();
             using (var context = new LooganContext(_connectionString))
             {
-                var query = context.Database.SqlQuery<InstitutionAnnouncementModel>($"Get_AllInstitutionsAnnouncements").AsNoTracking().AsAsyncEnumerable();
-                await foreach (var item in query)
+                if (!string.IsNullOrEmpty(userId))
                 {
-                    institutionAnnouncementList.Add(item);
+                    var Id = Convert.ToInt32(userId);
+                    var query = context.Database.SqlQuery<InstitutionAnnouncementModel>($"Get_InstitutionsAnnouncementsByUserId {Id}").AsNoTracking().AsAsyncEnumerable();
+                    await foreach (var item in query)
+                    {
+                        institutionAnnouncementList.Add(item);
+                    }
+                }
+                else
+                {
+                    var query = context.Database.SqlQuery<InstitutionAnnouncementModel>($"Get_AllInstitutionsAnnouncements").AsNoTracking().AsAsyncEnumerable();
+                    await foreach (var item in query)
+                    {
+                        institutionAnnouncementList.Add(item);
+                    }
                 }
             }
             return institutionAnnouncementList;

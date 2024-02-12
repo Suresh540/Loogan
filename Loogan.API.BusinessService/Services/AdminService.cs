@@ -153,9 +153,9 @@ namespace Loogan.API.BusinessService.Services
             return institutionsList;
         }
 
-        public async Task<List<InstitutionNewsModel>?> GetAllInstitutionNews()
+        public async Task<List<InstitutionNewsModel>?> GetAllInstitutionNews(string? userId)
         {
-            var institutionNewsList = await _looganAdmin.GetAllInstitutionNews();
+            var institutionNewsList = await _looganAdmin.GetAllInstitutionNews(userId);
             return institutionNewsList;
         }
 
@@ -178,9 +178,9 @@ namespace Loogan.API.BusinessService.Services
             return result;
         }
 
-        public async Task<List<InstitutionAnnouncementModel>?> GetAllInstitutionAnnouncement()
+        public async Task<List<InstitutionAnnouncementModel>?> GetAllInstitutionAnnouncement(string? userId)
         {
-            var institutionNewsList = await _looganAdmin.GetAllInstitutionAnnouncement();
+            var institutionNewsList = await _looganAdmin.GetAllInstitutionAnnouncement(userId);
             return institutionNewsList;
         }
 
