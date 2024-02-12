@@ -71,6 +71,8 @@ public partial class User
 
     public virtual MasterLookUp? Gender { get; set; }
 
+    public virtual ICollection<InstitutionUserMapping> InstitutionUserMappings { get; set; } = new List<InstitutionUserMapping>();
+
     public virtual MasterLookUp? Language { get; set; }
 
     public virtual ICollection<Staff> Staff { get; set; } = new List<Staff>();

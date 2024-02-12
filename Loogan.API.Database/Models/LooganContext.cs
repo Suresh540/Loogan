@@ -48,6 +48,8 @@ public partial class LooganContext : DbContext
 
     public virtual DbSet<InstitutionNews> InstitutionNews { get; set; }
 
+    public virtual DbSet<InstitutionUserMapping> InstitutionUserMappings { get; set; }
+
     public virtual DbSet<Language> Languages { get; set; }
 
     public virtual DbSet<MasterEmailTemplate> MasterEmailTemplates { get; set; }
@@ -95,7 +97,7 @@ public partial class LooganContext : DbContext
     public virtual DbSet<UserType> UserTypes { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-   => optionsBuilder.UseSqlServer(_connectionString);
+       => optionsBuilder.UseSqlServer(_connectionString);
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -542,6 +544,29 @@ public partial class LooganContext : DbContext
                 .HasForeignKey(d => d.InstitutionId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK_Institution_News_Institution");
+        });
+
+        modelBuilder.Entity<InstitutionUserMapping>(entity =>
+        {
+            entity.ToTable("Institution_User_Mapping");
+
+            entity.Property(e => e.CreatedDate).HasColumnType("datetime");
+            entity.Property(e => e.ModifyDate).HasColumnType("datetime");
+
+            entity.HasOne(d => d.Institution).WithMany(p => p.InstitutionUserMappings)
+                .HasForeignKey(d => d.InstitutionId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_Institution_User_Mapping_InstitutionId");
+
+            entity.HasOne(d => d.User).WithMany(p => p.InstitutionUserMappings)
+                .HasForeignKey(d => d.UserId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_Institution_User_Mapping_UserId");
+
+            entity.HasOne(d => d.UserType).WithMany(p => p.InstitutionUserMappings)
+                .HasForeignKey(d => d.UserTypeId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_Institution_User_Mapping_UserType");
         });
 
         modelBuilder.Entity<Language>(entity =>

@@ -13,5 +13,7 @@ public partial class UserType
 
     public bool IsDeleted { get; set; }
 
+    public virtual ICollection<InstitutionUserMapping> InstitutionUserMappings { get; set; } = new List<InstitutionUserMapping>();
+
     public virtual ICollection<MenuRoleMapping> MenuRoleMappings { get; set; } = new List<MenuRoleMapping>();
 }

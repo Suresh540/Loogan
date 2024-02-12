@@ -40,4 +40,6 @@ public partial class Institution
     public virtual ICollection<InstitutionAnnouncement> InstitutionAnnouncements { get; set; } = new List<InstitutionAnnouncement>();
 
     public virtual ICollection<InstitutionNews> InstitutionNews { get; set; } = new List<InstitutionNews>();
+
+    public virtual ICollection<InstitutionUserMapping> InstitutionUserMappings { get; set; } = new List<InstitutionUserMapping>();
 }
