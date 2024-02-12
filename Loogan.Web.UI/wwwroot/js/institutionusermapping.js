@@ -80,5 +80,32 @@
         });
     }
 
+    public.createinstitutionUsers = function() {
+        var request = [];
+        $.each($("#selectedUser option"), function () {
+            var saveInstitutionRequest = {};
+            saveInstitutionRequest.institutionUserMappingId = 0
+            saveInstitutionRequest.institutionId = $('#ddlInstitutions option:selected').val();
+            saveInstitutionRequest.userTypeId = $('#ddlUserType option:selected').val();
+            saveInstitutionRequest.userId = $(this).val();
+            request.push(saveInstitutionRequest);
+        });
+        if (request.length == 0) {
+            Alert(localizationLib.getLocalizeData("SelectChangesKey"), 'error');
+            return;
+        }
+        $.ajax({
+            method: 'Post',
+            url: "/User/SaveInstitutionUsers",
+            data: { request: request },
+            success: function (e) {
+                Alert(localizationLib.getLocalizeData("DataSavedKey"), 'Success');
+            },
+            error: function (e) {
+                Alert(localizationLib.getLocalizeData("FailedSaveKey"), 'error');
+            }
+        })
+    }
+
     return public;
 })();

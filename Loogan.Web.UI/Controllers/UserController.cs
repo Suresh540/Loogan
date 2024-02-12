@@ -127,6 +127,13 @@ namespace Loogan.Web.UI.Controllers
             return new JsonResult(new { actualUsers = userItems, selectUsers = selecteduserItems });
         }
 
+        [Route("SaveInstitutionUsers")]
+        public async Task<JsonResult> SaveInstitutionUsers(List<SaveInstitutionUserRequest> request)
+        {
+            var userRoles = await _utilityHelper.ExecuteAPICall<List<MenuModel>>(request, RestSharp.Method.Post, resource: "api/User/SaveInstitutionUsers");
+            return Json(userRoles);
+        }
+
         #endregion
     }
 }

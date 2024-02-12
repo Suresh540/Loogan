@@ -2,6 +2,7 @@
 using Loogan.API.BusinessService.Interfaces;
 using Loogan.API.Database.Interfaces;
 using Loogan.API.Database.Models;
+using Loogan.API.Database.Services;
 using Loogan.API.Models.Models;
 using Loogan.API.Models.Models.Admin;
 using System;
@@ -101,6 +102,12 @@ public class UserService : IUserService
     {
         var institutionUserList = await _storedProcedures.GetInstitutionUserList(institutionId, userTypeId);
         return institutionUserList;
+    }
+
+    public async Task<int> SaveInstitutionUsers(List<SaveInstitutionUserRequest> request)
+    {
+        var listUsers = await _storedProcedures.SaveInstitutionUsers(request);
+        return listUsers;
     }
 }
 

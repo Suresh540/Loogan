@@ -281,5 +281,44 @@ namespace Loogan.API.Database.Models
             return institutionuserList;
 
         }
+
+        public async Task<int> SaveInstitutionUsers(List<SaveInstitutionUserRequest> request)
+        {
+            var isSuccess = 0;
+
+            if (request.Count > 0)
+            {
+                using (var context = new LooganContext(_connectionString))
+                {
+                    var institutionId = request?.FirstOrDefault()?.InstitutionId;
+                    var userTypeId = request?.FirstOrDefault()?.UserTypeId;
+
+                    if (institutionId > 0 && userTypeId > 0)
+                    {
+                        var institutionUserMapping = context.InstitutionUserMappings.Where(x => x.InstitutionId == institutionId  && x.UserTypeId == userTypeId).ToList();
+                        if (institutionUserMapping.Any())
+                        {
+                            context.InstitutionUserMappings.RemoveRange(institutionUserMapping.ToArray());
+                        }
+
+                        foreach (var item in request)
+                        {
+                            var institutionUserMappings = new InstitutionUserMapping()
+                            {
+                                InstitutionId = item.InstitutionId,
+                                UserTypeId = item.UserTypeId,
+                                UserId = item.UserId
+                            };
+                            context.InstitutionUserMappings.Add(institutionUserMappings);
+                        }
+
+                        context.SaveChanges();
+                    }
+                }
+            }
+
+            return isSuccess;
+
+        }
     }
 }

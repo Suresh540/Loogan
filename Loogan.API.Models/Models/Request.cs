@@ -30,4 +30,12 @@ namespace Loogan.API.Models.Models
         public int InstitutionId { get; set; }
         public int UserTypeId { get; set; }
     }
+
+    public class SaveInstitutionUserRequest
+    {
+        public int? InstitutionUserMappingId { get; set; }
+        public int InstitutionId { get; set; }
+        public int UserTypeId { get; set; }
+        public int UserId { get; set; }
+    }
 }

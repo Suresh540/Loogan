@@ -30,6 +30,8 @@ public interface IUserService
 
     public Task<List<InstitutionUserModel>> GetInstitutionUserList(int institutionId, int userTypeId);
 
+    public Task<int> SaveInstitutionUsers(List<SaveInstitutionUserRequest> request);
+
 
 }
 

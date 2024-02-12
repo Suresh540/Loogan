@@ -1,4 +1,5 @@
 ﻿using Loogan.API.BusinessService.Interfaces;
+using Loogan.API.BusinessService.Services;
 using Loogan.API.Models.Models;
 using Microsoft.AspNetCore.Mvc;
 
@@ -169,37 +170,15 @@ namespace Loogan.Web.API.Controllers
             return Ok(listMenus);
         }
 
-        //[HttpPost]
-        //[Route("GetMenus")]
-        //[Produces("application/json")]
-        //[Consumes("application/json")]
-        //public async Task<IActionResult> GetAllMenus([FromBody] Request request)
-        //{
-        //    var listMenus = await _adminService.GetAllMenus(request.LanguageId);
-        //    return Ok(listMenus);
-        //}
-
-        //[HttpPost]
-        //[Route("GetRoleMenus")]
-        //[Produces("application/json")]
-        //[Consumes("application/json")]
-        //public async Task<IActionResult> GetRoleMenus([FromBody] RoleMenuRequest request)
-        //{
-        //    var listMenus = await _adminService.GetRoleMenus(request.RoleId, request.LanguageId);
-        //    return Ok(listMenus);
-        //}
-
-        //[HttpPost]
-        //[Route("SaveRoleMenus")]
-        //[Produces("application/json")]
-        //[Consumes("application/json")]
-        //public async Task<IActionResult> SaveRoleMenus([FromBody] List<SaveRoleMenuRequest> request)
-        //{
-        //    var listMenus = await _adminService.SaveRoleMenus(request);
-        //    return Ok(listMenus);
-        //}
-
-
+        [HttpPost]
+        [Route("SaveInstitutionUsers")]
+        [Produces("application/json")]
+        [Consumes("application/json")]
+        public async Task<IActionResult> SaveInstitutionUsers([FromBody] List<SaveInstitutionUserRequest> request)
+        {
+            var listInstitutionUsers = await _userService.SaveInstitutionUsers(request);
+            return Ok(listInstitutionUsers);
+        }
 
         #endregion
     }
