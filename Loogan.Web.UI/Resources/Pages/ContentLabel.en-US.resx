@@ -834,11 +834,13 @@
   <data name="AddEditKey" xml:space="preserve">
     <value>Add/Edit</value>
   </data>
-	<data name="InstitutionMappingKey" xml:space="preserve">
+  <data name="InstitutionMappingKey" xml:space="preserve">
     <value>Institution Mapping</value>
   </data>
-	<data name="StudentGradeMappingKey" xml:space="preserve">
+  <data name="StudentGradeMappingKey" xml:space="preserve">
     <value>Student Grade</value>
   </data>
-	
+  <data name="RoleKey" xml:space="preserve">
+    <value>Role</value>
+  </data>
 </root>

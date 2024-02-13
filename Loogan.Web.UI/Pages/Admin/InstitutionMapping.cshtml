@@ -39,12 +39,26 @@
                         </div>
                         <div class="row">
                             <div class="col-12 text-center margintop5">
-                                <select id="ddlInstitutions" style="width:20vw;border: 1px solid gray" onchange="institutionusermapping.institutionUserTypeChange()">
-                                </select>
+                                <div style="text-align:left">
+                                    <b>
+                                        @_localizer["AddEditInstitutionKey"]
+                                    </b>
+                                </div>
+                                <div style="text-align:left">
+                                    <select id="ddlInstitutions" style="width:50vw;border: 1px solid gray" onchange="institutionusermapping.institutionUserTypeChange()">
+                                    </select>
+                                </div>
                             </div>
                             <div class="col-12 text-center margintop5">
-                                <select id="ddlUserType" style="width:20vw;border: 1px solid gray" onchange="institutionusermapping.institutionUserTypeChange()">
-                                </select>
+                                <div style="text-align:left">
+                                    <b style="text-align:left">
+                                        @_localizer["RoleKey"]
+                                    </b>
+                                </div>
+                                <div style="text-align:left">
+                                    <select id="ddlUserType" style="width:50vw;border: 1px solid gray" onchange="institutionusermapping.institutionUserTypeChange()">
+                                    </select>
+                                </div>
                             </div>
                             <div class="col-12 text-center">
                                 <div class="row margintop5">
@@ -72,10 +86,13 @@
                             </div>
                         </div>
                     </div>
+                    <div style="height:15vh">
+                        &nbsp;
+                    </div>
                     <div>
-                        <br />
+                        
                         <component type="typeof(Lower_Component)" render-mode="Static" />
-                        <br />
+                        
                     </div>
                 </div>
             </div>

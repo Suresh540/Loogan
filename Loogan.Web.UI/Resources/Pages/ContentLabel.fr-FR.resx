@@ -819,4 +819,7 @@
   <data name="AddEditKey" xml:space="preserve">
     <value>Ajouter/Modifier</value>
   </data>
+  <data name="RoleKey" xml:space="preserve">
+    <value>rôle</value>
+  </data>
 </root>
