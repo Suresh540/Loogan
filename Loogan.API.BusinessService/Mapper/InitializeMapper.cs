@@ -209,6 +209,20 @@ public class InitializeMapper : Profile
             .ForMember(dest => dest.CreatedDate, opt => opt.MapFrom(src => src.CreatedDate))
             .ForMember(dest => dest.ModifyBy, opt => opt.MapFrom(src => src.ModifyBy))
             .ForMember(dest => dest.ModifyDate, opt => opt.MapFrom(src => src.ModifyDate)).ReverseMap();
+
+        var masterGradeMap = CreateMap<MasterGrade, MasterGradeModel>();
+        masterGradeMap.ForMember(dest => dest.MasterGradeId, opt => opt.MapFrom(src => src.MasterGradeId))
+            .ForMember(dest => dest.Code, opt => opt.MapFrom(src => src.Code))
+            .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.Name))
+            .ForMember(dest => dest.Percentage, opt => opt.MapFrom(src => src.Percentage))
+            .ForMember(dest => dest.PercentageRange, opt => opt.MapFrom(src => src.PercentageRange))
+            .ForMember(dest => dest.GradeCategoryName, opt => opt.MapFrom(src => src.GradeCategoryName))
+            .ForMember(dest => dest.IsDeleted, opt => opt.MapFrom(src => src.IsDeleted))
+            .ForMember(dest => dest.CreatedBy, opt => opt.MapFrom(src => src.CreatedBy))
+            .ForMember(dest => dest.CreatedDate, opt => opt.MapFrom(src => src.CreatedDate))
+            .ForMember(dest => dest.ModifyBy, opt => opt.MapFrom(src => src.ModifyBy))
+            .ForMember(dest => dest.ModifyDate, opt => opt.MapFrom(src => src.ModifyDate)).ReverseMap();
+
     }
 }
 

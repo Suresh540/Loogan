@@ -202,5 +202,19 @@ namespace Loogan.API.BusinessService.Services
             var result = await _looganAdmin.DeleteInstitutionAnnouncement(institutionNewsId);
             return result;
         }
+
+
+        public async Task<List<MasterGradeModel>?> GetAllMasterGrades(int languageId)
+        {
+            var masterGradesList = await _looganAdmin.GetAllMasterGrades(languageId);
+            var masterGradesObj = _mapper.Map<List<MasterGradeModel>>(masterGradesList);
+            return masterGradesObj;
+        }
+
+        public async Task<List<StudentGradeMappingModel>?> GetStudentGradesByStaffId(int staffId)
+        {
+            var studentGradesMappingList = await _looganAdmin.GetStudentGradesByStaffId(staffId);
+            return studentGradesMappingList;
+        }
     }
 }

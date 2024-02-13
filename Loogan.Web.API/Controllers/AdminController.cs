@@ -421,6 +421,38 @@ namespace Loogan.Web.API.Controllers
 
         #endregion
 
-        
+        #region Grades
+
+        [HttpPost]
+        [Route("GetAllMasterGrades")]
+        [Produces("application/json")]
+        [Consumes("application/json")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public async Task<IActionResult> GetAllMasterGrades([FromBody] ApiRequest request)
+        {
+            var languageId = request.RequestValue != "" ? Convert.ToInt32(request.RequestValue) : 0;
+            var listStudent = await _adminService.GetAllMasterGrades(languageId);
+            return Ok(listStudent);
+        }
+
+        [HttpPost]
+        [Route("GetStudentGradesByStaffId")]
+        [Produces("application/json")]
+        [Consumes("application/json")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public async Task<IActionResult> GetStudentGradesByStaffId([FromBody] ApiRequest request)
+        {
+            var staffId = request.RequestValue != "" ? Convert.ToInt32(request.RequestValue) : 0;
+            var listStudent = await _adminService.GetStudentGradesByStaffId(staffId);
+            return Ok(listStudent);
+        }
+
+        #endregion
+
+
     }
 }

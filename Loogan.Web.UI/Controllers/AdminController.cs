@@ -1,4 +1,5 @@
-﻿using Loogan.API.Models.Models;
+﻿using Loogan.API.Database.Models;
+using Loogan.API.Models.Models;
 using Loogan.API.Models.Models.Admin;
 using Loogan.Web.UI.Models;
 using Loogan.Web.UI.Utilities;
@@ -356,7 +357,27 @@ namespace Loogan.Web.UI.Controllers
         }
         #endregion
 
-        
+        #region Grades
+
+        [Route("GetAllMasterGrades")]
+        public async Task<JsonResult> GetAllMasterGrades(int languageId)
+        {
+            var apiRequest = new ApiRequest() { RequestValue = Convert.ToString(languageId) };
+            var userRoles = await _utilityHelper.ExecuteAPICall<List<MenuModel>>(apiRequest, RestSharp.Method.Post, resource: "api/Admin/GetAllMasterGrades");
+            return Json(userRoles);
+        }
+
+        [Route("GetStudentGradesByStaffId")]
+        public async Task<JsonResult> GetStudentGradesByStaffId(int staffId)
+        {
+            var apiRequest = new ApiRequest() { RequestValue = Convert.ToString(staffId) };
+            var userRoles = await _utilityHelper.ExecuteAPICall<List<MenuModel>>(apiRequest, RestSharp.Method.Post, resource: "api/Admin/GetStudentGradesByStaffId");
+            return Json(userRoles);
+        }
+        #endregion
+
+
+
 
     }
 }

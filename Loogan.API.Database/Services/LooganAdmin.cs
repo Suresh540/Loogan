@@ -579,5 +579,29 @@ namespace Loogan.API.Database.Services
 
             return isDeleted;
         }
+
+        public async Task<List<MasterGrade>?> GetAllMasterGrades(int languageId)
+        {
+            var list = new List<MasterGrade>();
+            using (var context = new LooganContext(_connectionString))
+            {
+                list = context.MasterGrades.Where(x => x.IsDeleted == false && x.LanguageId == languageId).ToList();
+            }
+            return list;
+        }
+        public async Task<List<StudentGradeMappingModel>?> GetStudentGradesByStaffId(int staffId)
+        {
+            List<StudentGradeMappingModel>? institutionNewsList = new List<StudentGradeMappingModel>();
+
+            using (var context = new LooganContext(_connectionString))
+            {
+                var query = context.Database.SqlQuery<StudentGradeMappingModel>($"Get_StudentGradesByStaffId {staffId}").AsNoTracking().AsAsyncEnumerable();
+                await foreach (var item in query)
+                {
+                    institutionNewsList.Add(item);
+                }
+            }
+            return institutionNewsList;
+        }
     }
 }

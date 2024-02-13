@@ -56,5 +56,8 @@ namespace Loogan.API.BusinessService.Interfaces
         public Task<int?> UpdateInstitutionAnnouncement(InstitutionAnnouncementModel institutionAnnouncementModelObj);
         public Task<int?> DeleteInstitutionAnnouncement(int institutionId);
 
+        public Task<List<MasterGradeModel>?> GetAllMasterGrades(int languageId);
+        public Task<List<StudentGradeMappingModel>?> GetStudentGradesByStaffId(int staffId);
+
     }
 }
