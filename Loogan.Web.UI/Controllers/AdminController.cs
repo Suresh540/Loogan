@@ -376,12 +376,15 @@ namespace Loogan.Web.UI.Controllers
             return Json(userRoles);
         }
 
-        [Route("SaveInstitutionUsers")]
-        public async Task<JsonResult> SaveStudentGradeMapping(List<SaveInstitutionUserRequest> request)
+        [Route("SaveStudentGradeMapping")]
+        public async Task<JsonResult> SaveStudentGradeMapping(List<SaveStudentGradeMappingModel> request)
         {
-            var userRoles = await _utilityHelper.ExecuteAPICall<List<StudentGradeMappingModel>>(request, RestSharp.Method.Post, resource: "api/User/SaveInstitutionUsers");
-            return Json(userRoles);
+            request.FirstOrDefault().CreatedBy = HttpContext?.Session?.GetInt32("LoginUserId");
+            request.FirstOrDefault().CreatedDate = DateTime.Now;
+            await _utilityHelper.ExecuteAPICall<bool>(request, RestSharp.Method.Post, resource: "api/Admin/SaveStudentGradeMapping");
+            return Json(new { value = "Success" });
         }
+
         #endregion
 
 
