@@ -243,9 +243,10 @@ namespace Loogan.Web.API.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<IActionResult> GetAllInstitutions()
+        public async Task<IActionResult> GetAllInstitutions([FromBody] ApiRequest request)
         {
-            var listStudent = await _adminService.GetAllInstitutions();
+            var userId = request.RequestValue;
+            var listStudent = await _adminService.GetAllInstitutions(userId);
             return Ok(listStudent);
         }
 

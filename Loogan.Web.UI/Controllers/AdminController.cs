@@ -199,9 +199,10 @@ namespace Loogan.Web.UI.Controllers
 
         [Route("GetAllInstitutions")]
         [LooganAdminAuthorize("Admin")]
-        public async Task<JsonResult> GetAllInstitutions(PagingModel pageModel)
+        public async Task<JsonResult> GetAllInstitutions(PagingModel pageModel, string? userId)
         {
-            var institutions = await _utilityHelper.ExecuteAPICall<List<InstitutionModel>>(null, RestSharp.Method.Post, resource: "api/Admin/GetAllInstitutions");
+            var apiRequest = new ApiRequest() { RequestValue = userId };
+            var institutions = await _utilityHelper.ExecuteAPICall<List<InstitutionModel>>(apiRequest, RestSharp.Method.Post, resource: "api/Admin/GetAllInstitutions");
             var pageList = institutions?.Skip(pageModel.Pagesize * (pageModel.PageIndex - 1))
                         .Take(pageModel.Pagesize).ToList();
 

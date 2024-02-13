@@ -318,15 +318,27 @@ namespace Loogan.API.Database.Services
 
         }
 
-        public async Task<List<InstitutionModel>?> GetAllInstitutions()
+        public async Task<List<InstitutionModel>?> GetAllInstitutions(string? userId)
         {
             List<InstitutionModel>? institutionList = new List<InstitutionModel>();
             using (var context = new LooganContext(_connectionString))
             {
-                var query = context.Database.SqlQuery<InstitutionModel>($"Get_AllInstitutions").AsNoTracking().AsAsyncEnumerable();
-                await foreach (var item in query)
+                if (!string.IsNullOrEmpty(userId))
                 {
-                    institutionList.Add(item);
+                    var Id = Convert.ToInt32(userId);
+                    var query = context.Database.SqlQuery<InstitutionModel>($"Get_InstitutionsByUserId {Id}").AsNoTracking().AsAsyncEnumerable();
+                    await foreach (var item in query)
+                    {
+                        institutionList.Add(item);
+                    }
+                }
+                else
+                {
+                    var query = context.Database.SqlQuery<InstitutionModel>($"Get_AllInstitutions").AsNoTracking().AsAsyncEnumerable();
+                    await foreach (var item in query)
+                    {
+                        institutionList.Add(item);
+                    }
                 }
             }
             return institutionList;

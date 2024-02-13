@@ -39,7 +39,7 @@ namespace Loogan.API.BusinessService.Interfaces
 
         public Task<int> SaveRoleMenus(List<SaveRoleMenuRequest> request);
 
-        public Task<List<InstitutionModel>?> GetAllInstitutions();
+        public Task<List<InstitutionModel>?> GetAllInstitutions(string? userId);
         public Task<int?> CreateInstitution(InstitutionModel institutionModelObj);
         public Task<int?> UpdateInstitution(InstitutionModel institutionModelObj);
         public Task<int?> DeleteInstitution(int institutionId);

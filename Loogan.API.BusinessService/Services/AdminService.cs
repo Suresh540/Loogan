@@ -122,9 +122,9 @@ namespace Loogan.API.BusinessService.Services
             return listMenus;
         }
 
-        public async Task<List<InstitutionModel>?> GetAllInstitutions()
+        public async Task<List<InstitutionModel>?> GetAllInstitutions(string? userId)
         {
-            var institutionList = await _looganAdmin.GetAllInstitutions();
+            var institutionList = await _looganAdmin.GetAllInstitutions(userId);
             return institutionList;
         }
 
