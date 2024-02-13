@@ -50,8 +50,16 @@
                                 <div class="card-body" style="height:60vh;">
                                     @foreach (var news in Model.InstituteNews ?? Enumerable.Empty<InstitutionNewsModel>())
                                     {
-                                        <div>
-                                            @news.News
+                                        <div class="marquee">
+                                            <span style="text-align:left">
+                                                @news.News
+                                            </span>
+                                            <span style="text-align:left">
+                                                <span style="color:coral">from</span> @news.StartDate
+                                            </span>
+                                            <span style="text-align:left">
+                                                <span style="color:coral">to</span> @news.EndDate
+                                            </span>
                                         </div>
                                     }
                                 </div>
@@ -66,8 +74,17 @@
                                 <div class="card-body" style="height:60vh;">
                                     @foreach (var announce in Model.InstituteAnouncements ?? Enumerable.Empty<InstitutionAnnouncementModel>())
                                     {
-                                        <div>
-                                            @announce.Announcement
+                                        <div class="marquee">
+                                            
+                                            <span style="text-align:left">
+                                                @announce.Announcement
+                                            </span>
+                                            <span style="text-align:left">
+                                                <span style="color:coral">from</span> @announce.StartDate
+                                            </span>
+                                            <span style="text-align:left">
+                                                <span style="color:coral">to</span> @announce.EndDate
+                                            </span>
                                         </div>
                                     }
                                 </div>

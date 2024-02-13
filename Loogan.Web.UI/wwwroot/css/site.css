@@ -1034,3 +1034,20 @@
     padding: 20px;
     margin: 20px;
 }
+
+.marquee {
+    position: relative;
+    animation: marquee 4s linear infinite;
+    text-align: left;
+    color:darkolivegreen;
+}
+
+@keyframes marquee {
+    0% {
+        top: 10em
+    }
+
+    100% {
+        top: -2em
+    }
+}
