@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Primitives;
 using Newtonsoft.Json;
+using System.Collections.Generic;
 
 namespace Loogan.Web.UI.Controllers
 {
@@ -363,7 +364,7 @@ namespace Loogan.Web.UI.Controllers
         public async Task<JsonResult> GetAllMasterGrades(int languageId)
         {
             var apiRequest = new ApiRequest() { RequestValue = Convert.ToString(languageId) };
-            var userRoles = await _utilityHelper.ExecuteAPICall<List<MenuModel>>(apiRequest, RestSharp.Method.Post, resource: "api/Admin/GetAllMasterGrades");
+            var userRoles = await _utilityHelper.ExecuteAPICall<List<MasterGradeModel>>(apiRequest, RestSharp.Method.Post, resource: "api/Admin/GetAllMasterGrades");
             return Json(userRoles);
         }
 
@@ -371,7 +372,14 @@ namespace Loogan.Web.UI.Controllers
         public async Task<JsonResult> GetStudentGradesByStaffId(int staffId)
         {
             var apiRequest = new ApiRequest() { RequestValue = Convert.ToString(staffId) };
-            var userRoles = await _utilityHelper.ExecuteAPICall<List<MenuModel>>(apiRequest, RestSharp.Method.Post, resource: "api/Admin/GetStudentGradesByStaffId");
+            var userRoles = await _utilityHelper.ExecuteAPICall<List<StudentGradeMappingModel>>(apiRequest, RestSharp.Method.Post, resource: "api/Admin/GetStudentGradesByStaffId");
+            return Json(userRoles);
+        }
+
+        [Route("SaveInstitutionUsers")]
+        public async Task<JsonResult> SaveStudentGradeMapping(List<SaveInstitutionUserRequest> request)
+        {
+            var userRoles = await _utilityHelper.ExecuteAPICall<List<StudentGradeMappingModel>>(request, RestSharp.Method.Post, resource: "api/User/SaveInstitutionUsers");
             return Json(userRoles);
         }
         #endregion
