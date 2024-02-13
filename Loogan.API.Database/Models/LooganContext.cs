@@ -54,6 +54,8 @@ public partial class LooganContext : DbContext
 
     public virtual DbSet<MasterEmailTemplate> MasterEmailTemplates { get; set; }
 
+    public virtual DbSet<MasterGrade> MasterGrades { get; set; }
+
     public virtual DbSet<MasterLookUp> MasterLookUps { get; set; }
 
     public virtual DbSet<MenuPrimary> MenuPrimaries { get; set; }
@@ -86,6 +88,8 @@ public partial class LooganContext : DbContext
 
     public virtual DbSet<StudentCourseMapping> StudentCourseMappings { get; set; }
 
+    public virtual DbSet<StudentGradeMapping> StudentGradeMappings { get; set; }
+
     public virtual DbSet<Term> Terms { get; set; }
 
     public virtual DbSet<Test> Tests { get; set; }
@@ -97,7 +101,7 @@ public partial class LooganContext : DbContext
     public virtual DbSet<UserType> UserTypes { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-       => optionsBuilder.UseSqlServer(_connectionString);
+    => optionsBuilder.UseSqlServer(_connectionString);
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -587,6 +591,30 @@ public partial class LooganContext : DbContext
                 .IsUnicode(false);
         });
 
+        modelBuilder.Entity<MasterGrade>(entity =>
+        {
+            entity.ToTable("Master_Grades");
+
+            entity.Property(e => e.Code)
+                .HasMaxLength(50)
+                .IsUnicode(false);
+            entity.Property(e => e.CreatedDate).HasColumnType("datetime");
+            entity.Property(e => e.Description)
+                .HasMaxLength(500)
+                .IsUnicode(false);
+            entity.Property(e => e.GradeCategoryName)
+                .HasMaxLength(50)
+                .IsUnicode(false);
+            entity.Property(e => e.ModifyDate).HasColumnType("datetime");
+            entity.Property(e => e.Name)
+                .HasMaxLength(200)
+                .IsUnicode(false);
+            entity.Property(e => e.Percentage).HasColumnType("decimal(18, 0)");
+            entity.Property(e => e.PercentageRange)
+                .HasMaxLength(100)
+                .IsUnicode(false);
+        });
+
         modelBuilder.Entity<MasterLookUp>(entity =>
         {
             entity.HasKey(e => e.LookUpId).HasName("PK_MasterLookUp");
@@ -1054,6 +1082,29 @@ public partial class LooganContext : DbContext
             entity.HasOne(d => d.Term).WithMany(p => p.StudentCourseMappings)
                 .HasForeignKey(d => d.TermId)
                 .HasConstraintName("FK_Student_Course_Mapping_Term");
+        });
+
+        modelBuilder.Entity<StudentGradeMapping>(entity =>
+        {
+            entity.HasKey(e => e.GradeStudentMappingId);
+
+            entity.ToTable("Student_Grade_Mapping");
+
+            entity.Property(e => e.CreatedDate).HasColumnType("datetime");
+            entity.Property(e => e.ModifyDate).HasColumnType("datetime");
+            entity.Property(e => e.Remarks)
+                .HasMaxLength(500)
+                .IsUnicode(false);
+
+            entity.HasOne(d => d.MasterGrade).WithMany(p => p.StudentGradeMappings)
+                .HasForeignKey(d => d.MasterGradeId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_Student_Grade_Mapping_Master_Grades");
+
+            entity.HasOne(d => d.StudentCourseMapping).WithMany(p => p.StudentGradeMappings)
+                .HasForeignKey(d => d.StudentCourseMappingId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_Student_Grade_Mapping_StudentCourseMappingId");
         });
 
         modelBuilder.Entity<Term>(entity =>

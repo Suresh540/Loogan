@@ -97,5 +97,7 @@ public partial class StudentCourseMapping
 
     public virtual StatusLookUp? StudentCourseStatus { get; set; }
 
+    public virtual ICollection<StudentGradeMapping> StudentGradeMappings { get; set; } = new List<StudentGradeMapping>();
+
     public virtual Term? Term { get; set; }
 }

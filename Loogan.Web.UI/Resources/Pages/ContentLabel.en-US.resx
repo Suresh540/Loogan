@@ -837,4 +837,8 @@
 	<data name="InstitutionMappingKey" xml:space="preserve">
     <value>Institution Mapping</value>
   </data>
+	<data name="StudentGradeMappingKey" xml:space="preserve">
+    <value>Student Grade</value>
+  </data>
+	
 </root>
