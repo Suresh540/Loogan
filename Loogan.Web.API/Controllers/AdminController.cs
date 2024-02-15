@@ -451,6 +451,16 @@ namespace Loogan.Web.API.Controllers
             return Ok(listStudent);
         }
 
+        [HttpPost]
+        [Route("SaveStudentGradeMapping")]
+        [Produces("application/json")]
+        [Consumes("application/json")]
+        public async Task<IActionResult> SaveStudentGradeMapping([FromBody] List<SaveStudentGradeMappingModel> request)
+        {
+            var listInstitutionUsers = await _adminService.SaveStudentGradeMapping(request);
+            return Ok(listInstitutionUsers);
+        }
+
         #endregion
 
 

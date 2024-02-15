@@ -216,5 +216,11 @@ namespace Loogan.API.BusinessService.Services
             var studentGradesMappingList = await _looganAdmin.GetStudentGradesByStaffId(staffId);
             return studentGradesMappingList;
         }
+
+        public async Task<int> SaveStudentGradeMapping(List<SaveStudentGradeMappingModel> request)
+        {
+            var isSuccess = await _looganAdmin.SaveStudentGradeMapping(request);
+            return isSuccess;
+        }
     }
 }

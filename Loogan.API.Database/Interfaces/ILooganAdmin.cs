@@ -59,5 +59,7 @@ namespace Loogan.API.Database.Interfaces
 
         public Task<List<MasterGrade>> GetAllMasterGrades(int languageId);
         public Task<List<StudentGradeMappingModel>> GetStudentGradesByStaffId(int staffId);
+
+        public Task<int> SaveStudentGradeMapping(List<SaveStudentGradeMappingModel> request);
     }
 }

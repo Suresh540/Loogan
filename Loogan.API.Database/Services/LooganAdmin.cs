@@ -603,5 +603,38 @@ namespace Loogan.API.Database.Services
             }
             return institutionNewsList;
         }
+
+        public async Task<int> SaveStudentGradeMapping(List<SaveStudentGradeMappingModel> request)
+        {
+            var isSuccess = 0;
+
+            if (request.Count > 0)
+            {
+                using (var context = new LooganContext(_connectionString))
+                {
+
+                    foreach (var item in request)
+                    {
+                        var studentGradeMappings = new StudentGradeMapping()
+                        {
+                            GradeStudentMappingId = item.GradeStudentMappingId,
+                            StudentCourseMappingId = item.StudentCourseMappingId,
+                            MasterGradeId = item.MasterGradeId,
+                            Remarks = item.Remarks
+                        };
+
+                        if (studentGradeMappings.GradeStudentMappingId != 0)
+                           context.StudentGradeMappings.Update(studentGradeMappings);
+                        else
+                            context.StudentGradeMappings.Add(studentGradeMappings);
+
+                    }
+                    isSuccess = await context.SaveChangesAsync();
+                }
+            }
+
+            return isSuccess;
+
+        }
     }
 }
