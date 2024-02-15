@@ -20,18 +20,18 @@
                         for (var item of data) {
                             let index = item.institutionId
                             $('#tdBody').append(`<tr>
-                        <td class="text-danger anchornounderline" title="Delete institution" onclick="institution.deleteInstitution('${index}')">X</td>
-                        <td><a id="institutionname${index}" href="#" data-toggle="modal" data-target="#top_modal" onclick="return institution.institutionEdit(${index})" style="cursor:pointer">${item.institutionName}</a></td>
-                        <td id="instaddress${index}">${item.address == null ? "" : item.address }</td>
-                        <td id="instphonenumber${index}">${item.phoneNumber == null ? "" : item.phoneNumber}</td>
-                        <td id="instwebsite${index}">${item.website == null ? "" : item.website}</td>
-                        <td id="instmission${index}">${item.mission == null ? "" : item.mission}</td>
-                        <td id="instvision${index}">${item.vision == null ? "" : item.vision}</td>
-                        <td style="display:none" id="instdescription${index}">${item.description == null ? "" : item.description}</td>
-                        <td style="display:none" id="instemailaddress${index}">${item.emailAddress == null ? "" : item.emailAddress}</td>
-                        <td style="display:none" id="instinstitutionimageUrl${index}">${item.institutionImageUrl == null ? "" : item.institutionImageUrl}</td>
-                        <td style="display:none" id="instadditionalcomments${index}">${item.additionalComments == null ? "" : item.additionalComments}</td>
-                    </tr>`)
+                                <td class="text-danger anchornounderline" title="Delete institution" onclick="institution.deleteInstitution('${index}')">X</td>
+                                <td><a id="institutionname${index}" href="#" data-toggle="modal" data-target="#top_modal" onclick="return institution.institutionEdit(${index})" style="cursor:pointer">${item.institutionName}</a></td>
+                                <td id="instaddress${index}">${item.address == null ? "" : item.address }</td>
+                                <td id="instphonenumber${index}">${item.phoneNumber == null ? "" : item.phoneNumber}</td>
+                                <td id="instwebsite${index}">${item.website == null ? "" : item.website}</td>
+                                <td id="instmission${index}">${item.mission == null ? "" : item.mission}</td>
+                                <td id="instvision${index}">${item.vision == null ? "" : item.vision}</td>
+                                <td style="display:none" id="instdescription${index}">${item.description == null ? "" : item.description}</td>
+                                <td style="display:none" id="instemailaddress${index}">${item.emailAddress == null ? "" : item.emailAddress}</td>
+                                <td style="display:none" id="instinstitutionimageUrl${index}">${item.institutionImageUrl == null ? "" : item.institutionImageUrl}</td>
+                                <td style="display:none" id="instadditionalcomments${index}">${item.additionalComments == null ? "" : item.additionalComments}</td>
+                            </tr>`)
                             index++;
                         }
                     }
@@ -57,7 +57,6 @@
         $('#txtMission').val($('#instmission' + index).html());
         $('#txtVision').val($('#instvision' + index).html());
         $('#txtComments').val($('#instadditionalcomments' + index).html());
-
         $('#btnCreateClose').trigger('click');
 
         return false;
@@ -145,6 +144,8 @@
         $('#txtMission').val('');
         $('#txtVision').val('');
         $('#txtComments').val('');
+        document.getElementById("ImagePathFile").value = null;
+        document.getElementById("ImagePathFile").files = null;
     }
 
     public.ddlinstitution = function () {
