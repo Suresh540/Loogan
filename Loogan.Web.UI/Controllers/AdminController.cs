@@ -220,7 +220,8 @@ namespace Loogan.Web.UI.Controllers
             {
                 var model = Request?.Form?["model"];
                 instituationViewModel = JsonConvert.DeserializeObject<InstitutionModelExtended>(model);
-                await UploadImage(Request?.Form.Files?[0]);
+                if (Request?.Form.Files.Count > 0)
+                    await UploadImage(Request?.Form.Files?[0]);
                 if (instituationViewModel != null)
                 {
                     instituationViewModel.CreatedBy = HttpContext?.Session?.GetInt32("LoginUserId");
@@ -252,12 +253,26 @@ namespace Loogan.Web.UI.Controllers
 
         [Route("UpdateInstitution")]
         [LooganAdminAuthorize("Admin")]
-        public async Task<IActionResult> UpdateInstitution(InstitutionModel instituationViewModel)
+        public async Task<IActionResult> UpdateInstitution()
         {
-            instituationViewModel.ModifyBy = HttpContext?.Session?.GetInt32("LoginUserId");
-            instituationViewModel.ModifyDate = DateTime.Now;
-            await _utilityHelper.ExecuteAPICall<bool>(instituationViewModel, RestSharp.Method.Post, resource: "api/Admin/UpdateInstitution");
-            return Json(new { value = "Success" });
+            InstitutionModelExtended? instituationViewModel = null;
+            if (!StringValues.IsNullOrEmpty(Request.Form["model"]))
+            {
+                var model = Request?.Form?["model"];
+                instituationViewModel = JsonConvert.DeserializeObject<InstitutionModelExtended>(model);
+                if (Request?.Form.Files.Count > 0)
+                    await UploadImage(Request?.Form.Files?[0]);
+                if (instituationViewModel != null)
+                {
+                    instituationViewModel.ModifyBy = HttpContext?.Session?.GetInt32("LoginUserId");
+                    instituationViewModel.ModifyDate = DateTime.Now;
+                    await _utilityHelper.ExecuteAPICall<bool>(instituationViewModel, RestSharp.Method.Post, resource: "api/Admin/UpdateInstitution");
+                    return Json(new { value = "Success" });
+                }
+            }
+            return Json(new { value = "Failure" });
+
+           
         }
 
         [Route("DeleteInstitution")]
@@ -274,7 +289,7 @@ namespace Loogan.Web.UI.Controllers
 
         [Route("GetAllInstitutionNews")]
         [LooganAdminAuthorize("Admin")]
-        public async Task<JsonResult> GetAllInstitutionNews(PagingModel pageModel,string? userId)
+        public async Task<JsonResult> GetAllInstitutionNews(PagingModel pageModel, string? userId)
         {
             var apiRequest = new ApiRequest() { RequestValue = userId };
             var institutionNewss = await _utilityHelper.ExecuteAPICall<List<InstitutionNewsModel>>(apiRequest, RestSharp.Method.Post, resource: "api/Admin/GetAllInstitutionNews");
