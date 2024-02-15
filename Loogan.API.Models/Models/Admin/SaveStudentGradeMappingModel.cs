@@ -10,17 +10,17 @@ namespace Loogan.API.Models.Models.Admin
     {
         public int GradeStudentMappingId { get; set; }
 
-        public int StudentCourseMappingId { get; set; }
+        public int StudentCourseMappingId { get; set; }//
 
-        public int MasterGradeId { get; set; }
+        public int MasterGradeId { get; set; }//
 
-        public string? Remarks { get; set; }
+        public string? Remarks { get; set; }//
 
         public bool IsDeleted { get; set; }
 
-        public int? CreatedBy { get; set; }
+        public int? CreatedBy { get; set; }//
 
-        public DateTime? CreatedDate { get; set; }
+        public DateTime? CreatedDate { get; set; }//
 
         public int? ModifyBy { get; set; }
 

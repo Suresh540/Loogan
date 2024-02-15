@@ -31,7 +31,7 @@
                                         style="background:lightgreen;color:black">
                                     <b>@_localizer["ClearKey"]</b>
                                 </button>
-                                <button id="btnSaveuser" type="button" class="btn btn-light border rounded-pill shadow-sm mb-1" onclick="institutionusermapping.createinstitutionUsers()"
+                                <button id="btnSaveuser" type="button" class="btn btn-light border rounded-pill shadow-sm mb-1" onclick="studentcourse.studentGradeMapping()"
                                         style="background:blue;color:white">
                                     <b>@_localizer["SaveKey"]</b>
                                 </button>
@@ -39,7 +39,7 @@
                         </div>
                         <div class="row">
                             <div class="col-12">
-                                <table class="table table-striped">
+                                <table class="table table-striped" id="tblGrades">
                                     <thead>
                                         <tr>
                                             <th scope="col">Course</th>
@@ -49,16 +49,34 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <th scope="row">1</th>
-                                            <td>Mark</td>
-                                            <td>
-                                                <select>
-
-                                                </select>
-                                            </td>
-                                            <td>mdo</td>
-                                        </tr>
+                                        @foreach (var item in Model.StudentGradeMappingModels ?? Enumerable.Empty<StudentGradeMappingModel>())
+                                        {
+                                            <tr>
+                                                <td style="display:none">
+                                                    @item.GradeStudentMappingId
+                                                </td>
+                                                <td style="display:none">
+                                                    @item.StudentCourseMappingId
+                                                </td>
+                                                <td scope="row">
+                                                    @item.CourseName
+                                                </td>
+                                                <td>
+                                                    @item.studentName
+                                                </td>
+                                                <td>
+                                                    <select class="form-select" id="ddlGrades">
+                                                        @foreach (var child in Model.Grades ?? Enumerable.Empty<MasterGradeModel>())
+                                                        {
+                                                            <option value="@child.MasterGradeId">@child.Name</option>
+                                                        }
+                                                    </select>
+                                                </td>
+                                                <td>
+                                                    <input type="text" class="form-control" id="txtRemarks" value="@item.StudentGradeRemarks" />
+                                                </td>
+                                            </tr>
+                                        }
                                     </tbody>
                                 </table>
                             </div>

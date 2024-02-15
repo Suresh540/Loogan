@@ -313,7 +313,46 @@
         $('#chkCourseLeaveOfAbsenceStatusInd').prop('checked', false);;
         $('#chkCourseScheduledStatusInd').prop('checked', false);
         $('#chkCourseRetakeInd').prop('checked', false);
-    }
+    },
+
+        public.studentGradeMapping = function () {
+            var rows = document.getElementById('tblGrades').rows;
+            let list = [];
+            let rowIndex = 0;
+            for (var item of rows) {
+                let model = {};
+                if (rowIndex == 0) {
+                    rowIndex++;
+                    continue;
+                }
+
+                model.GradeStudentMappingId = $.trim(item.cells[0].innerHTML) == '' ? 0 : $.trim(item.cells[0].innerHTML);
+                model.StudentCourseMappingId = $.trim(item.cells[1].innerHTML);
+                model.MasterGradeId = $(item).find('select')[0].value;
+                model.Remarks = $(item).find("input[type='text']")[0].value;
+                model.IsDeleted = 0;
+                model.CreatedBy = 0;
+                model.CreatedDate = null;
+                model.ModifyBy = 0;
+                model.ModifyDate = null;
+                list.push(model);
+            }
+
+            $.ajax({
+                method: 'Post',
+                url: "/Admin/SaveStudentGradeMapping",
+                data: { request: JSON.stringify(list) },
+                success: function (e) {
+                    Alert(localizationLib.getLocalizeData("StudentCourseDeleteMsgKey"), 'Success');
+                    course.showStudentCourses();
+                },
+                error: function (e) {
+                    var msg = JSON.parse(e.responseText);
+                    Alert(msg.detail, 'error');
+                    Alert(localizationLib.getLocalizeData("StudentCourseFailedDeleteKey"), 'error');
+                }
+            });
+        }
 
     return public;
 })();
