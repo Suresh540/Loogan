@@ -71,7 +71,7 @@ namespace Loogan.Web.UI.Controllers
             }
             else
             {
-                return LocalRedirect("/Admin/AdminDashboard");
+                return LocalRedirect("/Profile/Profile");
             }
         }
 

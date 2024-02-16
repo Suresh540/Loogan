@@ -58,7 +58,7 @@ namespace Loogan.Web.UI.Utilities
             services.AddRazorPages(options =>
             {
                 options.Conventions.AuthorizeFolder("/Admin");
-                options.Conventions.AuthorizePage("/Admin/AdminDashboard");
+                options.Conventions.AuthorizePage("/Profile/Profile");
             }).AddMicrosoftIdentityUI();
             services.AddServerSideBlazor();
 
