@@ -90,7 +90,7 @@ namespace Loogan.Web.UI.Pages
                 }
                 else if (model != null && model.UserTypeName != null && model.UserTypeName.Equals(UserTypeEnum.admin.ToString(), StringComparison.InvariantCultureIgnoreCase))
                 {
-                    return LocalRedirect("/Admin/AdminDashboard");
+                    return LocalRedirect("/Profile/Profile");
                 }
             }
             DisplayMessage = "";

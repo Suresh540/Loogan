@@ -168,7 +168,7 @@ function liTabClick() {
            if (val == undefined) {
                return;
            }
-           if (val.toLocaleLowerCase().indexOf(tabname) != -1) {
+           if (val.toLocaleLowerCase() == tabname) {
                $(this).addClass('btnactivetab');
                clearTimeout(interval);
                return;

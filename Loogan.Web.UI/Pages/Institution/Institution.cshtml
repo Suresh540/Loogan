@@ -54,12 +54,6 @@
                                             <span style="text-align:left">
                                                 @news.News
                                             </span>
-                                            <span style="text-align:left">
-                                                <span style="color:coral">from</span> @news.StartDate
-                                            </span>
-                                            <span style="text-align:left">
-                                                <span style="color:coral">to</span> @news.EndDate
-                                            </span>
                                         </div>
                                     }
                                 </div>
@@ -75,15 +69,8 @@
                                     @foreach (var announce in Model.InstituteAnouncements ?? Enumerable.Empty<InstitutionAnnouncementModel>())
                                     {
                                         <div class="marquee">
-                                            
                                             <span style="text-align:left">
                                                 @announce.Announcement
-                                            </span>
-                                            <span style="text-align:left">
-                                                <span style="color:coral">from</span> @announce.StartDate
-                                            </span>
-                                            <span style="text-align:left">
-                                                <span style="color:coral">to</span> @announce.EndDate
                                             </span>
                                         </div>
                                     }
