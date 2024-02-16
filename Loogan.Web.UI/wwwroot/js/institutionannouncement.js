@@ -18,9 +18,9 @@
                         setTotalRecords(data[0].totalRecords);
 
                         for (var item of data) {
-                            let index = item.institutionNewsId
+                            let index = item.institutionAnnouncementId
                             $('#tdBody').append(`<tr>
-                        <td class="text-danger anchornounderline" title="Delete institution News" onclick="institutionannouncement.deleteInstitutionNews('${index}')">X</td>
+                        <td class="text-danger anchornounderline" title="Delete institution Announcement" onclick="institutionannouncement.deleteInstitutionAnnouncement('${index}')">X</td>
                         <td><a id="institutionname${index}" href="#" data-toggle="modal" data-target="#top_modal" onclick="return institutionannouncement.institutionAnnouncementEdit(${index})" style="cursor:pointer">${item.institutionName}</a></td>
                         <td id="insnewstitle${index}">${item.title == null ? "" : item.title}</td>
                         <td id="insnewannouncement1${index}">${item.announcement == null ? "" : item.announcement}</td>
@@ -67,6 +67,12 @@
             model.startDate = $('#txtStartDate').val();
             model.endDate = $('#txtEndDate').val();
 
+            if ($('#ddlInstitutions').val().trim() == '') {
+                Alert(localizationLib.getLocalizeData("InstitutionNameMandatoryKey"), 'error');
+                $('#ddlInstitutions').focus();
+                return;
+            }
+
             if ($('#txtTitle').val().trim() == '') {
                 Alert(localizationLib.getLocalizeData("TitleMandatoryKey"), 'error');
                 $('#txtTitle').focus();
@@ -105,7 +111,7 @@
                 $.ajax({
                     method: 'Post',
                     url: "/Admin/DeleteInstitutionAnnouncement",
-                    data: { institutionNewsId: id },
+                    data: { institutionAnnouncementId: id },
                     success: function (e) {
                         Alert(localizationLib.getLocalizeData("InstitutionAnnouncementsDeleteMsgKey"), 'Success');
                         institutionannouncement.showInstitutionAnnouncements();

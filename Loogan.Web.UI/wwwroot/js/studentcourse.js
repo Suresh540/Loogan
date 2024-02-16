@@ -55,6 +55,7 @@
                         <td style="display:none" id="courseleaveofabsencestatusind${index}">${item.courseLeaveOfAbsenceStatusInd == null ? "" : item.courseLeaveOfAbsenceStatusInd}</td>
                         <td style="display:none" id="coursescheduledstatusind${index}">${item.courseScheduledStatusInd == null ? "" : item.courseScheduledStatusInd}</td>
                         <td style="display:none" id="courseretakeind${index}">${item.courseRetakeInd == null ? "" : item.courseRetakeInd}</td>
+                        <td style="display:none" id="studentCourseStatusId${index}">${item.studentCourseStatusId == null ? "" : item.studentCourseStatusId}</td>
                     </tr>`)
                             index++;
                         }
@@ -73,6 +74,7 @@
         $('#ddlStudentCourse').val($('#courseid' + index).html());
         $('#ddlStudent').val($('#studentid' + index).html());
         $('#ddlStaff').val($('#staffId' + index).html());
+        $('#ddlStudentCourseStatus').val($('#studentCourseStatusId' + index).html());
         $('#txtCourseCredit').val($('#coursecredithours' + index).html());
         $('#txtCourseCredit').val($('#coursecredit' + index).html());
         $('#txtMinusAbsent').val($('#minusabsent' + index).html());
@@ -126,7 +128,7 @@
         model.courseId = $('#ddlStudentCourse').val();
         model.studentId = $('#ddlStudent').val();
         model.staffId = $('#ddlStaff').val();
-        model.studentCourseStatusId = 1;//$('#ddlStudentCourseStatus').val();
+        model.studentCourseStatusId = $('#ddlStudentCourseStatus').val();
         model.courseCreditHours = $('#txtCourseCreditHours').val();
         model.courseCredit = $('#txtCourseCredit').val();
         model.minusAttended = $('#txtMinusAttended').val();
@@ -168,6 +170,12 @@
         if ($('#ddlStaff').val().trim() == '') {
             Alert(localizationLib.getLocalizeData("StaffMandatoryKey"), 'error');
             $('#ddlStaff').focus();
+            return;
+        }
+
+        if ($('#ddlStudentCourseStatus').val().trim() == '') {
+            Alert(localizationLib.getLocalizeData("StudentCourseStatusMandatoryKey"), 'error');
+            $('#ddlStudentCourseStatus').focus();
             return;
         }
 
@@ -264,6 +272,30 @@
         });
     }
 
+    public.ddlStudentCourseStatus = function (statusTypeValue) {
+        if (document.getElementById('ddlStudentCourseStatus') == undefined) {
+            return;
+        }
+        $.ajax({
+            method: 'Post',
+            url: "/Common/GetStatusLookUpValues",
+            data: { statusLookUpType: statusTypeValue },
+            success: function (response) {
+                var dropDownListId = $('#ddlStudentCourseStatus');
+                dropDownListId.append($("<option></option>").val("").html("Please Select"));
+                $.each(response, function () {
+                    dropDownListId.append($("<option></option>").val(this['id']).html(this['name']));
+                });
+            },
+            failure: function (response) {
+                Alert(response.responseText, 'error');
+            },
+            error: function (response) {
+                Alert(response.responseText, 'error');
+            }
+        });
+    }
+
     public.deleteStudentCourse = function (id) {
         if (confirm('Are you sure, you want delete Student Course')) {
             $.ajax({
@@ -315,7 +347,7 @@
         $('#chkCourseRetakeInd').prop('checked', false);
     },
 
-        public.studentGradeMapping = function () {
+    public.studentGradeMapping = function () {
             var rows = document.getElementById('tblGrades').rows;
             let list = [];
             let rowIndex = 0;

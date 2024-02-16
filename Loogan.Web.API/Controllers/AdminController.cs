@@ -285,8 +285,8 @@ namespace Loogan.Web.API.Controllers
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<IActionResult> DeleteInstitution([FromBody] ApiRequest request)
         {
-            var studentId = request.RequestValue != "" ? Convert.ToInt32(request.RequestValue) : 0;
-            var result = await _adminService.DeleteStudent(studentId);
+            var institutionId = request.RequestValue != "" ? Convert.ToInt32(request.RequestValue) : 0;
+            var result = await _adminService.DeleteInstitution(institutionId);
             return Ok(result);
         }
 

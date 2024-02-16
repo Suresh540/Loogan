@@ -209,7 +209,21 @@ namespace Loogan.API.Database.Services
             }
             return emailTemplateList;
         }
-      
+
+        public async Task<List<DropDownListModel>?> GetStatusLookUpValues(string lookUpType, int languageId)
+        {
+            var masterLookUpValues = new List<DropDownListModel>();
+            using (var context = new LooganContext(_connectionString))
+            {
+                var query = context.Database.SqlQuery<DropDownListModel>($"Get_StatusLookUpValues {lookUpType},{languageId}").AsNoTracking().AsAsyncEnumerable();
+                await foreach (var item in query)
+                {
+                    masterLookUpValues.Add(item);
+                }
+            }
+            return masterLookUpValues;
+        }
+
 
     }
 }

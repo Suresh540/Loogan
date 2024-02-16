@@ -666,6 +666,12 @@
   <data name="StudentMandatoryKey" xml:space="preserve">
     <value>L'étudiant est obligatoire</value>
   </data>
+	<data name="StudentCourseStatusMandatoryKey" xml:space="preserve">
+    <value>Le statut de cours étudiant est obligatoire</value>
+  </data>
+	<data name="StudentNameKey" xml:space="preserve">
+    <value>Nom d'étudiant</value>
+  </data>
   <data name="StaffMandatoryKey" xml:space="preserve">
     <value>Le personnel est obligatoire</value>
   </data>
@@ -795,7 +801,7 @@
   <data name="InstitutionNewsFailedDeleteKey" xml:space="preserve">
     <value>Actualités de l'institution supprimées. Échec.</value>
   </data>
-  <data name="InstitutionAnnouncementsKey" xml:space="preserve">
+  <data name="InstitutionAnnouncementslistKey" xml:space="preserve">
     <value>Liste des annonces des établissements</value>
   </data>
   <data name="ShowInstitutionAnnouncementsKey" xml:space="preserve">
@@ -821,5 +827,8 @@
   </data>
   <data name="RoleKey" xml:space="preserve">
     <value>rôle</value>
+  </data>
+	<data name="InstitutionAnnouncementsKey" xml:space="preserve">
+    <value>Détails des annonces de l'établissement</value>
   </data>
 </root>

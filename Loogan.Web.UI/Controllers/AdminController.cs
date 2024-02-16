@@ -365,9 +365,9 @@ namespace Loogan.Web.UI.Controllers
 
         [Route("DeleteInstitutionAnnouncement")]
         [LooganAdminAuthorize("Admin")]
-        public async Task<JsonResult> DeleteInstitutionAnnouncement(int institutionId)
+        public async Task<JsonResult> DeleteInstitutionAnnouncement(int institutionAnnouncementId)
         {
-            var apiRequest = new ApiRequest() { RequestValue = Convert.ToString(institutionId) };
+            var apiRequest = new ApiRequest() { RequestValue = Convert.ToString(institutionAnnouncementId) };
             var IsDeleted = await _utilityHelper.ExecuteAPICall<bool>(apiRequest, RestSharp.Method.Post, resource: "api/Admin/DeleteInstitutionAnnouncement");
             return Json(new { value = "Success" });
         }

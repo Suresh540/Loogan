@@ -139,5 +139,18 @@ namespace Loogan.Web.API.Controllers
         }
 
         #endregion
+
+        [HttpPost]
+        [Route("GetStatusLookUpValues")]
+        [Produces("application/json")]
+        [Consumes("application/json")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public async Task<IActionResult> GetStatusLookUpValues([FromBody] ApiLookUpRequest apiRequest)
+        {
+            var listUser = await _commonService.GetStatusLookUpValues(apiRequest.LookupType, apiRequest.LanguageId);
+            return Ok(listUser);
+        }
     }
 }

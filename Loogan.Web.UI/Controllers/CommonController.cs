@@ -186,6 +186,17 @@ namespace Loogan.Web.UI.Controllers
             return Json(emailTemplateList);
         }
 
+
+
         #endregion
+
+        [Route("GetStatusLookUpValues")]
+        public async Task<JsonResult> GetStatusLookUpValues(string statusLookUpType)
+        {
+            var apiRequest = new ApiLookUpRequest() { LookupType = statusLookUpType, LanguageId = HttpContext?.Session?.GetInt32("LanguageId") ?? 1 };
+            var statusLookUpList = await _utilityHelper.ExecuteAPICall<List<DropDownListModel>>(apiRequest, RestSharp.Method.Post, resource: "api/Common/GetStatusLookUpValues");
+            return Json(statusLookUpList);
+        }
+
     }
 }

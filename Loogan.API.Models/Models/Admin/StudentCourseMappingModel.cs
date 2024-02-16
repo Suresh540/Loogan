@@ -14,7 +14,7 @@ namespace Loogan.API.Models.Models.Admin
 
         public int CourseId { get; set; }
 
-        public int CourseTypeSourceId { get; set; }
+        public int? CourseTypeSourceId { get; set; }
 
         public string? CourseCode { get; set; }
 

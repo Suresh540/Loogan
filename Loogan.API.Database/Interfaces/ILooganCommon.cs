@@ -29,5 +29,7 @@ namespace Loogan.API.Database.Interfaces
         public Task<List<EmailTemplatesModel>?> GetAllEmailTemplates();
 
         public Task<List<EmailTemplatesModel>?> GetEmailTemplateByMasterId(int masterEmailTemplateId);
+
+        public Task<List<DropDownListModel>?> GetStatusLookUpValues(string lookUpType, int languageId);
     }
 }

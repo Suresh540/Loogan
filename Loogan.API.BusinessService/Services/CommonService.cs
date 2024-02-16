@@ -85,6 +85,11 @@ namespace Loogan.API.BusinessService.Services
             return emaiTemplateList;
         }
 
-        
+        public async Task<List<DropDownListModel>?> GetStatusLookUpValues(string lookUpType, int languageId)
+        {
+            var masterLookUpValues = await _LooganCommon.GetStatusLookUpValues(lookUpType, languageId);
+            return masterLookUpValues;
+        }
+
     }
 }

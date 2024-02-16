@@ -67,6 +67,13 @@
         model.startDate = $('#txtStartDate').val();
         model.endDate = $('#txtEndDate').val();
 
+        
+        if ($('#ddlInstitutions').val().trim() == '') {
+            Alert(localizationLib.getLocalizeData("InstitutionNameMandatoryKey"), 'error');
+            $('#ddlInstitutions').focus();
+            return;
+        }
+
         if ($('#txtTitle').val().trim() == '') {
             Alert(localizationLib.getLocalizeData("TitleMandatoryKey"), 'error');
             $('#txtTitle').focus();
