@@ -31,7 +31,7 @@
                                 User
                             </div>
                             <div class="col-5">
-                                <select id="selectedUser">
+                                <select id="selectedUser" class="form-select">
                                     @foreach (var item in Model.Users ?? Enumerable.Empty<PagingUserModel>())
                                     {
                                         <option value="@item.UserName">@(item.FirstName+' '+item.LastName)</option>
@@ -44,13 +44,14 @@
                                 Message
                             </div>
                             <div class="col-10">
-                                <textarea class="form-control" id="messageInput">
+                                <textarea class="form-control" id="messageInput" rows="8" cols="8">
                                 </textarea>
                             </div>
                         </div>
                         <div class="row p-1">
                             <div class="col-6 text-end">
-                                <input type="button" id="sendButton" value="Send Message" />
+                                <input type="button" class="btn btn-primary" id="sendButton" value="Send Message" />
+                                <input type="button" class="btn btn-secondary" id="clearButton" value="Clear" />
                             </div>
                         </div>
                         <div class="row p-1">

@@ -30,3 +30,7 @@ if (document.getElementById("messageInput")) {
     document.getElementById("messageInput").value = "";
     document.getElementById("messageInput").focus();
 }
+
+$('#clearButton').on('click', function () {
+    window.location.href = window.location.href;
+});
