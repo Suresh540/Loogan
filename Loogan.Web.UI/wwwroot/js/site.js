@@ -119,7 +119,7 @@ function ddlCountry(controlId) {
     });
 }
 
-function ddlstate(controlId,countryId) {
+function ddlstate(controlId, countryId) {
     if (document.getElementById(controlId) == undefined) {
         return;
     }
@@ -161,19 +161,23 @@ function Alert(msg, type) {
 
 function liTabClick() {
     let interval = setTimeout(() => {
-       let tabname = window.location.pathname.toLocaleLowerCase();
-       $.each($('.ulspace').find('li'), function () {
-           $(this).removeClass('btnactivetab');
-           var val = $(this).find('a').attr('href');
-           if (val == undefined) {
-               return;
-           }
-           if (val.toLocaleLowerCase() == tabname) {
-               $(this).addClass('btnactivetab');
-               clearTimeout(interval);
-               return;
-           }
-       });
+        let tabname = window.location.pathname.toLocaleLowerCase();
+        $.each($('.ulspace').find('li'), function () {
+            $(this).removeClass('btnactivetab');
+            var val = $(this).find('a').attr('href');
+            if (val == undefined) {
+                return;
+            }
+            if (val.toLocaleLowerCase() == tabname) {
+                $(this).addClass('btnactivetab');
+                if ($(this).css('display') == 'none') {
+                    $('#iNews').css('display', 'block');
+                    $('#iAnnounce').css('display', 'block');
+                }
+                clearTimeout(interval);
+                return;
+            }
+        });
     }, 500);
 }
 
@@ -241,6 +245,18 @@ function opencourses() {
     var status = $('#ddlStatus option:selected').text();
     $('#status').val(status);
     document.forms['frmCourse'].submit();
+}
+
+function expandImage(id) {
+    if ($('#iNews').css('display') == 'none') {
+        $('#iNews').css('display', 'block');
+        $('#iAnnounce').css('display', 'block');
+        id.src = '/images/uparrown.png';
+    } else {
+        $('#iNews').css('display', 'none');
+        $('#iAnnounce').css('display', 'none');
+        id.src = '/images/downarrown.png';
+    }
 }
 
 
