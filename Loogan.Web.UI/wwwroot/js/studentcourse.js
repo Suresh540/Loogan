@@ -236,7 +236,7 @@
                 var dropDownListId = $('#ddlStudent');
                 dropDownListId.append($("<option></option>").val("").html("Please Select"));
                 $.each(response, function () {
-                    dropDownListId.append($("<option></option>").val(this['studentId']).html(this['fullName']));
+                    dropDownListId.append($("<option></option>").val(this['studentId']).html(this['firstName'] + ' ' + this['lastName']));
                 });
             },
             failure: function (response) {

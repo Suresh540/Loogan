@@ -60,10 +60,7 @@
                 <img src="/images/studentcourse.png" style="width:30px;height:30px" title="@Localizer?["AddEditStudentCourseMappingKey"]" />
                 <a style="color:white;font-size:16px;" href="/Admin/StudentCourseMapping">@Localizer?["AddEditStudentCourseMappingKey"]</a>
             </li>
-            <li class="liSpace">
-                <img src="/images/studentcourse.png" style="width:30px;height:30px" title="@Localizer?["StudentGradeMappingKey"]" />
-                <a style="color:white;font-size:16px;" href="/Grade/Grade">@Localizer?["StudentGradeMappingKey"]</a>
-            </li>
+            
             <li class="liSpace">
                 <img src="/images/institution.png" style="width:20px;height:20px" title="@Localizer?["InstitutionMappingKey"]" />
                 <a style="color:white;font-size:16px;" href="/Admin/InstitutionMapping">@Localizer?["InstitutionMappingKey"]</a>
@@ -86,6 +83,12 @@
     else
     {
         <ul class="ulspace">
+            <li class="liSpace">
+                <img src="/images/profile.png" style="width:30px;height:30px" />
+                <a style="color:white;font-size:16px;" href="/Profile/Profile">
+                    @UserName
+                </a>
+            </li>
             @foreach (var item in RoleMenus ?? Enumerable.Empty<MenuModel>())
             {
                 string? menu = item?.MenuName;
