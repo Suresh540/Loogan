@@ -21,7 +21,8 @@
     <link href="~/css/site.css" rel="stylesheet" />
     <link href="~/css/balloon.min.css" rel="stylesheet" />
     <link href="~/js/jquery.toast.min.css" rel="stylesheet" />
-    
+    <link href="~/css/loading.css" rel="stylesheet" />
+
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     <script src="~/js/user.js" asp-append-version="true"></script>
@@ -39,6 +40,7 @@
 </head>
 <body id="learn-oe-body" class="bb-login hide-focus-outline">
     @RenderBody()
+    <div id="cover-spin"></div>
     @await RenderSectionAsync("Scripts", required: false)
     <script src="_framework/blazor.server.js"></script>
 </body>

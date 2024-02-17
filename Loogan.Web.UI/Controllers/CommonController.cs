@@ -2,9 +2,14 @@
 using Loogan.API.Models.Enums;
 using Loogan.API.Models.Models;
 using Loogan.API.Models.Models.Admin;
+using Loogan.Common.Utilities;
 using Loogan.Web.UI.Utilities;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
+using Microsoft.JSInterop;
+using System.Net.Mail;
 
 namespace Loogan.Web.UI.Controllers
 {
@@ -12,10 +17,14 @@ namespace Loogan.Web.UI.Controllers
     public class CommonController : Controller
     {
         private readonly IUtilityHelper _utilityHelper;
+        private readonly IConfiguration _configuration;
+        private readonly IEmailMessage _mailMessage;
 
-        public CommonController(IUtilityHelper utilityHelper)
+        public CommonController(IUtilityHelper utilityHelper, IConfiguration configuration, IEmailMessage mailMessage)
         {
             _utilityHelper = utilityHelper;
+            _configuration = configuration;
+            _mailMessage = mailMessage;
         }
 
         [Route("GetMasterLookupValues")]
@@ -95,7 +104,7 @@ namespace Loogan.Web.UI.Controllers
         [Route("GetStatesByCountryId")]
         public async Task<IActionResult> GetStatesByCountryId(int countryId)
         {
-            var apiRequest = new RequestStateModel() { LanguageId = HttpContext?.Session?.GetInt32("LanguageId") ?? 1,CountryId = countryId };
+            var apiRequest = new RequestStateModel() { LanguageId = HttpContext?.Session?.GetInt32("LanguageId") ?? 1, CountryId = countryId };
             var countryList = await _utilityHelper.ExecuteAPICall<List<DropDownListModel>>(apiRequest, RestSharp.Method.Post, resource: "api/Common/GetStatesByCountryId");
             return Json(countryList);
         }
@@ -198,5 +207,34 @@ namespace Loogan.Web.UI.Controllers
             return Json(statusLookUpList);
         }
 
+        [Route("SendEmail")]
+        [HttpPost]
+        [AllowAnonymous]
+        public async Task SendEmail(string userName)
+        {
+            var settings = _configuration?.GetSection("EmailServer");
+            var userModel = await _utilityHelper.ExecuteAPICall<ForgotPswdModel>(new ForgotPswdModel { UserName = userName, EmailId = "", Password = "" }, RestSharp.Method.Post, resource: "api/User/GetUserEmailByUserName");
+            //Fetch Template  Data..
+            var emailTemplateList = await _utilityHelper.ExecuteAPICall<List<EmailTemplatesModel>>(null, RestSharp.Method.Post, resource: "api/Common/GetAllEmailTemplates");
+            var forgotPwd = emailTemplateList
+                            .Where(x => x.EmailTemplateName == "Forgot Password")
+                            .Select(x => x).FirstOrDefault();
+
+            if (settings != null && userModel != null)
+            {
+                SmtpDetails details = new SmtpDetails();
+                details.Host = settings?["Host"];
+                details.Port = Convert.ToInt32(settings?["Port"]);
+                details.UserName = settings?["UserName"];
+                details.Password = settings?["Password"];
+                details.FromAddress = settings?["FromAddress"];
+                details.FromAddressDisplayName = settings?["FromAddressDisplayName"];
+                details.ToAddress = userModel?.EmailId;
+                details.Subject = forgotPwd != null ? forgotPwd?.Subject : settings?["Subject"];
+                details.Body = forgotPwd != null ? forgotPwd?.Body?.Replace("[User]", userModel?.UserName)
+                    .Replace("[Password]", userModel?.Password) : settings?["Body"]?.Replace("{password}", userModel?.Password);
+                _mailMessage.SendEmail(details);
+            }
+        }
     }
 }

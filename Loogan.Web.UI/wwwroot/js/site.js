@@ -62,6 +62,7 @@ mouseOut = function (id) {
 
 function fnForgot() {
     setTimeout(() => {
+        $('#txtForgotPwd').val('');
         $('#txtForgotPwd').focus();
     }, 1000);
 }
@@ -258,6 +259,13 @@ function expandImage(id) {
         id.src = '/images/downarrown.png';
     }
 }
+
+$(document).ajaxStart(function () {
+    $("#cover-spin").show();
+}).ajaxStop(function () {
+    $("#cover-spin").hide('slow');
+});
+
 
 
 

@@ -1,5 +1,4 @@
-﻿using Loogan.API.Database.Models;
-using Loogan.API.Models.Models;
+﻿using Loogan.API.Models.Models;
 using Loogan.API.Models.Models.Admin;
 using Loogan.Web.UI.Models;
 using Loogan.Web.UI.Utilities;
@@ -7,7 +6,6 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Primitives;
 using Newtonsoft.Json;
-using System.Collections.Generic;
 
 namespace Loogan.Web.UI.Controllers
 {
@@ -17,10 +15,15 @@ namespace Loogan.Web.UI.Controllers
     {
         private const string wwwroot = "wwwroot";
         private readonly IUtilityHelper _utilityHelper;
+
+        #region Constructor
+
         public AdminController(IUtilityHelper utilityHelper)
         {
             _utilityHelper = utilityHelper;
         }
+
+        #endregion
 
         #region Staff
 
@@ -140,6 +143,8 @@ namespace Loogan.Web.UI.Controllers
 
         #endregion
 
+        #region User Roles Menu
+
         [Route("GetUserRoles")]
         public async Task<JsonResult> GetUserRoles(int languageId)
         {
@@ -184,10 +189,11 @@ namespace Loogan.Web.UI.Controllers
             var selectedMenuItems = await _utilityHelper.ExecuteAPICall<List<MenuModel>>(roleMenu, RestSharp.Method.Post, resource: "api/Admin/GetRoleMenus");
 
             //Menu items
-            menuItems = menuItems.Where(x => !selectedMenuItems.Any(y => y.MenuName == x.MenuName)).ToList();
-
+            menuItems = menuItems?.Where(x => selectedMenuItems != null && !selectedMenuItems.Any(y => y.MenuName == x.MenuName)).ToList();
             return new JsonResult(new { actualmenus = menuItems, selectMenus = selectedMenuItems });
         }
+
+        #endregion
 
         #region Institution
 
@@ -408,9 +414,5 @@ namespace Loogan.Web.UI.Controllers
         }
 
         #endregion
-
-
-
-
     }
 }

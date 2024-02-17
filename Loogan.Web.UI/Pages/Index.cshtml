@@ -9,7 +9,9 @@
     ViewData["Title"] = "Login";
 }
 <component type="typeof(Upper_Component)" render-mode="ServerPrerendered" />
-<component type="typeof(ForgotPassword_Component)" render-mode="ServerPrerendered" />
+@{
+    await Html.RenderPartialAsync("ForgotPassword");
+}
 <div style="position:absolute;z-index:3000;left:97vw">
     @await Html.PartialAsync("_LanguageSwitcher", new Loogan.API.Models.Models.ApiRequest { RequestValue = "" })
 </div>

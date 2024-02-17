@@ -69,7 +69,7 @@
                             @Localizer["EmailSubjectKey"] <b class="text-danger">*</b>
                         </div>
                         <div class="col-8 align-content-center align-items-center">
-                            <input id="txtemailsubject" type="text"/>
+                            <input id="txtemailsubject" type="text" />
                         </div>
                     </div>
                     <div class="row">
@@ -80,11 +80,19 @@
                             @Localizer["EmailBodyKey"] <b class="text-danger">*</b>
                         </div>
                         <div class="col-8 align-content-center align-items-center">
-                            <textarea id="txtemailBody"  class="emailBody" name="input"></textarea>
+                            <textarea id="txtemailBody" class="emailBody" name="input"></textarea>
                         </div>
                     </div>
-                    <div style="height:8vh">
-                        &nbsp;
+                    <div class="row">
+                        <div class="col-1 text-danger pt-4">
+                            &nbsp;
+                        </div>
+                        <div class="col-2 pt-2">
+                            &nbsp;
+                        </div>
+                        <div class="col-8 align-content-center align-items-center text-danger">
+                            <b>* Note: Server variables should be placed between [] ex: [User].</b>
+                        </div>
                     </div>
                     <component type="typeof(Lower_Component)" render-mode="Static" /><br />
                 </div>
@@ -120,6 +128,7 @@
                     <tbody id="tdBody">
                     </tbody>
                 </table>
+
                 <component type="typeof(Paging_Component)" render-mode="ServerPrerendered"
                            param-TotalRecords="10" param-NavigateURL="showEmailTemplates" param-TotalRecordsURL="getTotalRecords" />
             </div>

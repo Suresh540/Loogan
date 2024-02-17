@@ -62,17 +62,17 @@ namespace Loogan.Common.Utilities
 
     public class SmtpDetails
     {
-        public string Host { get; set; } = "";
-        public string UserName { get; set; } = "";
-        public string Password { get; set; } = "";
+        public string? Host { get; set; } = "";
+        public string? UserName { get; set; } = "";
+        public string? Password { get; set; } = "";
         public int Port { get; set; } = 0;
-        public string Subject { get; set; } = "";
-        public string Body { get; set; } = "";
-        public string ToAddress { get; set; } = "";
-        public string FromAddress { get; set; } = "";
-        public string FromAddressDisplayName { get; set; } = "";
+        public string? Subject { get; set; } = "";
+        public string? Body { get; set; } = "";
+        public string? ToAddress { get; set; } = "";
+        public string? FromAddress { get; set; } = "";
+        public string? FromAddressDisplayName { get; set; } = "";
         public bool IsHtmlBody { get; set; } = false;
-        public List<object> Attachements { get; set; } = new List<object>();
+        public List<object>? Attachements { get; set; } = new List<object>();
 
     }
 }
