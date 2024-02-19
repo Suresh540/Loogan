@@ -831,4 +831,13 @@
 	<data name="InstitutionAnnouncementsKey" xml:space="preserve">
     <value>Détails des annonces de l'établissement</value>
   </data>
+	<data name="StudentGradeMappingKey" xml:space="preserve">
+    <value>Cartographie des notes des étudiants</value>
+  </data>
+	<data name="InstitutionMappingKey" xml:space="preserve">
+    <value>Cartographie des institutions</value>
+  </data>
+	<data name="StudentGradeMappingKey" xml:space="preserve">
+    <value>Cartographie des notes des étudiants</value>
+  </data>
 </root>

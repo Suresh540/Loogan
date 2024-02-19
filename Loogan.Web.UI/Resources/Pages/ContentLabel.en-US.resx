@@ -844,12 +844,15 @@
     <value>Institution Mapping</value>
   </data>
 	<data name="StudentGradeMappingKey" xml:space="preserve">
-    <value>Student Grade</value>
+    <value>Student Grade Mapping</value>
   </data>
 	<data name="RoleKey" xml:space="preserve">
     <value>Role</value>
   </data>
 	<data name="InstitutionAnnouncementsKey" xml:space="preserve">
     <value>Institution Announcements Details</value>
+  </data>
+	<data name="StudentGradeMappingKey" xml:space="preserve">
+    <value>Student Grade Mapping</value>
   </data>
 </root>

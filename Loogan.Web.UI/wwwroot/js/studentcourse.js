@@ -188,7 +188,7 @@
             success: function (e) {
                 $('#btnSaveStudentCourse').removeAttr('disabled');
                 Alert(localizationLib.getLocalizeData("StudentCourseUpdateSuccessKey"), 'Success');
-                course.clearCourseStudentData();
+                studentcourse.clearCourseStudentData();
                 $('#btntopclose').trigger('click');
             },
             error: function (e) {
