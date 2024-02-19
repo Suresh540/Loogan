@@ -71,5 +71,18 @@
         </div>
     </div>
 </div>
-<script src="~/js/signalr/dist/browser/signalr.js"></script>
-<script src="~/js/chat.js"></script>
+<script>
+    $(document).ready(function () {
+        if (sessionStorage.getItem("chatMessages") != null && sessionStorage.getItem("chatMessages") != undefined) {
+            var list = sessionStorage.getItem("chatMessages")
+            if (list != undefined && list != null) {
+                var user = list.split('$');
+                var li = document.createElement("li");
+                document.getElementById("selectedUser").value = user[0];
+                document.getElementById("messagesList").appendChild(li);
+                li.textContent = `${user[0]} says ${user[1]}`;
+                sessionStorage.removeItem("chatMessages");
+            }
+        }
+    });
+</script>

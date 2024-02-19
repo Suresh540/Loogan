@@ -39,9 +39,23 @@
     <script src="~/js/jquery.toast.min.js"></script>
 </head>
 <body id="learn-oe-body" class="bb-login hide-focus-outline">
+    <div style="position:absolute;z-index:10000;left:96vw">
+        <img title="Notifications" alt="Notifications" src="~/images/notification1.png" style="width:24px;height:24px" id="notification" />
+    </div>
     @RenderBody()
     <div id="cover-spin"></div>
     @await RenderSectionAsync("Scripts", required: false)
     <script src="_framework/blazor.server.js"></script>
 </body>
 </html>
+<script>
+    $(document).ready(function () {
+        if (window.location.pathname == '/') {
+            $('#notification').css('display', 'none');
+        } else {
+            $('#notification').css('display', 'block');
+        }
+    });
+</script>
+<script src="~/js/signalr/dist/browser/signalr.js"></script>
+<script src="~/js/chat.js"></script>

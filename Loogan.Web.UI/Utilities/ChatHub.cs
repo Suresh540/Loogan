@@ -36,6 +36,5 @@ public class ChatHub : Hub
     {
         return Clients.Group(groupname).SendAsync("ReceiveMessage", sender, message);
     }
-
 }
 
