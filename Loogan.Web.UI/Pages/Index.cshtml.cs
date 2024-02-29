@@ -58,7 +58,7 @@ namespace Loogan.Web.UI.Pages
             var model = await _utilityHelper.ExecuteAPICall<UserLoginModel>(query, RestSharp.Method.Get, resource: "api/User");
             if (model != null)
             {
-                _logger.LogInformation("Logging info log");
+                _logger.LogError("Logging info log");
                 HttpContext.Session.SetInt32("LoginUserId", model.UserId);
                 HttpContext.Session.SetInt32("LoginUserTypeId", model.UserTypeId);
                 HttpContext.Session.SetString("LoginUserType", model?.UserTypeName ?? "");
@@ -67,8 +67,9 @@ namespace Loogan.Web.UI.Pages
                 HttpContext.Session.SetInt32("StudentId", model?.StudentId ?? 0);
                 HttpContext.Session.SetInt32("TeacherId", model?.TeacherId ?? 0);
 
-                _logger.LogInformation("Logging LoginUserId");
-                _logger.LogInformation(HttpContext.Session.GetInt32("LoginUserId")?.ToString());
+                _logger.LogError("Logging LoginUserId started");
+                _logger.LogError(HttpContext.Session.GetString("LoginUserType"));
+                _logger.LogError("Logging LoginUserId ended");
 
                 var claims = new List<Claim>
                 {

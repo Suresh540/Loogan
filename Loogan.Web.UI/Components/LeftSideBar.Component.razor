@@ -1,5 +1,6 @@
 ﻿@using Loogan.API.Models.Models
 @inherits Loogan.Web.UI.Components.LeftSideBarBase
+@inject ILogger<LeftSideBarBase> _logger
 
 @{
     const string admin = "admin";
@@ -10,6 +11,11 @@
     </li>
 </ul>
 <form method="post">
+    @{
+        _logger.LogError("admin");
+        _logger.LogError(UserType.ToLower());
+        _logger.LogError(admin);
+    }
     @if (UserType != null && UserType.ToLower() == admin)
     {
         <ul class="ulspace">
