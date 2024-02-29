@@ -11,13 +11,14 @@
     </li>
 </ul>
 <form method="post">
+
     @{
-        _logger.LogError("admin");
-        _logger.LogError(UserType.ToLower());
-        _logger.LogError(admin);
+        _logger.LogError("Admin data logged out. " + UserType);
     }
     @if (UserType != null && UserType.ToLower() == admin)
     {
+        _logger.LogError("Admin data logged in.");
+
         <ul class="ulspace">
             <li class="liSpace">
                 <img src="/images/profile.png" style="width:30px;height:30px" />
@@ -42,7 +43,7 @@
                 <img src="/images/edituser.png" style="width:30px;height:30px" title="@Localizer?["AddEditUserKey"]" />
                 <a style="color:white;font-size:16px;" href="/User/user">@Localizer?["AddEditUserKey"]</a>
             </li>
-            
+
             <li class="liSpace">
                 <img src="/images/edit.png" style="width:20px;height:20px" title="@Localizer?["AddEditKey"]" />
                 <img src="/images/editstaff.png" style="width:30px;height:30px" title="@Localizer?["AddEditStaffKey"]" />
@@ -63,7 +64,7 @@
                 <img src="/images/studentcourse.png" style="width:30px;height:30px" title="@Localizer?["AddEditStudentCourseMappingKey"]" />
                 <a style="color:white;font-size:16px;" href="/Admin/StudentCourseMapping">@Localizer?["AddEditStudentCourseMappingKey"]</a>
             </li>
-            
+
             <li class="liSpace">
                 <img src="/images/institution.png" style="width:20px;height:20px" title="@Localizer?["InstitutionMappingKey"]" />
                 <a style="color:white;font-size:16px;" href="/Admin/InstitutionMapping">@Localizer?["InstitutionMappingKey"]</a>
