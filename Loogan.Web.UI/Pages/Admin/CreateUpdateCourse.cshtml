@@ -16,7 +16,9 @@
     <div class="inner-wrap">
         <div class="row">
             <div class="col-2 bb-login pointscroll leftmenu">
-                <component type="typeof(LeftSideBar_Component)" render-mode="Server" />
+                @{
+                    await Html.RenderPartialAsync("MenuBar");
+                }
             </div>
             <div class="col-10 base-profile pointscroll righcontent">
                 <div class="columns small-12 profile-content" style="margin-top:2px !important">

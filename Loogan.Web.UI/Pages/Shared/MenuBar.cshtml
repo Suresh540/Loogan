@@ -1,0 +1,125 @@
+﻿@using Loogan.API.Models.Models
+@using Loogan.Web.UI.Resources.Pages
+@using Loogan.Web.UI.Utilities
+@using Microsoft.Extensions.Localization
+@inject IStringLocalizer<ContentLabel> Localizer
+@inject IHttpContextAccessor _contextAccessor
+
+@{
+    const string admin = "admin";
+    var UserName = _contextAccessor?.HttpContext?.Session?.GetString("FullName");
+    var UserType = _contextAccessor?.HttpContext?.Session?.GetString("LoginUserType");
+}
+<ul class="ulspace">
+    <li class="text-white">
+        <span class="logostyle"><b>Loogan Learn</b></span>&copy;
+    </li>
+</ul>
+
+@if (UserType != null && UserType.ToLower() == admin)
+{
+    <ul class="ulspace">
+        <li class="liSpace">
+            <img src="/images/profile.png" style="width:30px;height:30px" />
+            <a style="color:white;font-size:16px;" href="/Profile/Profile">
+                @UserName
+            </a>
+        </li>
+        <li class="liSpace">
+            <img src="/images/Add.png" style="width:20px;height:20px" title="@Localizer?["AddEditKey"]" />
+            <img src="/images/institution.png" style="width:20px;height:20px" title="@Localizer?["AddEditInstitutionKey"]" />
+            <a style="color:white;font-size:16px;" href="/Admin/Institution">@Localizer?["AddEditInstitutionKey"]</a>
+            &nbsp;<img src="/images/downarrown.png" onclick="expandImage(this)" style="cursor:pointer" title="@Localizer?["AddEditKey"]" />
+        </li>
+        <li class="liSpace" id="iNews" style="display:none;margin-left:40px">
+            <a style="color:white;font-size:16px;" href="/Admin/InstitutionNews">@Localizer?["AddEditInstitutionNewsKey"]</a>
+        </li>
+        <li class="liSpace" id="iAnnounce" style="display:none;margin-left:40px">
+            <a style="color:white;font-size:16px;" href="/Admin/InstitutionAnnouncement">@Localizer?["AddEditInstitutionAnnouncementKey"]</a>
+        </li>
+        <li class="liSpace">
+            <img src="/images/Add.png" style="width:20px;height:20px" title="@Localizer?["AddEditKey"]" />
+            <img src="/images/edituser.png" style="width:30px;height:30px" title="@Localizer?["AddEditUserKey"]" />
+            <a style="color:white;font-size:16px;" href="/User/user">@Localizer?["AddEditUserKey"]</a>
+        </li>
+
+        <li class="liSpace">
+            <img src="/images/edit.png" style="width:20px;height:20px" title="@Localizer?["AddEditKey"]" />
+            <img src="/images/editstaff.png" style="width:30px;height:30px" title="@Localizer?["AddEditStaffKey"]" />
+            <a style="color:white;font-size:16px;" href="/Admin/Staff">@Localizer?["AddEditStaffKey"]</a>
+        </li>
+        <li class="liSpace">
+            <img src="/images/edit.png" style="width:20px;height:20px" title="@Localizer?["AddEditKey"]" />
+            <img src="/images/editstudent.png" style="width:30px;height:30px" title="@Localizer?["AddEditStudentKey"]" />
+            <a style="color:white;font-size:16px;" href="/Admin/Student">@Localizer?["AddEditStudentKey"]</a>
+        </li>
+        <li class="liSpace">
+            <img src="/images/Add.png" style="width:20px;height:20px" title="@Localizer?["AddEditKey"]" />
+            <img src="/images/editcourse.png" style="width:30px;height:30px" title="@Localizer?["AddEditCourseKey"]" />
+            <a style="color:white;font-size:16px;" href="/Admin/Course">@Localizer?["AddEditCourseKey"]</a>
+        </li>
+
+        <li class="liSpace">
+            <img src="/images/studentcourse.png" style="width:30px;height:30px" title="@Localizer?["AddEditStudentCourseMappingKey"]" />
+            <a style="color:white;font-size:16px;" href="/Admin/StudentCourseMapping">@Localizer?["AddEditStudentCourseMappingKey"]</a>
+        </li>
+
+        <li class="liSpace">
+            <img src="/images/institution.png" style="width:20px;height:20px" title="@Localizer?["InstitutionMappingKey"]" />
+            <a style="color:white;font-size:16px;" href="/Admin/InstitutionMapping">@Localizer?["InstitutionMappingKey"]</a>
+        </li>
+        <li class="liSpace">
+            <img src="/images/rolemapping.png" style="width:30px;height:30px" title="@Localizer?["RoleMappingKey"]" />
+            <a style="color:white;font-size:16px;" href="/Admin/RoleMapping">@Localizer?["RoleMappingKey"]</a>
+        </li>
+
+        <li class="liSpace">
+            <img src="/images/emailtemplate.png" style="width:30px;height:30px" title="@Localizer?["EmailTemplateKey"]" />
+            <a style="color:white;font-size:16px;" href="/Admin/EmailTemplate">@Localizer?["EmailTemplateKey"]</a>
+        </li>
+        <li class="liSpace">
+            <img src="/images/signout.png" style="width:30px;height:30px" title="@Localizer?["SignOutKey"]" />
+            <a style="color:white;font-size:16px;" href="/Logout">@Localizer?["SignOutKey"]</a>
+        </li>
+    </ul>
+}
+else
+{
+    <ul class="ulspace" id="ulMenu">
+    </ul>
+}
+<script>
+    $(document).ready(function () {
+        $.ajax({
+            method: 'Post',
+            url: "/Common/GetRoleMenus",
+            success: function (data) {
+                $("#ulMenu").append(`<li class="liSpace">
+                                <img src="/images/profile.png" style="width:30px;height:30px" />
+                                <a style="color:white;font-size:16px;" href="/Profile/Profile">
+    @UserName
+                                </a>
+                    `);
+                for (let i of data) {
+                    var menu = i.menuName;
+                    $("#ulMenu").append(`
+                            <li class="liSpace">
+                                        <img src="${i.menuIcon}" style="width:30px;height:30px" title="${menu}" />
+                                        <a style="color:white;font-size:16px;" href="${i.menuUrl}">${menu}</a>
+                                </li>`);
+                }
+
+                $("#ulMenu").append(`<li class="liSpace">
+                    <img src="/images/signout.png" style="width:30px;height:30px" title="@Localizer?["SignOutKey"]" />
+                    <a style="color:white;font-size:16px;" href="/Logout">@Localizer?["SignOutKey"]</a>
+                </li>`);
+                            
+
+                liTabClick();
+            },
+            error: function (e) {
+                Alert(e, 'error')
+            }
+        });
+    })
+</script>

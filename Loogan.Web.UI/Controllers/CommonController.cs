@@ -1,4 +1,5 @@
-﻿using Loogan.API.Database.Models;
+﻿using Azure.Core;
+using Loogan.API.Database.Models;
 using Loogan.API.Models.Enums;
 using Loogan.API.Models.Models;
 using Loogan.API.Models.Models.Admin;
@@ -9,6 +10,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.JSInterop;
+using System.Net.Http;
 using System.Net.Mail;
 
 namespace Loogan.Web.UI.Controllers
@@ -235,6 +237,20 @@ namespace Loogan.Web.UI.Controllers
                     .Replace("[Password]", userModel?.Password) : settings?["Body"]?.Replace("{password}", userModel?.Password);
                 _mailMessage.SendEmail(details);
             }
+        }
+
+        [HttpPost]
+        [Route("GetRoleMenus")]
+        public async Task<IActionResult> GetRoleMenus()
+        {
+            RoleMenuRequest request = new RoleMenuRequest()
+            {
+                RoleId = Convert.ToInt32(HttpContext?.Session?.GetInt32("LoginUserTypeId")),
+                LanguageId = HttpContext?.Session.GetInt32("LanguageId") ?? 1
+            };
+
+            var userRoles = await _utilityHelper.ExecuteAPICall<List<MenuModel>>(request, RestSharp.Method.Post, resource: "api/Admin/GetRoleMenus");
+            return Json(userRoles);
         }
     }
 }

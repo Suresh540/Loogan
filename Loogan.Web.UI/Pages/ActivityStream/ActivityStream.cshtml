@@ -13,7 +13,9 @@
     <div class="inner-wrap">
         <div class="row">
             <div class="col-2 bb-login pointscroll leftmenu">
-                <component type="typeof(LeftSideBar_Component)" render-mode="Server" />
+                @{
+                    await Html.RenderPartialAsync("MenuBar");
+                }
             </div>
             <div class="col-10">
                 <div class="base-profile pointscroll righcontent scrollrightend">
@@ -34,7 +36,7 @@
                                 <select id="selectedUser" class="form-select">
                                     @foreach (var item in Model.Users ?? Enumerable.Empty<PagingUserModel>())
                                     {
-                                        <option value="@item.UserName">@(item.FirstName+' '+item.LastName)</option>
+                                        <option value="@item.UserName">@(item.FirstName + ' ' + item.LastName)</option>
                                     }
                                 </select>
                             </div>

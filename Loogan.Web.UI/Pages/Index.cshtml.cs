@@ -67,10 +67,6 @@ namespace Loogan.Web.UI.Pages
                 HttpContext.Session.SetInt32("StudentId", model?.StudentId ?? 0);
                 HttpContext.Session.SetInt32("TeacherId", model?.TeacherId ?? 0);
 
-                _logger.LogError("Logging LoginUserId started");
-                _logger.LogError(HttpContext.Session.GetString("LoginUserType"));
-                _logger.LogError("Logging LoginUserId ended");
-
                 var claims = new List<Claim>
                 {
                     new Claim(ClaimTypes.Name, model?.UserName??""),
