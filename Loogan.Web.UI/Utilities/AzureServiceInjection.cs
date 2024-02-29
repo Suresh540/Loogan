@@ -18,8 +18,9 @@ namespace Loogan.Web.UI.Utilities
             services.AddExceptionHandler<GlobalExceptionHandler>();
             services.AddProblemDetails();
             services.AddLocalization(options => options.ResourcesPath = "");
-            services.AddMvc().AddMvcLocalization(LanguageViewLocationExpanderFormat.Suffix)
-                            .AddDataAnnotationsLocalization();
+            services.AddMvc()
+            .AddMvcLocalization(LanguageViewLocationExpanderFormat.Suffix)
+            .AddDataAnnotationsLocalization();
 
             services.AddTransient<IUtilityHelper>(opt =>
             {
@@ -68,6 +69,9 @@ namespace Loogan.Web.UI.Utilities
             services.AddSession(options =>
             {
                 options.IdleTimeout = TimeSpan.FromMinutes(30);
+                options.Cookie.Name = "looganwebproject.session";
+                options.Cookie.Path = "/";
+                options.Cookie.SecurePolicy = CookieSecurePolicy.Always;
                 options.Cookie.HttpOnly = true;
                 options.Cookie.IsEssential = true;
             });
