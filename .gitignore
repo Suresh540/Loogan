@@ -46,3 +46,6 @@
 /Loogan.Web.API/Properties/serviceDependencies.loogandevapi - Web Deploy.json
 /Loogan.Web.API/Properties/serviceDependencies.loogandevapi - Web Deploy.json.user
 /Loogan.Web.UI/wwwroot/institutionimages
+/Loogan.Web.API/Properties
+/Loogan.Web.UI/Properties/PublishProfiles
+/Loogan.Web.UI/Properties/ServiceDependencies/loogandevwebui - Web Deploy
