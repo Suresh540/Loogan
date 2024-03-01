@@ -12,239 +12,222 @@
     var getTotalRecords = "getTotalRecords";
 }
 
-<component type="typeof(Upper_Component)" render-mode="Static" />
-<div id="site-wrap" class="off-canvas-wrap">
-    <div class="inner-wrap">
-        <div class="row">
-            <div class="col-2 bb-login pointscroll leftmenu">
-                @{
-                    await Html.RenderPartialAsync("MenuBar");
-                }
-            </div>
-            <div class="col-10">
-                <div class="base-profile pointscroll righcontent scrollrightend">
-                    <div class="columns small-12 profile-content" style="margin-top:2px !important">
-                        <div class="row">
-                            <div class="col-12 left-align">
-                                <h2 class="coursetitle">@Localizer["StudentCourseMappingKey"]</h2>
-                                <hr />
-                            </div>
-                        </div>
-                        <div style="text-align:right">
-                            <button onclick="studentcourse.showStudentCourses()" type="button" style="background:gray;color:black" class="btn btn-light border rounded-pill shadow-sm mb-1" data-toggle="modal" data-target="#bottom_modal">
-                                <b>@Localizer["ShowStudentCourseKey"]</b>
-                            </button>
-                            <button type="button" class="btn btn-light border rounded-pill shadow-sm mb-1" onclick="studentcourse.clearCourseData()"
-                                    style="background:lightgreen;color:black">
-                                <b>@Localizer["ClearKey"]</b>
-                            </button>
-                            <button id="btnSaveStudentCourse" type="button" class="btn btn-light border rounded-pill shadow-sm mb-1" onclick="studentcourse.createStudentCourse('btnSaveStudentCourse')"
-                                    style="background:blue;color:white">
-                                <b>@Localizer["SaveKey"]</b>
-                            </button>
-                        </div>
-                        <div class="columns large-6 small-12 user-information">
-                            <p>
-                                <div>
-                                    <b>
-                                        @Localizer["CourseKey"] <b class="text-danger">*</b>
-                                    </b><br />
-                                    <select id="ddlStudentCourse">
-                                    </select>
-                                </div>
-                                <div>
-                                    <b>
-                                        @Localizer["StudentKey"] <b class="text-danger">*</b>
-                                    </b><br />
-                                    <select id="ddlStudent">
-                                    </select>
-                                </div>
-                                <div>
-                                    <b>
-                                        @Localizer["StaffKey"] <b class="text-danger">*</b>
-                                    </b><br />
-                                    <select id="ddlStaff">
-                                    </select>
-                                </div>
-                                <div>
-                                    <b>
-                                        @Localizer["StudentCourseStatusKey"] <b class="text-danger">*</b>
-                                    </b><br />
-                                    <select id="ddlStudentCourseStatus">
-                                    </select>
-                                </div>
-                                <div>
-                                    <b>
-                                        @Localizer["CourseCreditHoursKey"]
-                                    </b><br />
-                                    <input id="txtCourseCreditHours" type="text" />
-                                    <input type="hidden" id="hdnStudentCourseMappingId" name="hdnStudentCourseMappingId" value="0" />
-                                  @*   <input type="hidden" id="hdnStudentId" name="hdnStudentId" value="0" />
-                                    <input type="hidden" id="hdnStaffId" name="hdnStaffId" value="0" /> *@
-                                </div>
-                                <div>
-                                    <b>
-                                        @Localizer["CourseCreditKey"]
-                                    </b><br />
-                                    <input id="txtCourseCredit" type="text" />
-                                </div>
-                                <div>
-                                    <b>
-                                        @Localizer["MinusAbsentKey"]
-                                    </b><br />
-                                    <input id="txtMinusAbsent" type="text" />
-                                </div>
-                                <div>
-                                    <b>
-                                        @Localizer["MinusAttendedKey"]
-                                    </b><br />
-                                    <input id="txtMinusAttended" type="text" />
-                                </div>
-                                <div>
-                                    <b>
-                                        @Localizer["NumericGradeObtainedKey"]
-                                    </b><br />
-                                    <input id="txtNumericGradeObtained" type="text" />
-                                </div>
-                                <div>
-                                    <b>
-                                        @Localizer["TotalGradeAttemptedKey"]
-                                    </b><br />
-                                    <input id="txtTotalGradeAttempted" type="text" />
-                                </div>
-                                <div>
-                                    <b>
-                                        @Localizer["TotalCreditsEarnedKey"]
-                                    </b><br />
-                                    <input id="txtTotalCreditsEarned" type="text" />
-                                </div>
-                                <div>
-                                    <b>
-                                        @Localizer["TotalHoursAttemptedKey"]
-                                    </b><br />
-                                    <input id="txtTotalHoursAttempted" type="text" />
-                                </div>
-                                <div>
-                                    <b>
-                                        @Localizer["TotalHoursEarnedKey"]
-                                    </b><br />
-                                    <input id="txtTotalHoursEarned" type="text" />
-                                </div>
-                            </p>
-                        </div>
-                        <div class="columns large-6 small-12 user-information">
-                            <p>
-                                <div>
-                                    <b>
-                                        @Localizer["GradeLetterCodeObtainedKey"]
-                                    </b><br />
-                                    <input id="txtGradeLetterCodeObtained" type="text" />
-                                </div>
-                                <div>
-                                    <b>
-                                        @Localizer["GradeNoteKey"]
-                                    </b><br />
-                                    <input id="txtGradeNote" type="text" />
-                                </div>
-                                <div>
-                                    <b>
-                                        @Localizer["CourseCompletedDateKey"]
-                                    </b><br />
-                                    <input id="txtCourseCompletedDate" type="date" />
-                                </div>
-                                <div>
-                                    <b>
-                                        @Localizer["CourseDropDateKey"]
-                                    </b><br />
-                                    <input id="txtCourseDropDate" type="date" />
-                                </div>
-                                <div>
-                                    <b>
-                                        @Localizer["CourseLastAttendedDateKey"]
-                                    </b><br />
-                                    <input id="txtCourseLastAttendedDate" type="date" />
-                                </div>
-                                <div>
-                                    <b>
-                                        @Localizer["CourseRegisteredDateKey"]
-                                    </b><br />
-                                    <input id="txtCourseRegisteredDate" type="date" />
-                                </div>
-                                <div>
-                                    <b>
-                                        @Localizer["CourseStartDateKey"]
-                                    </b><br />
-                                    <input id="txtCourseStartDate" type="date" />
-                                </div>
-                                <div>
-                                    <b>
-                                        @Localizer["ExpectedCourseEndDateKey"]
-                                    </b><br />
-                                    <input id="txtExpectedCourseEndDate" type="date" />
-                                </div>
-                                <div>
-                                    <b>
-                                        @Localizer["GradePostedDateKey"]
-                                    </b><br />
-                                    <input id="txtGradePostedDate" type="date" />
-                                </div>
-
-                                <div>
-                                    <input id="chkCourseCompletedStatusInd" type="checkbox" style="opacity:100 !important" />
-                                    <b>
-                                        @Localizer["CourseCompletedStatusIndKey"]
-                                    </b>
-
-                                </div>
-                                <div>
-                                    <input id="chkCourseCurrentStatusInd" type="checkbox" style="opacity:100 !important" />
-                                    <b>
-                                        @Localizer["CourseCurrentStatusIndKey"]
-                                    </b>
-
-                                </div>
-                                <div>
-                                    <input id="chkCourseDroppedStatusInd" type="checkbox" style="opacity:100 !important" />
-                                    <b>
-                                        @Localizer["CourseDroppedStatusIndKey"]
-                                    </b>
-
-                                </div>
-                                <div>
-                                    <input id="chkCourseFutureStatusInd" type="checkbox" style="opacity:100 !important" />
-                                    <b>
-                                        @Localizer["CourseFutureStatusIndKey"]
-                                    </b>
-
-                                </div>
-                                <div>
-                                    <input id="chkCourseLeaveOfAbsenceStatusInd" type="checkbox" style="opacity:100 !important" />
-                                    <b>
-                                        @Localizer["CourseLeaveOfAbsenceStatusIndKey"]
-                                    </b>
-
-                                </div>
-                                <div>
-                                    <input id="chkCourseScheduledStatusInd" type="checkbox" style="opacity:100 !important" />
-                                    <b>
-                                        @Localizer["CourseScheduledStatusIndKey"]
-                                    </b>
-
-                                </div>
-                                <div>
-                                    <input id="chkCourseRetakeInd" type="checkbox" style="opacity:100 !important" />
-                                    <b>
-                                        @Localizer["CourseRetakeIndKey"]
-                                    </b>
-
-                                </div>
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <component type="typeof(Lower_Component)" render-mode="Static" /><br />
-            </div>
+<div class="columns small-12 profile-content" style="margin-top:2px !important">
+    <div class="row">
+        <div class="col-12 left-align">
+            <h2 class="coursetitle">@Localizer["StudentCourseMappingKey"]</h2>
+            <hr />
         </div>
+    </div>
+    <div style="text-align:right">
+        <button onclick="studentcourse.showStudentCourses()" type="button" style="background:gray;color:black" class="btn btn-light border rounded-pill shadow-sm mb-1" data-toggle="modal" data-target="#bottom_modal">
+            <b>@Localizer["ShowStudentCourseKey"]</b>
+        </button>
+        <button type="button" class="btn btn-light border rounded-pill shadow-sm mb-1" onclick="studentcourse.clearCourseData()"
+                style="background:lightgreen;color:black">
+            <b>@Localizer["ClearKey"]</b>
+        </button>
+        <button id="btnSaveStudentCourse" type="button" class="btn btn-light border rounded-pill shadow-sm mb-1" onclick="studentcourse.createStudentCourse('btnSaveStudentCourse')"
+                style="background:blue;color:white">
+            <b>@Localizer["SaveKey"]</b>
+        </button>
+    </div>
+    <div class="columns large-6 small-12 user-information">
+        <p>
+            <div>
+                <b>
+                    @Localizer["CourseKey"] <b class="text-danger">*</b>
+                </b><br />
+                <select id="ddlStudentCourse">
+                </select>
+            </div>
+            <div>
+                <b>
+                    @Localizer["StudentKey"] <b class="text-danger">*</b>
+                </b><br />
+                <select id="ddlStudent">
+                </select>
+            </div>
+            <div>
+                <b>
+                    @Localizer["StaffKey"] <b class="text-danger">*</b>
+                </b><br />
+                <select id="ddlStaff">
+                </select>
+            </div>
+            <div>
+                <b>
+                    @Localizer["StudentCourseStatusKey"] <b class="text-danger">*</b>
+                </b><br />
+                <select id="ddlStudentCourseStatus">
+                </select>
+            </div>
+            <div>
+                <b>
+                    @Localizer["CourseCreditHoursKey"]
+                </b><br />
+                <input id="txtCourseCreditHours" type="text" />
+                <input type="hidden" id="hdnStudentCourseMappingId" name="hdnStudentCourseMappingId" value="0" />
+                @*   <input type="hidden" id="hdnStudentId" name="hdnStudentId" value="0" />
+                <input type="hidden" id="hdnStaffId" name="hdnStaffId" value="0" /> *@
+            </div>
+            <div>
+                <b>
+                    @Localizer["CourseCreditKey"]
+                </b><br />
+                <input id="txtCourseCredit" type="text" />
+            </div>
+            <div>
+                <b>
+                    @Localizer["MinusAbsentKey"]
+                </b><br />
+                <input id="txtMinusAbsent" type="text" />
+            </div>
+            <div>
+                <b>
+                    @Localizer["MinusAttendedKey"]
+                </b><br />
+                <input id="txtMinusAttended" type="text" />
+            </div>
+            <div>
+                <b>
+                    @Localizer["NumericGradeObtainedKey"]
+                </b><br />
+                <input id="txtNumericGradeObtained" type="text" />
+            </div>
+            <div>
+                <b>
+                    @Localizer["TotalGradeAttemptedKey"]
+                </b><br />
+                <input id="txtTotalGradeAttempted" type="text" />
+            </div>
+            <div>
+                <b>
+                    @Localizer["TotalCreditsEarnedKey"]
+                </b><br />
+                <input id="txtTotalCreditsEarned" type="text" />
+            </div>
+            <div>
+                <b>
+                    @Localizer["TotalHoursAttemptedKey"]
+                </b><br />
+                <input id="txtTotalHoursAttempted" type="text" />
+            </div>
+            <div>
+                <b>
+                    @Localizer["TotalHoursEarnedKey"]
+                </b><br />
+                <input id="txtTotalHoursEarned" type="text" />
+            </div>
+        </p>
+    </div>
+    <div class="columns large-6 small-12 user-information">
+        <p>
+            <div>
+                <b>
+                    @Localizer["GradeLetterCodeObtainedKey"]
+                </b><br />
+                <input id="txtGradeLetterCodeObtained" type="text" />
+            </div>
+            <div>
+                <b>
+                    @Localizer["GradeNoteKey"]
+                </b><br />
+                <input id="txtGradeNote" type="text" />
+            </div>
+            <div>
+                <b>
+                    @Localizer["CourseCompletedDateKey"]
+                </b><br />
+                <input id="txtCourseCompletedDate" type="date" />
+            </div>
+            <div>
+                <b>
+                    @Localizer["CourseDropDateKey"]
+                </b><br />
+                <input id="txtCourseDropDate" type="date" />
+            </div>
+            <div>
+                <b>
+                    @Localizer["CourseLastAttendedDateKey"]
+                </b><br />
+                <input id="txtCourseLastAttendedDate" type="date" />
+            </div>
+            <div>
+                <b>
+                    @Localizer["CourseRegisteredDateKey"]
+                </b><br />
+                <input id="txtCourseRegisteredDate" type="date" />
+            </div>
+            <div>
+                <b>
+                    @Localizer["CourseStartDateKey"]
+                </b><br />
+                <input id="txtCourseStartDate" type="date" />
+            </div>
+            <div>
+                <b>
+                    @Localizer["ExpectedCourseEndDateKey"]
+                </b><br />
+                <input id="txtExpectedCourseEndDate" type="date" />
+            </div>
+            <div>
+                <b>
+                    @Localizer["GradePostedDateKey"]
+                </b><br />
+                <input id="txtGradePostedDate" type="date" />
+            </div>
+
+            <div>
+                <input id="chkCourseCompletedStatusInd" type="checkbox" style="opacity:100 !important" />
+                <b>
+                    @Localizer["CourseCompletedStatusIndKey"]
+                </b>
+
+            </div>
+            <div>
+                <input id="chkCourseCurrentStatusInd" type="checkbox" style="opacity:100 !important" />
+                <b>
+                    @Localizer["CourseCurrentStatusIndKey"]
+                </b>
+
+            </div>
+            <div>
+                <input id="chkCourseDroppedStatusInd" type="checkbox" style="opacity:100 !important" />
+                <b>
+                    @Localizer["CourseDroppedStatusIndKey"]
+                </b>
+
+            </div>
+            <div>
+                <input id="chkCourseFutureStatusInd" type="checkbox" style="opacity:100 !important" />
+                <b>
+                    @Localizer["CourseFutureStatusIndKey"]
+                </b>
+
+            </div>
+            <div>
+                <input id="chkCourseLeaveOfAbsenceStatusInd" type="checkbox" style="opacity:100 !important" />
+                <b>
+                    @Localizer["CourseLeaveOfAbsenceStatusIndKey"]
+                </b>
+
+            </div>
+            <div>
+                <input id="chkCourseScheduledStatusInd" type="checkbox" style="opacity:100 !important" />
+                <b>
+                    @Localizer["CourseScheduledStatusIndKey"]
+                </b>
+
+            </div>
+            <div>
+                <input id="chkCourseRetakeInd" type="checkbox" style="opacity:100 !important" />
+                <b>
+                    @Localizer["CourseRetakeIndKey"]
+                </b>
+
+            </div>
+        </p>
     </div>
 </div>
 

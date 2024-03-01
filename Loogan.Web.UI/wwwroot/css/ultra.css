@@ -11082,35 +11082,6 @@ body:not(.hide-focus-outline) button:focus, body:not(.hide-focus-outline) .butto
     font-weight: 800;
     src: url("../fonts/open-sans/open-sans-800italic.woff") format("woff")
 }
-
-@font-face {
-    font-family: "Noto Serif";
-    font-style: normal;
-    font-weight: 400;
-    src: url("../fonts/noto-serif/noto-serif-regular.woff") format("woff")
-}
-
-@font-face {
-    font-family: "Noto Serif";
-    font-style: italic;
-    font-weight: 400;
-    src: url("../fonts/noto-serif/noto-serif-italic.woff") format("woff")
-}
-
-@font-face {
-    font-family: "Noto Serif";
-    font-style: normal;
-    font-weight: 700;
-    src: url("../fonts/noto-serif/noto-serif-700.woff") format("woff")
-}
-
-@font-face {
-    font-family: "Noto Serif";
-    font-style: italic;
-    font-weight: 700;
-    src: url("../fonts/noto-serif/noto-serif-700italic.woff") format("woff")
-}
-
 .bb-login {
     background-color: #272727;
     padding-top: 0;

@@ -41,32 +41,9 @@
 </head>
 <body id="learn-oe-body" class="bb-login hide-focus-outline">
     <div style="position:absolute;z-index:10000;left:96vw">
-        <img title="Notifications" class="replace" alt="Notifications" src="~/images/notification1.png" style="width:24px;height:24px" id="notification" />
+        <img title="Notifications" alt="Notifications" src="~/images/notification1.png" style="width:24px;height:24px" id="notification" />
     </div>
-    <component type="typeof(Upper_Component)" render-mode="Static" />
-    <div>
-        <div id="site-wrap" class="off-canvas-wrap">
-            <div class="inner-wrap">
-                <div class="row">
-                    <div class="col-2 bb-login pointscroll leftmenu replace">
-                        @{
-                            await Html.RenderPartialAsync("MenuBar");
-                        }
-                    </div>
-                    <div class="col-10">
-                        <div class="base-profile pointscroll righcontent scrollrightend">
-                            <div id="divrightLoad">
-                                @RenderBody()
-                            </div>
-                            <div class="replace">
-                                <component type="typeof(Lower_Component)" render-mode="Static" />
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+    @RenderBody()
     <div id="cover-spin"></div>
     @await RenderSectionAsync("Scripts", required: false)
     <script src="_framework/blazor.server.js"></script>

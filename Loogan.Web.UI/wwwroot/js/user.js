@@ -1,4 +1,6 @@
-﻿let totalRecords = 0;
+﻿if (totalRecords == undefined) {
+    var totalRecords = 0;
+}
 function createUser() {
     var model = {}
     model.userId = $('#hdnUserId').val();
@@ -90,11 +92,7 @@ function createUser() {
         $('#txtPhone').focus();
         return;
     }
-
     $('#btnSaveuser').prop('disabled', 'disabled');
-
-
-
     $.ajax({
         method: 'Post',
         url: model.userId == 0 ? "/User/CreateUser" : "/User/UpdateUser",

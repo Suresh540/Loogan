@@ -13,92 +13,77 @@
     var getTotalRecords = "getTotalRecords";
 }
 
-<component type="typeof(Upper_Component)" render-mode="Static" />
 <input type="hidden" id="hdnemailTemplateId" name="hdnemailTemplateId" value="0" />
-<div id="site-wrap" class="off-canvas-wrap">
-    <div class="inner-wrap">
-        <div class="row">
-            <div class="col-2 bb-login pointscroll leftmenu">
-                @{
-                    await Html.RenderPartialAsync("MenuBar");
-                }
+<div class="base-profile pointscroll righcontent scrollrightend">
+    <div style="height:5vh">
+        &nbsp;
+    </div>
+    <div class="row">
+        <div class="col-12 left-align">
+            <h2 class="EmailTemplatetitle">@Localizer["EmailTemplateKey"]</h2>
+            <hr />
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-11">
+            <div style="text-align:right">
+                <button onclick="emailtemplates.showEmailTemplates()" type="button" style="background:gray;color:black" class="btn btn-light border rounded-pill shadow-sm mb-1" data-toggle="modal" data-target="#bottom_modal">
+                    <b>@Localizer["ShowEmailTemplatesKey"]</b>
+                </button>
+                <button type="button" class="btn btn-light border rounded-pill shadow-sm mb-1" onclick="emailtemplates.clearEmailTemplateData()"
+                        style="background:lightgreen;color:black">
+                    <b>@Localizer["ClearKey"]</b>
+                </button>
+                <button id="btnSaveEmailTemplate" type="button" class="btn btn-light border rounded-pill shadow-sm mb-1" onclick="emailtemplates.createEmailTemplate('btnSaveEmailTemplate')"
+                        style="background:blue;color:white">
+                    <b>@Localizer["SaveKey"]</b>
+                </button>
             </div>
-            <div class="col-10">
-                <div class="base-profile pointscroll righcontent scrollrightend">
-                    <div style="height:5vh">
-                        &nbsp;
-                    </div>
-                    <div class="row">
-                        <div class="col-12 left-align">
-                            <h2 class="EmailTemplatetitle">@Localizer["EmailTemplateKey"]</h2>
-                            <hr />
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-11">
-                            <div style="text-align:right">
-                                <button onclick="emailtemplates.showEmailTemplates()" type="button" style="background:gray;color:black" class="btn btn-light border rounded-pill shadow-sm mb-1" data-toggle="modal" data-target="#bottom_modal">
-                                    <b>@Localizer["ShowEmailTemplatesKey"]</b>
-                                </button>
-                                <button type="button" class="btn btn-light border rounded-pill shadow-sm mb-1" onclick="emailtemplates.clearEmailTemplateData()"
-                                        style="background:lightgreen;color:black">
-                                    <b>@Localizer["ClearKey"]</b>
-                                </button>
-                                <button id="btnSaveEmailTemplate" type="button" class="btn btn-light border rounded-pill shadow-sm mb-1" onclick="emailtemplates.createEmailTemplate('btnSaveEmailTemplate')"
-                                        style="background:blue;color:white">
-                                    <b>@Localizer["SaveKey"]</b>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-1">
-                            &nbsp;
-                        </div>
-                        <div class="col-2 pt-2">
-                            @Localizer["EmailTemplateKey"] <b class="text-danger">*</b>
-                        </div>
-                        <div class="col-3 align-content-center align-items-center" style="padding:5px;padding-left:12px">
-                            <select id="ddlEmailTemplate">
-                            </select>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-1">
-                            &nbsp;
-                        </div>
-                        <div class="col-2 pt-2">
-                            @Localizer["EmailSubjectKey"] <b class="text-danger">*</b>
-                        </div>
-                        <div class="col-8 align-content-center align-items-center">
-                            <input id="txtemailsubject" type="text" />
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-1">
-                            &nbsp;
-                        </div>
-                        <div class="col-2 pt-2">
-                            @Localizer["EmailBodyKey"] <b class="text-danger">*</b>
-                        </div>
-                        <div class="col-8 align-content-center align-items-center">
-                            <textarea id="txtemailBody" class="emailBody" name="input"></textarea>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-1 text-danger pt-4">
-                            &nbsp;
-                        </div>
-                        <div class="col-2 pt-2">
-                            &nbsp;
-                        </div>
-                        <div class="col-8 align-content-center align-items-center text-danger">
-                            <b>* Note: Server variables should be placed between [] ex: [User].</b>
-                        </div>
-                    </div>
-                    <component type="typeof(Lower_Component)" render-mode="Static" /><br />
-                </div>
-            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-1">
+            &nbsp;
+        </div>
+        <div class="col-2 pt-2">
+            @Localizer["EmailTemplateKey"] <b class="text-danger">*</b>
+        </div>
+        <div class="col-3 align-content-center align-items-center" style="padding:5px;padding-left:12px">
+            <select id="ddlEmailTemplate">
+            </select>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-1">
+            &nbsp;
+        </div>
+        <div class="col-2 pt-2">
+            @Localizer["EmailSubjectKey"] <b class="text-danger">*</b>
+        </div>
+        <div class="col-8 align-content-center align-items-center">
+            <input id="txtemailsubject" type="text" />
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-1">
+            &nbsp;
+        </div>
+        <div class="col-2 pt-2">
+            @Localizer["EmailBodyKey"] <b class="text-danger">*</b>
+        </div>
+        <div class="col-8 align-content-center align-items-center">
+            <textarea id="txtemailBody" class="emailBody" name="input"></textarea>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-1 text-danger pt-4">
+            &nbsp;
+        </div>
+        <div class="col-2 pt-2">
+            &nbsp;
+        </div>
+        <div class="col-8 align-content-center align-items-center text-danger">
+            <b>* Note: Server variables should be placed between [] ex: [User].</b>
         </div>
     </div>
 </div>

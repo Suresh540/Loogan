@@ -2,20 +2,5 @@
 @using Loogan.Web.UI.Components
 @model Loogan.Web.UI.Pages.Staff.StaffDashboardModel
 @attribute [Loogan.Web.UI.Utilities.LooganStudentAuthorize("Teacher")]
-<component type="typeof(Upper_Component)" render-mode="Static" />
-<div id="site-wrap" class="off-canvas-wrap">
-    <div class="inner-wrap">
-        <div class="row">
-            <div class="col-2 bb-login pointscroll leftmenu">
-                @{
-                    await Html.RenderPartialAsync("MenuBar");
-                }
-            </div>
-            <div class="col-10">
-                <div class="base-profile pointscroll righcontent scrollrightend">
-                    <component type="typeof(Lower_Component)" render-mode="Static" /><br />
-                </div>
-            </div>
-        </div>
-    </div>
+<div class="base-profile pointscroll righcontent scrollrightend">
 </div>

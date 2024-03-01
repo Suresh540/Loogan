@@ -1,4 +1,5 @@
 ﻿@page "/Admin/Course"
+
 @using Loogan.Web.UI.Components
 @using Loogan.Web.UI.Resources.Pages
 @using Loogan.Web.UI.Utilities
@@ -11,96 +12,79 @@
     var getTotalRecords = "getTotalRecords";
 }
 
-<component type="typeof(Upper_Component)" render-mode="Static" />
-<div id="site-wrap" class="off-canvas-wrap">
-    <div class="inner-wrap">
-        <div class="row">
-            <div class="col-2 bb-login pointscroll leftmenu">
-                @{
-                    await Html.RenderPartialAsync("MenuBar");
-                }
-            </div>
-            <div class="col-10 base-profile pointscroll righcontent">
-                <div class="columns small-12 profile-content" style="margin-top:2px !important">
-                    <div class="row">
-                        <div class="col-12 left-align">
-                            <h2 class="coursetitle">@Localizer["CourseMappingKey"]</h2>
-                            <hr />
-                        </div>
-                    </div>
-                    <div style="text-align:right">
-                        <button onclick="course.showCourses()" type="button" style="background:gray;color:black" class="btn btn-light border rounded-pill shadow-sm mb-1" data-toggle="modal" data-target="#bottom_modal">
-                            <b>@Localizer["ShowCourseKey"]</b>
-                        </button>
-                        <button type="button" class="btn btn-light border rounded-pill shadow-sm mb-1" onclick="course.clearCourseData()"
-                                style="background:lightgreen;color:black">
-                            <b>@Localizer["ClearKey"]</b>
-                        </button>
-                        <button id="btnSaveCourse" type="button" class="btn btn-light border rounded-pill shadow-sm mb-1" onclick="course.createCourse('btnSaveCourse')"
-                                style="background:blue;color:white">
-                            <b>@Localizer["SaveKey"]</b>
-                        </button>
-                    </div>
-                    <div class="columns large-6 small-12 user-information">
-                        <p>
-                            <div>
-                                <b>
-                                    @Localizer["CourseGroupKey"] <b class="text-danger">*</b>
-                                </b><br />
-                                <select id="ddlCourseGroup">
-                                </select>
-                            </div>
-                            <div>
-                                <b>
-                                    @Localizer["CourseCodeKey"] <b class="text-danger">*</b>
-                                </b><br />
-                                <input id="txtCourseCode" type="text" required />
-                                <input type="hidden" id="hdnCourseId" name="hdnCourseId" value="0" />
-                            </div>
-                            <div>
-                                <b>
-                                    @Localizer["CourseNameKey"] <b class="text-danger">*</b>
-                                </b><br />
-                                <input id="txtCourseName" type="text" required />
-                            </div>
-                            <div>
-                                <b>
-                                    @Localizer["CourseDescriptionKey"]
-                                </b><br />
-                                <input id="txtCourseDesc" type="text" />
-                            </div>
-                        </p>
-                    </div>
-                    <div class="columns large-6 small-12 user-information">
-                        <p>
-                            <div>
-                                <b>
-                                    @Localizer["CourseLevelKey"]
-                                </b><br />
-                                <select id="ddlCourseLevel">
-                                </select>
-                            </div>
-                            <div>
-                                <b>
-                                    @Localizer["CreditHoursKey"]
-                                </b><br />
-                                <input id="txtCreditHours" type="text" />
-                            </div>
-                            <div>
-                                <b>
-                                    @Localizer["CreditsKey"]
-                                </b><br />
-                                <input id="txtCredits" type="text" />
-                            </div>
-
-                        </p>
-                    </div>
-
-
-                </div>
-            </div>
-            <component type="typeof(Lower_Component)" render-mode="Static" /><br />
+<div class="columns small-12 profile-content" style="margin-top:2px !important">
+    <div class="row">
+        <div class="col-12 left-align">
+            <h2 class="coursetitle">@Localizer["CourseMappingKey"]</h2>
+            <hr />
         </div>
+    </div>
+    <div style="text-align:right">
+        <button onclick="course.showCourses()" type="button" style="background:gray;color:black" class="btn btn-light border rounded-pill shadow-sm mb-1" data-toggle="modal" data-target="#bottom_modal">
+            <b>@Localizer["ShowCourseKey"]</b>
+        </button>
+        <button type="button" class="btn btn-light border rounded-pill shadow-sm mb-1" onclick="course.clearCourseData()"
+                style="background:lightgreen;color:black">
+            <b>@Localizer["ClearKey"]</b>
+        </button>
+        <button id="btnSaveCourse" type="button" class="btn btn-light border rounded-pill shadow-sm mb-1" onclick="course.createCourse('btnSaveCourse')"
+                style="background:blue;color:white">
+            <b>@Localizer["SaveKey"]</b>
+        </button>
+    </div>
+    <div class="columns large-6 small-12 user-information">
+        <p>
+            <div>
+                <b>
+                    @Localizer["CourseGroupKey"] <b class="text-danger">*</b>
+                </b><br />
+                <select id="ddlCourseGroup">
+                </select>
+            </div>
+            <div>
+                <b>
+                    @Localizer["CourseCodeKey"] <b class="text-danger">*</b>
+                </b><br />
+                <input id="txtCourseCode" type="text" required />
+                <input type="hidden" id="hdnCourseId" name="hdnCourseId" value="0" />
+            </div>
+            <div>
+                <b>
+                    @Localizer["CourseNameKey"] <b class="text-danger">*</b>
+                </b><br />
+                <input id="txtCourseName" type="text" required />
+            </div>
+            <div>
+                <b>
+                    @Localizer["CourseDescriptionKey"]
+                </b><br />
+                <input id="txtCourseDesc" type="text" />
+            </div>
+        </p>
+    </div>
+    <div class="columns large-6 small-12 user-information">
+        <p>
+            <div>
+                <b>
+                    @Localizer["CourseLevelKey"]
+                </b><br />
+                <select id="ddlCourseLevel">
+                </select>
+            </div>
+            <div>
+                <b>
+                    @Localizer["CreditHoursKey"]
+                </b><br />
+                <input id="txtCreditHours" type="text" />
+            </div>
+            <div>
+                <b>
+                    @Localizer["CreditsKey"]
+                </b><br />
+                <input id="txtCredits" type="text" />
+            </div>
+
+        </p>
     </div>
 </div>
 

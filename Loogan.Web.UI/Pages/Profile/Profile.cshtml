@@ -4,98 +4,81 @@
 @model Loogan.Web.UI.Pages.Profile.ProfileModel
 @attribute [Loogan.Web.UI.Utilities.LooganStudentAuthorize("Student,Admin,Teacher")]
 
-<component type="typeof(Upper_Component)" render-mode="Static" />
-<div id="site-wrap" class="off-canvas-wrap">
-    <div class="inner-wrap">
-        <div class="row">
-            <div class="col-2 bb-login pointscroll leftmenu">
-                @{
-                    await Html.RenderPartialAsync("MenuBar");
-                }
-            </div>
-            <div class="col-10">
-                <div class="base-profile pointscroll righcontent scrollrightend">
-                    <div class="background">&nbsp;</div>
-                    <div class="account-snapshot columns small-12 text-center">
-                        <div class="avatar-container can-edit">
-                            <div class="columns small-12 profile-content">
-                                <div class="element-image avatar no-select outline one-participant" aria-hidden="true">
-                                    <div class="avatar-inner">
-                                        <div class="first avatar-single image-avatar " style="text-align:center">
-                                            <img src="~/images/default_profile_avatar.svg" />
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="username-container">
-                            @Model.ProfileName
-                        </div>
+<div class="background">&nbsp;</div>
+<div class="account-snapshot columns small-12 text-center">
+    <div class="avatar-container can-edit">
+        <div class="columns small-12 profile-content">
+            <div class="element-image avatar no-select outline one-participant" aria-hidden="true">
+                <div class="avatar-inner">
+                    <div class="first avatar-single image-avatar " style="text-align:center">
+                        <img src="~/images/default_profile_avatar.svg" />
                     </div>
-                    <div class="columns small-12 profile-content">
-                        <div class="columns large-6 small-12 user-information">
-                            @if (Model != null && Model.LeftSectionValues != null)
-                                @foreach (var sec in Model.LeftSectionValues)
-                                {
-                                    <section>
-                                        <h2 bb-translate="">@sec.SectionName</h2>
-                                        <ul style="padding-left:0px !important">
-                                            @if (sec != null && sec.SectionValueData != null)
-                                                @foreach (var inner in sec.SectionValueData)
-                                                {
-                                                    string id = inner.Key.Replace(" ", "_");
-                                                    <li class="data-row can-edit">
-                                                        <div class="data-container">
-                                                            <span class="data-title" bb-translate="">@inner.Key</span>
-                                                            <a onmousetabOver="mousetabOver('@id')" onmouseout="mouseOut('@id')">
-                                                                <div class="makeStylesroot-0-2-55">
-                                                                    <div class="makeStylesuserPronunciation-0-2-60">
-                                                                        <span class="makeStylesbaseText-0-2-56" onmousetabOver="mousetabOver('@id')" onmouseout="mouseOut('@id')">@Html.Raw(inner.Value)</span>&nbsp;
-                                                                        <img alt="@inner.Key" id="@id" src="~/images/pencil.png" width="20" height="20" style="visibility:hidden" data-toggle="modal" data-target="#right_modal" />
-                                                                    </div>
-                                                                </div>
-                                                            </a>
-                                                        </div>
-                                                    </li>
-                                                }
-                                        </ul>
-                                    </section>
-                                }
-                        </div>
-                        <div class="columns large-6 small-12 user-settings">
-                            @if (Model != null && Model.RightSectionValues != null)
-                                @foreach (var sec in Model.RightSectionValues)
-                                {
-                                    <section>
-                                        <h2 bb-translate="">@sec.SectionName</h2>
-                                        <ul style="padding-left:0px !important">
-                                            @if (sec != null && sec.SectionValueData != null)
-                                                @foreach (var inner in sec.SectionValueData)
-                                                {
-                                                    string id = inner.Key.Replace(" ", "_");
-                                                    <li class="data-row can-edit">
-                                                        <div class="data-container">
-                                                            <span class="data-title" bb-translate="">@inner.Key</span>
-                                                            <a onmousetabOver="mousetabOver('@id')" onmouseout="mouseOut('@id')">
-                                                                <div class="makeStylesroot-0-2-55">
-                                                                    <div class="makeStylesuserPronunciation-0-2-60">
-                                                                        <span class="makeStylesbaseText-0-2-56" onmousetabOver="mousetabOver('@id')" onmouseout="mouseOut('@id')">@Html.Raw(inner.Value)</span>&nbsp;
-                                                                        <img alt="@inner.Key" id="@id" src="~/images/pencil.png" width="20" height="20" style="visibility:hidden" data-toggle="modal" data-target="#right_modal" />
-                                                                    </div>
-                                                                </div>
-                                                            </a>
-                                                        </div>
-                                                    </li>
-                                                }
-                                        </ul>
-                                    </section>
-                                }
-                        </div>
-                    </div>
-                    <component type="typeof(Lower_Component)" render-mode="Static" /><br />
                 </div>
             </div>
         </div>
+    </div>
+    <div class="username-container">
+        @Model.ProfileName
+    </div>
+</div>
+<div class="columns small-12 profile-content">
+    <div class="columns large-6 small-12 user-information">
+        @if (Model != null && Model.LeftSectionValues != null)
+            @foreach (var sec in Model.LeftSectionValues)
+            {
+                <section>
+                    <h2 bb-translate="">@sec.SectionName</h2>
+                    <ul style="padding-left:0px !important">
+                        @if (sec != null && sec.SectionValueData != null)
+                            @foreach (var inner in sec.SectionValueData)
+                            {
+                                string id = inner.Key.Replace(" ", "_");
+                                <li class="data-row can-edit">
+                                    <div class="data-container">
+                                        <span class="data-title" bb-translate="">@inner.Key</span>
+                                        <a onmousetabOver="mousetabOver('@id')" onmouseout="mouseOut('@id')">
+                                            <div class="makeStylesroot-0-2-55">
+                                                <div class="makeStylesuserPronunciation-0-2-60">
+                                                    <span class="makeStylesbaseText-0-2-56" onmousetabOver="mousetabOver('@id')" onmouseout="mouseOut('@id')">@Html.Raw(inner.Value)</span>&nbsp;
+                                                    <img alt="@inner.Key" id="@id" src="~/images/pencil.png" width="20" height="20" style="visibility:hidden" data-toggle="modal" data-target="#right_modal" />
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </li>
+                            }
+                    </ul>
+                </section>
+            }
+    </div>
+    <div class="columns large-6 small-12 user-settings">
+        @if (Model != null && Model.RightSectionValues != null)
+            @foreach (var sec in Model.RightSectionValues)
+            {
+                <section>
+                    <h2 bb-translate="">@sec.SectionName</h2>
+                    <ul style="padding-left:0px !important">
+                        @if (sec != null && sec.SectionValueData != null)
+                            @foreach (var inner in sec.SectionValueData)
+                            {
+                                string id = inner.Key.Replace(" ", "_");
+                                <li class="data-row can-edit">
+                                    <div class="data-container">
+                                        <span class="data-title" bb-translate="">@inner.Key</span>
+                                        <a onmousetabOver="mousetabOver('@id')" onmouseout="mouseOut('@id')">
+                                            <div class="makeStylesroot-0-2-55">
+                                                <div class="makeStylesuserPronunciation-0-2-60">
+                                                    <span class="makeStylesbaseText-0-2-56" onmousetabOver="mousetabOver('@id')" onmouseout="mouseOut('@id')">@Html.Raw(inner.Value)</span>&nbsp;
+                                                    <img alt="@inner.Key" id="@id" src="~/images/pencil.png" width="20" height="20" style="visibility:hidden" data-toggle="modal" data-target="#right_modal" />
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </li>
+                            }
+                    </ul>
+                </section>
+            }
     </div>
 </div>
 @{

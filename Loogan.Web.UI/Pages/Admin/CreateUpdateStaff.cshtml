@@ -10,52 +10,34 @@
     var showStaffs = "showStaffs";
     var getTotalRecords = "getTotalRecords";
 }
-<component type="typeof(Upper_Component)" render-mode="Static" />
-<div id="site-wrap" class="off-canvas-wrap">
-    <div class="inner-wrap">
-        <div class="row">
-            <div class="col-2 bb-login pointscroll leftmenu">
-                @{
-                    await Html.RenderPartialAsync("MenuBar");
-                }
-            </div>
-            <div class="col-10 ">
-                <div class="base-profile pointscroll righcontent scrollrightend">
-                    <div class="row">
-                        <div class="col-12 left-align">
-                            <h2 class="coursetitle">@Localizer["StaffListMappingKey"]</h2>
-                            <hr />
-                        </div>
-                    </div>
-                    <table class="table">
-                        <thead id="tdHeader">
-                            <tr>
-                                <td>
-                                    &nbsp;
-                                </td>
-                                <td>
-                                    @Localizer["FirstNameKey"]
-                                </td>
-                                <td>
-                                    @Localizer["LastNameKey"]
-                                </td>
-                                <td>
-                                    @Localizer["StaffNameKey"]
-                                </td>
-                            </tr>
-                        </thead>
-                        <tbody id="tdBody">
-                        </tbody>
-                    </table>
-                    <component type="typeof(Paging_Component)" render-mode="ServerPrerendered"
-                               param-TotalRecords="10" param-NavigateURL="showStaffs" param-TotalRecordsURL="getTotalRecords" />
-                </div>
-                
-                <component type="typeof(Lower_Component)" render-mode="Static" /><br />
-            </div>
-        </div>
+<div class="row">
+    <div class="col-12 left-align">
+        <h2 class="coursetitle">@Localizer["StaffListMappingKey"]</h2>
+        <hr />
     </div>
 </div>
+<table class="table">
+    <thead id="tdHeader">
+        <tr>
+            <td>
+                &nbsp;
+            </td>
+            <td>
+                @Localizer["FirstNameKey"]
+            </td>
+            <td>
+                @Localizer["LastNameKey"]
+            </td>
+            <td>
+                @Localizer["StaffNameKey"]
+            </td>
+        </tr>
+    </thead>
+    <tbody id="tdBody">
+    </tbody>
+</table>
+<component type="typeof(Paging_Component)" render-mode="ServerPrerendered"
+           param-TotalRecords="10" param-NavigateURL="showStaffs" param-TotalRecordsURL="getTotalRecords" />
 <div class="modal modal-top fade" id="top_modal" tabindex="-1" role="dialog" aria-labelledby="fullscreen_modal">
     <div class="modal-dialog" role="document">
         <div class="modal-content">

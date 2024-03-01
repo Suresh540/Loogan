@@ -8,68 +8,51 @@
 @model Loogan.Web.UI.Pages.ActivityStream.ActivityStreamModel
 @inject IStringLocalizer<ContentLabel> _localizer
 @attribute [Loogan.Web.UI.Utilities.LooganStudentAuthorize("Student,Teacher")]
-<component type="typeof(Upper_Component)" render-mode="Static" />
-<div id="site-wrap" class="off-canvas-wrap">
-    <div class="inner-wrap">
-        <div class="row">
-            <div class="col-2 bb-login pointscroll leftmenu">
-                @{
-                    await Html.RenderPartialAsync("MenuBar");
+<div class="chatcontainer">
+    <div class="row p-1">
+        <div class="col-1">
+            Me
+        </div>
+        <div class="col-5">
+            <input type="text" id="userInput" value="@HttpContext.Session.GetString("UserName")" disabled />
+        </div>
+    </div>
+    <div class="row p-1">
+        <div class="col-1">
+            User
+        </div>
+        <div class="col-5">
+            <select id="selectedUser" class="form-select">
+                @foreach (var item in Model.Users ?? Enumerable.Empty<PagingUserModel>())
+                {
+                    <option value="@item.UserName">@(item.FirstName + ' ' + item.LastName)</option>
                 }
-            </div>
-            <div class="col-10">
-                <div class="base-profile pointscroll righcontent scrollrightend">
-                    <div class="chatcontainer">
-                        <div class="row p-1">
-                            <div class="col-1">
-                                Me
-                            </div>
-                            <div class="col-5">
-                                <input type="text" id="userInput" value="@HttpContext.Session.GetString("UserName")" disabled />
-                            </div>
-                        </div>
-                        <div class="row p-1">
-                            <div class="col-1">
-                                User
-                            </div>
-                            <div class="col-5">
-                                <select id="selectedUser" class="form-select">
-                                    @foreach (var item in Model.Users ?? Enumerable.Empty<PagingUserModel>())
-                                    {
-                                        <option value="@item.UserName">@(item.FirstName + ' ' + item.LastName)</option>
-                                    }
-                                </select>
-                            </div>
-                        </div>
-                        <div class="row p-1">
-                            <div class="col-1">
-                                Message
-                            </div>
-                            <div class="col-10">
-                                <textarea class="form-control" id="messageInput" rows="8" cols="8">
+            </select>
+        </div>
+    </div>
+    <div class="row p-1">
+        <div class="col-1">
+            Message
+        </div>
+        <div class="col-10">
+            <textarea class="form-control" id="messageInput" rows="8" cols="8">
                                 </textarea>
-                            </div>
-                        </div>
-                        <div class="row p-1">
-                            <div class="col-6 text-end">
-                                <input type="button" class="btn btn-primary" id="sendButton" value="Send Message" />
-                                <input type="button" class="btn btn-secondary" id="clearButton" value="Clear" />
-                            </div>
-                        </div>
-                        <div class="row p-1">
-                            <div class="col-6">
-                                <hr />
-                            </div>
-                        </div>
-                        <div class="row p-1">
-                            <div class="col-6">
-                                <ul id="messagesList"></ul>
-                            </div>
-                        </div>
-                    </div>
-                    <component type="typeof(Lower_Component)" render-mode="Static" /><br />
-                </div>
-            </div>
+        </div>
+    </div>
+    <div class="row p-1">
+        <div class="col-6 text-end">
+            <input type="button" class="btn btn-primary" id="sendButton" value="Send Message" />
+            <input type="button" class="btn btn-secondary" id="clearButton" value="Clear" />
+        </div>
+    </div>
+    <div class="row p-1">
+        <div class="col-6">
+            <hr />
+        </div>
+    </div>
+    <div class="row p-1">
+        <div class="col-6">
+            <ul id="messagesList"></ul>
         </div>
     </div>
 </div>

@@ -10,67 +10,50 @@
     var showStudents = "showStudents";
     var getTotalRecords = "getTotalRecords";
 }
-<component type="typeof(Upper_Component)" render-mode="Static" />
-<div id="site-wrap" class="off-canvas-wrap">
-    <div class="inner-wrap">
-        <div class="row">
-            <div class="col-2 bb-login pointscroll leftmenu">
-                @{
-                    await Html.RenderPartialAsync("MenuBar");
-                }
-            </div>
-            <div class="col-10">
-                <div class="base-profile pointscroll righcontent scrollrightend">
-                    <div class="columns small-12 profile-content" style="margin-top:2px !important">
-                        <div class="row">
-                            <div class="col-12 left-align">
-                                <h2 class="coursetitle">@Localizer["StudentListMappingKey"]</h2>
-                                <hr />
-                            </div>
-                        </div>
-                        <table class="table">
-                            <thead id="tdHeader">
-                                <tr>
-                                    <td>
-                                        &nbsp;
-                                    </td>
-                                    <td>
-                                        @Localizer["FirstNameKey"]
-                                    </td>
-                                    <td>
-                                        @Localizer["LastNameKey"]
-                                    </td>
-                                    <td>
-                                        @Localizer["FullNameKey"]
-                                    </td>
-                                    <td>
-                                        @Localizer["AdmissionReprestativeKey"]
-                                    </td>
-                                    <td>
-                                        @Localizer["GenderKey"]
-                                    </td>
-                                    <td>
-                                        @Localizer["CountryKey"]
-                                    </td>
-                                    <td>
-                                        @Localizer["StateKey"]
-                                    </td>
-                                    <td>
-                                        @Localizer["PostalKey"]
-                                    </td>
-                                </tr>
-                            </thead>
-                            <tbody id="tdBody">
-                            </tbody>
-                        </table>
-                        <component type="typeof(Paging_Component)" render-mode="ServerPrerendered"
-                                   param-TotalRecords="10" param-NavigateURL="showStudents" param-TotalRecordsURL="getTotalRecords" />
-                    </div>
-                    <component type="typeof(Lower_Component)" render-mode="Static" /><br />
-                </div>
-            </div>
+<div class="columns small-12 profile-content" style="margin-top:2px !important">
+    <div class="row">
+        <div class="col-12 left-align">
+            <h2 class="coursetitle">@Localizer["StudentListMappingKey"]</h2>
+            <hr />
         </div>
     </div>
+    <table class="table">
+        <thead id="tdHeader">
+            <tr>
+                <td>
+                    &nbsp;
+                </td>
+                <td>
+                    @Localizer["FirstNameKey"]
+                </td>
+                <td>
+                    @Localizer["LastNameKey"]
+                </td>
+                <td>
+                    @Localizer["FullNameKey"]
+                </td>
+                <td>
+                    @Localizer["AdmissionReprestativeKey"]
+                </td>
+                <td>
+                    @Localizer["GenderKey"]
+                </td>
+                <td>
+                    @Localizer["CountryKey"]
+                </td>
+                <td>
+                    @Localizer["StateKey"]
+                </td>
+                <td>
+                    @Localizer["PostalKey"]
+                </td>
+            </tr>
+        </thead>
+        <tbody id="tdBody">
+        </tbody>
+    </table>
+    <component type="typeof(Paging_Component)" render-mode="ServerPrerendered"
+               param-TotalRecords="10" param-NavigateURL="showStudents" param-TotalRecordsURL="getTotalRecords" />
 </div>
 <div class="modal modal-top fade" id="top_modal" tabindex="-1" role="dialog" aria-labelledby="fullscreen_modal">
     <div class="modal-dialog" role="document">

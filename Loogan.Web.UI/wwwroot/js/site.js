@@ -1,19 +1,21 @@
 ﻿/*Login script*/
-let localizationLib = (function () {
-    let langFunc = {};
-    let msgs = [];
-    langFunc.setLanguageData = function (messages) {
-        sessionStorage.setItem("messages", messages);
-    },
-        langFunc.getLocalizeData = function (key) {
-            msgs = JSON.parse(sessionStorage.getItem("messages"));
-            var data = msgs.filter(function (item) {
-                return item.name === key;
-            });
-            return data.length > 0 ? data[0].value : "";
-        }
-    return langFunc;
-})();
+if (localizationLib == undefined) {
+    var localizationLib = (function () {
+        let langFunc = {};
+        let msgs = [];
+        langFunc.setLanguageData = function (messages) {
+            sessionStorage.setItem("messages", messages);
+        },
+            langFunc.getLocalizeData = function (key) {
+                msgs = JSON.parse(sessionStorage.getItem("messages"));
+                var data = msgs.filter(function (item) {
+                    return item.name === key;
+                });
+                return data.length > 0 ? data[0].value : "";
+            }
+        return langFunc;
+    })();
+}
 
 window.onKeyClick = function (id) {
     $("label[for='" + id + "']").addClass('float-above');
@@ -165,7 +167,7 @@ function liTabClick() {
         let tabname = window.location.pathname.toLocaleLowerCase();
         $.each($('.ulspace').find('li'), function () {
             $(this).removeClass('btnactivetab');
-            var val = $(this).find('a').attr('href');
+            var val = $(this).find('a').attr('onclick') != undefined ? $(this).find('a').attr('onclick').replace('return navigateurl(this,', '').replace(')', '') : "";
             if (val == undefined) {
                 return;
             }

@@ -18,140 +18,123 @@
     }
 }
 
-<component type="typeof(Upper_Component)" render-mode="Static" />
 <form name="frmCourse" method="post" action="/StudentCourse/CourseSelection">
     <input type="hidden" id="courseType" name="courseType" />
     <input type="hidden" id="status" name="status" />
-
-    <div id="site-wrap" class="off-canvas-wrap">
-        <div class="inner-wrap">
-            <div class="row">
-                <div class="col-2 bb-login pointscroll leftmenu">
-                    @{
-                        await Html.RenderPartialAsync("MenuBar");
-                    }
-                </div>
-                <div class="col-10">
-                    <div class="base-profile pointscroll righcontent scrollrightend">
-                        <div class="row">
-                            <div class="col-12">
-                                <h1 class="coursetitle">@_localizer["CoursesKey"]</h1>
-                                <hr />
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-2 coursepicleftarrow">
-                                <img class="picimgalign" src="/images/leftarrow.png" onclick="loadCourse()" />&nbsp; <span id="leftarrowtext">@Model.SelectedCourseType</span>
-                            </div>
-                            <div class="col-7 coursepicleftarrow" style="padding:5px">
-                                <select id="ddlCourse" onchange="coursechange()">
-                                    <option value="-1">Upcoming Courses</option>
-                                    <option value="0">Current Courses</option>
-                                    @foreach (DropDownListModel item in Model?.CourseDropdown ?? Enumerable.Empty<DropDownListModel>())
-                                    {
-                                        if (!string.IsNullOrEmpty(Model?.CurrentCourseType) && Model?.CurrentCourseType == item.Name)
-                                        {
-                                            <option value="@item.Id" selected="true">@item.Name</option>
-                                        }
-                                        else
-                                        {
-                                            <option value="@item.Id">@item.Name</option>
-                                        }
-
-                                    }
-                                </select>
-                            </div>
-                            <div class="col-3 courseborderbottomright">
-                                Upcoming Courses &nbsp; <img src="/images/rightarrow.png" class="picimgalign" />
-                            </div>
-                        </div>
-                        <div class="row margintop5">
-                            <div class="col-1 paddingtop2">
-                                <input type="checkbox" name="piclist" checked>
-                            </div>
-                            <div class="col-4 ">
-                                <input type="text" placeholder="Search your courses" />
-                            </div>
-                            <div class="col-4">
-                                <b>Filter</b>
-                                <select id="ddlStatus" style="width:13vw" onchange="opencourses()">
-                                    <option value="0">All courses</option>
-                                    <option value="1">Courses I am taking</option>
-                                    <option value="Open">Open courses</option>
-                                    <option value="">Completed courses</option>
-                                </select>
-                            </div>
-                            <div class="col-3">
-                                <select style="width:5vw">
-                                    <option value="25">25</option>
-                                    <option value="50">50</option>
-                                    <option value="100">100</option>
-                                </select> &nbsp;items per page
-                            </div>
-                        </div>
-                        <div class="row divpic">
-                            @foreach (var item in Model?.CourseTypes ?? Enumerable.Empty<GroupCourseType>())
-                            {
-                                <div class="textlaignleft margintop5 pichide" style="margin-left:7px">
-                                    <b>@item.CourseType</b>
-                                </div>
-                                @foreach (var pic in item.StudentCourseModels ?? Enumerable.Empty<StudentCourseModel>())
-                                {
-                                    count = count + 1;
-                                    if (count > 6)
-                                    {
-                                        count = 0;
-                                        count = count + 1;
-                                    }
-                                    var srcId = GenerateUniqueRandom(count);
-                                    <div class="col-4 pichide" id="@srcId.Item1">
-                                        <div class="pic">
-                                            <img onmouseover="imageFocusIn(this)" onmouseout="imageBlur(this)" src="@srcId.Item2" class="imgpic" />
-                                            <span class="txtpaddingleft picfont">@pic.CourseCode</span><br />
-                                            <span class="txtpaddingleft picfont">@pic.CourseName</span><br />
-                                            <a href="#" class="anchornounderline txtpaddingleft picfont" data-toggle="modal" data-target="#courseright_modal">@pic.StudentCourseStatus</a>
-                                            <hr />
-                                            <span class="txtpaddingleft picfont">
-                                                <b>@pic.StaffName</b>
-                                            </span>
-                                            <span style="float:right;padding-right:5px">
-                                                <img src="~/images/information.png" style="width:15px;height:15px;cursor:pointer" title="Course Information ID: @pic.CourseCode Description: @pic.CourseDesc" aria-label="Course Information ID: @pic.CourseCode Description: @pic.CourseDesc" data-balloon-pos="up" />
-                                                <img src="~/images/star.png" onclick="student.addfavourite(this)" title="Add to your favorites" style="width:15px;height:15px;cursor:pointer" />
-                                            </span>
-                                        </div>
-                                    </div>
-                                }
-                            }
-                        </div>
-                        <div class="row divlist" id="divList">
-                            @foreach (var item in Model?.CourseTypes ?? Enumerable.Empty<GroupCourseType>())
-                            {
-                                <div class="textlaignleft margintop5" style="margin-left:7px">
-                                    <b>@item.CourseType</b>
-                                </div>
-                                foreach (var pic in item.StudentCourseModels ?? Enumerable.Empty<StudentCourseModel>())
-                                {
-                                    <div class="col-10 divlistmargin">
-                                        <div class="divlistleftborder">
-                                            @pic.CourseCode
-                                        </div>
-                                        <div class="divlistleftborder">
-                                            @pic.CourseName &nbsp; <span class="divlistlightgray">Original Course View</span>
-                                        </div>
-                                        <div class="divlistleftborder">
-                                            <a href="#" class="anchornounderline" data-toggle="modal" data-target="#courseright_modal">@pic.StudentCourseStatus | </a>&nbsp;
-                                            <a href="#" class="anchornounderline">@pic.StaffName | </a>&nbsp;
-                                            <a href="#" class="anchornounderline">More info</a>
-                                        </div>
-                                    </div>
-                                }
-                            }
-                        </div>
-                        <br />
-                        <component type="typeof(Lower_Component)" render-mode="Static" /><br />
-                    </div>
-                </div>
+    <div style="margin-left:1vw">
+        <div class="row">
+            <div class="col-12">
+                <h1 class="coursetitle">@_localizer["CoursesKey"]</h1>
+                <hr />
             </div>
+        </div>
+        <div class="row">
+            <div class="col-2 coursepicleftarrow">
+                <img class="picimgalign" src="/images/leftarrow.png" onclick="loadCourse()" />&nbsp; <span id="leftarrowtext">@Model.SelectedCourseType</span>
+            </div>
+            <div class="col-7 coursepicleftarrow" style="padding:5px">
+                <select id="ddlCourse" onchange="coursechange()">
+                    <option value="-1">Upcoming Courses</option>
+                    <option value="0">Current Courses</option>
+                    @foreach (DropDownListModel item in Model?.CourseDropdown ?? Enumerable.Empty<DropDownListModel>())
+                    {
+                        if (!string.IsNullOrEmpty(Model?.CurrentCourseType) && Model?.CurrentCourseType == item.Name)
+                        {
+                            <option value="@item.Id" selected="true">@item.Name</option>
+                        }
+                        else
+                        {
+                            <option value="@item.Id">@item.Name</option>
+                        }
+
+                    }
+                </select>
+            </div>
+            <div class="col-3 courseborderbottomright">
+                Upcoming Courses &nbsp; <img src="/images/rightarrow.png" class="picimgalign" />
+            </div>
+        </div>
+        <div class="row margintop5">
+            <div class="col-1 paddingtop2">
+                <input type="checkbox" name="piclist" checked>
+            </div>
+            <div class="col-4 ">
+                <input type="text" placeholder="Search your courses" />
+            </div>
+            <div class="col-4">
+                <b>Filter</b>
+                <select id="ddlStatus" style="width:13vw" onchange="opencourses()">
+                    <option value="0">All courses</option>
+                    <option value="1">Courses I am taking</option>
+                    <option value="Open">Open courses</option>
+                    <option value="">Completed courses</option>
+                </select>
+            </div>
+            <div class="col-3">
+                <select style="width:5vw">
+                    <option value="25">25</option>
+                    <option value="50">50</option>
+                    <option value="100">100</option>
+                </select> &nbsp;items per page
+            </div>
+        </div>
+        <div class="row divpic">
+            @foreach (var item in Model?.CourseTypes ?? Enumerable.Empty<GroupCourseType>())
+            {
+                <div class="textlaignleft margintop5 pichide" style="margin-left:7px">
+                    <b>@item.CourseType</b>
+                </div>
+                @foreach (var pic in item.StudentCourseModels ?? Enumerable.Empty<StudentCourseModel>())
+                {
+                    count = count + 1;
+                    if (count > 6)
+                    {
+                        count = 0;
+                        count = count + 1;
+                    }
+                    var srcId = GenerateUniqueRandom(count);
+                    <div class="col-4 pichide" id="@srcId.Item1">
+                        <div class="pic">
+                            <img onmouseover="imageFocusIn(this)" onmouseout="imageBlur(this)" src="@srcId.Item2" class="imgpic" />
+                            <span class="txtpaddingleft picfont">@pic.CourseCode</span><br />
+                            <span class="txtpaddingleft picfont">@pic.CourseName</span><br />
+                            <a href="#" class="anchornounderline txtpaddingleft picfont" data-toggle="modal" data-target="#courseright_modal">@pic.StudentCourseStatus</a>
+                            <hr />
+                            <span class="txtpaddingleft picfont">
+                                <b>@pic.StaffName</b>
+                            </span>
+                            <span style="float:right;padding-right:5px">
+                                <img src="~/images/information.png" style="width:15px;height:15px;cursor:pointer" title="Course Information ID: @pic.CourseCode Description: @pic.CourseDesc" aria-label="Course Information ID: @pic.CourseCode Description: @pic.CourseDesc" data-balloon-pos="up" />
+                                <img src="~/images/star.png" onclick="student.addfavourite(this)" title="Add to your favorites" style="width:15px;height:15px;cursor:pointer" />
+                            </span>
+                        </div>
+                    </div>
+                }
+            }
+        </div>
+        <div class="row divlist" id="divList">
+            @foreach (var item in Model?.CourseTypes ?? Enumerable.Empty<GroupCourseType>())
+            {
+                <div class="textlaignleft margintop5" style="margin-left:7px">
+                    <b>@item.CourseType</b>
+                </div>
+                foreach (var pic in item.StudentCourseModels ?? Enumerable.Empty<StudentCourseModel>())
+                {
+                    <div class="col-10 divlistmargin">
+                        <div class="divlistleftborder">
+                            @pic.CourseCode
+                        </div>
+                        <div class="divlistleftborder">
+                            @pic.CourseName &nbsp; <span class="divlistlightgray">Original Course View</span>
+                        </div>
+                        <div class="divlistleftborder">
+                            <a href="#" class="anchornounderline" data-toggle="modal" data-target="#courseright_modal">@pic.StudentCourseStatus | </a>&nbsp;
+                            <a href="#" class="anchornounderline">@pic.StaffName | </a>&nbsp;
+                            <a href="#" class="anchornounderline">More info</a>
+                        </div>
+                    </div>
+                }
+            }
         </div>
     </div>
 </form>
