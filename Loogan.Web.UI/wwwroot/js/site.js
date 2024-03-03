@@ -263,10 +263,19 @@ function expandImage(id) {
 }
 
 $(document).ajaxStart(function () {
-    $("#cover-spin").show();
+    showloadinSymbol();
 }).ajaxStop(function () {
-    $("#cover-spin").hide('slow');
+    hideloadingSymbol();
 });
+
+window.showloadinSymbol = function () {
+    $("#cover-spin").show();
+}
+
+window.hideloadingSymbol = function () {
+    $("#cover-spin").hide('slow');
+}
+
 
 
 

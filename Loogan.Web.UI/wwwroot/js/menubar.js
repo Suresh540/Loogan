@@ -34,6 +34,8 @@ async function navigateurl(ctrl, url) {
         Alert('No url configured', 'error');
         return;
     }
+    //To show the busy icon written function in site.js
+    showloadinSymbol();
 
     const newState = { page: url };
     history.pushState(newState, '', url);
@@ -44,6 +46,9 @@ async function navigateurl(ctrl, url) {
     $(div).find('.replace').css('display', 'none');
     $('#divrightLoad').html('');
     $('#divrightLoad').append(div);
+    //Hide the busy icon written function in site.js
+    hideloadingSymbol();
+
     setTimeout(() => {
         $("#ulMenu").find('li').removeClass('btnactivetab');
         $(ctrl).parent().addClass('btnactivetab');
