@@ -42,12 +42,13 @@ async function navigateurl(ctrl, url) {
     const response = await fetch(url);
     let html = await response.text();
     var div = document.createElement('div');
+    //Hide the busy icon written function in site.js
+    hideloadingSymbol();
+
     $(div).html(html);
     $(div).find('.replace').css('display', 'none');
     $('#divrightLoad').html('');
     $('#divrightLoad').append(div);
-    //Hide the busy icon written function in site.js
-    hideloadingSymbol();
 
     setTimeout(() => {
         $("#ulMenu").find('li').removeClass('btnactivetab');
