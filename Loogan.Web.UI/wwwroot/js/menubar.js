@@ -1,4 +1,18 @@
 ﻿function fnMenubarLoad(userName, signout) {
+
+    if (DoesitMobileOperator()) {
+        $('.replace').css('display', 'none');
+        $('#imgMenu').css('display', 'block');
+        $('#ulMobMenu').css('display', 'block');
+
+        if ($("#ulMobMenu").html() == undefined || $("#ulMobMenu").html() == '') {
+            $('#ulMenu').find('li a').each((index, elm) => {
+                let a = $(elm).removeAttr('style');
+                $("#ulMobMenu").append('li').append(a[0]);
+            })
+        }
+    }
+
     if ($("#ulMenu").html().trim() == '') {
         $.ajax({
             method: 'Post',
@@ -22,6 +36,19 @@
                                     <img src="/images/signout.png" style="width:30px;height:30px" title="${signout}" />
                                     <a style="color:white;font-size:16px;" href="/Logout">${signout}</a >
                                 </li>`);
+
+                if (DoesitMobileOperator()) {
+                    $('.replace').css('display', 'none');
+                    $('#imgMenu').css('display', 'block');
+                    $('#ulMobMenu').css('display', 'block');
+
+                    if ($("#ulMobMenu").html() == undefined || $("#ulMobMenu").html() == '') {
+                        $('#ulMenu').find('li a').each((index, elm) => {
+                            let a = $(elm).removeAttr('style');
+                            $("#ulMobMenu").append('li').append(a[0]);
+                        })
+                    }
+                }
             },
             error: function (e) {
                 Alert(e, 'error')
@@ -55,5 +82,22 @@ async function navigateurl(ctrl, url) {
         $(ctrl).parent().addClass('btnactivetab');
     }, 100);
     return false;
+}
+
+//[Detect is it mobile browser]
+function DoesitMobileOperator() {
+    const toMatch = [
+        /Android/i,
+        /webOS/i,
+        /iPhone/i,
+        /iPad/i,
+        /iPod/i,
+        /BlackBerry/i,
+        /Windows Phone/i
+    ];
+
+    return toMatch.some((toMatchItem) => {
+        return navigator.userAgent.match(toMatchItem);
+    });
 }
 
